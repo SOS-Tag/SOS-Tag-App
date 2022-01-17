@@ -2,15 +2,16 @@ import "./GroupButtons.css";
 
 const GroupButtons = (props) => {
 
-    const { name, buttons, img } = props;
-
-    console.log(img);
+    const { buttons, img } = props;
     
+    // Get the name of image file without extension
+    const alt = img.split("/").at(-1).split(".").at(0);
+
     return (
         <div className="gb">
-            <img src={img} alt={name} className="gb-icon"/>
+            <img src={img} alt={alt} className="gb-icon"/>
             {buttons.map((button, i) => (
-                <button id="ug-buttons" type="button">{button}</button>
+                <button className="gb-button" key={`gb-button-${i}`} type="button" onClick={button.onclick}>{button.name}</button>
             ))}
         </div>
     );
