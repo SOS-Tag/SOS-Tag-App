@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import UserDashboard from './UserDashboard';
+import UserDashboard from './pages/UserDashboard';
 
 function App() {
   return (
