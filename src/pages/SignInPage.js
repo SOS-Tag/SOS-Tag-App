@@ -8,7 +8,7 @@ const SignInPage = () => {
       </div>
       <div className="SignInPageContent">
         <h1>
-          Créez votre compte SOS Tag
+          Connectez-vous à votre espace SOS Tag
         </h1>
         <div className="SignInPageForm">
 

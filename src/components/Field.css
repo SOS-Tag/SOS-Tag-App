@@ -1,0 +1,25 @@
+.Field {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  text-align: left;
+  color: darkgrey;
+}
+
+.FieldInput {
+  /* background-color: green; */
+  padding: 7px 0;
+  width: 100%;
+  border: 0px;
+  background: transparent;
+  transition: border-color 0.2s;
+  color: darkgrey;
+  border-bottom: 2px solid darkgrey;
+}
+
+.FieldInput:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #ffce40;
+}
