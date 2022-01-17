@@ -3,6 +3,8 @@ import DashboardUser from './DashboardUser.js';
 import Basket from './Basket.js'; 
 import Account from './Account.js'; 
 import MedicalForm from './MedicalForm.js'; 
+import SignUpPage from './pages/SignUpPage.js'; 
+import SignInPage from './pages/SignInPage.js'; 
 import './App.css';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 
@@ -25,6 +27,12 @@ function App() {
           </Route>
           <Route path="/account">
             <Account />
+          </Route>
+          <Route path="/signup">
+            <SignUpPage />
+          </Route>
+          <Route path="/signin">
+            <SignInPage />
           </Route>
         </Switch>
       </div>
