@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AlternativText from "../components/AlternativText";
 import Field from "../components/Field";
+import 'react-phone-number-input/style.css'
 
 const SignUpPage = () => {
 

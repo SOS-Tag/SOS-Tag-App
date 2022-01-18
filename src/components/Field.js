@@ -1,4 +1,6 @@
 import './Field.css';
+import PhoneInput from 'react-phone-number-input'
+import fr from 'react-phone-number-input/locale/fr.json'
 
 const Field = (props) => {
 
@@ -11,12 +13,24 @@ const Field = (props) => {
       <label className="Field">
 
         {props.label}{(props.mandatory)?"*":""}
-        {(props.type === "password")?
+        {(props.type === "password") ?
           <input minLength="8" className="FieldInput" type="password" name={props.text} onChange={handleChange} required/> 
-        : <input className="FieldInput"type={props.label} value={props.value} name={props.text} onChange={handleChange}/>
+        : (props.type === "tel") ?
+           <PhoneInput 
+            labels={fr}
+            defaultCountry="FR"
+            international={true}
+            placeholder={props.text}
+            value={props.value}
+            onChange={props.onChange}
+           />
+          : <input className="FieldInput"type={props.label} value={props.value} name={props.text} onChange={handleChange}/>
         }
         
       </label>
+
+      
+
     </div>
    );
 }
