@@ -13,7 +13,7 @@ const SignUpPage = () => {
   const [password2, setPassword2] = useState("");
 
   return ( 
-    <div className="SignUpPageContainer">
+    <div className="SignUpPageContainer bg-red">
       <div className="SignUpPageIllustration">
 
       </div>
