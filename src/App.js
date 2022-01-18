@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <Header />
+      <Header type="beforeSignIn" />
       <div className='content'>
         <Switch>
           <Route exact path="/">

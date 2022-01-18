@@ -19,6 +19,11 @@
   animation: rotate 0.7s ease-in-out 0.5s;
 }
 
+.header--links {
+  display: flex;
+  flex-direction: row;
+}
+
 .header--link-item {
   font-family: "Source Sans Pro";
   font-style: normal;
@@ -27,5 +32,5 @@
   text-align: center;
   text-decoration: none;
   color: #19224f;
-  padding: 0 1.5rem 0 1.5rem;
+  padding: 0 5.25rem 0 0;
 }
