@@ -14,7 +14,7 @@ function App() {
     <Router>
     <div className="App">
       <NavBar />
-      <div className='content'>
+      <div className='-z-10 absolute w-full top-0 width-screen h-screen content flex direction-row'>
         <Switch>
           <Route exact path="/">
             <DashboardUser />

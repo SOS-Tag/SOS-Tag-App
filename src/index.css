@@ -8,6 +8,7 @@
   --SosTagYellow: #ffe7a0;
   --SosTagRed: #ec3e55;
   --SosTagRedLight: #f69fab;
+  --SosTagBackground: #f9f9f9;
 }
 
 body {
@@ -17,6 +18,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--SosTagBackground);
 }
 
 code {
@@ -24,7 +26,7 @@ code {
     monospace;
 }
 
-.mainTitle {
+h1 {
   font-size: 36px;
   line-height: 45px;
   font-family: sans-serif;
