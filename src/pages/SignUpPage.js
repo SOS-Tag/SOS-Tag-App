@@ -18,18 +18,18 @@ const SignUpPage = () => {
 
       </div>
       <div className="SignUpPageContent">
-        <h1>
+        <h1 className="mainTitle">
           Créez votre compte SOS Tag
         </h1>
         <div className="SignUpPageForm">
           <form>
             <Field editing={true} type="text" value={name} onChange={setName} label="Nom" mandatory={true}/>
-            <Field editing={true} type="text" value={surName} onChange={setSurName} label="Prenom" mandatory={false}/>
+            <Field editing={false} type="text" value='JOHNSON' onChange={setSurName} label="Prenom" mandatory={false}/>
             <Field editing={true} type="mail" value={mail} onChange={setMail} label="Adresse mail" mandatory={true}/>
             <Field editing={true} type="tel" value={phone} onChange={setPhone} label="Numéro de téléphone" mandatory={true}/>
             <Field editing={true} type="password" onChange={setPassword1} label="Nouveau mot de passe" mandatory={true}/>
             <Field editing={true} type="password" onChange={setPassword2} label="Répéter mot de passe" mandatory={true}/>
-            <input type="submit" value="Submit" />
+            <input className="py-[10px] px-[20px] text-white rounded-[12px] b-2 bg-SosTagRedLight hover:cursor-pointer hover:bg-SosTagRed" type="submit" value="Valider" />
           </form>
           
         </div>
