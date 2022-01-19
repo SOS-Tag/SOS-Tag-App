@@ -1,9 +1,9 @@
 const AlternativText = (props) => {
   return ( 
-    <span className="AlternativText">
+    <div className={"AlternativText "+props.className}>
       {props.text}
-      <a href={props.link}><span className="bold text-SosTagRed">{props.linkText}</span></a>
-    </span>
+      <a href={props.link}><span className="font-bold text-SosTagRed">{props.linkText}</span></a>
+    </div>
    );
 }
 

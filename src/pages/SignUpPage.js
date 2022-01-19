@@ -61,16 +61,16 @@ const SignUpPage = () => {
               </div>  
             </div>
 
-            <div>
-              <input type="checkbox" name="consent" onClick={handleConsent}/>
-              <p>
+            <div className="w-[100%] flex ">
+              <input className="mt-[6px]" type="checkbox" name="consent" onClick={handleConsent}/>
+              <p className="ml-[10px] w-[80%] mb-[20px] shrink text-SosTagBlue">
                 J'accepte les conditions générales d'utilisation et les conditions générales de vente. Je consens au traitement de mes données conformément à la politique de confidentialité de SOS Tag.
               </p>
             </div>
             <Button onClick={handleValidation} box="fill" type ="general" buttonText="Valider"/>
           </form>
         </div>
-        <AlternativText text="Déjà inscrit ? " linkText="Se connecter" link="./signin"/>
+        <AlternativText className="mt-[30px] text-SosTagBlue" text="Déjà inscrit ? " linkText="Se connecter" link="./signin"/>
       </div>
     </div>
    );
