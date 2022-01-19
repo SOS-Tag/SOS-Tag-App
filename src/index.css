@@ -28,6 +28,7 @@ code {
 
 h1 {
   font-size: 36px;
+  font-weight: bold;
   line-height: 45px;
   font-family: "Source Sans Pro";
   color: var(--SosTagBlue);
@@ -38,4 +39,18 @@ h1 {
   font-size: 18px;
   line-height: 23px;
   color: var(--SosTagBlue);
+}
+
+.formRow2 {
+  grid-template-columns: [first] 0% [line2] 35% [line3] 10% [line4] 35% [line5] auto [end];
+}
+
+.formRow2-item-a {
+  grid-column-start: line2;
+  grid-column-end: line3;
+}
+
+.formRow2-item-b {
+  grid-column-start: line4;
+  grid-column-end: line5;
 }
