@@ -18,12 +18,31 @@ const SignUpPage = () => {
     (consent)?setConsent(false):setConsent(true);
   }
 
+  function checkform(evt){
+    let condition = true;
+    if(password1 !== password2){
+      condition = false;
+    }
+    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))){
+      condition = false;
+    }
+    if(condition){
+      alert("formulaire valide");
+    }
+    else{
+      evt.preventDefault();
+      alert("formulaire invalide")
+    }
+  }
+
   function handleValidation(){
     console.log("name : "+name);
     console.log("surname : "+surname);
     console.log("mail : "+mail);
+    //(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))?alert("mail valide"):alert("mail invalide");
     console.log("phone : "+phone);
     console.log("password : "+password1);
+    //(password1===password2)?alert("MDP identiques"): alert("MDP différents");
     console.log("consent : "+consent);
     console.log("validation works");
   }
@@ -37,8 +56,8 @@ const SignUpPage = () => {
         <h1 className="mb-[50px]" >
           Créez votre compte SOS Tag
         </h1>
-        <div className="SignUpPageForm">
-          <form action="/signin">
+        <div action="./" className="SignUpPageForm">
+          <form onSubmit={checkform}>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="text" value={name} onChange={setName} label="Nom" mandatory={true}/>
