@@ -26,6 +26,9 @@ const SignUpPage = () => {
     if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))){
       condition = false;
     }
+    if(!consent){
+      condition = false;
+    }
     if(condition){
       alert("formulaire valide");
     }
@@ -56,8 +59,8 @@ const SignUpPage = () => {
         <h1 className="mb-[50px]" >
           Créez votre compte SOS Tag
         </h1>
-        <div action="./" className="SignUpPageForm">
-          <form onSubmit={checkform}>
+        <div className="SignUpPageForm">
+          <form action="/signin" onSubmit={checkform}>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="text" value={name} onChange={setName} label="Nom" mandatory={true}/>
@@ -73,7 +76,7 @@ const SignUpPage = () => {
             </div>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="tel" value={phone} onChange={setPhone} label="Numéro de téléphone" mandatory={true}/>
+                <Field editing={true} type="tel" value={phone} onChange={setPhone} label="Numéro de téléphone" mandatory={false}/>
               </div>
             </div>
             
