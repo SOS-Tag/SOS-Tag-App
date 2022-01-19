@@ -9,7 +9,7 @@
   --SosTagRed: #ec3e55;
   --SosTagRedLight: #f69fab;
   --SosTagBackground: #f9f9f9;
-  --SoSTagGrey: #dedede;
+  --SosTagGrey: #dedede;
 }
 
 body {
@@ -66,6 +66,9 @@ h1 {
 }
 .child {
   background-color: var(--SosTagYellow);;
+}
+.off > div {
+  background-color: var(--SosTagGrey);
 }
 .on {
   justify-content: flex-end;
