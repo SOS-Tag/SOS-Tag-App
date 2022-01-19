@@ -1,7 +1,7 @@
 .button {
   /*Box*/
   border: medium none;
-  margin: 5px 10px 5px 10px;
+  margin: 10px 10px 10px 0px;
   border-radius: 12px;
   display: flex;
   flex-direction: row;
@@ -16,26 +16,31 @@
   font-size: 18px;
   line-height: 23px;
   text-align: center;
+  transition: 0.2s ease-in-out 0s;
+}
+
+.button:hover {
+  transform: scale(1.02);
 }
 
 .fill--button--general--sostag {
-  background: #f69fab;
-  color: #ffffff;
+  background: var(--SosTagRedLight);
+  color: white;
 }
 
 .fill--button--secondaire--sostag {
-  background: #19224f;
-  color: #ffffff;
+  background: var(--SosTagBlue);
+  color: white;
 }
 
 .fill--button--delete--sostag {
-  background: #ec3e55;
-  color: #ffffff;
+  background: var(--SosTagRed);
+  color: white;
 }
 
 .stroke--button--general--sostag {
-  border: 1px solid #f69fab;
+  border: 1px solid var(--SosTagRedLight);
   box-sizing: border-box;
-  color: #f69fab;
-  background: #ffffff;
+  color: var(--SosTagRedLight);
+  background: white;
 }
