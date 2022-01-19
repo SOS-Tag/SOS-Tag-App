@@ -1,25 +1,54 @@
-import Logo from "../assets/logo.jpg"
-import {ReactComponent as BasketLogo} from "../assets/BasketSVG.svg";
-import {ReactComponent as AccountLogo} from "../assets/AccountSVG.svg";
-import "./Header.css"
+import { useLocation } from "react-router-dom"; 
 import Button from "./Button";
+import Logo from "../assets/logo.jpg"
+import BasketSVG from "../assets/BasketSVG";
+import AccountSVG from "../assets/AccountSVG";
+import "./Header.css"
+
+
 
 
 const Header = (props) => {
     let contenu; 
+
+    const location = useLocation()
+
+
     if (props.type === "afterSignIn") {
         contenu = 
-        <>
-        <a className="header--link-item" href="/"> Vue d'ensemble </a>
-        <a className="header--link-item" href="/medicalform"> Fiche personnelle</a>
-        <a className="header--link-item" href="/basket">
-        <BasketLogo />
-         </a>
-        <a className="header--link-item" href="/account">
-         <AccountLogo />
-         </a>
-        </>
+            <>
+            <a
+            className={`header--link-item ${location.pathname === "/" ? "selected" : ""}`} 
+            href="/"
+            >
+            Vue d'ensemble
+            </a>
+
+            <a
+            className={`header--link-item ${location.pathname === "/medicalform" ? "selected" : ""}`} 
+            href="/medicalform"
+            >
+            Fiche personnelle
+            </a>
+
+            <a
+            className="header--link-item"
+            href="/basket"
+            >
+            <BasketSVG color={location.pathname === "/basket"? "#ec3e55" : "#19224F"}/>
+            </a>
+
+            <a
+            className= "header--link-item" 
+            href="/account"
+            >
+            <AccountSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
+            </a>
+            
+            </>
     }
+
+
     if (props.type === "beforeSignIn") {
         contenu = 
         <>
