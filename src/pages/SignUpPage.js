@@ -16,7 +16,10 @@ const SignUpPage = () => {
 
   function handleConsent(){
     (consent)?setConsent(false):setConsent(true);
-    console.log(consent)
+  }
+
+  function handleValidation(){
+    console.log("validation works");
   }
 
   return ( 
@@ -59,17 +62,15 @@ const SignUpPage = () => {
             </div>
 
             <div>
-              <input type="checkbox" name="consent" onChange={handleConsent}/>
+              <input type="checkbox" name="consent" onClick={handleConsent}/>
               <p>
                 J'accepte les conditions générales d'utilisation et les conditions générales de vente. Je consens au traitement de mes données conformément à la politique de confidentialité de SOS Tag.
               </p>
             </div>
-
-            <Button box="fill" type ="general" buttonText="Valider"/>
+            <Button onClick={handleValidation} box="fill" type ="general" buttonText="Valider"/>
           </form>
         </div>
         <AlternativText text="Déjà inscrit ? " linkText="Se connecter" link="./signin"/>
-
       </div>
     </div>
    );
