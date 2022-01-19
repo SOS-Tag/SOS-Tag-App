@@ -1,0 +1,27 @@
+[
+    {
+        "type": "main",
+        "firstname": "Pascal",
+        "name": "Richard"
+    },
+    {
+        "type": "child",
+        "firstname": "Jeremy",
+        "name": "Richard"
+    },
+    {
+        "type": "child",
+        "firstname": "Martine",
+        "name": "Richard"
+    },
+    {
+        "type": "child",
+        "firstname": "Julie",
+        "name": "Richard"
+    },
+    {
+        "type": "child",
+        "firstname": "Paul",
+        "name": "Richard"
+    }
+]

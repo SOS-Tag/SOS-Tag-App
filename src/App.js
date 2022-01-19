@@ -1,11 +1,11 @@
-import Header from './components/Header.js';
-import DashboardUser from './pages/DashboardUser.js'; 
+import Header from './components/Header.js'; 
 import Basket from './pages/Basket.js'; 
 import Account from './pages/Account.js'; 
 import MedicalForm from './pages/MedicalForm.js'; 
 import SignUpPage from './pages/SignUpPage.js'; 
 import SignInPage from './pages/SignInPage.js'; 
 import './App.css';
+import UserDashboard from './pages/UserDashboard';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 
 
@@ -17,7 +17,7 @@ function App() {
       <div className='w-full h-full content flex flex-row'>
         <Switch>
           <Route exact path="/">
-            <DashboardUser />
+            <UserDashboard />
           </Route>
           <Route path="/medicalform">
             <MedicalForm />

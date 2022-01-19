@@ -1,0 +1,27 @@
+body {
+  /*margin: 0 170px;*/
+}
+
+.ud {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.ud-actions-bar,
+.ud-groups-buttons,
+.ud-select-all {
+  display: flex;
+  flex-direction: row;
+}
+
+.ud-actions-bar {
+  justify-content: space-between;
+}
+
+.ud-groups-buttons {
+  gap: 41px;
+}
+.ud-select-all {
+  gap: 22px;
+}

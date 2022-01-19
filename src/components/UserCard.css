@@ -1,0 +1,94 @@
+/* CARD FORM */
+
+.uc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    width: 245px;
+    height: 326px;
+    border-radius: 12px;
+}
+
+/* CARD COLOR ACCORDING TO ITS TYPE */
+
+.uc.main {
+    background-color: #F69FAB;
+}
+.uc.child {
+    background-color: #FFE7A0;
+}
+.uc.add {
+    background-color: #DEDEDE;
+}
+
+/* PLUS SYMBOL */
+
+.uc-plus {
+    position: relative;
+    width: 55px;
+    height: 55px;
+}
+.plus-h, .plus-v {
+    background-color: white;
+}
+.plus-h {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 10%;
+}
+.plus-v {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    height: 100%;
+}
+
+/* PROFILE ICON */
+
+.uc-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.uc-circle {
+    position: relative;
+    background-color: white;
+    border-radius: 50%;
+    width: 102px;
+    height: 102px;
+}
+
+.uc-icon {
+    width: 55px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* PROFILE NAMES */
+
+.uc-names {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.uc-name {
+    font-weight: bold;
+}
+
+.us-select {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+}
