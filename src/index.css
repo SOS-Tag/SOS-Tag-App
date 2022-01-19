@@ -9,6 +9,7 @@
   --SosTagRed: #ec3e55;
   --SosTagRedLight: #f69fab;
   --SosTagBackground: #f9f9f9;
+  --SoSTagGrey: #dedede;
 }
 
 body {
@@ -53,4 +54,22 @@ h1 {
 .formRow2-item-b {
   grid-column-start: line4;
   grid-column-end: line5;
+}
+
+[type=checkbox] {
+  width: 22px;
+  height: 22px;
+}
+
+.main {
+  background-color: var(--SosTagRedLight);;
+}
+.child {
+  background-color: var(--SosTagYellow);;
+}
+.on {
+  justify-content: flex-end;
+}
+.off {
+  justify-content: flex-start;
 }

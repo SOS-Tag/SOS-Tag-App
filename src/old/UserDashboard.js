@@ -1,3 +1,4 @@
+import './UserDashboard.css';
 import users from './../data/users.json';
 import GroupButtons from '../components/GroupButtons';
 import CardsList from '../components/CardsList';
@@ -12,7 +13,6 @@ const UserDashboard = (props) => {
 
     const downloadButton = {
         name: "Télécharger",
-        type: "secondaire",
         onclick: download
     }
 
@@ -22,7 +22,6 @@ const UserDashboard = (props) => {
 
     const orderButton = {
         name: "Commander",
-        type: "secondaire",
         onclick: order
     }
 
@@ -32,7 +31,6 @@ const UserDashboard = (props) => {
 
     const deleteButton = {
         name: "Supprimer",
-        type: "delete",
         onclick: deleteProfile
     }
 
@@ -43,18 +41,18 @@ const UserDashboard = (props) => {
     }
 
     return (
-        <div className="flex flex-col gap-[70px] mx-[10vw] my-[70px]">
+        <div className="ud">
 
             <h1>Bienvenue dans votre espace</h1>
 
-            <div className="flex justify-between flex-wrap">
+            <div className="ud-actions-bar">
 
-                <div className="flex gap-[22px] items-center">
+                <div className="ud-select-all">
                     <input type="checkbox" name="ud-select-all" onClick={selectAll}/>
                     <label htmlFor="ud-select-all">Tout sélectionner</label>
                 </div>
 
-                <div className='flex gap-x-[41px] items-center flex-wrap'>
+                <div className='ud-groups-buttons'>
                     <GroupButtons img={"/assets/profile.png"} buttons={[downloadButton, orderButton]} />
                     <GroupButtons img={"/assets/qrcode.png"} buttons={[deleteButton]} />
                 </div>

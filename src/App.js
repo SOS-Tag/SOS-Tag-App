@@ -14,7 +14,7 @@ function App() {
     <Router>
     <div className="App h-screen flex flex-col items-stretch">
       <Header type="afterSignIn" />
-      <div className='w-full h-full content flex flex-row'>
+      <div className='w-full content flex flex-row'>
         <Switch>
           <Route exact path="/">
             <UserDashboard />

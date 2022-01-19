@@ -1,8 +1,5 @@
-body {
-  /*margin: 0 170px;*/
-}
-
 .ud {
+  margin: 0 170px;
   display: flex;
   flex-direction: column;
   gap: 70px;

@@ -1,4 +1,4 @@
-import Button from "./Button";
+import "./GroupButtons.css";
 
 const GroupButtons = (props) => {
 
@@ -8,10 +8,10 @@ const GroupButtons = (props) => {
     const alt = img.split("/").at(-1).split(".").at(0);
 
     return (
-        <div className="flex gap-[16px] items-center ">
-            <img src={img} alt={alt} className="h-[20px]"/>
+        <div className="gb">
+            <img src={img} alt={alt} className="gb-icon"/>
             {buttons.map((button, i) => (
-                <Button box="fill" type ={button.type} buttonText={button.name} key={`gb-button-${i}`} onClick={button.onclick}/>
+                <button className="gb-button" key={`gb-button-${i}`} type="button" onClick={button.onclick}>{button.name}</button>
             ))}
         </div>
     );

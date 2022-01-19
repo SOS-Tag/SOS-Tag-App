@@ -10,6 +10,7 @@ module.exports = {
         'SosTagYellow' : '#FFE7A0',
         'SosTagRed' : '#EC3E55',
         'SosTagRedLight' : '#F69FAB',
+        'SosTagGrey' : '#DEDEDE',
       }
     },
   },
