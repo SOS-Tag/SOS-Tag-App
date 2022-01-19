@@ -54,3 +54,20 @@ h1 {
   grid-column-start: line4;
   grid-column-end: line5;
 }
+
+.prenom {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 35px;
+}
+
+.nom {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 35px;
+  text-transform: uppercase;
+}
