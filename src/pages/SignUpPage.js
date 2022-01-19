@@ -28,7 +28,7 @@ const SignUpPage = () => {
         <img className="w-4/5" alt="imgSignUp" src="./assets/ImageSignUp.png"/>
       </div>
       <div className="w-1/2 SignUpPageContent ">
-        <h1 className="mb-[50px]">
+        <h1 className="mb-[50px]" >
           Créez votre compte SOS Tag
         </h1>
         <div className="SignUpPageForm">
