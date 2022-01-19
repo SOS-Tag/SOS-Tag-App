@@ -24,7 +24,10 @@ const Field = (props) => {
               value={props.value}
               onChange={props.onChange}
             />
-            : <input className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow"type={props.label} value={props.value} name={props.text} onChange={handleChange}/>
+            : (props.mandatory)?
+              <input required className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow"type={props.label} value={props.value} name={props.text} onChange={handleChange}/>
+              :<input className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow"type={props.label} value={props.value} name={props.text} onChange={handleChange}/>
+            
           }
       </label>
     </>

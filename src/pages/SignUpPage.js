@@ -19,6 +19,12 @@ const SignUpPage = () => {
   }
 
   function handleValidation(){
+    console.log("name : "+name);
+    console.log("surname : "+surname);
+    console.log("mail : "+mail);
+    console.log("phone : "+phone);
+    console.log("password : "+password1);
+    console.log("consent : "+consent);
     console.log("validation works");
   }
 
@@ -32,13 +38,13 @@ const SignUpPage = () => {
           Créez votre compte SOS Tag
         </h1>
         <div className="SignUpPageForm">
-          <form>
+          <form action="/signin">
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="text" value={name} onChange={setName} label="Nom" mandatory={true}/>
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="text" value={surname} onChange={setSurname} label="Prenom" mandatory={false}/>
+                <Field editing={true} type="text" value={surname} onChange={setSurname} label="Prenom" mandatory={true}/>
               </div>
             </div>
             <div className="formRow2 w-full grid">
