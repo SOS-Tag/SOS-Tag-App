@@ -1,24 +1,43 @@
-import logo from './logo.svg';
+import Header from './components/Header.js'; 
+import Basket from './pages/Basket.js'; 
+import Account from './pages/Account.js'; 
+import MedicalForm from './pages/MedicalForm.js'; 
+import SignUpPage from './pages/SignUpPage.js'; 
+import SignInPage from './pages/SignInPage.js'; 
 import './App.css';
+import UserDashboard from './pages/UserDashboard';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div className="App h-screen flex flex-col items-stretch">
+      <Header type="afterSignIn" />
+      <div className='w-full h-full content flex flex-row'>
+        <Switch>
+          <Route exact path="/">
+            <UserDashboard />
+          </Route>
+          <Route path="/medicalform">
+            <MedicalForm />
+          </Route>
+          <Route path="/basket">
+            <Basket />
+          </Route>
+          <Route path="/account">
+            <Account />
+          </Route>
+          <Route path="/signup">
+            <SignUpPage />
+          </Route>
+          <Route path="/signin">
+            <SignInPage />
+          </Route>
+        </Switch>
+      </div>
     </div>
+    </Router>
   );
 }
 

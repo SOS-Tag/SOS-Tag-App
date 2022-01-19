@@ -1,0 +1,46 @@
+.button {
+  /*Box*/
+  border: medium none;
+  margin: 10px 10px 10px 0px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  /* Text */
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  transition: 0.2s ease-in-out 0s;
+}
+
+.button:hover {
+  transform: scale(1.02);
+}
+
+.fill--button--general--sostag {
+  background: var(--SosTagRedLight);
+  color: white;
+}
+
+.fill--button--secondaire--sostag {
+  background: var(--SosTagBlue);
+  color: white;
+}
+
+.fill--button--delete--sostag {
+  background: var(--SosTagRed);
+  color: white;
+}
+
+.stroke--button--general--sostag {
+  border: 1px solid var(--SosTagRedLight);
+  box-sizing: border-box;
+  color: var(--SosTagRedLight);
+  background: white;
+}

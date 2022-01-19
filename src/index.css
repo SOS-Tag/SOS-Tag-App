@@ -1,13 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --SosTagBlue: #19224f;
+  --SosTagYellow: #ffce40;
+  --SosTagYellow: #ffe7a0;
+  --SosTagRed: #ec3e55;
+  --SosTagRedLight: #f69fab;
+  --SosTagBackground: #f9f9f9;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--SosTagBackground);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 45px;
+  font-family: "Source Sans Pro";
+  color: var(--SosTagBlue);
+}
+
+.semiBoldText {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  color: var(--SosTagBlue);
+}
+
+.formRow2 {
+  grid-template-columns: [first] 0% [line2] 35% [line3] 10% [line4] 35% [line5] auto [end];
+}
+
+.formRow2-item-a {
+  grid-column-start: line2;
+  grid-column-end: line3;
+}
+
+.formRow2-item-b {
+  grid-column-start: line4;
+  grid-column-end: line5;
 }
