@@ -43,7 +43,7 @@ const UserDashboard = (props) => {
     }
 
     return (
-        <div className="flex flex-col gap-[70px] mx-[10vw] my-[70px]">
+        <div className="flex flex-col h-[fit-content] gap-[70px] px-[11vw] py-[70px]">
 
             <h1>Bienvenue dans votre espace</h1>
 
