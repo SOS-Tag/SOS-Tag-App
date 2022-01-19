@@ -1,20 +1,20 @@
-import Header from './Header.js';
-import DashboardUser from './DashboardUser.js'; 
-import Basket from './Basket.js'; 
-import Account from './Account.js'; 
-import MedicalForm from './MedicalForm.js'; 
+import Header from './components/Header.js';
+import DashboardUser from './pages/DashboardUser.js'; 
+import Basket from './pages/Basket.js'; 
+import Account from './pages/Account.js'; 
+import MedicalForm from './pages/MedicalForm.js'; 
 import SignUpPage from './pages/SignUpPage.js'; 
 import SignInPage from './pages/SignInPage.js'; 
 import './App.css';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
-import "@fontsource/source-sans-pro";
+
 
 function App() {
   return (
     <Router>
-    <div className="App">
-      <Header type="beforeSignIn" />
-      <div className='-z-10 absolute w-full top-0 width-screen h-screen content flex direction-row'>
+    <div className="App h-screen flex flex-col items-stretch">
+      <Header type="afterSignIn" />
+      <div className='w-full h-full content flex flex-row'>
         <Switch>
           <Route exact path="/">
             <DashboardUser />

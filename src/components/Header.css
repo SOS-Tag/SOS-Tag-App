@@ -1,0 +1,36 @@
+.header {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  height: 80px;
+  background-color: white;
+  box-shadow: 0px -7px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px 0 100px;
+  z-index: 1;
+}
+
+.header--logo {
+  width: 8rem;
+  height: auto;
+  margin-right: 0.5rem;
+  animation: rotate 0.7s ease-in-out 0.5s;
+}
+
+.header--links {
+  display: flex;
+  flex-direction: row;
+}
+
+.header--link-item {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+  text-decoration: none;
+  color: #19224f;
+  padding: 0 5.25rem 0 0;
+}
