@@ -18,7 +18,35 @@ const SignUpPage = () => {
     (consent)?setConsent(false):setConsent(true);
   }
 
+  function checkform(evt){
+    let condition = true;
+    if(password1 !== password2){
+      condition = false;
+    }
+    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))){
+      condition = false;
+    }
+    if(!consent){
+      condition = false;
+    }
+    if(condition){
+      alert("formulaire valide");
+    }
+    else{
+      evt.preventDefault();
+      alert("formulaire invalide")
+    }
+  }
+
   function handleValidation(){
+    console.log("name : "+name);
+    console.log("surname : "+surname);
+    console.log("mail : "+mail);
+    //(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))?alert("mail valide"):alert("mail invalide");
+    console.log("phone : "+phone);
+    console.log("password : "+password1);
+    //(password1===password2)?alert("MDP identiques"): alert("MDP différents");
+    console.log("consent : "+consent);
     console.log("validation works");
   }
 
@@ -32,13 +60,13 @@ const SignUpPage = () => {
           Créez votre compte SOS Tag
         </h1>
         <div className="SignUpPageForm">
-          <form>
+          <form action="/signin" onSubmit={checkform}>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="text" value={name} onChange={setName} label="Nom" mandatory={true}/>
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="text" value={surname} onChange={setSurname} label="Prenom" mandatory={false}/>
+                <Field editing={true} type="text" value={surname} onChange={setSurname} label="Prenom" mandatory={true}/>
               </div>
             </div>
             <div className="formRow2 w-full grid">
@@ -48,7 +76,7 @@ const SignUpPage = () => {
             </div>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="tel" value={phone} onChange={setPhone} label="Numéro de téléphone" mandatory={true}/>
+                <Field editing={true} type="tel" value={phone} onChange={setPhone} label="Numéro de téléphone" mandatory={false}/>
               </div>
             </div>
             
@@ -61,16 +89,16 @@ const SignUpPage = () => {
               </div>  
             </div>
 
-            <div>
-              <input type="checkbox" name="consent" onClick={handleConsent}/>
-              <p>
+            <div className="w-[100%] flex ">
+              <input className="mt-[6px]" type="checkbox" name="consent" onClick={handleConsent}/>
+              <p className="ml-[10px] w-[80%] mb-[20px] shrink text-SosTagBlue">
                 J'accepte les conditions générales d'utilisation et les conditions générales de vente. Je consens au traitement de mes données conformément à la politique de confidentialité de SOS Tag.
               </p>
             </div>
             <Button onClick={handleValidation} box="fill" type ="general" buttonText="Valider"/>
           </form>
         </div>
-        <AlternativText text="Déjà inscrit ? " linkText="Se connecter" link="./signin"/>
+        <AlternativText className="mt-[30px] text-SosTagBlue" text="Déjà inscrit ? " linkText="Se connecter" link="./signin"/>
       </div>
     </div>
    );
