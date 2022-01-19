@@ -1,23 +1,11 @@
-import AlternativText from "../components/AlternativText";
+import SignInForm from "../components/SignInForm"
 
 const SignInPage = () => {
-  return ( 
-    <div className="SignInPageContainer">
-      <div className="SignInPageIllustration">
-
-      </div>
-      <div className="SignInPageContent">
-        <h1>
-          Connectez-vous à votre espace SOS Tag
-        </h1>
-        <div className="SignInPageForm">
-
+    return ( 
+        <div className="sign-in-page">
+            <SignInForm />
         </div>
-        <AlternativText text="Vous n'avez pas encore de compte ? " linkText="S'inscrire" link="./signup"/>
-
-      </div>
-    </div>
-   );
+     );
 }
-
+ 
 export default SignInPage;
