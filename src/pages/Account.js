@@ -1,19 +1,77 @@
 import "./UserDashboard.css"
 import Button from "../components/Button"
 import Field from "../components/Field";
+import { useEffect, useState } from "react";
 
 const Account = () => {
+
+    const [modify, changeModifyField] = useState(false); 
+    const [infoPage, changePage] = useState(true); 
+    const [textModifyButton, changeTextModifyButton] = useState("Modifier les informations"); 
+    const [typeModifyButton, changeTypeModifyButton] = useState("fill"); 
+
+    const modifyInfo = () => {
+        if (modify) { 
+            saveChange();
+            changeTextModifyButton("Modifier les informations"); 
+            changeTypeModifyButton("fill"); 
+            changeModifyField(false); 
+
+            
+        }
+        else{
+            changeTextModifyButton("Enregistrer"); 
+            changeTypeModifyButton("stroke"); 
+            changeModifyField(true); 
+            
+        }
+        
+    }
+
+    const modifyPage = () => {
+        (infoPage) ? changePage(false) : changePage(true); 
+        console.log(infoPage); 
+    }
+
+    const saveChange = () => {
+        alert("[A FAIRE] Les informations de l'utilisateur se mettent à jours !")
+    
+    }
+
     return ( 
-        <div className="flex flex-col w-full">
-            <Banner />
+        <div className="w-full">
 
+            {(infoPage) ?
+            <>
+            <Banner title="Gestion de votre compte" />
             <div className="flex flex-row">
-                
-                <GroupManage />
-                <UserInfo />
-                
+                <GroupManage modifyClick={modifyInfo} passwordClick={modifyPage} textButton={textModifyButton} typeButton={typeModifyButton} />
+                <UserInfo modify={modify} /> 
             </div>
+            </>
+            :  
+            <>
+            <Banner title="Modification de votre mot de passe" returnClick={modifyPage}/> 
 
+            <form className="grid grid-cols-5 gap-4">
+                <div className="col-start-3 ">
+                    <div className="">
+                        <Field editing={true} type="password" value="test"  label="Mot de passe actuel" mandatory={true}/> 
+                    </div>
+
+                    <div className="">
+                        <Field editing={true} type="password" value="test"  label="Nouveau mot de passe" mandatory={true}/> 
+                    </div>
+
+                    <div className="">
+                        <Field editing={true} type="password" onChange="test" label="Répétez le mot de passe" mandatory={true}/>
+                    </div>
+                
+                <Button box="fill" type ="general" buttonText="Modifier mot de passe" />
+                </div>
+            </form>
+            </>
+            }   
         </div>
      ); 
 }
@@ -22,22 +80,36 @@ export default Account;
 
 
 
-const Banner = () => {
+
+
+
+
+
+/////////////////////////////////
+/* BANNER - RETURN ET TITLE  */ 
+/////////////////////////////////
+
+const Banner = (props) => {
     return ( 
         <div className="flex flex-row mt-10 mb-20">
-            <svg className="w-1/3 justify-items-center" width="47" height="34" viewBox="0 0 47 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button className="w-2/5" onClick={props.returnClick}>
+            <svg className="w-full justify-items-center" width="47" height="34" viewBox="0 0 47 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M47 14.875H8.18227L20.1245 2.99625L17.0909 0L0 17L17.0909 34L20.1032 31.0037L8.18227 19.125H47V14.875Z" 
             fill="#19224F"/>
             </svg>
+            </button>
             
-            <h1 className="w-2/3">Gestion de votre compte</h1>
+            
+            <h1 className="w-3/5">{props.title}</h1>
         </div>
     );
 }
  
+/////////////////////////////////
+/* MANAGE ACCOUNT - BUTTONS */ 
+/////////////////////////////////
+const GroupManage = (props) => {
 
-
-const GroupManage = () => {
     return ( 
 
         <div className="flex flex-col w-2/5 items-center">
@@ -49,8 +121,8 @@ const GroupManage = () => {
             </svg>
 
             <div className="flex flex-col ml-10 mr-10 ">
-                <Button box="fill" type="general" buttonText="Modifier les informations" />
-                <Button box="fill" type="secondaire" buttonText="Changer de mot de passe" />
+                <Button box={props.typeButton} type="general" buttonText={props.textButton} onClick={props.modifyClick}/>
+                <Button box="fill" type="secondaire" buttonText="Changer de mot de passe" onClick={props.passwordClick}/>
                 
             </div>
             <p>Supprimer le compte</p>
@@ -62,32 +134,55 @@ const GroupManage = () => {
 
 
 
-const UserInfo = () => {
+const UserInfo = (props) => {
+    let contenu =""; 
+
+    if (props.modify){
+        contenu = 
+        <div className="formRow2 w-full grid">
+            <div className="formRow2-item-a">
+                <Field editing="true" type="text" value="Pascal" label="Prénom"/>
+            </div>
+            <div className="formRow2-item-b">
+                <Field editing="true" type="text" value="RICHARD" label="Nom"/>
+            </div>
+        </div>
+
+    }else{
+        contenu =
+        <div className="mb-10">
+            <p className="prenom">Pascal</p>
+            <p className="nom">Richard</p>    
+        </div>
+    }
+
+
+
+
+
     return ( 
 
         <div className="UserInfo w-3/5">
-                    <div className="mb-10">
-                        <p className="prenom">Pascal</p>
-                        <p className="nom">Richard</p>    
-                    </div>
 
-                    <div className="formRow2 w-full grid">
-                        <div className="formRow2-item-a">
-                            <Field editing={false} type="text" value="pascal.richard@gmail.com" label="Adresse mail"/>
-                        </div>
-                        <div className="formRow2-item-b">
-                            <Field editing={false} type="tel" value="0298675645" label="Numéro de téléphone"/>
-                        </div>
-                    </div>
-                    <div className="formRow2 w-full grid">
-                        <div className="formRow2-item-a">
-                            <Field editing={false} type="text" value="pascal.richard@gmail.com" label="Adresse mail"/>
-                        </div>
-                        <div className="formRow2-item-b">
-                            <Field editing={false} type="tel" value="0298675645" label="Numéro de téléphone"/>
-                        </div>
-                    </div>
+            {contenu}
 
+            <div className="formRow2 w-full grid">
+                <div className="formRow2-item-a">
+                    <Field editing={props.modify} type="text" value="pascal.richard@gmail.com" label="Adresse mail"/>
                 </div>
+                <div className="formRow2-item-b">
+                    <Field editing={props.modify} type="tel" value="0298675645" label="Numéro de téléphone"/>
+                </div>
+            </div>
+            <div className="formRow2 w-full grid">
+                <div className="formRow2-item-a">
+                    <Field editing={props.modify} type="text" value="7 rue des Fleurs 37000 Tours" label="Adresse postale"/>
+                </div>
+                <div className="formRow2-item-b">
+                    <Field editing={props.modify} type="text" value="7 rue des Fleurs 37000 Tours" label="Adresse de facturation"/>
+                </div>
+            </div>
+
+        </div>
      );
 }
