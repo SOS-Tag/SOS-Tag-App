@@ -28,7 +28,7 @@ const UserCardMain = (props) => {
 
     return (
         <div 
-            className={`${type} relative w-[245px] min-h-[326px] rounded-[12px] flex flex-col items-center justify-center gap-[32px] p-[20px] cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]`} 
+            className={`${type} relative min-h-[326px] rounded-[12px] flex flex-col items-center justify-center gap-[32px] p-[20px] cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]`} 
             onClick={() => alert("[A FAIRE] Afficher la fiche médicale.")}
         >
 
@@ -54,7 +54,7 @@ const UserCardAdd = () => {
 
     return (
         <div 
-            className="relative bg-SosTagGrey w-[245px] h-[326px] rounded-[12px] flex flex-col items-center place-content-center gap-[32px] cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]" 
+            className="relative bg-SosTagGrey min-h-[326px] rounded-[12px] flex flex-col items-center place-content-center gap-[32px] cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]" 
             onClick={() => alert("[A FAIRE] Ajouter un profil.")}
         >
             <div className="relative flex items-center justify-center w-[55px] h-[55px]">
