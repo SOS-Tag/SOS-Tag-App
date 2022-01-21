@@ -11,7 +11,7 @@ const Header = (props) => {
         contenu = 
         <>
         <a className="header--link-item" href="/"> Vue d'ensemble </a>
-        <a className="header--link-item" href="/medicalform"> Fiche personnelle</a>
+        <a className="header--link-item" href="/medicalcard"> Fiche personnelle</a>
         <a className="header--link-item" href="/basket">
         <BasketLogo />
          </a>
