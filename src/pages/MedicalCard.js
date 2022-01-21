@@ -10,7 +10,7 @@ const MedicalCard = (user) => {
             name: "",
             surname: "",
             gender: "",
-            birthdate: "",
+            birthdate: "2017/01/01",
             size: "",
             weight: "",
             bloodtype: "",
