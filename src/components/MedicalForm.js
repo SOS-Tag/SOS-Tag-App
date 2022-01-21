@@ -96,7 +96,7 @@ const MedicalForm = (props) => {
                             <Field onChange={setBloodtype} editing={editable_1} type="text" label="Groupe Sanguin" mandatory={true} value={bloodtype !== null ? bloodtype : ""}></Field>
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field onChange={setSmoker} editing={editable_1} type="select" options={tf} label="Fumeur" mandatory={true} value={smoker !== null ? smoker : ""}></Field>
+                            <Field onChange={setSmoker} editing={editable_1} type="select" option={tf} label="Fumeur" mandatory={true} value={smoker !== null ? smoker : ""}></Field>
                         </div>
                     </div>
                     <div className="formRowMedic w-full grid">
