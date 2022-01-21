@@ -2,13 +2,27 @@ import "./UserDashboard.css"
 import Button from "../components/Button"
 import Field from "../components/Field";
 import { useEffect, useState } from "react";
+import AlternativText from "../components/AlternativText";
 
 const Account = () => {
 
     const [modify, changeModifyField] = useState(false); 
-    const [infoPage, changePage] = useState(true); 
+    const [nbPage, changePage] = useState(0); 
     const [textModifyButton, changeTextModifyButton] = useState("Modifier les informations"); 
     const [typeModifyButton, changeTypeModifyButton] = useState("fill"); 
+
+    
+    const [name, setName] = useState("Pascal");
+    const [surname, setSurname] = useState("RICHARD");
+    const [mail, setMail] = useState("pascal.richard@gmail.com");
+    const [tel, setTel] = useState("0675463524");
+    const [postale, setPostale] = useState("33 rue des Camélia 13000 Marseille");
+    const [facturation, setFacturation] = useState("33 rue des Camélia 13000 Marseille");
+    
+    const [passwordInit, setPasswordInit] = useState("");
+    const [password1, setPassword1] = useState("");
+    const [password2, setPassword2] = useState("");
+
 
     const modifyInfo = () => {
         if (modify) { 
@@ -29,8 +43,19 @@ const Account = () => {
     }
 
     const modifyPage = () => {
-        (infoPage) ? changePage(false) : changePage(true); 
-        console.log(infoPage); 
+        console.log(nbPage);
+        if (nbPage === 0) {
+            console.log("yes");
+            changePage(1)
+        }
+        else if (nbPage === 1) {
+            console.log("yesss");
+            changePage(0); 
+        }
+        else {
+            console.log("yaas");
+            changePage(0);
+        } 
     }
 
     const saveChange = () => {
@@ -38,40 +63,51 @@ const Account = () => {
     
     }
 
+    const handleValidation = () => {
+        checkForm(); 
+        changePage(2); 
+    }
+
+    const checkForm = () => {
+        alert("Vérifier les mots de passe indiqués !")
+    }
+
+
     return ( 
         <div className="w-full">
 
-            {(infoPage) ?
+            {(nbPage === 0) ?
             <>
             <Banner title="Gestion de votre compte" />
             <div className="flex flex-row">
                 <GroupManage modifyClick={modifyInfo} passwordClick={modifyPage} textButton={textModifyButton} typeButton={typeModifyButton} />
-                <UserInfo modify={modify} /> 
+                <UserInfo modify={modify} checkForm={checkForm} name={name} setName={setName} surname={surname} setSurname={setSurname} tel={tel} setTel={setTel} mail={mail} setMail={setMail} postale={postale} setPostale={setPostale} facturation={facturation} setFacturation={setFacturation}/> 
             </div>
             </>
-            :  
+            : (nbPage === 1) ?
             <>
             <Banner title="Modification de votre mot de passe" returnClick={modifyPage}/> 
 
             <form className="grid grid-cols-5 gap-4">
                 <div className="col-start-3 ">
-                    <div className="">
-                        <Field editing={true} type="password" value="test"  label="Mot de passe actuel" mandatory={true}/> 
+                    <div>
+                        <Field editing={true} onChange={setPasswordInit} type="password" label="Mot de passe actuel" mandatory={true}/> 
                     </div>
 
-                    <div className="">
-                        <Field editing={true} type="password" value="test"  label="Nouveau mot de passe" mandatory={true}/> 
+                    <div>
+                        <Field editing={true} onChange={setPassword1}type="password" label="Nouveau mot de passe" mandatory={true}/> 
                     </div>
 
-                    <div className="">
-                        <Field editing={true} type="password" onChange="test" label="Répétez le mot de passe" mandatory={true}/>
+                    <div >
+                        <Field editing={true} onChange={setPassword2}type="password" label="Répétez le mot de passe" mandatory={true}/>
                     </div>
                 
-                <Button box="fill" type ="general" buttonText="Modifier mot de passe" />
+                <Button onClick={handleValidation} box="fill" type ="general" buttonText="Modifier mot de passe" />
                 </div>
             </form>
             </>
-            }   
+            : <Banner title="Mot de passe modifié !" returnClick={modifyPage}/> 
+            }
         </div>
      ); 
 }
@@ -132,27 +168,29 @@ const GroupManage = (props) => {
  
 
 
-
+/////////////////////////////////
+/* INFOS ACCOUNT */ 
+/////////////////////////////////
 
 const UserInfo = (props) => {
-    let contenu =""; 
+    let nameAndSurname =""; 
 
     if (props.modify){
-        contenu = 
+        nameAndSurname = 
         <div className="formRow2 w-full grid">
             <div className="formRow2-item-a">
-                <Field editing="true" type="text" value="Pascal" label="Prénom"/>
+                <Field editing="true" onChange={props.setName} type="text" value={props.name} label="Prénom"/>
             </div>
             <div className="formRow2-item-b">
-                <Field editing="true" type="text" value="RICHARD" label="Nom"/>
+                <Field editing="true" type="text" onChange={props.setSurname} value={props.surname} label="Nom"/>
             </div>
         </div>
 
     }else{
-        contenu =
+        nameAndSurname =
         <div className="mb-10">
-            <p className="prenom">Pascal</p>
-            <p className="nom">Richard</p>    
+            <p className="prenom">{props.name}</p>
+            <p className="nom">{props.surname}</p>    
         </div>
     }
 
@@ -162,27 +200,27 @@ const UserInfo = (props) => {
 
     return ( 
 
-        <div className="UserInfo w-3/5">
+        <form className="UserInfo w-3/5">
 
-            {contenu}
+            {nameAndSurname}
 
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={props.modify} type="text" value="pascal.richard@gmail.com" label="Adresse mail"/>
+                    <Field editing={props.modify} type="text" onChange={props.setMail} value={props.mail} label="Adresse mail"/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={props.modify} type="tel" value="0298675645" label="Numéro de téléphone"/>
+                    <Field editing={props.modify} type="tel" onChange={props.setTel} value={props.tel} label="Numéro de téléphone"/>
                 </div>
             </div>
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={props.modify} type="text" value="7 rue des Fleurs 37000 Tours" label="Adresse postale"/>
+                    <Field editing={props.modify} type="text" onChange={props.setPostal} value={props.postale} label="Adresse postale"/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={props.modify} type="text" value="7 rue des Fleurs 37000 Tours" label="Adresse de facturation"/>
+                    <Field editing={props.modify} type="text" onChange={props.setFacturation} value={props.facturation} label="Adresse de facturation"/>
                 </div>
             </div>
 
-        </div>
+        </form>
      );
 }
