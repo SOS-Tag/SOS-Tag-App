@@ -1,26 +1,26 @@
 [
     {
-        "type": "main",
+        "id": 1,
         "firstname": "Pascal",
         "name": "Richard"
     },
     {
-        "type": "child",
+        "id": 2,
         "firstname": "Jeremy",
         "name": "Richard"
     },
     {
-        "type": "child",
+        "id": 3,
         "firstname": "Martine",
         "name": "Richard"
     },
     {
-        "type": "child",
+        "id": 4,
         "firstname": "Julie",
         "name": "Richard"
     },
     {
-        "type": "child",
+        "id": 5,
         "firstname": "Paul",
         "name": "Richard"
     }
