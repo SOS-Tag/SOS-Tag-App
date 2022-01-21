@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const UserDashboard = (props) => {
 
-    // const [seledted, setSelected] = useState();
+    const [selectedIDs, setSelectedIDs] = useState([]);
 
     // BUTTON ACTIONS
 
@@ -45,6 +45,14 @@ const UserDashboard = (props) => {
         alert("[A FAIRE] Sélectionne tous les profils.");
     }
 
+    const toggleSelect = id => {
+        const cpy = selectedIDs.slice();
+        const index = cpy.indexOf(id);
+        if(index === -1) cpy.push(id);
+        else cpy.splice(index, 1);
+        setSelectedIDs(cpy);
+    }
+
     return (
         <div className="flex flex-col h-[fit-content] gap-[70px] py-[70px] px-[20px] w-[1100px] mx-auto">
 
@@ -64,7 +72,7 @@ const UserDashboard = (props) => {
 
             </div>
 
-            <CardsList users={users} />
+            <CardsList users={users} handleSelect={toggleSelect} />
 
         </div>
     );

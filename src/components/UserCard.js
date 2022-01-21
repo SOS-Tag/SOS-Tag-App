@@ -3,13 +3,13 @@ import Toggle from "./Toggle";
 const UserCard = (props) => {
 
     // type : "main", "child", "add"
-    const { type, name, firstname } = props;
+    const { id, type, name, firstname, handleSelect } = props;
 
     const displayUserCard = () => {
         switch (type) {
             case "main":
             case "child":
-                return <UserCardBasic type={type} name={name} firstname={firstname} />
+                return <UserCardBasic id={id} type={type} name={name} firstname={firstname} handleSelect={handleSelect}/>
             case "add":
                 return <UserCardAdd />
             default:
@@ -41,12 +41,17 @@ const UserCard = (props) => {
 
 const UserCardBasic = (props) => {
 
-    const {type, name, firstname } = props;
+    const {id, type, name, firstname, handleSelect } = props;
+
+    const onClick = e => {
+        e.stopPropagation();
+        handleSelect(id);
+    }
 
     return (
         <div className="flex flex-col items-center justify-center gap-[32px] h-[100%]" onClick={() => alert("[A FAIRE] Afficher la fiche médicale.")}>
 
-            <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select" onClick={e => e.stopPropagation()}/>
+            <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select" onClick={e => onClick(e)}/>
             
             <div className="flex flex-col gap-[18px] items-center w-[100%]">
                 <div className="w-[102px] h-[102px] bg-white rounded-full grid place-content-center">
