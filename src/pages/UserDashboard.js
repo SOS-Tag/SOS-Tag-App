@@ -4,7 +4,8 @@ import CardsList from '../components/CardsList';
 import { useState } from 'react';
 
 const UserDashboard = (props) => {
-
+    
+    // selectedIds is an array containing the ids of all selected users
     const [selectedIDs, setSelectedIDs] = useState([]);
 
     // BUTTON ACTIONS
@@ -41,14 +42,30 @@ const UserDashboard = (props) => {
 
     // CHECKBOX
 
-    const selectAll = () => {
-        alert("[A FAIRE] Sélectionne tous les profils.");
+    const handleSelectAll = e => {
+        if(e.target.checked) setSelectedIDs(users.map(user => user.id));
+        else setSelectedIDs([]);
+
+        // const inputs = document.querySelectorAll('[name=us-select]');
+        // inputs.forEach(input => input.checked = e.target.checked);
     }
 
-    const toggleSelect = id => {
+    const handleChecked = () => {
+        if(selectedIDs.length === users.length) return true;
+        else if(selectedIDs.length === 0) return false;
+        else {
+            const input = document.querySelector('[name=ud-select-all]');
+            return input.checked;
+        }
+    }
+
+    const toggleSelect = (id) => {
         const cpy = selectedIDs.slice();
+        // Search if id in selectedIDs
         const index = cpy.indexOf(id);
+        // If no, add 
         if(index === -1) cpy.push(id);
+        // If yes, remove
         else cpy.splice(index, 1);
         setSelectedIDs(cpy);
     }
@@ -61,7 +78,7 @@ const UserDashboard = (props) => {
             <div className="flex justify-between flex-wrap">
 
                 <div className="flex gap-[22px] items-center">
-                    <input type="checkbox" name="ud-select-all" onClick={selectAll}/>
+                    <input type="checkbox" name="ud-select-all" checked={handleChecked()} onChange={e => handleSelectAll(e)}/>
                     <label htmlFor="ud-select-all">Tout sélectionner</label>
                 </div>
 
@@ -72,7 +89,7 @@ const UserDashboard = (props) => {
 
             </div>
 
-            <CardsList users={users} handleSelect={toggleSelect} />
+            <CardsList users={users} handleSelect={toggleSelect} selectedIDs={selectedIDs}/>
 
         </div>
     );
