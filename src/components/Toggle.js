@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Toggle = (props) => {
 
     // type : "main", "child"
-    const { type } = props;
+    const { type, handleOn } = props;
 
     const [on, setOn] = useState(false);
 
@@ -18,6 +18,10 @@ const Toggle = (props) => {
 
         setOn(!on);
     }
+
+    useEffect(() => {
+        if(on && handleOn) handleOn();
+    });
 
     return (
         <div 

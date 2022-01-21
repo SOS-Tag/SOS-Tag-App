@@ -53,10 +53,7 @@ const UserDashboard = (props) => {
     const handleChecked = () => {
         if(selectedIDs.length === users.length) return true;
         else if(selectedIDs.length === 0) return false;
-        else {
-            const input = document.querySelector('[name=ud-select-all]');
-            return input.checked;
-        }
+        else return document.querySelector('[name=ud-select-all]').checked;
     }
 
     const toggleSelect = (id) => {
