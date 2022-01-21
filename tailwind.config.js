@@ -10,7 +10,17 @@ module.exports = {
         'SosTagYellowLight' : '#FFE7A0',
         'SosTagRed' : '#EC3E55',
         'SosTagRedLight' : '#F69FAB',
-      }
+        'SosTagGrey' : '#DEDEDE',
+      },
+      // keyframes: {
+      //   switchOff: {
+      //     '0%': { transform: 'translate(-100%, -50%)', left: 'calc(100% - 3px)'},
+      //     '100%': { transform: 'translate(0, -50%)', left: '3px', backgroundColor: 'var(--SosTagGrey)'},
+      //   }
+      // },
+      // animation: {
+      //   switchOff: 'switchOff .5s ease-in-out forwards',
+      // }
     },
   },
   plugins: [],

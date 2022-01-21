@@ -9,6 +9,7 @@
   --SosTagRed: #ec3e55;
   --SosTagRedLight: #f69fab;
   --SosTagBackground: #f9f9f9;
+  --SosTagGrey: #dedede;
 }
 
 body {
@@ -104,4 +105,20 @@ h2 {
   line-height: 35px;
   text-transform: uppercase;
   color: var(--SosTagBlue);
+}
+
+[type=checkbox] {
+  width: 22px;
+  height: 22px;
+}
+
+.toggle {
+  transform: translate(-100%, -50%);
+  left: calc(100% - 3px);
+  transition: .5s;
+}
+.off {
+  transform: translate(0, -50%);
+  left: 3px;
+  background-color: var(--SosTagGrey);
 }

@@ -1,9 +1,11 @@
-import './UserDashboard.css';
 import users from './../data/users.json';
 import GroupButtons from '../components/GroupButtons';
 import CardsList from '../components/CardsList';
+import { useState } from 'react';
 
 const UserDashboard = (props) => {
+
+    const [selectedIDs, setSelectedIDs] = useState([]);
 
     // BUTTON ACTIONS
 
@@ -12,7 +14,8 @@ const UserDashboard = (props) => {
     }
 
     const downloadButton = {
-        name: "Télécharger",
+        buttonText: "Télécharger",
+        type: "secondaire",
         onclick: download
     }
 
@@ -21,7 +24,8 @@ const UserDashboard = (props) => {
     }
 
     const orderButton = {
-        name: "Commander",
+        buttonText: "Commander",
+        type: "secondaire",
         onclick: order
     }
 
@@ -30,7 +34,8 @@ const UserDashboard = (props) => {
     }
 
     const deleteButton = {
-        name: "Supprimer",
+        buttonText: "Supprimer",
+        type: "delete",
         onclick: deleteProfile
     }
 
@@ -40,27 +45,34 @@ const UserDashboard = (props) => {
         alert("[A FAIRE] Sélectionne tous les profils.");
     }
 
-    return (
-        <div className="ud">
+    const toggleSelect = id => {
+        const cpy = selectedIDs.slice();
+        const index = cpy.indexOf(id);
+        if(index === -1) cpy.push(id);
+        else cpy.splice(index, 1);
+        setSelectedIDs(cpy);
+    }
 
-            <header>Header</header>
+    return (
+        <div className="flex flex-col h-[fit-content] gap-[70px] py-[70px] px-[20px] w-[1100px] mx-auto">
+
             <h1>Bienvenue dans votre espace</h1>
 
-            <div className="ud-actions-bar">
+            <div className="flex justify-between flex-wrap">
 
-                <div className="ud-select-all">
+                <div className="flex gap-[22px] items-center">
                     <input type="checkbox" name="ud-select-all" onClick={selectAll}/>
                     <label htmlFor="ud-select-all">Tout sélectionner</label>
                 </div>
 
-                <div className='ud-groups-buttons'>
+                <div className='flex gap-x-[41px] items-center flex-wrap'>
                     <GroupButtons img={"/assets/profile.png"} buttons={[downloadButton, orderButton]} />
                     <GroupButtons img={"/assets/qrcode.png"} buttons={[deleteButton]} />
                 </div>
 
             </div>
 
-            <CardsList users={users} />
+            <CardsList users={users} handleSelect={toggleSelect} />
 
         </div>
     );
