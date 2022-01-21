@@ -12,7 +12,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 function App() {
   return (
     <Router>
-    <div className="App h-screen flex flex-col items-stretch">
+    <div className="App h-full flex flex-col items-stretch">
       <Header type="afterSignIn" />
       <div className='w-full h-full content flex flex-row'>
         <Switch>
