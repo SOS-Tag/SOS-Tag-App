@@ -14,7 +14,7 @@ const UserDashboard = (props) => {
     }
 
     const downloadButton = {
-        name: "Télécharger",
+        buttonText: "Télécharger",
         type: "secondaire",
         onclick: download
     }
@@ -24,7 +24,7 @@ const UserDashboard = (props) => {
     }
 
     const orderButton = {
-        name: "Commander",
+        buttonText: "Commander",
         type: "secondaire",
         onclick: order
     }
@@ -34,7 +34,7 @@ const UserDashboard = (props) => {
     }
 
     const deleteButton = {
-        name: "Supprimer",
+        buttonText: "Supprimer",
         type: "delete",
         onclick: deleteProfile
     }

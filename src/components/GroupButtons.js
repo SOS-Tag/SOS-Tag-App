@@ -11,7 +11,7 @@ const GroupButtons = (props) => {
         <div className="flex gap-[16px] items-center ">
             <img src={img} alt={alt} className="h-[20px]"/>
             {buttons.map((button, i) => (
-                <Button box="fill" type ={button.type} buttonText={button.name} key={`gb-button-${i}`} onClick={button.onclick}/>
+                <Button box="fill" type ={button.type} buttonText={button.buttonText} key={`gb-button-${i}`} onClick={button.onclick}/>
             ))}
         </div>
     );
