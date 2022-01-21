@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AlternativText from "../components/AlternativText";
+import TextMessage from '../components/TextMessage';
 import Field from "../components/Field";
 import Button from '../components/Button';
 import 'react-phone-number-input/style.css'
@@ -13,6 +14,8 @@ const SignUpPage = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [consent, setConsent] = useState(false);
+  const [errorMail, setErrorMail] = useState(false);
+  const [errorPwd, setErrorPwd] = useState(false);
 
   function handleConsent(){
     (consent)?setConsent(false):setConsent(true);
@@ -22,9 +25,21 @@ const SignUpPage = () => {
     let condition = true;
     if(password1 !== password2){
       condition = false;
+      if(!errorPwd)
+        setErrorPwd(true);
+    }
+    else{
+      if(errorPwd)
+        setErrorPwd(false);
     }
     if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))){
       condition = false;
+      if(!errorMail)
+        setErrorMail(true);
+    }
+    else{
+      if(errorMail)
+        setErrorMail(false);
     }
     if(!consent){
       condition = false;
@@ -72,6 +87,10 @@ const SignUpPage = () => {
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="mail" value={mail} onChange={setMail} label="Adresse mail" mandatory={true}/> 
+                <TextMessage className={"mt-[-20px] mb-[10px]"+(errorMail?" visible ":" hidden ")} type="error" message="Mail invalide"/>
+              </div>
+              <div className="formRow2-item-b">
+                <Field editing={true} type="select" option={[{value : true, name : "oui"}, {value : false, name : "non"}, {value : "D", name : "la réponse D"}]} value={mail} onChange={setMail} label="Maladie" mandatory={true}/> 
               </div>
             </div>
             <div className="formRow2 w-full grid">
@@ -83,6 +102,7 @@ const SignUpPage = () => {
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="password" onChange={setPassword1} label="Nouveau mot de passe" mandatory={true}/>
+                <TextMessage className={"mt-[-20px] mb-[10px]"+(errorPwd?" visible ":" hidden ")} type="error" message="Mots de passe différents"/>
               </div>
               <div className="formRow2-item-b">
                 <Field editing={true} type="password" onChange={setPassword2} label="Répéter mot de passe" mandatory={true}/>
@@ -90,7 +110,7 @@ const SignUpPage = () => {
             </div>
 
             <div className="w-[100%] flex ">
-              <input className="mt-[6px]" type="checkbox" name="consent" onClick={handleConsent}/>
+              <input required className="mt-[6px]" type="checkbox" name="consent" onClick={handleConsent}/>
               <p className="ml-[10px] w-[80%] mb-[20px] shrink text-SosTagBlue">
                 J'accepte les conditions générales d'utilisation et les conditions générales de vente. Je consens au traitement de mes données conformément à la politique de confidentialité de SOS Tag.
               </p>

@@ -1,7 +1,7 @@
 import Header from './components/Header.js'; 
 import Basket from './pages/Basket.js'; 
 import Account from './pages/Account.js'; 
-import MedicalForm from './pages/MedicalForm.js'; 
+import MedicalCard from './pages/MedicalCard.js'; 
 import SignUpPage from './pages/SignUpPage.js'; 
 import SignInPage from './pages/SignInPage.js'; 
 import './App.css';
@@ -19,8 +19,8 @@ function App() {
           <Route exact path="/">
             <UserDashboard />
           </Route>
-          <Route path="/medicalform">
-            <MedicalForm />
+          <Route path="/medicalcard">
+            <MedicalCard />
           </Route>
           <Route path="/basket">
             <Basket />
