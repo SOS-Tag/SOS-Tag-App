@@ -89,6 +89,9 @@ const SignUpPage = () => {
                 <Field editing={true} type="mail" value={mail} onChange={setMail} label="Adresse mail" mandatory={true}/> 
                 <TextMessage className={"mt-[-20px] mb-[10px]"+(errorMail?" visible ":" hidden ")} type="error" message="Mail invalide"/>
               </div>
+              <div className="formRow2-item-b">
+                <Field editing={true} type="select" option={[{value : true, name : "oui"}, {value : false, name : "non"}, {value : "D", name : "la réponse D"}]} value={mail} onChange={setMail} label="Maladie" mandatory={true}/> 
+              </div>
             </div>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
