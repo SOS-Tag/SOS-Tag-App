@@ -3,15 +3,16 @@ import { useState } from "react";
 
 const Toggle = (props) => {
 
-    const { color } = props;
+    console.log(props);
+    const color = props.color;
 
-    const [on, setOn] = useState(false);
+    const [on, setOn] = useState(props.isActivated);
     
-    const state = on ? "on" : "off"
+    const state = on ? "off" : "on"
 
     return (
         <div className={`tg ${state}`} onClick={() => setOn(!on)}>
-            <div className={`tg-circle ${color}`}></div>
+            <div className={`tg-circle bg-`+color}></div>
         </div>
     );
 }
