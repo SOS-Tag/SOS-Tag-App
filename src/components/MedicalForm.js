@@ -33,6 +33,71 @@ const MedicalForm = (props) => {
         }
     ];
 
+    const gender_options = [
+        {
+            value: "Femme",
+            name: "F"
+        },
+        {
+            value: "Homme",
+            name: "H",
+        },
+        {
+            value: "Autre",
+            name: "Autre",
+        }
+    ];
+
+    const bloodtype_options = [
+        {
+            value: "A+",
+            name: "A+"
+        },
+        {
+            value: "A-",
+            name: "A-"
+        },
+        {
+            value: "B+",
+            name: "B+"
+        },
+        {
+            value: "B-",
+            name: "B-"
+        },
+        {
+            value: "O+",
+            name: "O+"
+        },
+        {
+            value: "O-",
+            name: "O-"
+        },
+        {
+            value: "AB+",
+            name: "AB+"
+        },
+        {
+            value: "AB-",
+            name: "AB-"
+        },
+    ];
+
+    const diabetes_options = [
+        {
+            value: 0,
+            name: "Non",
+        },
+        {
+            value: 1,
+            name: "Type 1"
+        },
+        {
+            value: 2,
+            name: "Type 2",
+        },
+    ];
+
     // PARTIE 1
 
     const [name, setName] = useState(g.name);
@@ -77,7 +142,7 @@ const MedicalForm = (props) => {
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field onChange={setGender} editing={editable_1} type="text" label="Sexe" mandatory={true} value={gender !== null ? gender : ""}></Field>
+                            <Field onChange={setGender} editing={editable_1} type="select" option={gender_options} label="Sexe" mandatory={true} value={gender !== null ? gender : ""}></Field>
                         </div>
                         <div className="formRowMedic-item-b">
                             <Field onChange={setBirthdate} editing={editable_1} type="date" label="Date de naissance" mandatory={true} value={birthdate !== null ? birthdate : ""}></Field>
@@ -93,7 +158,7 @@ const MedicalForm = (props) => {
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field onChange={setBloodtype} editing={editable_1} type="text" label="Groupe Sanguin" mandatory={true} value={bloodtype !== null ? bloodtype : ""}></Field>
+                            <Field onChange={setBloodtype} editing={editable_1} type="select" option={bloodtype_options} label="Groupe Sanguin" mandatory={true} value={bloodtype !== null ? bloodtype : ""}></Field>
                         </div>
                         <div className="formRowMedic-item-b">
                             <Field onChange={setSmoker} editing={editable_1} type="select" option={tf} label="Fumeur" mandatory={true} value={smoker !== null ? smoker : ""}></Field>
@@ -101,10 +166,10 @@ const MedicalForm = (props) => {
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field onChange={setOrganDonation} editing={editable_1} type="text" label="Don d'organe" mandatory={true} value={organDonation !== null ? organDonation : ""}></Field>
+                            <Field onChange={setOrganDonation} editing={editable_1} type="select" option={tf} label="Don d'organe" mandatory={true} value={organDonation !== null ? organDonation : ""}></Field>
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field onChange={setGuidelines} editing={editable_1} type="text" label="Directives anticipées" mandatory={true} value={guidelines !== null ? guidelines : ""}></Field>
+                            <Field onChange={setGuidelines} editing={editable_1} type="select" option={tf} label="Directives anticipées" mandatory={true} value={guidelines !== null ? guidelines : ""}></Field>
                         </div>
                     </div>
 
@@ -131,18 +196,18 @@ const MedicalForm = (props) => {
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field onChange={setDiabetes} editing={editable_2} type="text" label="Diabète ?" mandatory={true} value={diabetes !== null ? diabetes : ""}/>
+                            <Field onChange={setDiabetes} editing={editable_2} type="select" option={diabetes_options} label="Diabète ?" mandatory={true} value={diabetes !== null ? diabetes : ""}/>
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field onChange={setHemophilia} editing={editable_2} type="text" label="Hémophilie ?" mandatory={true} value={hemophilia !== null ? hemophilia : ""}/>
+                            <Field onChange={setHemophilia} editing={editable_2} type="select" option={tf} label="Hémophilie ?" mandatory={true} value={hemophilia !== null ? hemophilia : ""}/>
                         </div>
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field onChange={setEpilepsy} editing={editable_2} type="text" label="Épilepsie ?" mandatory={true} value={epilepsy !== null ? epilepsy : ""}/>
+                            <Field onChange={setEpilepsy} editing={editable_2} type="select" option={tf} label="Épilepsie ?" mandatory={true} value={epilepsy !== null ? epilepsy : ""}/>
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field onChange={setPacemaker} editing={editable_2} type="text" label="Port d'un pacemaker ?" mandatory={true} value={pacemaker !== null ? pacemaker : ""}/>
+                            <Field onChange={setPacemaker} editing={editable_2} type="select" option={tf} label="Port d'un pacemaker ?" mandatory={true} value={pacemaker !== null ? pacemaker : ""}/>
                         </div>
                     </div>
 
