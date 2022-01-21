@@ -25,8 +25,8 @@ const Header = (props) => {
             </a>
 
             <a
-            className={`header--link-item ${location.pathname === "/medicalform" ? "selected" : ""}`} 
-            href="/medicalform"
+            className={`header--link-item ${location.pathname === "/medicalcard" ? "selected" : ""}`} 
+            href="/medicalcard"
             >
             Fiche personnelle
             </a>
