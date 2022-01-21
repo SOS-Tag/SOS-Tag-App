@@ -22,7 +22,7 @@ const UserCard = (props) => {
             case "main":
                 return "bg-SosTagRedLight";
             case "child":
-                return "bg-SosTagYellow";
+                return "bg-SosTagYellowLight";
             case "add":
                 return "bg-SosTagGrey";
             default:

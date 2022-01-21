@@ -9,7 +9,7 @@ const Toggle = (props) => {
 
     let color = (() => {
         if(type === "main") return "bg-SosTagRedLight";
-        else return "bg-SosTagYellow";
+        else return "bg-SosTagYellowLight";
     })()
     
     const handleSwitch = e => {
