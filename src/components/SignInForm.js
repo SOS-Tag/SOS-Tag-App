@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AlternativText from "../components/AlternativText";
 import Field from "../components/Field";
 import Button from '../components/Button';
+import TextMessage from './TextMessage';
 import 'react-phone-number-input/style.css'
 
 const SignInForm = () => {
@@ -21,9 +22,11 @@ const SignInForm = () => {
                     </div>
 
                     <div className="formRow2-item-a">
-                        <Field editing={true} type="password" onChange={setPassword} label="Mot de passe" mandatory={true}/>
+                        <Field editing={true} type="password" value={password} onChange={setPassword} label="Mot de passe" mandatory={true}/>
                     </div>
                 </div>
+
+                
 
                 <h4>Mot de passe oublié ?</h4>
                 <Button box="fill" type ="general" buttonText="Valider"/>
