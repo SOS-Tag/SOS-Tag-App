@@ -43,4 +43,5 @@
   box-sizing: border-box;
   color: var(--SosTagRedLight);
   background: white;
+  text-align: center;
 }

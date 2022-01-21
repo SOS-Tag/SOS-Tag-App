@@ -34,3 +34,7 @@
   color: var(--SosTagBlue);
   padding: 0 5.25rem 0 0;
 }
+
+.selected {
+  color: var(--SosTagRed);
+}
