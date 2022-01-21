@@ -61,18 +61,13 @@ h1 {
   height: 22px;
 }
 
-.main {
-  background-color: var(--SosTagRedLight);;
-}
-.child {
-  background-color: var(--SosTagYellow);;
-}
-.off > div {
-  background-color: var(--SosTagGrey);
-}
-.on {
-  justify-content: flex-end;
+.toggle {
+  transform: translate(-100%, -50%);
+  left: calc(100% - 3px);
+  transition: .5s;
 }
 .off {
-  justify-content: flex-start;
+  transform: translate(0, -50%);
+  left: 3px;
+  background-color: var(--SosTagGrey);
 }

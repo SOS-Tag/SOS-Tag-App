@@ -2,24 +2,29 @@ import { useState } from "react";
 
 const Toggle = (props) => {
 
-    // color : "main" OR "child"
-    const { color } = props;
+    // type : "main", "child"
+    const { type } = props;
 
     const [on, setOn] = useState(false);
-    
-    const state = on ? "on" : "off"
 
+    let color = (() => {
+        if(type === "main") return "bg-SosTagRedLight";
+        else return "bg-SosTagYellow";
+    })()
+    
     const handleSwitch = e => {
+        // Prevent click on toggle to trigger parent click event
         e.stopPropagation();
+
         setOn(!on);
     }
 
     return (
         <div 
-            className={`${state} bg-white w-[85px] h-[35px] rounded-full box-border p-[3px] flex items-center cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]`} 
+            className={`relative  bg-white w-[85px] h-[35px] rounded-full cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]`} 
             onClick={handleSwitch}
         >
-            <div className={`${color} w-[29px] h-[29px] rounded-full`}></div>
+            <div className={`toggle ${!on && "off"} ${color} w-[29px] h-[29px] rounded-full absolute top-1/2`}></div>
         </div>
     );
 }
