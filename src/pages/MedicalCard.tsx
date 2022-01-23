@@ -1,10 +1,12 @@
 import MedicalForm from '../components/MedicalForm';
-import BlockQR from '../components/BlockQR';
-import ContactCard from '../components/ContactCard'
+//import BlockQR from '../components/BlockQR';
+// import ContactCard from '../components/ContactCard'
 import { useState } from 'react';
 // import users from '../data/users.json'
-import UserSwitch from '../components/UserSwitch';
+// import UserSwitch from '../components/UserSwitch';
+
 import MedicCards from '../data/medicCards.json'
+import React from 'react';
 
 const MedicalCard = () => {
 
@@ -17,7 +19,7 @@ const MedicalCard = () => {
         <>
             {/* <UserSwitch user={card} setCard={setCard} /> */}
             <MedicalForm user={card} setCard={setCard} />
-            <BlockQR user={card}/>
+            {/* <BlockQR user={card}/> */}
             {/* <ContactCard user={card} setCard={setCard}/> */}
         </>
     );

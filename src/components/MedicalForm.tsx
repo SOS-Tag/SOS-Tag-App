@@ -1,22 +1,31 @@
 import { BsPencilFill } from 'react-icons/bs';
-import Field from '../components/Field';
-import Button from '../components/Button';
+import Field from './Field';
+// import Button from './Button';
 import { useState } from 'react';
+import React from 'react';
+import {medicalCardType} from './Types'
+import { userInfo } from 'os';
 
-const MedicalForm = (props) => {
+type MedicalFormProps = {
+    user : medicalCardType,
+    setCard: (card: medicalCardType) => void
+}
 
-    const { user, setCard } = props;
+const MedicalForm: React.FC<MedicalFormProps> = ({
+    user,
+    setCard,
+    }) => {
 
     console.log(user.general.name);
 
     let g = user.general;
 
-    const handleChangeData = (field) => {
-        return (e) => setCard((user) => ({
-            ...user,
-            [field]: e.target.value
-        }));
-    }
+    // const handleChangeData = (field : string) => {
+    //     return (e) => setCard((user) => ({
+    //         ...user,
+    //         [field]: e.target.value
+    //     }));
+    // }
 
     // BOUTONS EDIT
 
@@ -120,10 +129,10 @@ const MedicalForm = (props) => {
 
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field onChange={setCard("general.name")} editing={editable_1} type="text" label="Nom" mandatory={true} value={g.name !== null ? g.name : ""} />
+                            <Field editing={editable_1} type="text" label="Nom" mandatory={true} value={g.name !== null ? g.name : ""} />
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field onChange={setCard("general.surname")} editing={editable_1} type="text" label="Prénom" mandatory={true} value={g.surname !== null ? g.surname : ""} />
+                            <Field editing={editable_1} type="text" label="Prénom" mandatory={true} value={g.surname !== null ? g.surname : ""} />
                         </div>
                     </div>
                 </form>

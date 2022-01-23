@@ -1,7 +1,7 @@
 import Header from './components/Header.js'; 
 import Basket from './pages/Basket.js'; 
 import Account from './pages/Account.js'; 
-import MedicalCard from './pages/MedicalCard.js'; 
+import MedicalCard from './pages/MedicalCard.tsx'; 
 import SignUpPage from './pages/SignUpPage.js'; 
 import SignInPage from './pages/SignInPage.js'; 
 import './App.css';
