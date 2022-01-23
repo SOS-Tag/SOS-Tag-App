@@ -5,7 +5,11 @@ import { useState } from 'react';
 
 const ContactCard = (props) => {
 
-    let c = props.user.contact;
+    const { user, setCard } = props;
+
+    let c = user.contact;
+
+    console.log("c : " + c.drName);
 
     // BOUTON EDIT
 
