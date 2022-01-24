@@ -1,15 +1,27 @@
+import React from "react";
 import Toggle from "./Toggle";
 
-const UserCard = (props) => {
+type UserCardProps = {
+  id: String,
+  type: String,
+  lastname: String,
+  firstname: String,
+  handleSelect: Function
+}
 
-    // type : "main", "child", "add"
-    const { id, type, name, firstname, handleSelect } = props;
+const UserCard: React.FC<UserCardProps> = ({
+  id,
+  type,
+  lastname,
+  firstname,
+  handleSelect
+}) => {
 
     const displayUserCard = () => {
         switch (type) {
             case "main":
             case "child":
-                return <UserCardBasic id={id} type={type} name={name} firstname={firstname} handleSelect={handleSelect}/>
+                return <UserCardBasic id={id} type={type} lastname={lastname} firstname={firstname} handleSelect={handleSelect}/>
             case "add":
                 return <UserCardAdd />
             default:
@@ -39,28 +51,31 @@ const UserCard = (props) => {
     );
 }
 
-const UserCardBasic = (props) => {
-
-    const {id, type, name, firstname, handleSelect } = props;
-
-    const onClick = e => {
-        e.stopPropagation();
-        handleSelect(id);
-    }
+const UserCardBasic: React.FC<UserCardProps> = ({
+  id,
+  type,
+  lastname,
+  firstname,
+  handleSelect
+}): JSX.Element => {
 
     return (
         <div className="flex flex-col items-center justify-center gap-[32px] h-[100%]" onClick={() => alert("[A FAIRE] Afficher la fiche médicale.")}>
 
-            <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select" onClick={e => onClick(e)}/>
+            <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select"
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                handleSelect(id)
+            }}/>
             
             <div className="flex flex-col gap-[18px] items-center w-[100%]">
                 <div className="w-[102px] h-[102px] bg-white rounded-full grid place-content-center">
-                    <img className="w-[55px]" src="/assets/profile.png" alt={`${firstname} ${name}`}/>
+                    <img className="w-[55px]" src="/assets/profile.png" alt={`${firstname} ${lastname}`}/>
                 </div>
                 
                 <div className="flex flex-col w-[100%]">
                     <span className="text-center">{firstname}</span>
-                    <span className="text-center font-bold">{name.toUpperCase()}</span>
+                    <span className="text-center font-bold">{lastname.toUpperCase()}</span>
                 </div>
             </div>
 
