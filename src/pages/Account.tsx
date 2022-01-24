@@ -111,13 +111,6 @@ const Account: React.FC<AccountType> = ({}) => {
  
 export default Account;
 
-
-
-
-
-
-
-
 /////////////////////////////////
 /* BANNER - RETURN ET TITLE  */ 
 /////////////////////////////////
@@ -139,13 +132,11 @@ const Banner: React.FC<BannerType> = ({
             fill="#19224F"/>
             </svg>
             </button>
-            
-            
             <h1 className="w-3/5">{title}</h1>
         </div>
     );
 }
- 
+
 /////////////////////////////////
 /* MANAGE ACCOUNT - BUTTONS */ 
 ///////////////////////////////// 
@@ -165,7 +156,6 @@ const GroupManage: React.FC<GroupManageType> = ({
 }) => {
 
     return ( 
-
         <div className="flex flex-col w-2/5 items-center">
             <svg width="132" height="132" viewBox="0 0 132 132" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_0_1)">
@@ -182,8 +172,6 @@ const GroupManage: React.FC<GroupManageType> = ({
         </div>
      );
 }
- 
-
 
 /////////////////////////////////
 /* INFOS ACCOUNT */ 
