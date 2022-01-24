@@ -4,8 +4,13 @@ import Field from "./Field";
 import Button from './Button';
 import TextMessage from './TextMessage';
 import 'react-phone-number-input/style.css'
+import { TextMessageType } from './Types';
 
-const SignInForm = () => {
+type SignInFormProps = {
+
+}
+
+const SignInForm: React.FC<SignInFormProps> = () => {
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState(false);
@@ -31,7 +36,7 @@ const SignInForm = () => {
                     </div>
                 </div>
 
-                {message && <TextMessage type="error"/>}
+                {message && <TextMessage type={TextMessageType.oups}/>}
                 <h4>Mot de passe oublié ?</h4>
                 <Button onClick={handleConnexion} box="fill" type ="general" buttonText="Valider"/>
             </form>
