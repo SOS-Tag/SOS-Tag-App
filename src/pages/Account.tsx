@@ -78,7 +78,7 @@ const Account: React.FC<AccountType> = ({}) => {
             <Banner title="Gestion de votre compte" />
             <div className="flex flex-row">
                 <GroupManage modifyClick={modifyInfo} passwordClick={modifyPage} textButton={textModifyButton} typeButton={typeModifyButton} />
-                <UserInfo modify={modify} checkForm={checkForm} name={name} setName={setName} surname={surname} setSurname={setSurname} tel={tel} setTel={setTel} mail={mail} setMail={setMail} postale={postale} setPostale={setPostale} facturation={facturation} setFacturation={setFacturation}/> 
+                <UserInfo modify={modify} name={name} surname={surname} tel={tel} mail={mail} postale={postale} facturation={facturation} /> 
             </div>
             </>
             : (nbPage === 1) ?
@@ -116,7 +116,7 @@ export default Account;
 /////////////////////////////////
 
 type BannerType = {
-    returnClick: MouseEventHandler<HTMLButtonElement> | undefined;
+    returnClick?: MouseEventHandler<HTMLButtonElement> | undefined;
     title: string;
 }
 
@@ -219,10 +219,8 @@ const UserInfo: React.FC<UserInfoType> = ({
 
     return ( 
 
-        <form className="UserInfo w-3/5">
-
+        <form className="UserInfo w-3/5" action="">
             {nameAndSurname}
-
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
                     <Field editing={modify} type="text" value={mail} label="Adresse mail" mandatory={true}/>
@@ -239,7 +237,6 @@ const UserInfo: React.FC<UserInfoType> = ({
                     <Field editing={modify} type="text" value={facturation} label="Adresse de facturation" mandatory={true}/>
                 </div>
             </div>
-
         </form>
      );
 }

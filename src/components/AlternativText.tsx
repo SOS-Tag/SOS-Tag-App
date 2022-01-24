@@ -1,7 +1,7 @@
 import React from "react";
 
 type AlternativTextType = {
-  className: string,
+  className?: string,
   text: string,
   linkText: string,
   link: string,

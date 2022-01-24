@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 type ToogleProps = {
-  type: String
+  type?: String
 }
 
 const Toggle: React.FC<ToogleProps> = ({type}) => {

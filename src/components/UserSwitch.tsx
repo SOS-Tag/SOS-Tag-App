@@ -1,12 +1,10 @@
+import React from "react";
 import Field from "./Field";
 
-const UserSwitch = (props) => {
-
-
-
+const UserSwitch: React.FC = () => {
     return (
         <>
-            
+           
         </>
     );
 }

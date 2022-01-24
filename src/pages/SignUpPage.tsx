@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { FormEventHandler, useState } from 'react';
 import AlternativText from "../components/AlternativText";
 import TextMessage from '../components/TextMessage';
 import Field from "../components/Field";
 import Button from '../components/Button';
 import 'react-phone-number-input/style.css'
+import { TextMessageType } from '../components/Types';
+import { text } from 'stream/consumers';
 
 const SignUpPage = () => {
 
@@ -21,37 +23,37 @@ const SignUpPage = () => {
     (consent)?setConsent(false):setConsent(true);
   }
 
-  function checkform(evt){
-    let condition = true;
-    if(password1 !== password2){
-      condition = false;
-      if(!errorPwd)
-        setErrorPwd(true);
-    }
-    else{
-      if(errorPwd)
-        setErrorPwd(false);
-    }
-    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))){
-      condition = false;
-      if(!errorMail)
-        setErrorMail(true);
-    }
-    else{
-      if(errorMail)
-        setErrorMail(false);
-    }
-    if(!consent){
-      condition = false;
-    }
-    if(condition){
-      alert("formulaire valide");
-    }
-    else{
-      evt.preventDefault();
-      alert("formulaire invalide")
-    }
-  }
+  // function checkform(event: Event){
+  //   let condition = true;
+  //   if(password1 !== password2){
+  //     condition = false;
+  //     if(!errorPwd)
+  //       setErrorPwd(true);
+  //   }
+  //   else{
+  //     if(errorPwd)
+  //       setErrorPwd(false);
+  //   }
+  //   if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))){
+  //     condition = false;
+  //     if(!errorMail)
+  //       setErrorMail(true);
+  //   }
+  //   else{
+  //     if(errorMail)
+  //       setErrorMail(false);
+  //   }
+  //   if(!consent){
+  //     condition = false;
+  //   }
+  //   if(condition){
+  //     alert("formulaire valide");
+  //   }
+  //   else{
+  //     event.preventDefault();
+  //     alert("formulaire invalide")
+  //   }
+  // }
 
   function handleValidation(){
     console.log("name : "+name);
@@ -75,7 +77,7 @@ const SignUpPage = () => {
           Créez votre compte SOS Tag
         </h1>
         <div className="SignUpPageForm">
-          <form action="/signin" onSubmit={checkform}>
+          <form action="/signin" >
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="text" value={name} onChange={setName} label="Nom" mandatory={true}/>
@@ -87,7 +89,7 @@ const SignUpPage = () => {
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="mail" value={mail} onChange={setMail} label="Adresse mail" mandatory={true}/> 
-                {errorMail && <TextMessage type="error" message="Mail invalide"/>}
+                {errorMail && <TextMessage type={TextMessageType.error} message="Mail invalide"/>}
               </div>
               <div className="formRow2-item-b">
                 <Field editing={true} type="select" option={[{value : true, name : "oui"}, {value : false, name : "non"}, {value : "D", name : "la réponse D"}]} value={mail} onChange={setMail} label="Maladie" mandatory={true}/> 
@@ -102,7 +104,7 @@ const SignUpPage = () => {
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="password" onChange={setPassword1} label="Nouveau mot de passe" mandatory={true}/>
-                {errorPwd && <TextMessage type="error" message="Mots de passe différents"/>}
+                {errorPwd && <TextMessage type={TextMessageType.error} message="Mots de passe différents"/>}
               </div>
               <div className="formRow2-item-b">
                 <Field editing={true} type="password" onChange={setPassword2} label="Répéter mot de passe" mandatory={true}/>

@@ -66,7 +66,7 @@ export enum TextMessageType {
 
 export type ButtonType = {
   to?: string,
-  box: string,
+  box?: string,
   type: string,
   buttonText: string,
   onClick?: () => void;

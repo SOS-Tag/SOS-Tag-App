@@ -2,10 +2,10 @@ import React from "react";
 import Toggle from "./Toggle";
 
 type UserCardProps = {
-  id: String,
+  id?: String,
   type: String,
-  lastname: String,
-  firstname: String,
+  lastname?: String,
+  firstname?: String,
   handleSelect: Function
 }
 
@@ -75,7 +75,7 @@ const UserCardBasic: React.FC<UserCardProps> = ({
                 
                 <div className="flex flex-col w-[100%]">
                     <span className="text-center">{firstname}</span>
-                    <span className="text-center font-bold">{lastname.toUpperCase()}</span>
+                    <span className="text-center font-bold">{lastname?.toUpperCase()}</span>
                 </div>
             </div>
 

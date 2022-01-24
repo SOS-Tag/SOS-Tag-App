@@ -1,23 +1,23 @@
 import { useLocation } from "react-router-dom"; 
 import Button from "./Button";
-import Logo from "./assets/logo.jpg"
-import BasketSVG from "./assets/BasketSVG";
-import AccountSVG from "./assets/AccountSVG";
+import Logo from "../assets/logo.jpg"
+import BasketSVG from "../assets/BasketSVG";
+import AccountSVG from "../assets/AccountSVG";
 import "./Header.css"
 import React from "react";
 
 
-enum HeaderTypeEnum {
+export enum HeaderTypeEnum {
   after = "afterSignIn",
   before = "beforeSignIn"
 }
 
 type HeaderType = {
   type: HeaderTypeEnum,
-  pathname: string,
+  pathname?: string,
 }
 
-const Header: React.FC<HeaderType> = ({
+export const Header: React.FC<HeaderType> = ({
   type, 
 }) => {
   
@@ -78,4 +78,3 @@ const Header: React.FC<HeaderType> = ({
   );
 }
  
-export default Header;
