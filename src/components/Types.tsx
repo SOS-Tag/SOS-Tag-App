@@ -59,3 +59,11 @@ export type fieldType = {
   editing : boolean,
   onChange? : (value : any) => void,
 }
+
+export type ButtonType = {
+  to?: string,
+  box: string,
+  type: string,
+  buttonText: string,
+  onClick?: () => void;
+}

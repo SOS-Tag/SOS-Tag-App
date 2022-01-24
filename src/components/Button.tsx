@@ -1,13 +1,6 @@
 import React from "react"
 import "./Button.css"
-
-type ButtonType = {
-  to?: string,
-  box: string,
-  type: string,
-  buttonText: string,
-  onClick: () => void;
-}
+import { ButtonType } from "./Types"
 
 const Button: React.FC<ButtonType> = ({
   to,

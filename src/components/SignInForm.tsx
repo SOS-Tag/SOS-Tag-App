@@ -36,7 +36,6 @@ const SignInForm = () => {
                 <Button onClick={handleConnexion} box="fill" type ="general" buttonText="Valider"/>
             </form>
             
-
             <AlternativText text="Vous n'avez pas encore de compte ? " linkText="S'inscrire" link="./signup"/>
         </div>
      );
