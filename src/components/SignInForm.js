@@ -8,6 +8,11 @@ import 'react-phone-number-input/style.css'
 const SignInForm = () => {
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState(false);
+
+    function handleConnexion(){
+        setMessage(true);    
+    }
 
     return ( 
         <div className="sign-in-form">
@@ -26,10 +31,9 @@ const SignInForm = () => {
                     </div>
                 </div>
 
-                
-
+                {message && <TextMessage type="error"/>}
                 <h4>Mot de passe oublié ?</h4>
-                <Button box="fill" type ="general" buttonText="Valider"/>
+                <Button onClick={handleConnexion} box="fill" type ="general" buttonText="Valider"/>
             </form>
             
 
