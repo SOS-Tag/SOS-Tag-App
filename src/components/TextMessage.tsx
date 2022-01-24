@@ -1,4 +1,12 @@
-const TextMessage = (props) => {
+import React from "react";
+import { TextMessageType } from "./Types";
+
+type TextMessageProps = {
+  message ?: string,
+  type: TextMessageType
+}
+
+const TextMessage: React.FC<TextMessageProps> = (props) => {
 
     let img = '';
     let css='';
@@ -11,26 +19,24 @@ const TextMessage = (props) => {
     }
 
     else{
-        if(props.type == 'error'){
+        if(props.type === TextMessageType.error){
             css = "bg-red-500";
             img= "./assets/icon_error_textmessage.png";
             message = "Aucun QR code associé à ce code d’indentification !";
         }
-        if(props.type== 'modif'){
+        if(props.type === TextMessageType.modif){
             css = "bg-red-300";
             img= "./assets/icon_modif_textmessage.png";
             message = "Les modifications ont été prises en compte et ont été enregistrées !"
         }
     
-       if(props.type== 'oups'){
+       if(props.type === TextMessageType.oups){
             css = "bg-blue-900";
             img= "./assets/icon_oups_textmessage.png";
             message = "Ceci est un petit problème !"
     
         }
     }
-
-   
 
     return (
         <div className={"TextMessage flex flex-row space-x-4 p-2 w-auto w-90 text-white "+ css} >
@@ -40,8 +46,6 @@ const TextMessage = (props) => {
             </span>
         </div>
     )
-
-
 }
  
 export default TextMessage;

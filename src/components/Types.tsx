@@ -1,5 +1,3 @@
-import { DetailedHTMLProps, HtmlHTMLAttributes, SelectHTMLAttributes } from "react"
-
 export type MedicalCardTypeGeneral = {
   name: string,
   surname: string,
@@ -33,7 +31,6 @@ export type MedicalCardTypeContact = {
   emergencyRole: string
 }
 
-
 export type medicalCardType = {
   id : number,
   isActivated : boolean,
@@ -58,4 +55,10 @@ export type fieldType = {
   text? : string,
   editing : boolean,
   onChange? : (value : any) => void,
+}
+
+export enum TextMessageType {
+  error,
+  modif,
+  oups
 }
