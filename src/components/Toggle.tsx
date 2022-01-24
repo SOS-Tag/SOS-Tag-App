@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Toggle = (props) => {
+type ToogleProps = {
+  type: String
+}
 
-    // type : "main", "child"
-    const { type } = props;
+const Toggle: React.FC<ToogleProps> = ({type}) => {
 
     const [on, setOn] = useState(false);
 
@@ -12,17 +13,13 @@ const Toggle = (props) => {
         else return "bg-SosTagYellow";
     })()
     
-    const handleSwitch = e => {
-        // Prevent click on toggle to trigger parent click event
-        e.stopPropagation();
-
-        setOn(!on);
-    }
-
     return (
         <div 
             className={`relative  bg-white w-[85px] h-[35px] rounded-full cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]`} 
-            onClick={handleSwitch}
+            onClick={ (e: React.MouseEvent) => {
+              e.stopPropagation();
+              setOn(!on)
+            }}
         >
             <div className={`toggle ${!on && "off"} ${color} w-[29px] h-[29px] rounded-full absolute top-1/2`}></div>
         </div>
