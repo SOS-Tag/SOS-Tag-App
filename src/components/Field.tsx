@@ -12,6 +12,7 @@ const Field: React.FC<fieldType> = ({
   text,
   option,
   editing,
+  placeholder,
   name, 
   onChange,
   }) => {
@@ -34,14 +35,14 @@ const Field: React.FC<fieldType> = ({
             //   onChange={onChange}
             // />
             : (type === "select") ?
-              <select className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow" value={value} name={text}>
+              <select className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow" placeholder={placeholder} name={text}>
                 {option && option.map((option, key: number) => {
                   return <option key = {key}>{option.value}</option>
               })}
               </select>
               : (mandatory) ?
-                <input required className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow"type={type} value={value} name={text}/>
-                :<input className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow"type={type} value={value} name={text}/>
+                <input required className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow"type={type} placeholder={placeholder} name={text}/>
+                :<input className="semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow"type={type} placeholder={placeholder} name={text}/>
             
           }
       </label>

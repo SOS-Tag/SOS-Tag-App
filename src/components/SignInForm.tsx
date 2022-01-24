@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import AlternativText from "../components/AlternativText";
-import Field from "../components/Field";
-import Button from '../components/Button';
+import AlternativText from "./AlternativText";
+import Field from "./Field";
+import Button from './Button';
 import TextMessage from './TextMessage';
 import 'react-phone-number-input/style.css'
 

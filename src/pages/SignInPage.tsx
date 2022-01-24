@@ -1,6 +1,9 @@
+import React from "react";
 import SignInForm from "../components/SignInForm"
 
-const SignInPage = () => {
+type SigninPageType = {}
+
+const SignInPage: React.FC<SigninPageType> = ({}) => {
     return ( 
         <div className=",-auto w-full flex items-center sign-in-page">
                 <div className="w-1/2 SignInPageIllustration">

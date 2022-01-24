@@ -8,7 +8,9 @@ import { useState } from 'react';
 import MedicCards from '../data/medicCards.json'
 import React from 'react';
 
-const MedicalCard = () => {
+type MedicalCardType = {}
+
+const MedicalCard: React.FC<MedicalCardType> = ({}) => {
 
     // function getter requête DB
     const [card, setCard] = useState(MedicCards[0]);

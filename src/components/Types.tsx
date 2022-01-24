@@ -52,7 +52,8 @@ export type fieldType = {
   type : string,
   mandatory : boolean,
   option?: Array<fieldOption>
-  value : string | number | readonly string[] | undefined, 
+  value? : string | number | readonly string[] | undefined, 
+  placeholder? : string | undefined,
   name? : string, 
   text? : string,
   editing : boolean,
