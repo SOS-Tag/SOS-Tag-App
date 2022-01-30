@@ -45,16 +45,13 @@ export type fieldOption = {
 }
 
 export type fieldType = {
-  label : string,
-  type : string,
-  mandatory : boolean,
-  option?: Array<fieldOption>
-  value? : string | number | readonly string[] | undefined, 
-  placeholder? : string | undefined,
-  name? : string, 
-  text? : string,
-  editing : boolean,
-  onChange? : (value : any) => void,
+  label: string,
+  mandatory: boolean,
+  type: string,
+  text?: string,
+  option?: Array<fieldOption>,
+  placeholder?: string | undefined,
+  editing: boolean
 }
 
 export enum TextMessageType {

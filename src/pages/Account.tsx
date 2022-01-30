@@ -1,5 +1,5 @@
 import Button from "../components/Button"
-import Field from "../components/Field";
+import Field from "../components/field/Field";
 import React, { MouseEventHandler, ReactElement, useEffect, useState } from "react";
 import AlternativText from "../components/AlternativText";
 
@@ -88,15 +88,15 @@ const Account: React.FC<AccountType> = ({}) => {
             <form className="grid grid-cols-5 gap-4">
                 <div className="col-start-3 ">
                     <div>
-                        <Field editing={true} onChange={setPasswordInit} type="password" label="Mot de passe actuel" mandatory={true}/> 
+                        <Field editing={true} type="password" label="Mot de passe actuel" mandatory={true}/> 
                     </div>
 
                     <div>
-                        <Field editing={true} onChange={setPassword1}type="password" label="Nouveau mot de passe" mandatory={true}/> 
+                        <Field editing={true} type="password" label="Nouveau mot de passe" mandatory={true}/> 
                     </div>
 
                     <div >
-                        <Field editing={true} onChange={setPassword2}type="password" label="Répétez le mot de passe" mandatory={true}/>
+                        <Field editing={true} type="password" label="Répétez le mot de passe" mandatory={true}/>
                     </div>
                 
                 <Button onClick={handleValidation} box="fill" type ="general" buttonText="Modifier mot de passe" />
@@ -223,18 +223,18 @@ const UserInfo: React.FC<UserInfoType> = ({
             {nameAndSurname}
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={modify} type="text" value={mail} label="Adresse mail" mandatory={true}/>
+                    <Field editing={modify} type="text" placeholder={mail} label="Adresse mail" mandatory={true}/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={modify} type="tel" value={tel} label="Numéro de téléphone" mandatory={true}/>
+                    <Field editing={modify} type="tel" placeholder={tel} label="Numéro de téléphone" mandatory={true}/>
                 </div>
             </div>
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={modify} type="text" value={postale} label="Adresse postale" mandatory={true}/>
+                    <Field editing={modify} type="text" placeholder={postale} label="Adresse postale" mandatory={true}/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={modify} type="text" value={facturation} label="Adresse de facturation" mandatory={true}/>
+                    <Field editing={modify} type="text" placeholder={facturation} label="Adresse de facturation" mandatory={true}/>
                 </div>
             </div>
         </form>

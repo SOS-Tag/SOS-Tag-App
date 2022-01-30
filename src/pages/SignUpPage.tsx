@@ -1,7 +1,7 @@
 import React, { FormEventHandler, useState } from 'react';
 import AlternativText from "../components/AlternativText";
 import TextMessage from '../components/TextMessage';
-import Field from "../components/Field";
+import Field from "../components/field/Field";
 import Button from '../components/Button';
 import 'react-phone-number-input/style.css'
 import { TextMessageType } from '../components/Types';
@@ -80,34 +80,34 @@ const SignUpPage = () => {
           <form action="/signin" >
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="text" value={name} onChange={setName} label="Nom" mandatory={true}/>
+                <Field editing={false} type="text" placeholder={"bonjou"} label="Nom" mandatory={true}/>
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="text" value={surname} onChange={setSurname} label="Prenom" mandatory={true}/>
+                <Field editing={true} type="text" placeholder={surname} label="Prenom" mandatory={true}/>
               </div>
             </div>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="mail" value={mail} onChange={setMail} label="Adresse mail" mandatory={true}/> 
+                <Field editing={true} type="mail" placeholder={mail}  label="Adresse mail" mandatory={true}/> 
                 {errorMail && <TextMessage type={TextMessageType.error} message="Mail invalide"/>}
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="select" option={[{value : true, name : "oui"}, {value : false, name : "non"}, {value : "D", name : "la réponse D"}]} value={mail} onChange={setMail} label="Maladie" mandatory={true}/> 
+                <Field editing={true} type="select" option={[{value : true, name : "oui"}, {value : false, name : "non"}, {value : "D", name : "la réponse D"}]} placeholder={mail} label="Maladie" mandatory={true}/> 
               </div>
             </div>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="tel" value={phone} onChange={setPhone} label="Numéro de téléphone" mandatory={false}/>
+                <Field editing={true} type="tel" placeholder={phone} label="Numéro de téléphone" mandatory={false}/>
               </div>
             </div>
             
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="password" onChange={setPassword1} label="Nouveau mot de passe" mandatory={true}/>
+                <Field editing={true} type="password" label="Nouveau mot de passe" mandatory={true}/>
                 {errorPwd && <TextMessage type={TextMessageType.error} message="Mots de passe différents"/>}
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="password" onChange={setPassword2} label="Répéter mot de passe" mandatory={true}/>
+                <Field editing={true} type="password" label="Répéter mot de passe" mandatory={true}/>
               </div>  
             </div>
 

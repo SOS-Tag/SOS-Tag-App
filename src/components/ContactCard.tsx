@@ -1,5 +1,5 @@
 import { BsPencilFill } from 'react-icons/bs';
-import Field from './Field';
+import Field from './field/Field';
 import { useState } from 'react';
 import React from 'react';
 
@@ -45,10 +45,10 @@ const ContactCard: React.FC<ContactCardType> = ({
         </div>
         <div className="formRowMedicCard w-full grid">
             <div className="formRowMedicCard-item-a">
-                <Field onChange={setDrName} editing={editable} type="text" label="Prénom NOM" mandatory={true} value={drName !== null ? drName : ""}/>
+                <Field editing={editable} type="text" label="Prénom NOM" mandatory={true} placeholder={drName !== null ? drName : ""}/>
             </div>
             <div className="formRowMedicCard-item-b">
-                <Field onChange={setDrPhone} editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} value={drPhone !== null ? drPhone : ""}/>
+                <Field editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} placeholder={drPhone !== null ? drPhone : ""}/>
             </div>
         </div>
         {/* PARTIE 2 */}
@@ -57,10 +57,10 @@ const ContactCard: React.FC<ContactCardType> = ({
         </div>
         <div className="formRowMedicCard w-full grid">
             <div className="formRowMedicCard-item-a">
-                <Field onChange={setLabName} editing={editable} type="text" label="Entreprise" mandatory={true} value={labName !== null ? labName : ""}/>
+                <Field editing={editable} type="text" label="Entreprise" mandatory={true} placeholder={labName !== null ? labName : ""}/>
             </div>
             <div className="formRowMedicCard-item-b">
-                <Field onChange={setLabPhone} editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} value={labPhone !== null ? labPhone : ""}/>
+                <Field editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} placeholder={labPhone !== null ? labPhone : ""}/>
             </div>
         </div>
         {/* PARTIE 3 */}
@@ -69,13 +69,13 @@ const ContactCard: React.FC<ContactCardType> = ({
         </div>
         <div className="formRowMedicCard w-full grid">
             <div className="formRowMedicCard-item-a">
-                <Field onChange={setEmergencyName} editing={editable} type="text" label="Prénom NOM" mandatory={true} value={emergencyName !== null ? emergencyName : ""}/>
+                <Field editing={editable} type="text" label="Prénom NOM" mandatory={true} placeholder={emergencyName !== null ? emergencyName : ""}/>
             </div>
             <div className="formRowMedicCard-item-b">
-                <Field onChange={setEmergencyPhone} editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} value={emergencyPhone !== null ? emergencyPhone : ""}/>
+                <Field editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} placeholder={emergencyPhone !== null ? emergencyPhone : ""}/>
             </div>
             <div className="formRowMedicCard-item-a">
-                <Field onChange={setEmergencyRole} editing={editable} type="text" label="Rôle" mandatory={true} value={emergencyRole !== null ? emergencyRole : ""}/>
+                <Field editing={editable} type="text" label="Rôle" mandatory={true} placeholder={emergencyRole !== null ? emergencyRole : ""}/>
             </div>
         </div>
       </form>

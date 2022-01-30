@@ -1,5 +1,5 @@
 import { BsPencilFill } from 'react-icons/bs';
-import Field from './Field';
+import Field from './field/Field';
 // import Button from './Button';
 import { useState } from 'react';
 import React from 'react';
@@ -129,10 +129,10 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field editing={editable_1} type="text" label="Nom" mandatory={true} value={g.name !== null ? g.name : ""} placeholder={g.name !== null ? g.name : ""}/>
+                            <Field editing={editable_1} type="text" label="Nom" mandatory={true} placeholder={g.name !== null ? g.name : ""}/>
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field editing={editable_1} type="text" label="Prénom" mandatory={true} value={g.surname !== null ? g.surname : ""} placeholder={g.surname !== null ? g.surname : ""}/>
+                            <Field editing={editable_1} type="text" label="Prénom" mandatory={true} placeholder={g.surname !== null ? g.surname : ""}/>
                         </div>
                     </div>
                 </form>

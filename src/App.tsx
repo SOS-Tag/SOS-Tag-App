@@ -14,7 +14,7 @@ import { HeaderTypeEnum } from './components/Header';
 function App() {
   return (
     <Router>
-    <div className="App h-full flex flex-col items-stretch">
+    <div className="App h-full min-h-screen flex flex-col items-stretch">
       <Header type={HeaderTypeEnum.after} />
       <div className='w-full h-full content flex flex-row'>
         <Switch>
