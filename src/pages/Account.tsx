@@ -88,15 +88,15 @@ const Account: React.FC<AccountType> = ({}) => {
             <form className="grid grid-cols-5 gap-4">
                 <div className="col-start-3 ">
                     <div>
-                        <Field editing={true} type="password" label="Mot de passe actuel" mandatory={true}/> 
+                        <Field editing={true} name={"password1"} type="password" label="Mot de passe actuel" mandatory={true}/> 
                     </div>
 
                     <div>
-                        <Field editing={true} type="password" label="Nouveau mot de passe" mandatory={true}/> 
+                        <Field editing={true} name={"password2"} type="password" label="Nouveau mot de passe" mandatory={true}/> 
                     </div>
 
                     <div >
-                        <Field editing={true} type="password" label="Répétez le mot de passe" mandatory={true}/>
+                        <Field editing={true} name={"password3"} type="password" label="Répétez le mot de passe" mandatory={true}/>
                     </div>
                 
                 <Button onClick={handleValidation} box="fill" type ="general" buttonText="Modifier mot de passe" />
@@ -202,10 +202,10 @@ const UserInfo: React.FC<UserInfoType> = ({
         nameAndSurname = 
         <div className="formRow2 w-full grid">
             <div className="formRow2-item-a">
-                <Field editing={true} type="text" placeholder={name} label="Prénom" mandatory={true}/>
+                <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Prénom" mandatory={true}/>
             </div>
             <div className="formRow2-item-b">
-                <Field editing={true} type="text" placeholder={surname} label="Nom" mandatory={true}/>
+                <Field editing={true} name={"lastname"} type="text" placeholder={surname} label="Nom" mandatory={true}/>
             </div>
         </div>
 
@@ -223,18 +223,18 @@ const UserInfo: React.FC<UserInfoType> = ({
             {nameAndSurname}
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={modify} type="text" placeholder={mail} label="Adresse mail" mandatory={true}/>
+                    <Field editing={modify} type="text" name={"mail"} placeholder={mail} label="Adresse mail" mandatory={true}/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={modify} type="tel" placeholder={tel} label="Numéro de téléphone" mandatory={true}/>
+                    <Field editing={modify} type="tel" name={"phone"} placeholder={tel} label="Numéro de téléphone" mandatory={true}/>
                 </div>
             </div>
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={modify} type="text" placeholder={postale} label="Adresse postale" mandatory={true}/>
+                    <Field editing={modify} type="text" name={"adress"} placeholder={postale} label="Adresse postale" mandatory={true}/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={modify} type="text" placeholder={facturation} label="Adresse de facturation" mandatory={true}/>
+                    <Field editing={modify} type="text" name={"bill"} placeholder={facturation} label="Adresse de facturation" mandatory={true}/>
                 </div>
             </div>
         </form>

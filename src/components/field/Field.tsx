@@ -9,6 +9,7 @@ import EditableField from './EditableField';
 const Field: React.FC<fieldType> = ({
   label,
   mandatory,
+  name,
   type,
   text = "",
   option = [],
@@ -18,7 +19,7 @@ const Field: React.FC<fieldType> = ({
 
   function editingLabel(){
     return(
-      <EditableField label={label} type={type} mandatory={mandatory} text={text} placeholder={placeholder} option={option} />
+      <EditableField name={name} label={label} type={type} mandatory={mandatory} text={text} placeholder={placeholder} option={option} />
     )
   }
 

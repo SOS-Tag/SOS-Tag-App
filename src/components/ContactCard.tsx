@@ -45,10 +45,10 @@ const ContactCard: React.FC<ContactCardType> = ({
         </div>
         <div className="formRowMedicCard w-full grid">
             <div className="formRowMedicCard-item-a">
-                <Field editing={editable} type="text" label="Prénom NOM" mandatory={true} placeholder={drName !== null ? drName : ""}/>
+                <Field editing={editable} type="text" name={"name"} label="Prénom NOM" mandatory={true} placeholder={drName !== null ? drName : ""}/>
             </div>
             <div className="formRowMedicCard-item-b">
-                <Field editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} placeholder={drPhone !== null ? drPhone : ""}/>
+                <Field editing={editable} type="tel" name={"phone"} label="Numéro de téléphone" mandatory={true} placeholder={drPhone !== null ? drPhone : ""}/>
             </div>
         </div>
         {/* PARTIE 2 */}
@@ -57,10 +57,10 @@ const ContactCard: React.FC<ContactCardType> = ({
         </div>
         <div className="formRowMedicCard w-full grid">
             <div className="formRowMedicCard-item-a">
-                <Field editing={editable} type="text" label="Entreprise" mandatory={true} placeholder={labName !== null ? labName : ""}/>
+                <Field editing={editable} type="text" name={"company"} label="Entreprise" mandatory={true} placeholder={labName !== null ? labName : ""}/>
             </div>
             <div className="formRowMedicCard-item-b">
-                <Field editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} placeholder={labPhone !== null ? labPhone : ""}/>
+                <Field editing={editable} type="tel" name={"phoneCompany"}label="Numéro de téléphone" mandatory={true} placeholder={labPhone !== null ? labPhone : ""}/>
             </div>
         </div>
         {/* PARTIE 3 */}
@@ -69,13 +69,13 @@ const ContactCard: React.FC<ContactCardType> = ({
         </div>
         <div className="formRowMedicCard w-full grid">
             <div className="formRowMedicCard-item-a">
-                <Field editing={editable} type="text" label="Prénom NOM" mandatory={true} placeholder={emergencyName !== null ? emergencyName : ""}/>
+                <Field editing={editable} type="text" name={"urgencyContactName"} label="Prénom NOM" mandatory={true} placeholder={emergencyName !== null ? emergencyName : ""}/>
             </div>
             <div className="formRowMedicCard-item-b">
-                <Field editing={editable} type="tel" label="Numéro de téléphone" mandatory={true} placeholder={emergencyPhone !== null ? emergencyPhone : ""}/>
+                <Field editing={editable} type="tel" name={"urgencyContactPhone"} label="Numéro de téléphone" mandatory={true} placeholder={emergencyPhone !== null ? emergencyPhone : ""}/>
             </div>
             <div className="formRowMedicCard-item-a">
-                <Field editing={editable} type="text" label="Rôle" mandatory={true} placeholder={emergencyRole !== null ? emergencyRole : ""}/>
+                <Field editing={editable} type="text" name={"urgencyContactRole"} label="Rôle" mandatory={true} placeholder={emergencyRole !== null ? emergencyRole : ""}/>
             </div>
         </div>
       </form>

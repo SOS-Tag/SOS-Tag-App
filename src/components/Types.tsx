@@ -48,6 +48,7 @@ export type fieldType = {
   label: string,
   mandatory: boolean,
   type: string,
+  name: string,
   text?: string,
   option?: Array<fieldOption>,
   placeholder?: string | undefined,

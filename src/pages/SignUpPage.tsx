@@ -55,6 +55,12 @@ const SignUpPage = () => {
   //   }
   // }
 
+  function checkform(event: any){
+    event.preventDefault();
+    console.log(event.target.firstname.value);
+    console.log(event.target.lastname.value);
+  }
+
   function handleValidation(){
     console.log("name : "+name);
     console.log("surname : "+surname);
@@ -77,39 +83,33 @@ const SignUpPage = () => {
           Créez votre compte SOS Tag
         </h1>
         <div className="SignUpPageForm">
-          <form action="/signin" >
+          <form onSubmit={checkform} >
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={false} type="text" placeholder={"bonjou"} label="Nom" mandatory={true}/>
+                <Field editing={true} type="text" placeholder={name} name={"firstname"} label="Nom" mandatory={true}/>
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="text" placeholder={surname} label="Prenom" mandatory={true}/>
+                <Field editing={true} type="text" placeholder={surname} name={"lastname"} label="Prenom" mandatory={false}/>
               </div>
             </div>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="mail" placeholder={mail}  label="Adresse mail" mandatory={true}/> 
+                <Field editing={true} type="mail" placeholder={mail}  name={"mail"} label="Adresse mail" mandatory={false}/> 
                 {errorMail && <TextMessage type={TextMessageType.error} message="Mail invalide"/>}
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="select" option={[{value : true, name : "oui"}, {value : false, name : "non"}, {value : "D", name : "la réponse D"}]} placeholder={mail} label="Maladie" mandatory={true}/> 
+                <Field editing={true} type="tel" placeholder={phone} name={"phone"} label="Numéro de téléphone" mandatory={false}/>
               </div>
             </div>
-            <div className="formRow2 w-full grid">
+            {/* <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="tel" placeholder={phone} label="Numéro de téléphone" mandatory={false}/>
-              </div>
-            </div>
-            
-            <div className="formRow2 w-full grid">
-              <div className="formRow2-item-a">
-                <Field editing={true} type="password" label="Nouveau mot de passe" mandatory={true}/>
+                <Field editing={true} type="password" name={"password1"} label="Nouveau mot de passe" mandatory={false}/>
                 {errorPwd && <TextMessage type={TextMessageType.error} message="Mots de passe différents"/>}
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="password" label="Répéter mot de passe" mandatory={true}/>
+                <Field editing={true} type="password" name={"password2"} label="Répéter mot de passe" mandatory={false}/>
               </div>  
-            </div>
+            </div> */}
 
             <div className="w-[100%] flex ">
               <input required className="mt-[6px]" type="checkbox" name="consent" onClick={handleConsent}/>
@@ -117,7 +117,7 @@ const SignUpPage = () => {
                 J'accepte les conditions générales d'utilisation et les conditions générales de vente. Je consens au traitement de mes données conformément à la politique de confidentialité de SOS Tag.
               </p>
             </div>
-            <Button onClick={handleValidation} box="fill" type ="general" buttonText="Valider"/>
+            <Button box="fill" type ="general" buttonText="Valider"/>
           </form>
         </div>
         <AlternativText className="mt-[30px] text-SosTagBlue" text="Déjà inscrit ? " linkText="Se connecter" link="./signin"/>
