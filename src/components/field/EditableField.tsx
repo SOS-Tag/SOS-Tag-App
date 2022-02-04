@@ -34,11 +34,6 @@ const EditableField: React.FC<editableFieldType> = ({
   const [value,setValue] = useState('');
   const css = "semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow";
 
-  // useEffect( () => {
-  //   if(placeholder){
-  //     setValue(placeholder);
-  //   }
-  // }, [placeholder]);
   function handleValue(event: any){
     setValue(event.target.value);
   }

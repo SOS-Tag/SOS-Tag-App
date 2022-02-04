@@ -9,12 +9,6 @@ import { text } from 'stream/consumers';
 
 const SignUpPage = () => {
 
-  const [surname, setSurname] = useState("");
-  const [name, setName] = useState("");
-  const [mail, setMail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState("");
   const [consent, setConsent] = useState(false);
   const [errorMail, setErrorMail] = useState(false);
   const [errorPwd, setErrorPwd] = useState(false);
@@ -59,18 +53,41 @@ const SignUpPage = () => {
     event.preventDefault();
     console.log(event.target.firstname.value);
     console.log(event.target.lastname.value);
-  }
+    console.log(event.target.mail.value);
+    console.log(event.target.phone.value);
+    console.log(event.target.password1.value);
+    console.log(event.target.password2.value);
 
-  function handleValidation(){
-    console.log("name : "+name);
-    console.log("surname : "+surname);
-    console.log("mail : "+mail);
-    //(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))?alert("mail valide"):alert("mail invalide");
-    console.log("phone : "+phone);
-    console.log("password : "+password1);
-    //(password1===password2)?alert("MDP identiques"): alert("MDP différents");
-    console.log("consent : "+consent);
-    console.log("validation works");
+    let condition = true;
+    if(event.target.password1.value !== event.target.password2.value){
+      condition = false;
+      if(!errorPwd)
+        setErrorPwd(true);
+    }
+    else{
+      if(errorPwd)
+        setErrorPwd(false);
+    }
+    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(event.target.mail.value))){
+      condition = false;
+      if(!errorMail)
+        setErrorMail(true);
+    }
+    else{
+      if(errorMail)
+        setErrorMail(false);
+    }
+    if(!consent){
+      condition = false;
+    }
+    if(condition){
+      alert("formulaire valide");
+    }
+    else{
+      event.preventDefault();
+      alert("formulaire invalide")
+    }
+
   }
 
   return ( 
@@ -86,22 +103,22 @@ const SignUpPage = () => {
           <form onSubmit={checkform} >
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="text" placeholder={name} name={"firstname"} label="Nom" mandatory={true}/>
+                <Field editing={true} type="text" name={"firstname"} label="Nom" mandatory={true}/>
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="text" placeholder={surname} name={"lastname"} label="Prenom" mandatory={false}/>
+                <Field editing={true} type="text" name={"lastname"} label="Prenom" mandatory={false}/>
               </div>
             </div>
             <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
-                <Field editing={true} type="mail" placeholder={mail}  name={"mail"} label="Adresse mail" mandatory={false}/> 
+                <Field editing={true} type="mail" name={"mail"} label="Adresse mail" mandatory={false}/> 
                 {errorMail && <TextMessage type={TextMessageType.error} message="Mail invalide"/>}
               </div>
               <div className="formRow2-item-b">
-                <Field editing={true} type="tel" placeholder={phone} name={"phone"} label="Numéro de téléphone" mandatory={false}/>
+                <Field editing={true} type="tel" name={"phone"} label="Numéro de téléphone" mandatory={false}/>
               </div>
             </div>
-            {/* <div className="formRow2 w-full grid">
+            <div className="formRow2 w-full grid">
               <div className="formRow2-item-a">
                 <Field editing={true} type="password" name={"password1"} label="Nouveau mot de passe" mandatory={false}/>
                 {errorPwd && <TextMessage type={TextMessageType.error} message="Mots de passe différents"/>}
@@ -109,7 +126,7 @@ const SignUpPage = () => {
               <div className="formRow2-item-b">
                 <Field editing={true} type="password" name={"password2"} label="Répéter mot de passe" mandatory={false}/>
               </div>  
-            </div> */}
+            </div>
 
             <div className="w-[100%] flex ">
               <input required className="mt-[6px]" type="checkbox" name="consent" onClick={handleConsent}/>
