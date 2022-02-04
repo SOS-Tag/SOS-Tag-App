@@ -1,0 +1,36 @@
+[
+    {
+        "id": 123456,
+        "isActivated": false,
+        "general": {
+            "name": "Gautier",
+            "surname": "Théo",
+            "gender": "M",
+            "birthdate": "1999/08/24",
+            "size": 183,
+            "weight": 75,
+            "bloodtype": "O-",
+            "smoker": false,
+            "organDonation": false,
+            "guidelines": false
+        },
+        "sante": {
+            "allergy": "none",
+            "treatments": "none",
+            "missingVaccines": false,
+            "diabetes": "none",
+            "hemophilia": false,
+            "epilepsy": false,
+            "pacemaker": false
+        },
+        "contact": {
+            "drName": "Aaa Bbb",
+            "drPhone": "0662548895",
+            "labName": "Lab♥",
+            "labPhone": "0320151515",
+            "emergencyName": "Aaaa Bbbb",
+            "emergencyPhone": "06060606",
+            "emergencyRole": "Aaaa"
+        }
+    }
+]

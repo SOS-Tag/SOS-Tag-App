@@ -1,15 +1,23 @@
+import React from "react"
 import "./Button.css"
+import { ButtonType } from "./Types"
 
-const Button = (props) => {
+const Button: React.FC<ButtonType> = ({
+  to,
+  box,
+  type,
+  buttonText, 
+  onClick
+}) => {
 
   function buttonLink(){
     return(
-      <a href={props.to}>
+      <a href={to}>
         <button 
-          className={"button " + props.box + "--button--"+ props.type +"--sostag"}
-          onClick={props.onClick}
+          className={"button " + box + "--button--"+ type +"--sostag"}
+          onClick={onClick}
         >
-          {props.buttonText} 
+          {buttonText} 
         </button>
       </a>
     )
@@ -18,17 +26,17 @@ const Button = (props) => {
   function buttonStandard(){
     return(
       <button 
-        className={"button " + props.box + "--button--"+ props.type +"--sostag"}
-        onClick={props.onClick}
+        className={"button " + box + "--button--"+ type +"--sostag"}
+        onClick={onClick}
       >
-        {props.buttonText} 
+        {buttonText} 
       </button>
     )
   }
 
   return (
     <>
-      {(props.to)?buttonLink():buttonStandard()}
+      {(to)?buttonLink():buttonStandard()}
     </> 
     // <button 
     //   className={"button " + props.box + "--button--"+ props.type +"--sostag"}

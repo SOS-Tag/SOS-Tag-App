@@ -1,9 +1,11 @@
 import Button from "../components/Button"
-import Field from "../components/Field";
-import { useEffect, useState } from "react";
+import Field from "../components/field/Field";
+import React, { MouseEventHandler, ReactElement, useEffect, useState } from "react";
 import AlternativText from "../components/AlternativText";
 
-const Account = () => {
+type AccountType = {}
+
+const Account: React.FC<AccountType> = ({}) => {
 
     const [modify, changeModifyField] = useState(false); 
     const [nbPage, changePage] = useState(0); 
@@ -28,17 +30,13 @@ const Account = () => {
             saveChange();
             changeTextModifyButton("Modifier les informations"); 
             changeTypeModifyButton("fill"); 
-            changeModifyField(false); 
-
-            
+            changeModifyField(false);             
         }
         else{
             changeTextModifyButton("Enregistrer"); 
             changeTypeModifyButton("stroke"); 
             changeModifyField(true); 
-            
         }
-        
     }
 
     const modifyPage = () => {
@@ -80,7 +78,7 @@ const Account = () => {
             <Banner title="Gestion de votre compte" />
             <div className="flex flex-row">
                 <GroupManage modifyClick={modifyInfo} passwordClick={modifyPage} textButton={textModifyButton} typeButton={typeModifyButton} />
-                <UserInfo modify={modify} checkForm={checkForm} name={name} setName={setName} surname={surname} setSurname={setSurname} tel={tel} setTel={setTel} mail={mail} setMail={setMail} postale={postale} setPostale={setPostale} facturation={facturation} setFacturation={setFacturation}/> 
+                <UserInfo modify={modify} name={name} surname={surname} tel={tel} mail={mail} postale={postale} facturation={facturation} /> 
             </div>
             </>
             : (nbPage === 1) ?
@@ -90,15 +88,15 @@ const Account = () => {
             <form className="grid grid-cols-5 gap-4">
                 <div className="col-start-3 ">
                     <div>
-                        <Field editing={true} onChange={setPasswordInit} type="password" label="Mot de passe actuel" mandatory={true}/> 
+                        <Field editing={true} name={"password1"} type="password" label="Mot de passe actuel" mandatory={true}/> 
                     </div>
 
                     <div>
-                        <Field editing={true} onChange={setPassword1}type="password" label="Nouveau mot de passe" mandatory={true}/> 
+                        <Field editing={true} name={"password2"} type="password" label="Nouveau mot de passe" mandatory={true}/> 
                     </div>
 
                     <div >
-                        <Field editing={true} onChange={setPassword2}type="password" label="Répétez le mot de passe" mandatory={true}/>
+                        <Field editing={true} name={"password3"} type="password" label="Répétez le mot de passe" mandatory={true}/>
                     </div>
                 
                 <Button onClick={handleValidation} box="fill" type ="general" buttonText="Modifier mot de passe" />
@@ -113,40 +111,51 @@ const Account = () => {
  
 export default Account;
 
-
-
-
-
-
-
-
 /////////////////////////////////
 /* BANNER - RETURN ET TITLE  */ 
 /////////////////////////////////
 
-const Banner = (props) => {
+type BannerType = {
+    returnClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+    title: string;
+}
+
+const Banner: React.FC<BannerType> = ({
+    returnClick,
+    title,
+}) => {
     return ( 
         <div className="flex flex-row mt-10 mb-20">
-            <button className="w-2/5" onClick={props.returnClick}>
+            <button className="w-2/5" onClick={returnClick}>
             <svg className="w-full justify-items-center" width="47" height="34" viewBox="0 0 47 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M47 14.875H8.18227L20.1245 2.99625L17.0909 0L0 17L17.0909 34L20.1032 31.0037L8.18227 19.125H47V14.875Z" 
             fill="#19224F"/>
             </svg>
             </button>
-            
-            
-            <h1 className="w-3/5">{props.title}</h1>
+            <h1 className="w-3/5">{title}</h1>
         </div>
     );
 }
- 
+
 /////////////////////////////////
 /* MANAGE ACCOUNT - BUTTONS */ 
-/////////////////////////////////
-const GroupManage = (props) => {
+///////////////////////////////// 
+
+type GroupManageType = {
+    typeButton : string,
+    textButton : string,
+    modifyClick : () => void,
+    passwordClick : () => void,
+}
+
+const GroupManage: React.FC<GroupManageType> = ({
+    typeButton,
+    textButton,
+    modifyClick,
+    passwordClick
+}) => {
 
     return ( 
-
         <div className="flex flex-col w-2/5 items-center">
             <svg width="132" height="132" viewBox="0 0 132 132" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_0_1)">
@@ -156,70 +165,78 @@ const GroupManage = (props) => {
             </svg>
 
             <div className="flex flex-col ml-10 mr-10 ">
-                <Button box={props.typeButton} type="general" buttonText={props.textButton} onClick={props.modifyClick}/>
-                <Button box="fill" type="secondaire" buttonText="Changer de mot de passe" onClick={props.passwordClick}/>
-                
+                <Button box={typeButton} type="general" buttonText={textButton} onClick={modifyClick}/>
+                <Button box="fill" type="secondaire" buttonText="Changer de mot de passe" onClick={passwordClick}/>
             </div>
             <p>Supprimer le compte</p>
         </div>
      );
 }
- 
-
 
 /////////////////////////////////
 /* INFOS ACCOUNT */ 
 /////////////////////////////////
 
-const UserInfo = (props) => {
-    let nameAndSurname =""; 
+type UserInfoType = {
+    modify : boolean,
+    name : string, 
+    surname : string,
+    mail : string,
+    tel : string,
+    postale : string,
+    facturation : string,
+}
 
-    if (props.modify){
+const UserInfo: React.FC<UserInfoType> = ({
+    modify,
+    name, 
+    surname,
+    mail,
+    tel,
+    postale, 
+    facturation,
+}) => {
+    let nameAndSurname: ReactElement<any, any>; 
+
+    if (modify){
         nameAndSurname = 
         <div className="formRow2 w-full grid">
             <div className="formRow2-item-a">
-                <Field editing="true" onChange={props.setName} type="text" value={props.name} label="Prénom"/>
+                <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Prénom" mandatory={true}/>
             </div>
             <div className="formRow2-item-b">
-                <Field editing="true" type="text" onChange={props.setSurname} value={props.surname} label="Nom"/>
+                <Field editing={true} name={"lastname"} type="text" placeholder={surname} label="Nom" mandatory={true}/>
             </div>
         </div>
 
     }else{
         nameAndSurname =
         <div className="mb-10">
-            <p className="prenom">{props.name}</p>
-            <p className="nom">{props.surname}</p>    
+            <p className="prenom">{name}</p>
+            <p className="nom">{surname}</p>    
         </div>
     }
 
-
-
-
-
     return ( 
 
-        <form className="UserInfo w-3/5">
-
+        <form className="UserInfo w-3/5" action="">
             {nameAndSurname}
-
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={props.modify} type="text" onChange={props.setMail} value={props.mail} label="Adresse mail"/>
+                    <Field editing={modify} type="text" name={"mail"} placeholder={mail} label="Adresse mail" mandatory={true}/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={props.modify} type="tel" onChange={props.setTel} value={props.tel} label="Numéro de téléphone"/>
+                    <Field editing={modify} type="tel" name={"phone"} placeholder={tel} label="Numéro de téléphone" mandatory={true}/>
                 </div>
             </div>
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={props.modify} type="text" onChange={props.setPostal} value={props.postale} label="Adresse postale"/>
+                    <Field editing={modify} type="text" name={"adress"} placeholder={postale} label="Adresse postale" mandatory={true}/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={props.modify} type="text" onChange={props.setFacturation} value={props.facturation} label="Adresse de facturation"/>
+                    <Field editing={modify} type="text" name={"bill"} placeholder={facturation} label="Adresse de facturation" mandatory={true}/>
                 </div>
             </div>
-
         </form>
      );
 }

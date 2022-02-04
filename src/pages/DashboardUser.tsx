@@ -1,6 +1,9 @@
+import React from "react";
 import Button from "../components/Button.js";
 
-const DashboardUser = () => {
+type DashboardUser = {}
+
+const DashboardUser: React.FC<DashboardUser> = () => {
     return ( 
         <>
         <h1>Ceci est un dashboard !</h1>

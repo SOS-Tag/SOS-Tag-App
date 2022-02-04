@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import AlternativText from "../components/AlternativText";
-import Field from "../components/Field";
-import Button from '../components/Button';
+import AlternativText from "./AlternativText";
+import Field from "./field/Field";
+import Button from './Button';
 import TextMessage from './TextMessage';
 import 'react-phone-number-input/style.css'
+import { TextMessageType } from './Types';
 
-const SignInForm = () => {
+type SignInFormProps = {
+
+}
+
+const SignInForm: React.FC<SignInFormProps> = () => {
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState(false);
@@ -23,20 +28,19 @@ const SignInForm = () => {
             <form>
                 <div className="formRow2 w-full grid">
                     <div className="formRow2-item-a">
-                        <Field editing={true} type="mail" value={mail} onChange={setMail} label="Adresse mail" mandatory={true}/> 
+                        <Field editing={true} name={"mail"} type="mail" placeholder={mail} label="Adresse mail" mandatory={true}/> 
                     </div>
 
                     <div className="formRow2-item-a">
-                        <Field editing={true} type="password" value={password} onChange={setPassword} label="Mot de passe" mandatory={true}/>
+                        <Field editing={true} name={"password"} type="password" placeholder={password} label="Mot de passe" mandatory={true}/>
                     </div>
                 </div>
 
-                {message && <TextMessage type="error"/>}
+                {message && <TextMessage type={TextMessageType.oups}/>}
                 <h4>Mot de passe oublié ?</h4>
                 <Button onClick={handleConnexion} box="fill" type ="general" buttonText="Valider"/>
             </form>
             
-
             <AlternativText text="Vous n'avez pas encore de compte ? " linkText="S'inscrire" link="./signup"/>
         </div>
      );

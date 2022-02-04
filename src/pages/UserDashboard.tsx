@@ -1,9 +1,13 @@
-import users from './../data/users.json';
+import users from '../data/users.json';
 import GroupButtons from '../components/GroupButtons';
 import CardsList from '../components/CardsList';
 import { useState } from 'react';
+import React from 'react';
 
-const UserDashboard = (props) => {
+type UserDashboardType = {
+}
+
+const UserDashboard: React.FC<UserDashboardType> = ({}) => {
 
     const [selectedIDs, setSelectedIDs] = useState([]);
 
@@ -45,7 +49,7 @@ const UserDashboard = (props) => {
         alert("[A FAIRE] Sélectionne tous les profils.");
     }
 
-    const toggleSelect = id => {
+    const toggleSelect = (id: never) => {
         const cpy = selectedIDs.slice();
         const index = cpy.indexOf(id);
         if(index === -1) cpy.push(id);
