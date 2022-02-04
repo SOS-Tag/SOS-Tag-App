@@ -39,7 +39,7 @@ const TextMessage: React.FC<TextMessageProps> = (props) => {
     }
 
     return (
-        <div className={"TextMessage flex flex-row space-x-4 p-2 w-auto w-90 text-white "+ css} >
+        <div className={"TextMessage flex flex-initial flex-row space-x-4 p-2 w-fit text-white "+ css} >
             <img src={img} />
             <span className="message">
                 {message}
