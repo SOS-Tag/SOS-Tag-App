@@ -31,7 +31,7 @@ const SignInForm = () => {
                     </div>
                 </div>
 
-                {message && <TextMessage type="error"/>}
+                {message && <TextMessage type="oups"/>}
                 <h4>Mot de passe oublié ?</h4>
                 <Button onClick={handleConnexion} box="fill" type ="general" buttonText="Valider"/>
             </form>
