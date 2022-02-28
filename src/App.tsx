@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
     <div className="App h-full min-h-screen flex flex-col items-stretch">
-      <Header type={HeaderTypeEnum.after} />
+      {/* <Header type={HeaderTypeEnum.after} /> */}
       <div className='w-full h-full content flex flex-row'>
         <Switch>
           <Route exact path="/">

@@ -20,6 +20,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--SosTagBackground);
+  width: 100vw;
+  max-width: 100vw;
 }
 
 code {
@@ -27,7 +29,8 @@ code {
     monospace;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-size: 36px;
   font-weight: bold;
   line-height: 45px;
@@ -45,34 +48,6 @@ h2 {
   font-size: 18px;
   line-height: 23px;
   color: var(--SosTagBlue);
-}
-
-.formRow2 {
-  grid-template-columns: [first] 0% [line2] 35% [line3] 10% [line4] 35% [line5] auto [end];
-}
-
-.formRow2-item-a {
-  grid-column-start: line2;
-  grid-column-end: line3;
-}
-
-.formRow2-item-b {
-  grid-column-start: line4;
-  grid-column-end: line5;
-}
-
-.formRowMedic {
-  grid-template-columns: [first] 0% [line2] 40% [line3] 10% [line4] 40% [line5] auto [end];
-}
-
-.formRowMedic-item-a {
-  grid-column-start: line2;
-  grid-column-end: line3;
-}
-
-.formRowMedic-item-b {
-  grid-column-start: line4;
-  grid-column-end: line5;
 }
 
 .formRowMedicCard {
@@ -107,7 +82,7 @@ h2 {
   color: var(--SosTagBlue);
 }
 
-[type=checkbox] {
+[type="checkbox"] {
   width: 22px;
   height: 22px;
 }
@@ -115,7 +90,7 @@ h2 {
 .toggle {
   transform: translate(-100%, -50%);
   left: calc(100% - 3px);
-  transition: .5s;
+  transition: 0.5s;
 }
 .off {
   transform: translate(0, -50%);
@@ -123,6 +98,79 @@ h2 {
   background-color: var(--SosTagGrey);
 }
 
-@media (max-width: 479px) {
-  
+@media (max-width: 469px) {
+  h1,
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 45px;
+    font-family: "Source Sans Pro";
+    color: var(--SosTagBlue);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 25px;
+  }
+
+  .SignUpPageTitle {
+    width: 70vw;
+    margin-left: 10vw;
+  }
+
+  .SignUpPageCheckbox {
+    width: 80vw;
+    margin-left: 10vw;
+  }
+
+  .formRow2 {
+    width: 100vw;
+    /* background-color: #a8a4f2; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formRow2-item-a {
+    width: 80vw;
+    margin: auto;
+  }
+
+  .formRow2-item-b {
+    width: 80vw;
+    margin: auto;
+  }
+
+  .AlternativText {
+    margin: auto;
+  }
+}
+
+@media (min-width: 470px) {
+  .formRow2 {
+    grid-template-columns: [first] 0% [line2] 35% [line3] 10% [line4] 35% [line5] auto [end];
+  }
+
+  .formRow2-item-a {
+    grid-column-start: line2;
+    grid-column-end: line3;
+  }
+
+  .formRow2-item-b {
+    grid-column-start: line4;
+    grid-column-end: line5;
+  }
+
+  .formRowMedic {
+    grid-template-columns: [first] 0% [line2] 40% [line3] 10% [line4] 40% [line5] auto [end];
+  }
+
+  .formRowMedic-item-a {
+    grid-column-start: line2;
+    grid-column-end: line3;
+  }
+
+  .formRowMedic-item-b {
+    grid-column-start: line4;
+    grid-column-end: line5;
+  }
 }
