@@ -126,22 +126,60 @@ h2 {
   .formRow2 {
     width: 100vw;
     /* background-color: #a8a4f2; */
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
   }
 
   .formRow2-item-a {
-    width: 80vw;
+    width: 40vw;
     margin: auto;
   }
 
   .formRow2-item-b {
-    width: 80vw;
+    width: 40vw;
     margin: auto;
   }
 
   .AlternativText {
     margin: auto;
+  }
+
+  .MedicalFormContainer {
+    margin: auto;
+    width: 100%;
+    margin-top: 5%;
+    padding: 0 10px;
+  }
+
+  .ContactCard {
+    width: 105%;
+    background-color: var(--SosTagYellowLight);
+    z-index: 50;
+    padding: 20px 0px 20px 10px;
+    margin-left: -2.5%;
+    box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
+  }
+  
+  .noFlex {
+    width: 100vw;
+    height: 100%;
+    display: initial;
+  }
+
+  .formSectionHeader {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .BlockQR {
+    width: 100vw;
+    background-color: white;
+    max-height: 400px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
+    margin: 20px auto;
+    padding: 20px 0px;
   }
 }
 
@@ -172,5 +210,48 @@ h2 {
   .formRowMedic-item-b {
     grid-column-start: line4;
     grid-column-end: line5;
+  }
+
+  .MedicalFormContainer {
+    background-color: white;
+    margin: 2% 0 0 20%;
+    width: 33%;
+    padding: 20px 50px;
+    border-radius: 20px;
+    box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
+    height: auto;
+    position: relative;
+    /* bg-white mt-[2%] ml-[20%] w-1/3 px-[50px] py-[20px] rounded-3xl drop-shadow-md h-auto */
+  }
+
+  .ContactCard {
+    width: 70%;
+    /* margin: 0 22% 0 0; */
+    background-color: var(--SosTagYellowLight);
+    z-index: 50;
+    padding: 20px 50px;
+    border-radius: 20px;
+    box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
+    position: absolute;
+    bottom: 0;
+    right:0;
+    margin-right: -60%;
+  }
+
+  .BlockQR {
+    width: 15%;
+    background-color: white;
+    max-height: 400px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
+    margin: 20px 2%;
+    position: absolute;
+  }
+
+  .noFlex {
+    width: 100vw;
+    height: 100%;
+    display: initial;
   }
 }

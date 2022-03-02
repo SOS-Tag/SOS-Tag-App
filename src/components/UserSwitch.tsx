@@ -1,9 +1,15 @@
 import React from "react";
 
-const UserSwitch: React.FC = () => {
+type UserSwitchType = {
+    user: number,
+    // users: number,
+    setUser: (newUser: number) => void,
+}
+
+const UserSwitch: React.FC<UserSwitchType> = (user, setUser) => {
     return (
         <>
-           
+           {/* {users.filter()} */}
         </>
     );
 }
