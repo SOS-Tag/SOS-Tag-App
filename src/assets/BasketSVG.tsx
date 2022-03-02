@@ -10,7 +10,7 @@ const BasketSVG: React.FC<BasketSVGType> = ({
   return (
     <svg 
       width="35" 
-      height="30" 
+      height="32" 
       viewBox="0 0 35 30" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
