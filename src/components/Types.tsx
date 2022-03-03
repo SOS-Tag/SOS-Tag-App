@@ -32,11 +32,26 @@ export type MedicalCardTypeContact = {
 }
 
 export type medicalCardType = {
-  id : number,
-  isActivated : boolean,
-  general: MedicalCardTypeGeneral,
-  sante: MedicalCardTypeHealth,
-  contact : MedicalCardTypeContact;
+  _id: string;
+  enabled: boolean;
+  fname: string;
+  lname: string;
+  sex: string;
+  dateOfBirth: Date;
+  nationality: string;
+  bloodType: string;
+  smoker: boolean;
+  organDonor: boolean;
+  advanceDirectives: boolean;
+  allergies: string;
+  medicalHistory: string;
+  currentTreatment: string;
+  treatingDoctor: string;
+  emergencyContact1: string;
+  emergencyContact2: string;
+  user: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type fieldOption = {
