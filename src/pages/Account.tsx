@@ -71,12 +71,12 @@ const Account: React.FC<AccountType> = ({}) => {
 
 
     return ( 
-        <div className="w-full">
+        <div className="tablet:w-full mobile:w-[80vw] mobile:mx-auto">
 
             {(nbPage === 0) ?
             <>
             <Banner title="Gestion de votre compte" />
-            <div className="flex flex-row">
+            <div className="flex tablet:flex-row mobile:flex-col">
                 <GroupManage modifyClick={modifyInfo} passwordClick={modifyPage} textButton={textModifyButton} typeButton={typeModifyButton} />
                 <UserInfo modify={modify} name={name} surname={surname} tel={tel} mail={mail} postale={postale} facturation={facturation} /> 
             </div>
@@ -85,8 +85,8 @@ const Account: React.FC<AccountType> = ({}) => {
             <>
             <Banner title="Modification de votre mot de passe" returnClick={modifyPage}/> 
 
-            <form className="grid grid-cols-5 gap-4">
-                <div className="col-start-3 ">
+            <form className="grid tablet:grid-cols-5 tablet:gap-4">
+                <div className="tablet:col-start-3 ">
                     <div>
                         <Field editing={true} name={"password1"} type="password" label="Mot de passe actuel" mandatory={true}/> 
                     </div>
@@ -125,14 +125,14 @@ const Banner: React.FC<BannerType> = ({
     title,
 }) => {
     return ( 
-        <div className="flex flex-row mt-10 mb-20">
-            <button className="w-2/5" onClick={returnClick}>
-            <svg className="w-full justify-items-center" width="47" height="34" viewBox="0 0 47 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="flex flex-row mt-10 mb-20 tablet:gap-0 mobile:gap-5">
+            <button className="tablet:w-2/5" onClick={returnClick}>
+            <svg className="mx-auto justify-items-center" width="47" height="34" viewBox="0 0 47 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M47 14.875H8.18227L20.1245 2.99625L17.0909 0L0 17L17.0909 34L20.1032 31.0037L8.18227 19.125H47V14.875Z" 
             fill="#19224F"/>
             </svg>
             </button>
-            <h1 className="w-3/5">{title}</h1>
+            <h1 className="tablet:w-3/5">{title}</h1>
         </div>
     );
 }
@@ -156,7 +156,7 @@ const GroupManage: React.FC<GroupManageType> = ({
 }) => {
 
     return ( 
-        <div className="flex flex-col w-2/5 items-center">
+        <div className="flex tablet:flex-col tablet:w-2/5 items-center mobile:flex-row mobile:gap-5 tablet:gap-0">
             <svg width="132" height="132" viewBox="0 0 132 132" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_0_1)">
                 <circle cx="66" cy="62" r="62" fill="#F69FAB"/>
@@ -164,11 +164,11 @@ const GroupManage: React.FC<GroupManageType> = ({
                 <path d="M66 32C70.1109 32 74.0533 33.633 76.9602 36.5398C79.867 39.4467 81.5 43.3891 81.5 47.5C81.5 51.6109 79.867 55.5533 76.9602 58.4602C74.0533 61.367 70.1109 63 66 63C61.8891 63 57.9467 61.367 55.0398 58.4602C52.133 55.5533 50.5 51.6109 50.5 47.5C50.5 43.3891 52.133 39.4467 55.0398 36.5398C57.9467 33.633 61.8891 32 66 32ZM66 70.75C83.1275 70.75 97 77.6862 97 86.25V94H35V86.25C35 77.6862 48.8725 70.75 66 70.75Z" fill="#534F4F"/>
             </svg>
 
-            <div className="flex flex-col ml-10 mr-10 ">
+            <div className="flex flex-col tablet:mx-10 items-center">
                 <Button box={typeButton} type="general" buttonText={textButton} onClick={modifyClick}/>
                 <Button box="fill" type="secondaire" buttonText="Changer de mot de passe" onClick={passwordClick}/>
+                <p>Supprimer le compte</p>
             </div>
-            <p>Supprimer le compte</p>
         </div>
      );
 }
@@ -211,7 +211,7 @@ const UserInfo: React.FC<UserInfoType> = ({
 
     }else{
         nameAndSurname =
-        <div className="mb-10">
+        <div className="mb-10 tablet:text-left mobile:text-center flex tablet:flex-col mobile:gap-2 tablet:gap-0">
             <p className="prenom">{name}</p>
             <p className="nom">{surname}</p>    
         </div>
@@ -219,7 +219,7 @@ const UserInfo: React.FC<UserInfoType> = ({
 
     return ( 
 
-        <form className="UserInfo w-3/5" action="">
+        <form className="UserInfo tablet:w-3/5 mobile:mt-10 tablet:mt-0" action="">
             {nameAndSurname}
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
