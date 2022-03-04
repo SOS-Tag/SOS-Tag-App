@@ -17,8 +17,12 @@ const Account: React.FC<AccountType> = ({}) => {
     const [surname, setSurname] = useState("RICHARD");
     const [mail, setMail] = useState("pascal.richard@gmail.com");
     const [tel, setTel] = useState("0675463524");
-    const [postale, setPostale] = useState("33 rue des Camélia 13000 Marseille");
-    const [facturation, setFacturation] = useState("33 rue des Camélia 13000 Marseille");
+    const [postalAddress, setPostalAddress] = useState("33 rue des Camélia");
+    const [postalCode, setPostalCode] = useState("13000");
+    const [postalCity, setPostalCity] = useState("Marseille");
+    const [facturationAddress, setFacturationAddress] = useState("33 rue des Camélia");
+    const [facturationCode, setFacturationCode] = useState("13000");
+    const [facturationCity, setFacturationCity] = useState("Marseille");
     
     const [passwordInit, setPasswordInit] = useState("");
     const [password1, setPassword1] = useState("");
@@ -78,7 +82,7 @@ const Account: React.FC<AccountType> = ({}) => {
             <Banner title="Gestion de votre compte" />
             <div className="flex tablet:flex-row mobile:flex-col">
                 <GroupManage modifyClick={modifyInfo} passwordClick={modifyPage} textButton={textModifyButton} typeButton={typeModifyButton} />
-                <UserInfo modify={modify} name={name} surname={surname} tel={tel} mail={mail} postale={postale} facturation={facturation} /> 
+                <UserInfo modify={modify} name={name} surname={surname} tel={tel} mail={mail} postalAddress={postalAddress} postalCode={postalCode} postalCity={postalCity} facturationAddress={facturationAddress} facturationCode={facturationCode} facturationCity={facturationCity}/> 
             </div>
             </>
             : (nbPage === 1) ?
@@ -183,8 +187,13 @@ type UserInfoType = {
     surname : string,
     mail : string,
     tel : string,
-    postale : string,
-    facturation : string,
+    
+    postalAddress : string,
+    postalCode : string,
+    postalCity : string,
+    facturationAddress: string,
+    facturationCode: string, 
+    facturationCity : string,
 }
 
 const UserInfo: React.FC<UserInfoType> = ({
@@ -193,14 +202,21 @@ const UserInfo: React.FC<UserInfoType> = ({
     surname,
     mail,
     tel,
-    postale, 
-    facturation,
+    postalAddress,
+    postalCode,
+    postalCity,
+    facturationAddress,
+    facturationCode, 
+    facturationCity,
 }) => {
     let nameAndSurname: ReactElement<any, any>; 
 
+    const postal = postalAddress + " " + postalCode + " " + postalCity;
+    const facturation = facturationAddress + " " + facturationCode + " " + facturationCity;
+
     if (modify){
         nameAndSurname = 
-        <div className="formRow2 w-full grid">
+        <div className="formRow2 w-full grid tablet:grid-cols-2">
             <div className="formRow2-item-a">
                 <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Prénom" mandatory={true}/>
             </div>
@@ -219,9 +235,9 @@ const UserInfo: React.FC<UserInfoType> = ({
 
     return ( 
 
-        <form className="UserInfo tablet:w-3/5 mobile:mt-10 tablet:mt-0" action="">
+        <form className="UserInfo tablet:w-3/5 mobile:mt-10 tablet:mt-0 tablet:pr-[12%]" action="">
             {nameAndSurname}
-            <div className="formRow2 w-full grid">
+            <div className="formRow2 w-full grid tablet:grid-cols-2">
                 <div className="formRow2-item-a">
                     <Field editing={modify} type="text" name={"mail"} placeholder={mail} label="Adresse mail" mandatory={true}/>
                 </div>
@@ -229,14 +245,51 @@ const UserInfo: React.FC<UserInfoType> = ({
                     <Field editing={modify} type="tel" name={"phone"} placeholder={tel} label="Numéro de téléphone" mandatory={true}/>
                 </div>
             </div>
-            <div className="formRow2 w-full grid">
+
+            { !modify && <div className="formRow2 w-full grid tablet:grid-cols-2">
                 <div className="formRow2-item-a">
-                    <Field editing={modify} type="text" name={"adress"} placeholder={postale} label="Adresse postale" mandatory={true}/>
+                    <Field editing={modify} type="text" name={"adress"} placeholder={postal} label="Adresse postale" mandatory={true}/>
                 </div>
                 <div className="formRow2-item-b">
                     <Field editing={modify} type="text" name={"bill"} placeholder={facturation} label="Adresse de facturation" mandatory={true}/>
                 </div>
-            </div>
+            </div>}
+
+            { modify && <div>
+
+                <h2 className="mt-10 mb-5">Adresse postale</h2>
+
+                <div className="formRow2 w-full grid tablet:grid-cols-3">
+                    <div className="formRow2-item-a">
+                        <Field editing={modify} type="text" name={"postal-adress"} placeholder={postalAddress} label="Adresse" mandatory={true}/>
+                    </div>
+                    <div className="formRow2-item-b">
+                        <Field editing={modify} type="number" name={"postal-code"} placeholder={postalCode} label="Code postal" mandatory={true}/>
+                    </div>
+                    <div className="formRow2-item-b">
+                        <Field editing={modify} type="text" name={"postal-city"} placeholder={postalCity} label="Ville" mandatory={true}/>
+                    </div>
+                </div>
+
+                <h2 className="mt-10 mb-5">Adresse de facturation</h2>
+
+                <div className="formRow2 w-full grid tablet:grid-cols-3">
+                    <div className="formRow2-item-a">
+                        <Field editing={modify} type="text" name={"facturation-adress"} placeholder={facturationAddress} label="Adresse" mandatory={true}/>
+                    </div>
+                    <div className="formRow2-item-b">
+                        <Field editing={modify} type="number" name={"facturation-code"} placeholder={facturationCode} label="Code postal" mandatory={true}/>
+                    </div>
+                    <div className="formRow2-item-b">
+                        <Field editing={modify} type="text" name={"facturation-city"} placeholder={facturationCity} label="Ville" mandatory={true}/>
+                    </div>
+                </div>
+
+            </div>}
+
+
+
+            
         </form>
      );
 }
