@@ -82,5 +82,6 @@ export type ButtonType = {
   box?: string,
   type: string,
   buttonText: string,
+  fullSize?: boolean,
   onClick?: () => void;
 }

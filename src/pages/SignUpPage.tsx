@@ -146,34 +146,34 @@ const SignUpPage = () => {
         <img className="w-4/5" alt="imgSignUp" src="./assets/ImageSignUp.png"/>
       </div>
       <div className="w-full tablet:w-1/2 SignUpPageContent ">
-        <h1 className="mb-[50px] SignUpPageTitle" >
+        <h1 className="mobile:mt-[50px] mb-[50px] SignUpPageTitle" >
           Créez votre compte SOS Tag
         </h1>
         <div className="SignUpPageForm">
           <form onSubmit={checkform} >
-            <div className="formRow2 w-full grid">
-              <div className="formRow2-item-a">
+            <div className="SignUpPageRow w-full grid">
+              <div className="SignUpPageRow-item-a">
                 <Field editing={true} type="text" name={"firstname"} label="Nom" mandatory={true}/>
               </div>
-              <div className="formRow2-item-b">
+              <div className="SignUpPageRow-item-b">
                 <Field editing={true} type="text" name={"lastname"} label="Prenom" mandatory={false}/>
               </div>
             </div>
-            <div className="formRow2 w-full grid">
-              <div className="formRow2-item-a">
+            <div className="SignUpPageRow w-full grid">
+              <div className="SignUpPageRow-item-a">
                 <Field editing={true} type="mail" name={"mail"} label="Adresse mail" mandatory={false}/> 
                 {errorMail && <TextMessage type={TextMessageType.error} message="Mail invalide"/>}
               </div>
-              <div className="formRow2-item-b">
+              <div className="SignUpPageRow-item-b">
                 <Field editing={true} type="tel" name={"phone"} label="Numéro de téléphone" mandatory={false}/>
               </div>
             </div>
-            <div className="formRow2 w-full grid">
-              <div className="formRow2-item-a">
+            <div className="SignUpPageRow w-full grid">
+              <div className="SignUpPageRow-item-a">
                 <Field editing={true} type="password" name={"password1"} label="Nouveau mot de passe" mandatory={false}/>
                 {errorPwd && <TextMessage type={TextMessageType.error} message="Mots de passe différents"/>}
               </div>
-              <div className="formRow2-item-b">
+              <div className="SignUpPageRow-item-b">
                 <Field editing={true} type="password" name={"password2"} label="Répéter mot de passe" mandatory={false}/>
               </div>  
             </div>
@@ -184,10 +184,16 @@ const SignUpPage = () => {
                 J'accepte les conditions générales d'utilisation et les conditions générales de vente. Je consens au traitement de mes données conformément à la politique de confidentialité de SOS Tag.
               </p>
             </div>
-            <Button box="fill" type="general" buttonText="Valider"/>
+            <div className='mobile:hidden'>
+              <Button box="fill" type="general" buttonText="Valider"/>    
+            </div>
+            <div className='tablet:hidden w-[80vw] ml-[10vw] mb-[20px]'>
+              <Button box="fill" type="general" fullSize={true} buttonText="Valider"/>    
+            </div>
+            
           </form>
         </div>
-        <div className="w-[100vw] flex">
+        <div className="w-[100vw] flex mobile:pb-[50px]">
           <AlternativText className="mt-[30px] text-SosTagBlue" text="Déjà inscrit ? " linkText="Se connecter" link="./signin"/>
         </div>
       </div>

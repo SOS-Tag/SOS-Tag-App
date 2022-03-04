@@ -45,3 +45,8 @@
   background: white;
   text-align: center;
 }
+
+.buttonFullSize {
+  width: 100%;
+  display: block;
+}

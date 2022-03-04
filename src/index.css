@@ -125,8 +125,6 @@ h2 {
 
   .formRow2 {
     width: 100vw;
-    /* background-color: #a8a4f2; */
-    /* display: flex; */
     flex-direction: column;
   }
 
@@ -137,6 +135,21 @@ h2 {
 
   .formRow2-item-b {
     width: 40vw;
+    margin: auto;
+  }
+
+  .SignUpPageRow {
+    width: 100vw;
+    flex-direction: column;
+  }
+
+  .SignUpPageRow-item-a {
+    width: 80vw;
+    margin: auto;
+  }
+
+  .SignUpPageRow-item-b {
+    width: 80vw;
     margin: auto;
   }
 
@@ -159,7 +172,7 @@ h2 {
     margin-left: -2.5%;
     box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
   }
-  
+
   .noFlex {
     width: 100vw;
     height: 100%;
@@ -234,7 +247,7 @@ h2 {
     box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
     position: absolute;
     bottom: 0;
-    right:0;
+    right: 0;
     margin-right: -60%;
   }
 
