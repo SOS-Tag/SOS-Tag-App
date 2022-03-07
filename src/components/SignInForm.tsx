@@ -84,7 +84,7 @@ const SignInForm: React.FC<SignInFormProps> = () => {
                 <Button box="fill" type ="general" buttonText="Valider"/>
             </form>
             
-            <AlternativText text="Vous n'avez pas encore de compte ? " linkText="S'inscrire" link="./signup"/>
+            <AlternativText text="Vous n'avez pas encore de compte ? " linkText="S'inscrire" link="./sign-up"/>
         </div>
      );
 }

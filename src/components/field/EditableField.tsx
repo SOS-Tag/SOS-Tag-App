@@ -54,7 +54,7 @@ const EditableField: React.FC<editableFieldType> = ({
 
   function passwordInput(){
     return(
-      <input onChange={handleValue} value={value} name={name} minLength={3} className={css} type="password" required/> 
+      <input onChange={handleValue} value={value} name={name} minLength={8} className={css} type="password" required/> 
     )
   }
 

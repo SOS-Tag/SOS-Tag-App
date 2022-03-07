@@ -145,7 +145,7 @@ const SignUpPage = () => {
           </form>
         </div>
         <div className="w-[100vw] flex mobile:pb-[50px]">
-          <AlternativText className="mt-[30px] text-SosTagBlue" text="Déjà inscrit ? " linkText="Se connecter" link="./signin"/>
+          <AlternativText className="mt-[30px] text-SosTagBlue" text="Déjà inscrit ? " linkText="Se connecter" link="./sign-in"/>
         </div>
       </div>
     </div>
