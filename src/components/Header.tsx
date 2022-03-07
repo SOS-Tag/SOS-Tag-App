@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"; 
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from "./Button";
 import Logo from "../assets/logo.jpg"
 import QrCodeSVG from "../assets/QrCodeSVG";
@@ -6,6 +6,8 @@ import BasketSVG from "../assets/BasketSVG";
 import AccountSVG from "../assets/AccountSVG";
 import "./Header.css"
 import React from "react";
+import { useLogoutMutation, useMeQuery } from "../generated/graphql";
+import { setAccessToken } from '../utils/access-token';
 
 
 export enum HeaderTypeEnum {
@@ -24,6 +26,23 @@ export const Header: React.FC<HeaderType> = ({
   
   let contenu; 
   const location = useLocation()
+  const navigate = useNavigate();
+  const { client, data } = useMeQuery({
+    fetchPolicy: 'network-only'
+  });
+
+  const [logout] = useLogoutMutation();
+
+  const handleLogout = async () => {
+    console.log("Il est ou l'user avant ? "+ data?.currentUser?.response)
+    navigate('/sign-in')
+    await logout();
+    setAccessToken('');
+    client.resetStore();
+    console.log("Il est ou l'user après ? "+ data?.currentUser?.response)
+  };
+
+
 
   if (type === "afterSignIn") {
     contenu = 
@@ -43,6 +62,10 @@ export const Header: React.FC<HeaderType> = ({
           href="/medicalcard"
         >
           Fiche personnelle
+        </a>
+
+        <a onClick={handleLogout}>
+          {data?.currentUser?.response !== undefined ? "Connecté" : "Se déconnecter"}
         </a>
       
         <a

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import React from 'react';
 
 import './UserDashboard.css';
+import { withAuth } from '../guards/auth';
 
 type UserDashboardType = {
 }
@@ -84,4 +85,4 @@ const UserDashboard: React.FC<UserDashboardType> = ({}) => {
     );
 }
 
-export default UserDashboard;
+export default withAuth(UserDashboard);
