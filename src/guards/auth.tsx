@@ -21,6 +21,8 @@ export function withAuth<T extends Props = Props>(
     // sign in page.
     // We set the state for the location to memoize the current route, so once the visitor logged in,
     // we will be able to send him back to the route he was trying to access. 
+    console.log("Le token dans with auth :  " + accessToken)
+    
     if (!accessToken) {
       return <Navigate
         to="/sign-in"

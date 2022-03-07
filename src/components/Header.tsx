@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderType> = ({
   let contenu; 
   const location = useLocation()
   const navigate = useNavigate();
-  const { client, data } = useMeQuery({
+  const { client, data, loading } = useMeQuery({
     fetchPolicy: 'network-only'
   });
 
@@ -42,12 +42,9 @@ export const Header: React.FC<HeaderType> = ({
     client.resetStore();
   };
 
-
-
-  if (data?.currentUser?.response !== undefined) {
+  if (!loading &&data?.currentUser?.response !== undefined) {
     contenu = 
     <>
-
       {/* Menu Desktop */}
       <div className="NavDesktop">
         <a
@@ -119,8 +116,7 @@ export const Header: React.FC<HeaderType> = ({
     </>
   }
 
-
-  if (data?.currentUser?.response === undefined) {
+  if (!loading && data?.currentUser?.response === undefined) {
     contenu = 
     <>
       <div className="NavDesktop">
@@ -133,7 +129,12 @@ export const Header: React.FC<HeaderType> = ({
       </div>
     </>
   }
-  
+
+  if(loading){
+    contenu = <>
+    </>
+  }
+
   return (  
     <nav className="header">
       <div className ="header--logo--holder">

@@ -48,6 +48,7 @@ export const routes = [
   {
     path: '/users', children: [
       { path: 'me', element: <Account /> },
+      { path: 'basket', element: <Basket /> },
       { path: 'all', element: <UserDashboard />},
       { path: ':userId', element: <MedicalCard /> },
     ]
