@@ -8,6 +8,7 @@ import UserSwitch from '../components/UserSwitch';
 import MedicCards from '../data/medicCards.json'
 import React from 'react';
 import { withAuth } from '../guards/auth';
+import { useSheetsCurrentUserQuery } from '../generated/graphql';
 
 type MedicalCardType = {
     // currentUserId: number,
@@ -17,6 +18,22 @@ type MedicalCardType = {
 const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
 
     // TODO :: function getter requête DB
+
+    const { data, loading, error } = useSheetsCurrentUserQuery({ fetchPolicy: 'network-only' });
+
+    if (loading) {
+        console.log("En attente des informations de l'utilisateur connecté ...")
+    }
+
+    if (error) {
+        console.log(error.message)
+    }
+
+    if (data?.sheetsCurrentUser?.errors) {
+        console.log(data.sheetsCurrentUser.errors[0]?.message as string)
+    }
+
+    console.log(data?.sheetsCurrentUser?.response);
 
     // const [user, setUser] = useState(currentUserId);
     // const [card, setCard] = useState(MedicCards[0]);

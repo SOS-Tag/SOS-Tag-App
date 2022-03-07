@@ -1,0 +1,38 @@
+query SheetsCurrentUser {
+  sheetsCurrentUser {
+    response {
+      _id
+      advanceDirectives
+      allergies
+      bloodType
+      createdAt
+      currentTreatment
+      dateOfBirth
+      emergencyContacts {
+        fname
+        lname
+        phone
+        role
+      }
+      enabled
+      fname
+      lname
+      medicalHistory
+      nationality
+      organDonor
+      sex
+      smoker
+      treatingDoctor {
+        fname
+        lname
+        phone
+      }
+      updatedAt
+      user
+    }
+    errors {
+      field
+      message
+    }
+  }
+}

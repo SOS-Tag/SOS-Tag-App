@@ -441,17 +441,17 @@ export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type MeQuery = { __typename?: 'Query', currentUser?: { __typename?: 'UserResponse', response?: { __typename?: 'User', fname?: string | null, lname?: string | null, email?: string | null, nationality?: string | null, phone?: string | null, address?: string | null, zipCode?: string | null, city?: string | null, confirmed?: boolean | null, activated?: boolean | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
 
-export type MetooQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MetooQuery = { __typename?: 'Query', currentUser?: { __typename?: 'UserResponse', response?: { __typename?: 'User', fname?: string | null, lname?: string | null, email?: string | null, nationality?: string | null, phone?: string | null, address?: string | null, zipCode?: string | null, city?: string | null, confirmed?: boolean | null, activated?: boolean | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
-
 export type RegisterMutationVariables = Exact<{
   registerInput?: InputMaybe<RegisterInput>;
 }>;
 
 
 export type RegisterMutation = { __typename?: 'Mutation', register?: { __typename?: 'UserResponse', response?: { __typename?: 'User', fname?: string | null, lname?: string | null, email?: string | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+
+export type SheetsCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SheetsCurrentUserQuery = { __typename?: 'Query', sheetsCurrentUser?: { __typename?: 'SheetsResponse', response?: Array<{ __typename?: 'Sheet', _id?: string | null, advanceDirectives?: boolean | null, allergies?: string | null, bloodType?: string | null, createdAt?: string | null, currentTreatment?: string | null, dateOfBirth?: string | null, enabled?: boolean | null, fname?: string | null, lname?: string | null, medicalHistory?: string | null, nationality?: string | null, organDonor?: boolean | null, sex?: string | null, smoker?: boolean | null, updatedAt?: string | null, user?: string | null, emergencyContacts?: Array<{ __typename?: 'SheetContact', fname?: string | null, lname?: string | null, phone?: string | null, role?: string | null } | null> | null, treatingDoctor?: { __typename?: 'SheetDoctorContact', fname?: string | null, lname?: string | null, phone?: string | null } | null }> | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -699,55 +699,6 @@ export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
-export const MetooDocument = gql`
-    query Metoo {
-  currentUser {
-    response {
-      fname
-      lname
-      email
-      nationality
-      phone
-      address
-      zipCode
-      city
-      confirmed
-      activated
-    }
-    errors {
-      field
-      message
-    }
-  }
-}
-    `;
-
-/**
- * __useMetooQuery__
- *
- * To run a query within a React component, call `useMetooQuery` and pass it any options that fit your needs.
- * When your component renders, `useMetooQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useMetooQuery({
- *   variables: {
- *   },
- * });
- */
-export function useMetooQuery(baseOptions?: Apollo.QueryHookOptions<MetooQuery, MetooQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<MetooQuery, MetooQueryVariables>(MetooDocument, options);
-      }
-export function useMetooLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MetooQuery, MetooQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<MetooQuery, MetooQueryVariables>(MetooDocument, options);
-        }
-export type MetooQueryHookResult = ReturnType<typeof useMetooQuery>;
-export type MetooLazyQueryHookResult = ReturnType<typeof useMetooLazyQuery>;
-export type MetooQueryResult = Apollo.QueryResult<MetooQuery, MetooQueryVariables>;
 export const RegisterDocument = gql`
     mutation Register($registerInput: RegisterInput) {
   register(registerInput: $registerInput) {
@@ -789,6 +740,73 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export const SheetsCurrentUserDocument = gql`
+    query SheetsCurrentUser {
+  sheetsCurrentUser {
+    response {
+      _id
+      advanceDirectives
+      allergies
+      bloodType
+      createdAt
+      currentTreatment
+      dateOfBirth
+      emergencyContacts {
+        fname
+        lname
+        phone
+        role
+      }
+      enabled
+      fname
+      lname
+      medicalHistory
+      nationality
+      organDonor
+      sex
+      smoker
+      treatingDoctor {
+        fname
+        lname
+        phone
+      }
+      updatedAt
+      user
+    }
+    errors {
+      field
+      message
+    }
+  }
+}
+    `;
+
+/**
+ * __useSheetsCurrentUserQuery__
+ *
+ * To run a query within a React component, call `useSheetsCurrentUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSheetsCurrentUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSheetsCurrentUserQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSheetsCurrentUserQuery(baseOptions?: Apollo.QueryHookOptions<SheetsCurrentUserQuery, SheetsCurrentUserQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SheetsCurrentUserQuery, SheetsCurrentUserQueryVariables>(SheetsCurrentUserDocument, options);
+      }
+export function useSheetsCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SheetsCurrentUserQuery, SheetsCurrentUserQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SheetsCurrentUserQuery, SheetsCurrentUserQueryVariables>(SheetsCurrentUserDocument, options);
+        }
+export type SheetsCurrentUserQueryHookResult = ReturnType<typeof useSheetsCurrentUserQuery>;
+export type SheetsCurrentUserLazyQueryHookResult = ReturnType<typeof useSheetsCurrentUserLazyQuery>;
+export type SheetsCurrentUserQueryResult = Apollo.QueryResult<SheetsCurrentUserQuery, SheetsCurrentUserQueryVariables>;
 export const UsersDocument = gql`
     query Users {
   users {
