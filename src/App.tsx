@@ -1,46 +1,51 @@
 import {Header} from './components/Header'; 
-import Basket from './pages/Basket'; 
-import Account from './pages/Account'; 
-import MedicalCard from './pages/MedicalCard'; 
-import SignUpPage from './pages/SignUpPage'; 
-import SignInPage from './pages/SignInPage'; 
+import Routes from './routes';
 import './App.css';
-import UserDashboard from './pages/UserDashboard';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
-import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { withApollo } from './apollo';
+import React, { useEffect, useState } from 'react';
 import { HeaderTypeEnum } from './components/Header';
+import { setAccessToken } from './utils/access-token';
+import { useWelcomeQuery } from './generated/graphql';
 
 
 function App() {
+  const [loading2, setLoading] = useState(true);
+  const { data, loading, error } = useWelcomeQuery();
+
+  if (loading) {
+    console.log("Chargement du message d'accueil ...");
+  }
+  if (error) {
+    console.log("T'es mauvais Jack");
+  }
+  if (data?.welcome) {
+    console.log("Ludwig il é tro for : "+data.welcome+ " <3");
+  }
+
+  useEffect(() => {
+    const refreshToken = async () => {
+      const res = await fetch(process.env.REACT_APP_API_BASE_URL + '/refresh_token', {
+        method: "POST",
+        credentials: "include"
+      })
+      const { accessToken } = await res.json();
+      setAccessToken(accessToken);
+      setLoading(false);
+    }
+    refreshToken()
+  }, []);
+
   return (
-    <Router>
+    <BrowserRouter>
     <div className="App h-full min-h-screen flex flex-col items-stretch">
       <Header type={HeaderTypeEnum.after} />
       <div className='w-full h-full content flex flex-row'>
-        <Switch>
-          <Route exact path="/">
-            <UserDashboard />
-          </Route>
-          <Route path="/medicalcard">
-            <MedicalCard />
-          </Route>
-          <Route path="/basket">
-            <Basket />
-          </Route>
-          <Route path="/account">
-            <Account />
-          </Route>
-          <Route path="/signup">
-            <SignUpPage />
-          </Route>
-          <Route path="/signin">
-            <SignInPage />
-          </Route>
-        </Switch>
+        <Routes />
       </div>
     </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default withApollo(App);

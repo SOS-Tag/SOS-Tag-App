@@ -1,0 +1,20 @@
+query Metoo {
+  currentUser {
+    response {
+      fname
+      lname
+      email
+      nationality
+      phone
+      address
+      zipCode
+      city
+      confirmed
+      activated
+    }
+    errors {
+      field
+      message
+    }
+  }
+}

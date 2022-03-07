@@ -1,0 +1,9 @@
+mutation ConfirmUser($token: String) {
+  confirmUser(token: $token) {
+    response
+    errors {
+      field
+      message
+    }
+  }
+}

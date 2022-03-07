@@ -1,0 +1,13 @@
+query Users {
+  users {
+    response {
+      _id
+      fname
+      lname
+    }
+    errors {
+      field
+      message
+    }
+  }
+}
