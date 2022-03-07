@@ -31,9 +31,12 @@ const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
 
     return (
         <>
-            <div className='noFlex'>
+            <div className='noFlex overflow-x-hidden'>
                 {/* <UserSwitch user={currentUserId} users={users} setUser={setUser} /> */}
-                <BlockQR />
+                <div className='MedicAside'>
+                    <UserSwitch />
+                    <BlockQR />
+                </div>
                 <MedicalForm />
                 {/* <ContactCard /> */}
             </div>
