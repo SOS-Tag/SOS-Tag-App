@@ -15,8 +15,8 @@ const UserSwitch: React.FC<UserSwitchType> = () => {
 
     const opts = [
         {
-            value: "A+",
-            name: "A+"
+            value: "Richard Ferrand",
+            name: "Richard Ferrand"
         },
         {
             value: "A-",

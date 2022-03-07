@@ -169,7 +169,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
                     <ContactCard editInfo={editInfo} />
 
-                    <Button box="fill" type="general" fullSize={true} buttonText="Valider les informations" />
+                    <Button box="fill" type="general" buttonText="Valider les informations" />
 
                 </form>
             </div>
