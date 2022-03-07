@@ -95,7 +95,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
     return (
         <>
-            <div className="hidden tablet:block fixed top-[10%] right-0 opacity-25">
+            <div className="hidden desktop:block fixed top-[10%] right-0 opacity-25">
                 <img className="" alt="imgSignUp" src="./assets/ImageSignIn.png" />
             </div>
             <div className="MedicalFormContainer">

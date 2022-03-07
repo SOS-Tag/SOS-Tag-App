@@ -99,6 +99,62 @@ h2 {
   background-color: var(--SosTagGrey);
 }
 
+.MedicalFormContainer {
+  margin : 5% 10vw;
+  padding: 0 10px;
+}
+
+.ContactCard {
+  background-color: var(--SosTagYellowLight);
+  padding: 20px 0px 20px 10px;
+  box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
+  width: 80vw;
+  margin-left: -2.5vw;
+}
+
+.noFlex {
+  width: 100vw;
+  height: 100%;
+  display: initial;
+}
+
+.formSectionHeader {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.MedicAside {
+  width: 100vw;
+  background-color: white;
+  max-height: 400px;
+  text-align: center;
+  box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
+  margin: 20px auto;
+  padding: 20px 10vw;
+}
+
+.formRowMedic {
+  grid-template-columns: [first] 0% [line2] 45% [line3] 10% [line4] 45% [line5] auto [end];
+}
+
+.formRowMedic-item-a {
+  grid-column-start: line2;
+  grid-column-end: line5;
+}
+
+.formRowMedic-item-b {
+  grid-column-start: line2;
+  grid-column-end: line5;
+}
+
+.formRowMedic-subtitle {
+  margin-bottom: 20px;
+}
+
+.MedicalFormContainer > form > button {
+  margin: 5% auto;
+}
+
 @media (max-width: 469px) {
   h1,
   h2 {
@@ -145,61 +201,7 @@ h2 {
     margin: auto;
   }
 
-  .MedicalFormContainer {
-    margin : 5% 10vw;
-    padding: 0 10px;
-  }
-
-  .ContactCard {
-    background-color: var(--SosTagYellowLight);
-    padding: 20px 0px 20px 10px;
-    box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
-    width: 80vw;
-    margin-left: -2.5vw;
-  }
   
-  .noFlex {
-    width: 100vw;
-    height: 100%;
-    display: initial;
-  }
-
-  .formSectionHeader {
-    display: flex;
-    margin-bottom: 20px;
-  }
-
-  .MedicAside {
-    width: 100vw;
-    background-color: white;
-    max-height: 400px;
-    text-align: center;
-    box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
-    margin: 20px auto;
-    padding: 20px 10vw;
-  }
-
-  .formRowMedic {
-    grid-template-columns: [first] 0% [line2] 45% [line3] 10% [line4] 45% [line5] auto [end];
-  }
-
-  .formRowMedic-item-a {
-    grid-column-start: line2;
-    grid-column-end: line5;
-  }
-
-  .formRowMedic-item-b {
-    grid-column-start: line2;
-    grid-column-end: line5;
-  }
-
-  .formRowMedic-subtitle {
-    margin-bottom: 20px;
-  }
-
-  .MedicalFormContainer > form > button {
-    margin: 5% auto;
-  }
 }
 
 @media (min-width: 470px) {
@@ -216,7 +218,9 @@ h2 {
     grid-column-start: line4;
     grid-column-end: line5;
   }
+}
 
+@media (min-width: 1280px) {
   .formRowMedic {
     grid-template-columns: [first] 0% [line2] 40% [line3] 10% [line4] 40% [line5] auto [end];
   }
