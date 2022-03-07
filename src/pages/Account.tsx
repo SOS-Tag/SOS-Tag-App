@@ -2,6 +2,12 @@ import Button from "../components/Button"
 import Field from "../components/field/Field";
 import React, { MouseEventHandler, ReactElement, useEffect, useState } from "react";
 import AlternativText from "../components/AlternativText";
+import { withAuth } from "../guards/auth";
+
+// TEST
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useLogoutMutation, useMeQuery } from "../generated/graphql";
+import { setAccessToken } from '../utils/access-token';
 
 type AccountType = {}
 
@@ -69,6 +75,15 @@ const Account: React.FC<AccountType> = ({}) => {
         alert("Vérifier les mots de passe indiqués !")
     }
 
+    // TEST 
+
+    const location = useLocation()
+    const navigate = useNavigate();
+    const { client, data } = useMeQuery({
+        fetchPolicy: 'network-only'
+    });
+
+    console.log("currentUser Account : "+ data?.currentUser?.response !);
 
     return ( 
         <div className="w-full">
@@ -109,7 +124,7 @@ const Account: React.FC<AccountType> = ({}) => {
      ); 
 }
  
-export default Account;
+export default withAuth(Account);
 
 /////////////////////////////////
 /* BANNER - RETURN ET TITLE  */ 

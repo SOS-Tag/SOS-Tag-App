@@ -1,4 +1,5 @@
 import React from "react";
+import { withAuth } from "../guards/auth";
 
 type BasketType = {}
 
@@ -8,4 +9,4 @@ const Basket: React.FC<BasketType> = ({}) => {
      );
 }
  
-export default Basket;
+export default withAuth(Basket);

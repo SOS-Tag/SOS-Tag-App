@@ -54,7 +54,7 @@ const SignInForm: React.FC<SignInFormProps> = () => {
         if (success) {
           success.accessToken && setAccessToken(success.accessToken);
           setIsLoggedIn(true);
-          navigate((location as Location)?.state?.from || '/')
+          navigate((location as Location)?.state?.from || '/users/all')
         }
     
         if (errors) {

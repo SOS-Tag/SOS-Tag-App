@@ -1,11 +1,16 @@
 import users from '../data/users.json';
 import GroupButtons from '../components/GroupButtons';
 import CardsList from '../components/CardsList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 
 import './UserDashboard.css';
 import { withAuth } from '../guards/auth';
+
+// TEST
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useLogoutMutation, useMeQuery } from "../generated/graphql";
+import { setAccessToken } from '../utils/access-token';
 
 type UserDashboardType = {
 }
@@ -59,6 +64,16 @@ const UserDashboard: React.FC<UserDashboardType> = ({}) => {
         else cpy.splice(index, 1);
         setSelectedIDs(cpy);
     }
+
+    // TEST 
+
+    const location = useLocation()
+    const navigate = useNavigate();
+    const { client, data } = useMeQuery({
+        fetchPolicy: 'network-only'
+    });
+
+    console.log("currentUser Dashboard : "+ data?.currentUser?.response !);
 
     return (
         <div className="userDashboard--container">

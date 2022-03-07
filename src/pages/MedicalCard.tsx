@@ -7,6 +7,7 @@ import UserSwitch from '../components/UserSwitch';
 
 import MedicCards from '../data/medicCards.json'
 import React from 'react';
+import { withAuth } from '../guards/auth';
 
 type MedicalCardType = {
     // currentUserId: number,
@@ -22,7 +23,6 @@ const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
 
     const getNewVersionOfCard = () => {
         console.log("coucou");
-
     }
 
     // useEffect({getNewVersionOfCard()}, [card])
@@ -41,4 +41,4 @@ const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
     );
 }
 
-export default MedicalCard;
+export default withAuth(MedicalCard);

@@ -1,4 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useLogoutMutation, useMeQuery } from "../generated/graphql";
+import { setAccessToken } from '../utils/access-token';
 import Button from "./Button";
 import Logo from "../assets/logo.jpg"
 import QrCodeSVG from "../assets/QrCodeSVG";
@@ -6,8 +8,7 @@ import BasketSVG from "../assets/BasketSVG";
 import AccountSVG from "../assets/AccountSVG";
 import "./Header.css"
 import React from "react";
-import { useLogoutMutation, useMeQuery } from "../generated/graphql";
-import { setAccessToken } from '../utils/access-token';
+
 import LogOutSVG from '../assets/logoutSVG';
 
 
@@ -35,12 +36,10 @@ export const Header: React.FC<HeaderType> = ({
   const [logout] = useLogoutMutation();
 
   const handleLogout = async () => {
-    console.log("Il est ou l'user avant ? "+ data?.currentUser?.response)
     navigate('/sign-in')
     await logout();
     setAccessToken('');
     client.resetStore();
-    console.log("Il est ou l'user après ? "+ data?.currentUser?.response)
   };
 
 
@@ -52,38 +51,38 @@ export const Header: React.FC<HeaderType> = ({
       {/* Menu Desktop */}
       <div className="NavDesktop">
         <a
-          className={`header--link-item ${location.pathname === "/" ? "selected" : ""}`} 
-          href="/"
+          className={`header--link-item ${location.pathname === "/users/all" ? "selected" : ""}`} 
+          href="/users/all"
         >
           Vue d'ensemble
         </a>
       
         <a
-          className={`header--link-item ${location.pathname === "/medicalcard" ? "selected" : ""}`} 
-          href="/medicalcard"
+          className={`header--link-item ${location.pathname === "/users/:userId" ? "selected" : ""}`} 
+          href="/users/:userId"
         >
           Fiche personnelle
         </a>
       
         <a
           className="header--link-item"
-          href="/basket"
+          href="/users/basket"
         >
-          <BasketSVG color={location.pathname === "/basket"? "#ec3e55" : "#19224F"}/>
+          <BasketSVG color={location.pathname === "/users/basket"? "#ec3e55" : "#19224F"}/>
         </a>
       
         <a
           className= "header--link-item" 
-          href="/account"
+          href="/users/me"
         >
-        <AccountSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
+        <AccountSVG color={location.pathname === "/users/me"? "#ec3e55" : "#19224F"}/>
         </a>
 
         <a
           className= "header--link-item" 
           onClick={handleLogout}
         >
-        <LogOutSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
+        <LogOutSVG color={"#19224F"}/>
         </a>
       </div>
 
@@ -91,33 +90,32 @@ export const Header: React.FC<HeaderType> = ({
       <div className="NavMobile">
         <a
           className="header--link-item"
-          href="/medicalcard"
+          href="/users/:userId"
         >
-          <QrCodeSVG color={location.pathname === "/medicalcard"? "#ec3e55" : "#19224F"}/>
+          <QrCodeSVG color={location.pathname === "/users/:userId"? "#ec3e55" : "#19224F"}/>
         </a>
 
         <a
           className="header--link-item"
-          href="/basket"
+          href="/users/basket"
         >
-          <BasketSVG color={location.pathname === "/basket"? "#ec3e55" : "#19224F"}/>
+          <BasketSVG color={location.pathname === "/users/basket"? "#ec3e55" : "#19224F"}/>
         </a>
       
         <a
           className= "header--link-item" 
-          href="/account"
+          href="/users/me"
         >
-          <AccountSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
+          <AccountSVG color={location.pathname === "/users/me"? "#ec3e55" : "#19224F"}/>
         </a>
 
         <a
           className= "header--link-item" 
           onClick={handleLogout}
         >
-        <LogOutSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
+        <LogOutSVG color={"#19224F"}/>
         </a>
       </div>
-      
     </>
   }
 
