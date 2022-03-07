@@ -8,6 +8,7 @@ import "./Header.css"
 import React from "react";
 import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 import { setAccessToken } from '../utils/access-token';
+import LogOutSVG from '../assets/logoutSVG';
 
 
 export enum HeaderTypeEnum {
@@ -44,7 +45,7 @@ export const Header: React.FC<HeaderType> = ({
 
 
 
-  if (type === "afterSignIn") {
+  if (data?.currentUser?.response !== undefined) {
     contenu = 
     <>
 
@@ -63,10 +64,6 @@ export const Header: React.FC<HeaderType> = ({
         >
           Fiche personnelle
         </a>
-
-        <a onClick={handleLogout}>
-          {data?.currentUser?.response !== undefined ? "Connecté" : "Se déconnecter"}
-        </a>
       
         <a
           className="header--link-item"
@@ -80,6 +77,13 @@ export const Header: React.FC<HeaderType> = ({
           href="/account"
         >
         <AccountSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
+        </a>
+
+        <a
+          className= "header--link-item" 
+          onClick={handleLogout}
+        >
+        <LogOutSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
         </a>
       </div>
 
@@ -105,17 +109,30 @@ export const Header: React.FC<HeaderType> = ({
         >
           <AccountSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
         </a>
+
+        <a
+          className= "header--link-item" 
+          onClick={handleLogout}
+        >
+        <LogOutSVG color={location.pathname === "/account"? "#ec3e55" : "#19224F"}/>
+        </a>
       </div>
       
     </>
   }
 
 
-  if (type === "beforeSignIn") {
+  if (data?.currentUser?.response === undefined) {
     contenu = 
     <>
-      <Button box="stroke" type="general" buttonText="S'inscrire"/>
-      <Button box="fill" type ="general" buttonText="Se connecter"/> 
+      <div className="NavDesktop">
+        <a href="/sign-up"><Button box="stroke" type="general" buttonText="S'inscrire"/></a>
+        <a href="/sign-in"><Button box="fill" type ="general" buttonText="Se connecter"/></a>
+      </div>
+      <div className="NavMobile">
+        <a href="/sign-up"><Button box="stroke" type="general" buttonText="S'inscrire"/></a>
+        <a href="/sign-up"><Button box="fill" type ="general" buttonText="Se connecter"/></a>
+      </div>
     </>
   }
   
