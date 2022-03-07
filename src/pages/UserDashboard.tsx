@@ -4,6 +4,8 @@ import CardsList from '../components/CardsList';
 import { useState } from 'react';
 import React from 'react';
 
+import './UserDashboard.css';
+
 type UserDashboardType = {
 }
 
@@ -58,13 +60,13 @@ const UserDashboard: React.FC<UserDashboardType> = ({}) => {
     }
 
     return (
-        <div className="flex flex-col h-[fit-content] gap-[70px] py-[70px] px-[20px] w-[1100px] mx-auto">
+        <div className="userDashboard--container">
 
             <h1>Bienvenue dans votre espace</h1>
 
-            <div className="flex justify-between flex-wrap">
+            <div className="flex justify-between flex-wrap mobile:mb-[30px]">
 
-                <div className="flex gap-[22px] items-center">
+                <div className="flex gap-[22px] mobile:mt-[30px] items-center">
                     <input type="checkbox" name="ud-select-all" onClick={selectAll}/>
                     <label htmlFor="ud-select-all">Tout sélectionner</label>
                 </div>

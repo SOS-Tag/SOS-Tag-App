@@ -2,39 +2,94 @@
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
-  min-height: 80px;
+  max-width: 100vw;
   background-color: white;
   box-shadow: 0px -7px 30px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 100px 0 100px;
   z-index: 1;
 }
 
-.header--logo {
-  width: 8rem;
-  height: auto;
-  margin-right: 0.5rem;
-  animation: rotate 0.7s ease-in-out 0.5s;
-}
-
-.header--links {
-  display: flex;
-  flex-direction: row;
-}
-
-.header--link-item {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  text-align: center;
-  text-decoration: none;
-  color: var(--SosTagBlue);
-  padding: 0 5.25rem 0 0;
-}
-
 .selected {
-  color: var(--SosTagRed);
+  color: var(--SosTagRed) !important;
+}
+
+@media (max-width: 469px) {
+  .header {
+    height: 60px;
+  }
+
+  .header--logo {
+    height: 40px;
+    width: auto;
+    margin-left: 5vw;
+    animation: rotate 0.7s ease-in-out 0.5s;
+  }
+
+  .header--links {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .header--link-item {
+    margin-right: 5vw;
+  }
+
+  .header--link-item:last-child {
+    margin-right: 5vw;
+  }
+
+  .NavMobile {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .NavDesktop {
+    display: none;
+  }
+}
+
+@media (min-width: 470px) {
+  .NavMobile {
+    display: none;
+  }
+
+  .NavDesktop {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .header--logo {
+    width: 8rem;
+    height: auto;
+    margin-right: 0.5rem;
+    animation: rotate 0.7s ease-in-out 0.5s;
+  }
+
+  .header {
+    min-height: 80px;
+    padding: 0 100px 0 100px;
+  }
+
+  .header--links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header--link-item {
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    text-decoration: none;
+    margin: auto;
+    color: var(--SosTagBlue);
+    padding: 0 5.25rem 0 0;
+  }
+
+  .header--link-item:last-child {
+    padding-right: 0px;
+  }
 }

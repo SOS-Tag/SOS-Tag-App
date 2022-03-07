@@ -1,0 +1,20 @@
+.userDashboard--container {
+  height: fit-content;
+  gap: 70px;
+  width: 80vw;
+  margin: 0 auto 0 auto;
+}
+
+@media (max-width: 469px) {
+  .userDashboard--container {
+    padding-top: 20px;
+  }
+}
+
+@media (min-width: 470px) {
+  .userDashboard--container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px;
+  }
+}

@@ -7,14 +7,17 @@ const Button: React.FC<ButtonType> = ({
   box,
   type,
   buttonText, 
+  fullSize = false,
   onClick
 }) => {
+
+  let fullSizeClass = (fullSize)?' buttonFullSize ':'';
 
   function buttonLink(){
     return(
       <a href={to}>
         <button 
-          className={"button " + box + "--button--"+ type +"--sostag"}
+          className={"button " + box + "--button--"+ type +"--sostag " + fullSizeClass}
           onClick={onClick}
         >
           {buttonText} 
@@ -26,7 +29,7 @@ const Button: React.FC<ButtonType> = ({
   function buttonStandard(){
     return(
       <button 
-        className={"button " + box + "--button--"+ type +"--sostag"}
+        className={"button " + box + "--button--"+ type +"--sostag " + fullSizeClass}
         onClick={onClick}
       >
         {buttonText} 

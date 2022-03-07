@@ -18,7 +18,7 @@ const CardsList: React.FC<CardListType> = ({
 }) => {
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,_minmax(min(220px,_100%),_1fr))] gap-[40px]">
+    <div className="grid mobile:grid-cols-1 tablet:grid-cols-[repeat(auto-fill,_minmax(min(220px,_100%),_1fr))] gap-[40px] mobile:mb-[30px]">
       {users.map(user => (
         <UserCard key={`uc-${user.id}`} id={user.id} type={user.id === "1" ? "main" : "child"} lastname={user.name} firstname={user.firstname} handleSelect={handleSelect}/>
       ))}

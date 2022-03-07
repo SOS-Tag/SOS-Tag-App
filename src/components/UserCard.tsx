@@ -44,7 +44,7 @@ const UserCard: React.FC<UserCardProps> = ({
 
     return (
         <div 
-            className={`${color} relative min-h-[326px] rounded-[12px] p-[20px] cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] transition duration-200 hover:scale-[1.02]`} 
+            className={`${color} mobile:max-w-[100%] relative tablet:min-h-[326px] rounded-[12px] p-[20px] cursor-pointer shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] transition duration-200 hover:scale-[1.02]`} 
         >
             {displayUserCard()}
         </div>
