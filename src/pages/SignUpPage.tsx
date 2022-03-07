@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import 'react-phone-number-input/style.css'
 import { TextMessageType } from '../components/Types';
 import { text } from 'stream/consumers';
+import { useRegisterMutation } from '../generated/graphql';
 
 const SignUpPage = () => {
 
@@ -13,43 +14,18 @@ const SignUpPage = () => {
   const [errorMail, setErrorMail] = useState(false);
   const [errorPwd, setErrorPwd] = useState(false);
 
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [register] = useRegisterMutation()
+
   function handleConsent(){
     (consent)?setConsent(false):setConsent(true);
   }
 
-  // function checkform(event: Event){
-  //   let condition = true;
-  //   if(password1 !== password2){
-  //     condition = false;
-  //     if(!errorPwd)
-  //       setErrorPwd(true);
-  //   }
-  //   else{
-  //     if(errorPwd)
-  //       setErrorPwd(false);
-  //   }
-  //   if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))){
-  //     condition = false;
-  //     if(!errorMail)
-  //       setErrorMail(true);
-  //   }
-  //   else{
-  //     if(errorMail)
-  //       setErrorMail(false);
-  //   }
-  //   if(!consent){
-  //     condition = false;
-  //   }
-  //   if(condition){
-  //     alert("formulaire valide");
-  //   }
-  //   else{
-  //     event.preventDefault();
-  //     alert("formulaire invalide")
-  //   }
-  // }
-
-  function checkform(event: any){
+  async function checkform(event: any){
     event.preventDefault();
     console.log(event.target.firstname.value);
     console.log(event.target.lastname.value);
@@ -57,6 +33,16 @@ const SignUpPage = () => {
     console.log(event.target.phone.value);
     console.log(event.target.password1.value);
     console.log(event.target.password2.value);
+
+    setIsLoading(true);
+
+    const values = {
+      fname: event.target.firstname.value, 
+      lname: event.target.lastname.value, 
+      phone: event.target.phone.value,
+      email: event.target.mail.value, 
+      password: event.target.password1.value
+    }
 
     let condition = true;
     if(event.target.password1.value !== event.target.password2.value){
@@ -82,6 +68,32 @@ const SignUpPage = () => {
     }
     if(condition){
       alert("formulaire valide");
+
+      // We use the register mutation as we implement the registration of a Firebase user
+      // on the backend.
+      // When a user is created, we also create an account which shares the id and the
+      // email (not sure for now about the email) of the new user.
+      const response = await register({ variables: { registerInput: values } });
+
+      setIsLoading(false);
+
+      const success = response?.data?.register?.response;
+      const errors = response?.data?.register?.errors;
+
+      if (success) {
+        setIsRegistered(true);
+      }
+
+      if (errors) {
+        // Normally, error handling must be way more precise.
+        // The API is able to return an array of errors with the field associated, specially when it comes
+        // to forms, to dispatch it along it and its inputs.
+        // Good practice would allows us to use the name of the field we define in the api for each field
+        // to target the input that shares the same field name.
+        // Here we just take the first error (only the message) of the array to display it in a top block error message.
+        setError(errors[0]?.message as string)
+      }
+
     }
     else{
       event.preventDefault();
@@ -135,7 +147,7 @@ const SignUpPage = () => {
                 J'accepte les conditions générales d'utilisation et les conditions générales de vente. Je consens au traitement de mes données conformément à la politique de confidentialité de SOS Tag.
               </p>
             </div>
-            <div className='mobile:hidden'>
+            <div className='mobile:hidden tablet:block'>
               <Button box="fill" type="general" buttonText="Valider"/>    
             </div>
             <div className='tablet:hidden w-[80vw] ml-[10vw] mb-[20px]'>
