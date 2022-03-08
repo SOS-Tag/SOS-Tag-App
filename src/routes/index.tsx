@@ -5,6 +5,7 @@ import MedicalCard from '../pages/MedicalCard';
 import SignUpPage from '../pages/SignUpPage'; 
 import SignInPage from '../pages/SignInPage'; 
 import UserDashboard from '../pages/UserDashboard';
+import NewSheetById from '../pages/NewSheetById';
 import Page404 from '../pages/Page404';
 import Welcome from '../pages/Welcome';
 import React from 'react';
@@ -51,6 +52,7 @@ export const routes = [
       { path: 'basket', element: <Basket /> },
       { path: 'all', element: <UserDashboard />},
       { path: ':userId', element: <MedicalCard /> },
+      { path: 'sheet-by-id', element: <NewSheetById />}
     ]
   },
   { path: '*', element: <Page404 /> }

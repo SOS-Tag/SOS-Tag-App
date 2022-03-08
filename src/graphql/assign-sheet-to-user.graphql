@@ -1,0 +1,11 @@
+mutation AssignSheetToUser($assignSheetToUserInput: AssignSheetToUserInput) {
+  assignSheetToUser(assignSheetToUserInput: $assignSheetToUserInput) {
+    response {
+      _id
+    }
+    errors {
+      field
+      message
+    }
+  }
+}

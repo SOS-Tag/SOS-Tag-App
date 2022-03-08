@@ -403,6 +403,13 @@ export type UsersResponse = {
   response?: Maybe<Array<User>>;
 };
 
+export type AssignSheetToUserMutationVariables = Exact<{
+  assignSheetToUserInput?: InputMaybe<AssignSheetToUserInput>;
+}>;
+
+
+export type AssignSheetToUserMutation = { __typename?: 'Mutation', assignSheetToUser?: { __typename?: 'SheetResponse', response?: { __typename?: 'Sheet', _id?: string | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+
 export type ChangePasswordMutationVariables = Exact<{
   changePasswordInput?: InputMaybe<ChangePasswordInput>;
 }>;
@@ -464,6 +471,45 @@ export type WelcomeQueryVariables = Exact<{ [key: string]: never; }>;
 export type WelcomeQuery = { __typename?: 'Query', welcome?: string | null };
 
 
+export const AssignSheetToUserDocument = gql`
+    mutation AssignSheetToUser($assignSheetToUserInput: AssignSheetToUserInput) {
+  assignSheetToUser(assignSheetToUserInput: $assignSheetToUserInput) {
+    response {
+      _id
+    }
+    errors {
+      field
+      message
+    }
+  }
+}
+    `;
+export type AssignSheetToUserMutationFn = Apollo.MutationFunction<AssignSheetToUserMutation, AssignSheetToUserMutationVariables>;
+
+/**
+ * __useAssignSheetToUserMutation__
+ *
+ * To run a mutation, you first call `useAssignSheetToUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAssignSheetToUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [assignSheetToUserMutation, { data, loading, error }] = useAssignSheetToUserMutation({
+ *   variables: {
+ *      assignSheetToUserInput: // value for 'assignSheetToUserInput'
+ *   },
+ * });
+ */
+export function useAssignSheetToUserMutation(baseOptions?: Apollo.MutationHookOptions<AssignSheetToUserMutation, AssignSheetToUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AssignSheetToUserMutation, AssignSheetToUserMutationVariables>(AssignSheetToUserDocument, options);
+      }
+export type AssignSheetToUserMutationHookResult = ReturnType<typeof useAssignSheetToUserMutation>;
+export type AssignSheetToUserMutationResult = Apollo.MutationResult<AssignSheetToUserMutation>;
+export type AssignSheetToUserMutationOptions = Apollo.BaseMutationOptions<AssignSheetToUserMutation, AssignSheetToUserMutationVariables>;
 export const ChangePasswordDocument = gql`
     mutation ChangePassword($changePasswordInput: ChangePasswordInput) {
   changePassword(changePasswordInput: $changePasswordInput) {

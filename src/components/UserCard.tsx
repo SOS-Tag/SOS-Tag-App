@@ -1,4 +1,6 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Location } from '../routes';
 import Toggle from "./Toggle";
 
 type UserCardProps = {
@@ -16,6 +18,8 @@ const UserCard: React.FC<UserCardProps> = ({
   firstname,
   handleSelect
 }) => {
+
+    
 
     const displayUserCard = () => {
         switch (type) {
@@ -59,6 +63,8 @@ const UserCardBasic: React.FC<UserCardProps> = ({
   handleSelect
 }): JSX.Element => {
 
+    
+
     return (
         <div className="flex flex-col items-center justify-center gap-[32px] h-[100%]" onClick={() => alert("[A FAIRE] Afficher la fiche médicale.")}>
 
@@ -86,8 +92,11 @@ const UserCardBasic: React.FC<UserCardProps> = ({
 
 const UserCardAdd = () => {
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
     return (
-        <div className="flex flex-col items-center justify-center h-[100%]" onClick={() => alert("[A FAIRE] Ajouter un profil.")}>
+        <div className="flex flex-col items-center justify-center h-[100%]" onClick={() => navigate((location as Location)?.state?.from || '/users/sheet-by-id')}>
             <div className="relative flex items-center justify-center w-[55px] h-[55px]">
                 <div className="absolute bg-white w-[100%] h-[10%]"></div>
                 <div className="absolute bg-white w-[10%] h-[100%]"></div>

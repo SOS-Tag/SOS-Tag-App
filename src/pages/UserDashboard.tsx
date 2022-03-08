@@ -9,7 +9,7 @@ import { withAuth } from '../guards/auth';
 
 // TEST
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useLogoutMutation, useMeQuery } from "../generated/graphql";
+import { useLogoutMutation, useMeQuery, useSheetsCurrentUserQuery } from "../generated/graphql";
 import { setAccessToken } from '../utils/access-token';
 
 type UserDashboardType = {
@@ -18,6 +18,7 @@ type UserDashboardType = {
 const UserDashboard: React.FC<UserDashboardType> = ({}) => {
 
     const [selectedIDs, setSelectedIDs] = useState([]);
+    const [sheets, setSheets] = useState();
 
     // BUTTON ACTIONS
 
@@ -67,13 +68,34 @@ const UserDashboard: React.FC<UserDashboardType> = ({}) => {
 
     // TEST 
 
-    const location = useLocation()
-    const navigate = useNavigate();
-    const { client, data } = useMeQuery({
-        fetchPolicy: 'network-only'
-    });
+    // const location = useLocation()
+    // const navigate = useNavigate();
+    // const { client, data } = useMeQuery({
+    //     fetchPolicy: 'network-only'
+    // });
 
-    console.log("currentUser Dashboard : "+ data?.currentUser?.response !);
+    // console.log("currentUser Dashboard : "+ data?.currentUser?.response?.email !);
+
+    const { data, loading, error } = useSheetsCurrentUserQuery({ fetchPolicy: 'network-only' });
+
+    if (loading) {
+        console.log("En attente des informations de l'utilisateur connecté ...")
+    }
+
+    if (error) {
+        console.log(error.message)
+    }
+
+    if (data?.sheetsCurrentUser?.errors) {
+        console.log(data.sheetsCurrentUser.errors[0]?.message as string)
+    }
+
+    console.log(data?.sheetsCurrentUser?.response);
+
+    // if(data?.sheetsCurrentUser?.response !== []){
+    //     setSheets(data?.sheetsCurrentUser?.response);
+    // }
+    
 
     return (
         <div className="userDashboard--container">

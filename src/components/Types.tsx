@@ -1,3 +1,5 @@
+import { SheetContact } from "../generated/graphql"
+
 export type MedicalCardTypeGeneral = {
   name: string,
   surname: string,
