@@ -8,6 +8,7 @@ const Button: React.FC<ButtonType> = ({
   type,
   buttonText, 
   fullSize = false,
+  form,
   onClick
 }) => {
 
@@ -18,6 +19,7 @@ const Button: React.FC<ButtonType> = ({
       <a href={to}>
         <button 
           className={"button " + box + "--button--"+ type +"--sostag " + fullSizeClass}
+          form = {form}
           onClick={onClick}
         >
           {buttonText} 
@@ -30,6 +32,7 @@ const Button: React.FC<ButtonType> = ({
     return(
       <button 
         className={"button " + box + "--button--"+ type +"--sostag " + fullSizeClass}
+        form = {form}
         onClick={onClick}
       >
         {buttonText} 

@@ -23,9 +23,10 @@ const Account: React.FC<AccountType> = ({}) => {
     const [surname, setSurname] = useState("RICHARD");
     const [mail, setMail] = useState("pascal.richard@gmail.com");
     const [tel, setTel] = useState("0675463524");
-    const [postale, setPostale] = useState("33 rue des Camélia 13000 Marseille");
-    const [facturation, setFacturation] = useState("33 rue des Camélia 13000 Marseille");
-    
+    const [address, setAddress] = useState("---");
+    const [zipCode, setZipCode] = useState("---");
+    const [city, setCity] = useState("---");
+
     const [passwordInit, setPasswordInit] = useState("");
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
@@ -62,8 +63,7 @@ const Account: React.FC<AccountType> = ({}) => {
     }
 
     const saveChange = () => {
-        alert("[A FAIRE] Les informations de l'utilisateur se mettent à jours !")
-    
+      alert("[A FAIRE] Les informations de l'utilisateur se mettent à jours !")
     }
 
     const handleValidation = () => {
@@ -79,12 +79,23 @@ const Account: React.FC<AccountType> = ({}) => {
 
     const location = useLocation()
     const navigate = useNavigate();
-    const { client, data } = useMeQuery({
+    const { client, data, loading } = useMeQuery({
         fetchPolicy: 'network-only'
     });
 
-    console.log("currentUser Account : "+ data?.currentUser?.response !);
-
+    useEffect(() => {
+      //console.log("currentUser Account : "+ data?.currentUser?.response?.email);
+      if(loading === false){
+      data?.currentUser?.response?.fname && setName(data?.currentUser?.response?.fname)
+      data?.currentUser?.response?.lname && setSurname(data?.currentUser?.response?.lname)
+      data?.currentUser?.response?.email && setMail(data?.currentUser?.response?.email)
+      data?.currentUser?.response?.phone && setTel(data?.currentUser?.response?.phone)
+      data?.currentUser?.response?.address && setAddress(data?.currentUser?.response?.address)
+      data?.currentUser?.response?.zipCode && setZipCode(data?.currentUser?.response?.zipCode)
+      data?.currentUser?.response?.city && setAddress(data?.currentUser?.response?.city)
+    }
+    },[]);
+    
     return ( 
         <div className="w-full">
 
@@ -93,8 +104,11 @@ const Account: React.FC<AccountType> = ({}) => {
             <Banner title="Gestion de votre compte" />
             <div className="flex flex-row">
                 <GroupManage modifyClick={modifyInfo} passwordClick={modifyPage} textButton={textModifyButton} typeButton={typeModifyButton} />
-                <UserInfo modify={modify} name={name} surname={surname} tel={tel} mail={mail} postale={postale} facturation={facturation} /> 
+                <UserInfo modify={modify} name={name} surname={surname} tel={tel} mail={mail} postale={address} facturation={address} /> 
             </div>
+
+            <input value={name} onChange={e => setName(e.target.value)}/>
+            <input readOnly value={name}/>
             </>
             : (nbPage === 1) ?
             <>
@@ -180,7 +194,7 @@ const GroupManage: React.FC<GroupManageType> = ({
             </svg>
 
             <div className="flex flex-col ml-10 mr-10 ">
-                <Button box={typeButton} type="general" buttonText={textButton} onClick={modifyClick}/>
+                <Button box={typeButton} type="general"  buttonText={textButton} onClick={modifyClick}/>
                 <Button box="fill" type="secondaire" buttonText="Changer de mot de passe" onClick={passwordClick}/>
             </div>
             <p>Supprimer le compte</p>
@@ -217,10 +231,10 @@ const UserInfo: React.FC<UserInfoType> = ({
         nameAndSurname = 
         <div className="formRow2 w-full grid">
             <div className="formRow2-item-a">
-                <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Prénom" mandatory={true}/>
+                <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Prénom" mandatory={false}/>
             </div>
             <div className="formRow2-item-b">
-                <Field editing={true} name={"lastname"} type="text" placeholder={surname} label="Nom" mandatory={true}/>
+                <Field editing={true} name={"lastname"} type="text" placeholder={surname} label="Nom" mandatory={false}/>
             </div>
         </div>
 
@@ -234,24 +248,29 @@ const UserInfo: React.FC<UserInfoType> = ({
 
     return ( 
 
-        <form className="UserInfo w-3/5" action="">
+      <>
+        <form id="userInfo" className="UserInfo w-3/5" >
             {nameAndSurname}
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={modify} type="text" name={"mail"} placeholder={mail} label="Adresse mail" mandatory={true}/>
+                    <Field editing={modify} type="text" name={"mail"} placeholder={mail} label="Adresse mail" mandatory={false}/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={modify} type="tel" name={"phone"} placeholder={tel} label="Numéro de téléphone" mandatory={true}/>
+                    <Field editing={modify} type="tel" name={"phone"} placeholder={tel} label="Numéro de téléphone" mandatory={false}/>
                 </div>
             </div>
             <div className="formRow2 w-full grid">
                 <div className="formRow2-item-a">
-                    <Field editing={modify} type="text" name={"adress"} placeholder={postale} label="Adresse postale" mandatory={true}/>
+                    <Field editing={modify} type="text" name={"adress"} placeholder={postale} label="Adresse postale" mandatory={false}/>
                 </div>
                 <div className="formRow2-item-b">
-                    <Field editing={modify} type="text" name={"bill"} placeholder={facturation} label="Adresse de facturation" mandatory={true}/>
+                    <Field editing={modify} type="text" name={"bill"} placeholder={facturation} label="Adresse de facturation" mandatory={false}/>
                 </div>
             </div>
         </form>
+
+        
+        
+      </>
      );
 }

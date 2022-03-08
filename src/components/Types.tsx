@@ -82,6 +82,7 @@ export enum TextMessageType {
 export type ButtonType = {
   to?: string,
   box?: string,
+  form?: string,
   type: string,
   buttonText: string,
   fullSize?: boolean,

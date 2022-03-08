@@ -31,7 +31,7 @@ const EditableField: React.FC<editableFieldType> = ({
   let temp: E164Number | undefined;
   const [tel, setTel] = useState(temp);
   const [input, setInput] = useState(temp);
-  const [value,setValue] = useState('');
+  const [value,setValue] = useState(placeholder);
   const css = "semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow";
 
   function handleValue(event: any){
