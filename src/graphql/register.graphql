@@ -5,9 +5,17 @@ mutation Register($registerInput: RegisterInput) {
       lname
       email
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }

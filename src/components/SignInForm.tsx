@@ -49,7 +49,7 @@ const SignInForm: React.FC<SignInFormProps> = () => {
         setIsLoading(false);
     
         const success = response?.data?.login?.response;
-        const errors = response?.data?.login?.errors;
+        const error = response?.data?.login?.error;
     
         if (success) {
           success.accessToken && setAccessToken(success.accessToken);
@@ -57,8 +57,8 @@ const SignInForm: React.FC<SignInFormProps> = () => {
           navigate((location as Location)?.state?.from || '/users/all')
         }
     
-        if (errors) {
-          setError(errors[0]?.message as string)
+        if (error) {
+          setError(error?.message as string)
         }
       };
 

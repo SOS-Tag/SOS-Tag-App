@@ -78,20 +78,14 @@ const SignUpPage = () => {
       setIsLoading(false);
 
       const success = response?.data?.register?.response;
-      const errors = response?.data?.register?.errors;
+      const error = response?.data?.register?.error;
 
       if (success) {
         setIsRegistered(true);
       }
 
-      if (errors) {
-        // Normally, error handling must be way more precise.
-        // The API is able to return an array of errors with the field associated, specially when it comes
-        // to forms, to dispatch it along it and its inputs.
-        // Good practice would allows us to use the name of the field we define in the api for each field
-        // to target the input that shares the same field name.
-        // Here we just take the first error (only the message) of the array to display it in a top block error message.
-        setError(errors[0]?.message as string)
+      if (error) {
+        setError(error?.message as string)
       }
 
     }

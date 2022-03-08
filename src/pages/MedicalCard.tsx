@@ -29,8 +29,8 @@ const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
         console.log(error.message)
     }
 
-    if (data?.sheetsCurrentUser?.errors) {
-        console.log(data.sheetsCurrentUser.errors[0]?.message as string)
+    if (data?.sheetsCurrentUser?.error) {
+        console.log(data.sheetsCurrentUser.error?.message as string)
     }
 
     console.log(data?.sheetsCurrentUser?.response);

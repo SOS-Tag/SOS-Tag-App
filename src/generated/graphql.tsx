@@ -40,7 +40,7 @@ export type AssignSheetToUserInput = {
 /** Boolean response */
 export type BooleanResponse = {
   __typename?: 'BooleanResponse';
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   response?: Maybe<Scalars['Boolean']>;
 };
 
@@ -51,10 +51,24 @@ export type ChangePasswordInput = {
 };
 
 /** Error with message and the associated field */
-export type FieldError = {
-  __typename?: 'FieldError';
-  field?: Maybe<Scalars['String']>;
+export type ExtendedError = {
+  __typename?: 'ExtendedError';
+  code?: Maybe<Scalars['Float']>;
+  fields?: Maybe<Array<Maybe<InputError>>>;
   message?: Maybe<Scalars['String']>;
+  retryAfter?: Maybe<Scalars['Float']>;
+  timestamp?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  wwwAuthenticate?: Maybe<Scalars['String']>;
+};
+
+/** Error with message */
+export type InputError = {
+  __typename?: 'InputError';
+  detail?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
 };
 
 /** Login input */
@@ -66,7 +80,7 @@ export type LoginInput = {
 /** Login response */
 export type LoginResponse = {
   __typename?: 'LoginResponse';
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   response?: Maybe<LoginResponseData>;
 };
 
@@ -109,8 +123,10 @@ export type Mutation = {
   resendConfirmationLink?: Maybe<BooleanResponse>;
   /** Update the currently logged in user. */
   updateCurrentUser?: Maybe<UserResponse>;
-  /** Update a sheet. */
-  updateSheet?: Maybe<SheetResponse>;
+  /** Update one of the current user sheets. */
+  updateCurrentUserSheet?: Maybe<SheetResponse>;
+  /** Update user. */
+  updateUser?: Maybe<UserResponse>;
 };
 
 
@@ -164,15 +180,20 @@ export type MutationUpdateCurrentUserArgs = {
 };
 
 
-export type MutationUpdateSheetArgs = {
-  updateSheetInput?: InputMaybe<UpdateSheetInput>;
+export type MutationUpdateCurrentUserSheetArgs = {
+  updateCurrentUserSheetInput?: InputMaybe<UpdateCurrentUserSheetInput>;
+};
+
+
+export type MutationUpdateUserArgs = {
+  updateUserInput?: InputMaybe<UpdateUserInput>;
 };
 
 /** Paginated QR Code response */
 export type PaginatedQrCodeResponse = {
   __typename?: 'PaginatedQRCodeResponse';
   currentPage?: Maybe<Scalars['Int']>;
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   hasMore?: Maybe<Scalars['Boolean']>;
   items?: Maybe<Array<Maybe<QrCode>>>;
   totalPages?: Maybe<Scalars['Int']>;
@@ -196,14 +217,14 @@ export type QrCode = {
 /** QR Code response */
 export type QrCodeResponse = {
   __typename?: 'QRCodeResponse';
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   response?: Maybe<QrCode>;
 };
 
 /** QR Codes response */
 export type QrCodesResponse = {
   __typename?: 'QRCodesResponse';
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   response?: Maybe<Array<QrCode>>;
 };
 
@@ -319,14 +340,14 @@ export type SheetDoctorContactInput = {
 /** Sheet response */
 export type SheetResponse = {
   __typename?: 'SheetResponse';
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   response?: Maybe<Sheet>;
 };
 
 /** Sheets response */
 export type SheetsResponse = {
   __typename?: 'SheetsResponse';
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   response?: Maybe<Array<Sheet>>;
 };
 
@@ -345,7 +366,7 @@ export type UpdateCurrentUserInput = {
 };
 
 /** Sheet fields to be changed with an update operation */
-export type UpdateSheetChangesInput = {
+export type UpdateCurrentUserSheetChangesInput = {
   advanceDirectives?: InputMaybe<Scalars['Boolean']>;
   allergies?: InputMaybe<Scalars['String']>;
   bloodType?: InputMaybe<Scalars['String']>;
@@ -364,9 +385,26 @@ export type UpdateSheetChangesInput = {
 };
 
 /** Update Sheet input */
-export type UpdateSheetInput = {
-  changes?: InputMaybe<UpdateSheetChangesInput>;
+export type UpdateCurrentUserSheetInput = {
+  changes?: InputMaybe<UpdateCurrentUserSheetChangesInput>;
   id?: InputMaybe<Scalars['String']>;
+};
+
+/** Update user input */
+export type UpdateUserInput = {
+  activated?: InputMaybe<Scalars['Boolean']>;
+  address?: InputMaybe<Scalars['String']>;
+  city?: InputMaybe<Scalars['String']>;
+  confirmed?: InputMaybe<Scalars['Boolean']>;
+  email?: InputMaybe<Scalars['String']>;
+  fname?: InputMaybe<Scalars['String']>;
+  lname?: InputMaybe<Scalars['String']>;
+  nationality?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  roles?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  tokenVersion?: InputMaybe<Scalars['Float']>;
+  zipCode?: InputMaybe<Scalars['String']>;
 };
 
 /** User Schema */
@@ -384,6 +422,7 @@ export type User = {
   nationality?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
+  roles?: Maybe<Array<Maybe<Scalars['String']>>>;
   tokenVersion?: Maybe<Scalars['Int']>;
   updatedAt?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
@@ -392,14 +431,14 @@ export type User = {
 /** User response */
 export type UserResponse = {
   __typename?: 'UserResponse';
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   response?: Maybe<User>;
 };
 
 /** Users response */
 export type UsersResponse = {
   __typename?: 'UsersResponse';
-  errors?: Maybe<Array<FieldError>>;
+  error?: Maybe<ExtendedError>;
   response?: Maybe<Array<User>>;
 };
 
@@ -408,21 +447,21 @@ export type AssignSheetToUserMutationVariables = Exact<{
 }>;
 
 
-export type AssignSheetToUserMutation = { __typename?: 'Mutation', assignSheetToUser?: { __typename?: 'SheetResponse', response?: { __typename?: 'Sheet', _id?: string | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+export type AssignSheetToUserMutation = { __typename?: 'Mutation', assignSheetToUser?: { __typename?: 'SheetResponse', response?: { __typename?: 'Sheet', _id?: string | null } | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type ChangePasswordMutationVariables = Exact<{
   changePasswordInput?: InputMaybe<ChangePasswordInput>;
 }>;
 
 
-export type ChangePasswordMutation = { __typename?: 'Mutation', changePassword?: { __typename?: 'UserResponse', response?: { __typename?: 'User', email?: string | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+export type ChangePasswordMutation = { __typename?: 'Mutation', changePassword?: { __typename?: 'UserResponse', response?: { __typename?: 'User', email?: string | null } | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type ConfirmUserMutationVariables = Exact<{
   token?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type ConfirmUserMutation = { __typename?: 'Mutation', confirmUser?: { __typename?: 'BooleanResponse', response?: boolean | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+export type ConfirmUserMutation = { __typename?: 'Mutation', confirmUser?: { __typename?: 'BooleanResponse', response?: boolean | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type ForgotPasswordMutationVariables = Exact<{
   userEmail?: InputMaybe<Scalars['String']>;
@@ -436,34 +475,34 @@ export type LoginMutationVariables = Exact<{
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'LoginResponse', response?: { __typename?: 'LoginResponseData', accessToken?: string | null, user?: { __typename?: 'User', email?: string | null } | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'LoginResponse', response?: { __typename?: 'LoginResponseData', accessToken?: string | null, user?: { __typename?: 'User', email?: string | null } | null } | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LogoutMutation = { __typename?: 'Mutation', logout?: { __typename?: 'BooleanResponse', response?: boolean | null, errors?: Array<{ __typename?: 'FieldError', message?: string | null }> | null } | null };
+export type LogoutMutation = { __typename?: 'Mutation', logout?: { __typename?: 'BooleanResponse', response?: boolean | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', currentUser?: { __typename?: 'UserResponse', response?: { __typename?: 'User', fname?: string | null, lname?: string | null, email?: string | null, nationality?: string | null, phone?: string | null, address?: string | null, zipCode?: string | null, city?: string | null, confirmed?: boolean | null, activated?: boolean | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+export type MeQuery = { __typename?: 'Query', currentUser?: { __typename?: 'UserResponse', response?: { __typename?: 'User', fname?: string | null, lname?: string | null, email?: string | null, nationality?: string | null, phone?: string | null, address?: string | null, zipCode?: string | null, city?: string | null, confirmed?: boolean | null, activated?: boolean | null } | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type RegisterMutationVariables = Exact<{
   registerInput?: InputMaybe<RegisterInput>;
 }>;
 
 
-export type RegisterMutation = { __typename?: 'Mutation', register?: { __typename?: 'UserResponse', response?: { __typename?: 'User', fname?: string | null, lname?: string | null, email?: string | null } | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+export type RegisterMutation = { __typename?: 'Mutation', register?: { __typename?: 'UserResponse', response?: { __typename?: 'User', fname?: string | null, lname?: string | null, email?: string | null } | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type SheetsCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SheetsCurrentUserQuery = { __typename?: 'Query', sheetsCurrentUser?: { __typename?: 'SheetsResponse', response?: Array<{ __typename?: 'Sheet', _id?: string | null, advanceDirectives?: boolean | null, allergies?: string | null, bloodType?: string | null, createdAt?: string | null, currentTreatment?: string | null, dateOfBirth?: string | null, enabled?: boolean | null, fname?: string | null, lname?: string | null, medicalHistory?: string | null, nationality?: string | null, organDonor?: boolean | null, sex?: string | null, smoker?: boolean | null, updatedAt?: string | null, user?: string | null, emergencyContacts?: Array<{ __typename?: 'SheetContact', fname?: string | null, lname?: string | null, phone?: string | null, role?: string | null } | null> | null, treatingDoctor?: { __typename?: 'SheetDoctorContact', fname?: string | null, lname?: string | null, phone?: string | null } | null }> | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+export type SheetsCurrentUserQuery = { __typename?: 'Query', sheetsCurrentUser?: { __typename?: 'SheetsResponse', response?: Array<{ __typename?: 'Sheet', _id?: string | null, advanceDirectives?: boolean | null, allergies?: string | null, bloodType?: string | null, createdAt?: string | null, currentTreatment?: string | null, dateOfBirth?: string | null, enabled?: boolean | null, fname?: string | null, lname?: string | null, medicalHistory?: string | null, nationality?: string | null, organDonor?: boolean | null, sex?: string | null, smoker?: boolean | null, updatedAt?: string | null, user?: string | null, emergencyContacts?: Array<{ __typename?: 'SheetContact', fname?: string | null, lname?: string | null, phone?: string | null, role?: string | null } | null> | null, treatingDoctor?: { __typename?: 'SheetDoctorContact', fname?: string | null, lname?: string | null, phone?: string | null } | null }> | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UsersQuery = { __typename?: 'Query', users?: { __typename?: 'UsersResponse', response?: Array<{ __typename?: 'User', _id?: string | null, fname?: string | null, lname?: string | null }> | null, errors?: Array<{ __typename?: 'FieldError', field?: string | null, message?: string | null }> | null } | null };
+export type UsersQuery = { __typename?: 'Query', users?: { __typename?: 'UsersResponse', response?: Array<{ __typename?: 'User', _id?: string | null, fname?: string | null, lname?: string | null }> | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type WelcomeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -477,9 +516,17 @@ export const AssignSheetToUserDocument = gql`
     response {
       _id
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
@@ -516,9 +563,17 @@ export const ChangePasswordDocument = gql`
     response {
       email
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
@@ -553,9 +608,17 @@ export const ConfirmUserDocument = gql`
     mutation ConfirmUser($token: String) {
   confirmUser(token: $token) {
     response
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
@@ -628,9 +691,17 @@ export const LoginDocument = gql`
         email
       }
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
@@ -665,8 +736,17 @@ export const LogoutDocument = gql`
     mutation Logout {
   logout {
     response
-    errors {
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
@@ -711,9 +791,17 @@ export const MeDocument = gql`
       confirmed
       activated
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
@@ -753,9 +841,17 @@ export const RegisterDocument = gql`
       lname
       email
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
@@ -819,9 +915,17 @@ export const SheetsCurrentUserDocument = gql`
       updatedAt
       user
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
@@ -861,9 +965,17 @@ export const UsersDocument = gql`
       fname
       lname
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }

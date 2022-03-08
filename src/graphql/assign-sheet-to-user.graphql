@@ -3,9 +3,17 @@ mutation AssignSheetToUser($assignSheetToUserInput: AssignSheetToUserInput) {
     response {
       _id
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
