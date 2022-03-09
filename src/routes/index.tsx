@@ -9,6 +9,7 @@ import NewSheetById from '../pages/NewSheetById';
 import Page404 from '../pages/Page404';
 import Welcome from '../pages/Welcome';
 import React from 'react';
+import ChangePassword from '../pages/ChangePassword';
 
 export type Location = {
   state?: {
@@ -46,13 +47,15 @@ export const routes = [
   { path: '/', element: <Welcome /> },
   { path: '/sign-up', element: <SignUpPage /> },
   { path: '/sign-in', element: <SignInPage /> },
+  { path: 'password-change', element: <ChangePassword />},
   {
     path: '/users', children: [
       { path: 'me', element: <Account /> },
       { path: 'basket', element: <Basket /> },
       { path: 'all', element: <UserDashboard />},
       { path: ':userId', element: <MedicalCard /> },
-      { path: 'sheet-by-id', element: <NewSheetById />}
+      { path: 'sheet-by-id', element: <NewSheetById />},
+      
     ]
   },
   { path: '*', element: <Page404 /> }
