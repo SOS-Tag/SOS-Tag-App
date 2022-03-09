@@ -29,6 +29,7 @@ const EditableField: React.FC<editableFieldType> = ({
 
 
   let temp: E164Number | undefined;
+  temp = placeholder as E164Number | undefined;
   const [tel, setTel] = useState(temp);
   const [input, setInput] = useState(temp);
   const [value,setValue] = useState(placeholder);
