@@ -1,6 +1,5 @@
 import MedicalForm from '../components/MedicalForm';
 import BlockQR from '../components/BlockQR';
-import ContactCard from '../components/ContactCard'
 import { useEffect, useState } from 'react';
 import users from '../data/users.json'
 import UserSwitch from '../components/UserSwitch';
@@ -8,18 +7,76 @@ import UserSwitch from '../components/UserSwitch';
 import MedicCards from '../data/medicCards.json'
 import React from 'react';
 import { withAuth } from '../guards/auth';
-import { useSheetsCurrentUserQuery } from '../generated/graphql';
+import { Sheet, useSheetsCurrentUserQuery, useUpdateCurrentUserSheetMutation } from '../generated/graphql';
 
 type MedicalCardType = {
-    // currentUserId: number,
-    // users: number,
 }
+
+// TODO
+// CHANGER LE FORMULAIRE EN CHECKANT CE LIEN : https://dev.to/prasanjit/managing-react-forms-efficiently-at-scale-194i
 
 const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
 
-    // TODO :: function getter requête DB
-
     const { data, loading, error } = useSheetsCurrentUserQuery({ fetchPolicy: 'network-only' });
+
+    const [selectedCardId, setSelectedCardId] = useState(0);
+
+    const [updateSheet] = useUpdateCurrentUserSheetMutation();
+
+    const [allCardsNames, setAllCardsNames] = useState([""]);
+
+    const [userCard, setUserCard] = useState<Sheet>();
+
+    
+
+    useEffect(() => {
+        if (data && data.sheetsCurrentUser && data.sheetsCurrentUser.response) {
+            const r = data.sheetsCurrentUser.response.map(e => {
+                return e.fname + " " + e.lname;
+            })
+            setAllCardsNames(r)
+        }
+        
+    }, [data]);
+
+    useEffect(() => {
+        if (data && data.sheetsCurrentUser && data.sheetsCurrentUser.response) {
+            setUserCard(data.sheetsCurrentUser.response[selectedCardId])
+        }
+    }, [data, selectedCardId]);
+
+
+
+    // const submitForm = () => {
+    //     const formData = this.state;
+    // } 
+
+    // const [fieldsValues, setFieldsValues] = useState({
+    //     enabled: "",
+    //     fname: "",
+    //     lname: "",
+    //     sex: "",
+    //     dateOfBirth: "",
+    //     nationality: "",
+    //     bloodType: "",
+    //     smoker: "",
+    //     organDonor: "",
+    //     advanceDirectives: "",
+    //     allergies: "",
+    //     medicalHistory: "",
+    //     currentTreatment: "",
+    //     treatingDoctor: {
+    //         fname: "",
+    //         lname: "",
+    //         phone: "",
+    //     },
+    //     emergencyContacts: {
+    //         fname: "",
+    //         lname: "",
+    //         role: "",
+    //         phone: "",
+    //     }
+    // });
 
     if (loading) {
         console.log("En attente des informations de l'utilisateur connecté ...")
@@ -33,32 +90,33 @@ const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
         console.log(data.sheetsCurrentUser.error?.message as string)
     }
 
-    console.log(data?.sheetsCurrentUser?.response);
+    const a = () => {
 
-    // const [user, setUser] = useState(currentUserId);
-    // const [card, setCard] = useState(MedicCards[0]);
-
-    const getNewVersionOfCard = () => {
-        console.log("coucou");
     }
+    // console.log("############ ID : " + selectedCardId);
+    
+    
 
-    // useEffect({getNewVersionOfCard()}, [card])
+    if (!data || !data.sheetsCurrentUser || !data.sheetsCurrentUser.response || !userCard) {
+        return <>
+            <p>samarchpa</p>
+        </>
+    } else {
+        return (
+            <>
+                <div className='noFlex overflow-x-hidden'>
+                    <div className='MedicAside'>
+                        <UserSwitch id={selectedCardId} setId={setSelectedCardId} cardsNames={allCardsNames} />
+                        <BlockQR setContent={a} />
+                    </div>
+                    <MedicalForm userCard={userCard} setUserCard={setUserCard} />
+                </div>
+            </>
+        );
+    }
 
     // CREER SETTER 
 
-    return (
-        <>
-            <div className='noFlex overflow-x-hidden'>
-                {/* <UserSwitch user={currentUserId} users={users} setUser={setUser} /> */}
-                <div className='MedicAside'>
-                    <UserSwitch />
-                    <BlockQR />
-                </div>
-                <MedicalForm />
-                {/* <ContactCard /> */}
-            </div>
-        </>
-    );
 }
 
 export default withAuth(MedicalCard);

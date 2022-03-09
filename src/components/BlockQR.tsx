@@ -5,6 +5,7 @@ import React from "react";
 type BlockQRType = {
     // id: string,
     // isActivated: boolean,
+    setContent: () => void,
 }
 
 const BlockQR: React.FC<BlockQRType> = ({
