@@ -62,7 +62,8 @@ const Account: React.FC<AccountType> = ({}) => {
     ) => {
         setIsLoading(true);
 
-        console.log("nouvelle adresse : " + new_address);
+        console.log("nouvelle mail : " + new_email);
+        console.log("nouvelle telephone : " + new_phone);
 
         const response = await updateUser({
           variables: { updateCurrentUserInput: {
@@ -71,8 +72,8 @@ const Account: React.FC<AccountType> = ({}) => {
             address: new_address,
             zipCode: new_zipCode,
             city: new_city,
-            email: new_email,
             phone: new_phone,
+            email: new_email,
             nationality: new_nationality,
           } },
         });
@@ -140,24 +141,25 @@ const Account: React.FC<AccountType> = ({}) => {
         console.log(modify);
         if(modify){
             console.log("modification terminée")
-            // setName(e.target.firstname.value)
-            // setSurname(e.target.lastname.value)
-            // setMail(e.target.mail.value)
-            // setTel(e.target.phone.value)
-            // setAddress(e.target.adress.value)
-            // setCity(e.target.city.value)
-            // setZipCode(e.target.zipCode.value)
+            setName(e.target.firstname.value)
+            setSurname(e.target.lastname.value)
+            setMail(e.target.mail.value)
+            setTel(e.target.phone.value)
+            setAddress(e.target.adress.value)
+            setCity(e.target.city.value)
+            setZipCode(e.target.zipCode.value)
             changeTextModifyButton("Modifier les informations"); 
             changeTypeModifyButton("fill"); 
-            console.log(address);
+            console.log("-------- telephone : "+e.target.phone.value);
+            console.log("-------- mail : "+e.target.mail.value);
             SaveChange(
               e.target.firstname.value, 
               e.target.lastname.value,
               e.target.adress.value,
               e.target.zipCode.value,
               e.target.city.value,
-              e.target.mail.value,
               e.target.phone.value,
+              e.target.mail.value,
               ""
             );
             changeModifyField(false); 
