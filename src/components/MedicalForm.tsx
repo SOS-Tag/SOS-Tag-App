@@ -7,28 +7,26 @@ import ContactCard from '../components/ContactCard'
 
 import { medicalCardType } from './Types'
 import { userInfo } from 'os';
+import formatDate from '../utils/date';
+import { Sheet } from '../generated/graphql';
 
 type MedicalFormProps = {
-    // userCard : medicalCardType,
-    // setCard: (card: medicalCardType) => void
+    userCard: Sheet,
+    setUserCard: (sheet: Sheet) => void,
+    // selectedId: number,
 }
 
 const MedicalForm: React.FC<MedicalFormProps> = ({
-    // userCard,
-    // setCard,
+    userCard,
+    setUserCard
+    // selectedId,
 }) => {
-
-    // console.log(userCard.general.name);
-
-    // let g = userCard.general;
-
     // BOUTONS EDIT
 
     const [editInfo, setEditInfo] = useState(false);
     function handleEditInfo() {
         editInfo ? setEditInfo(false) : setEditInfo(true);
     }
-
 
     // OPTIONS
 
@@ -111,39 +109,39 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field editing={editInfo} name={"fname"} type="text" label="Nom" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"fname"} type="text" label="Nom" mandatory={true} placeholder={userCard.fname || ""} />
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field editing={editInfo} name={"lname"} type="text" label="Prénom" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"lname"} type="text" label="Prénom" mandatory={true} placeholder={userCard.lname || ""} />
                         </div>
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field editing={editInfo} name={"sex"} type="select" option={gender_options} label="Sexe" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"sex"} type="select" option={gender_options} label="Sexe" mandatory={true} placeholder={userCard.sex || ""} />
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field editing={editInfo} name={"dateOfBirth"} type="date" label="Date de naissance" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"dateOfBirth"} type="date" label="Date de naissance" mandatory={true} placeholder={ formatDate(userCard.dateOfBirth) || ""} />
                         </div>
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field editing={editInfo} name={"nationality"} type="text" label="Nationalité" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"nationality"} type="text" label="Nationalité" mandatory={true} placeholder={userCard.nationality || ""} />
                         </div>
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field editing={editInfo} name={"bloodType"} type="select" option={bloodtype_options} label="Groupe sanguin" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"bloodType"} type="select" option={bloodtype_options} label="Groupe sanguin" mandatory={true} placeholder={userCard.bloodType || ""} />
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field editing={editInfo} name={"smoker"} type="select" option={trueOrFalse} label="Fumeur ?" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"smoker"} type="select" option={trueOrFalse} label="Fumeur ?" mandatory={true} placeholder={String(userCard.smoker) || "false"} />
                         </div>
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field editing={editInfo} name={"organDonor"} type="select" option={trueOrFalse} label="Don d'organe ?" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"organDonor"} type="select" option={trueOrFalse} label="Don d'organe ?" mandatory={true} placeholder={String(userCard.organDonor) || "false"} />
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field editing={editInfo} name={"advanceDirectives"} type="select" option={trueOrFalse} label="Directives anticipées ?" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"advanceDirectives"} type="select" option={trueOrFalse} label="Directives anticipées ?" mandatory={true} placeholder={String(userCard.advanceDirectives) || "false"} />
                         </div>
                     </div>
 
@@ -155,19 +153,19 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field editing={editInfo} name={"allergies"} type="text" label="Allergies" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"allergies"} type="text" label="Allergies" mandatory={true} placeholder={userCard.allergies || ""} />
                         </div>
                         <div className="formRowMedic-item-b">
-                            <Field editing={editInfo} name={"currentTreatment"} type="text" label="Traitement en cours" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"currentTreatment"} type="text" label="Traitement en cours" mandatory={true} placeholder={userCard.currentTreatment || ""} />
                         </div>
                     </div>
                     <div className="formRowMedic w-full grid">
                         <div className="formRowMedic-item-a">
-                            <Field editing={editInfo} name={"medicalHistory"} type="text" label="Antécédents médicaux" mandatory={true} placeholder={""} />
+                            <Field editing={editInfo} name={"medicalHistory"} type="text" label="Antécédents médicaux" mandatory={true} placeholder={userCard.medicalHistory || ""} />
                         </div>
                     </div>
 
-                    <ContactCard editInfo={editInfo} />
+                    <ContactCard userCard={userCard} editInfo={editInfo} />
 
                     <Button box="fill" type="general" buttonText="Valider les informations" />
 

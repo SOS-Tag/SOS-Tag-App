@@ -1,0 +1,42 @@
+mutation UpdateCurrentUserSheet($updateCurrentUserSheetInput: UpdateCurrentUserSheetInput) {
+  updateCurrentUserSheet(updateCurrentUserSheetInput: $updateCurrentUserSheetInput) {
+    response {
+      enabled
+      fname
+      lname
+      sex
+      dateOfBirth
+      nationality
+      bloodType
+      smoker
+      organDonor
+      advanceDirectives
+      allergies
+      medicalHistory
+      currentTreatment
+      treatingDoctor {
+        fname
+        lname
+        phone
+      }
+      emergencyContacts {
+        fname
+        lname
+        role
+        phone
+      }
+    }
+    error {
+      type
+      code
+      title
+      message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
+    }
+  }
+}

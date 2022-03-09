@@ -12,9 +12,17 @@ query Me {
       confirmed
       activated
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }

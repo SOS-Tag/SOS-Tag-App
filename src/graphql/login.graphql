@@ -6,9 +6,17 @@ mutation Login($loginInput: LoginInput) {
         email
       }
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }

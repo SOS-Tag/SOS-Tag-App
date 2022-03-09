@@ -1,8 +1,17 @@
 mutation Logout {
   logout {
     response
-    errors {
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }

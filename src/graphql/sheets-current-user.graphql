@@ -30,9 +30,17 @@ query SheetsCurrentUser {
       updatedAt
       user
     }
-    errors {
-      field
+    error {
+      type
+      code
+      title
       message
+      timestamp
+      fields {
+        type
+        name
+        detail
+      }
     }
   }
 }
