@@ -1,0 +1,8 @@
+mutation UpdateCurrentUser($updateCurrentUserInput: UpdateCurrentUserInput) {
+  updateCurrentUser(updateCurrentUserInput: $updateCurrentUserInput) {
+    error {
+      title
+      message
+    }
+  }
+}
