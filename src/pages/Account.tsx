@@ -28,6 +28,7 @@ const Account: React.FC<AccountType> = ({}) => {
     const [zipCode, setZipCode] = useState("---");
     const [city, setCity] = useState("---");
     const [nationality, setNationality] = useState("");
+    const [updateUser] = useUpdateCurrentUserMutation();
 
     const [passwordInit, setPasswordInit] = useState("");
     const [password1, setPassword1] = useState("");
@@ -63,7 +64,7 @@ const Account: React.FC<AccountType> = ({}) => {
 
         console.log("nouvelle adresse : " + new_address);
 
-        const response = await useUpdateCurrentUserMutation({
+        const response = await updateUser({
           variables: { updateCurrentUserInput: {
             fname: new_fname,
             lname: new_lname,
@@ -139,13 +140,13 @@ const Account: React.FC<AccountType> = ({}) => {
         console.log(modify);
         if(modify){
             console.log("modification terminée")
-            setName(e.target.firstname.value)
-            setSurname(e.target.lastname.value)
-            setMail(e.target.mail.value)
-            setTel(e.target.phone.value)
-            setAddress(e.target.adress.value)
-            setCity(e.target.city.value)
-            setZipCode(e.target.zipCode.value)
+            // setName(e.target.firstname.value)
+            // setSurname(e.target.lastname.value)
+            // setMail(e.target.mail.value)
+            // setTel(e.target.phone.value)
+            // setAddress(e.target.adress.value)
+            // setCity(e.target.city.value)
+            // setZipCode(e.target.zipCode.value)
             changeTextModifyButton("Modifier les informations"); 
             changeTypeModifyButton("fill"); 
             console.log(address);
