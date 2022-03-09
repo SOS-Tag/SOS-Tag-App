@@ -84,13 +84,13 @@ const Account: React.FC<AccountType> = ({}) => {
 
     }
 
-    const handleValidation = () => {
-        checkForm(); 
+    const handleValidation = (e: any) => {
+      e.preventDefault();
+      if(e.target.password1.value !== e.target.password2.value && e.target.password2.value === e.target.password3.value){
+        //relation back
         changePage(2); 
-    }
-
-    const checkForm = () => {
-        alert("Vérifier les mots de passe indiqués !")
+      }
+      
     }
 
     let nameAndSurname: ReactElement<any, any>; 
@@ -224,7 +224,7 @@ const Account: React.FC<AccountType> = ({}) => {
             <>
             <Banner title="Modification de votre mot de passe" returnClick={modifyPage}/> 
 
-            <form className="grid grid-cols-5 gap-4">
+            <form className="grid grid-cols-5 gap-4" onSubmit={handleValidation}>
                 <div className="col-start-3 ">
                     <div>
                         <Field editing={true} name={"password1"} type="password" label="Mot de passe actuel" mandatory={true}/> 
@@ -238,7 +238,7 @@ const Account: React.FC<AccountType> = ({}) => {
                         <Field editing={true} name={"password3"} type="password" label="Répétez le mot de passe" mandatory={true}/>
                     </div>
                 
-                <Button onClick={handleValidation} box="fill" type ="general" buttonText="Modifier mot de passe" />
+                <Button box="fill" type ="general" buttonText="Modifier mot de passe" />
                 </div>
             </form>
             </>
