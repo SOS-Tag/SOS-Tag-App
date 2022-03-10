@@ -60,7 +60,7 @@ export default function ChangePassword() {
             <div>
               <form onSubmit={handleSubmit}>
                 {error && <h3> {error}</h3>}
-                <Field editing={true} type="text" name={"password"} placeholder={""} label="Mot de passe" mandatory={false}/>
+                <Field editing={true} type="text" name={"password"} placeholder={""} label="Mot de passe" mandatory={true}/>
                 <Button box="fill" type="general" buttonText="Créez un nouveau mot de passe" to={'/sign-in'}/>
               </form>
             </div>

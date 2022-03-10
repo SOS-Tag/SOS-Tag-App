@@ -10,6 +10,8 @@ import Page404 from '../pages/Page404';
 import Welcome from '../pages/Welcome';
 import React from 'react';
 import ChangePassword from '../pages/ChangePassword';
+import ForgotPassword from '../pages/ForgotPassword';
+import ConfirmUser from '../pages/ConfirmUser';
 
 export type Location = {
   state?: {
@@ -25,20 +27,20 @@ export const routes = [
         children: [
           {
             path: ':confirmAccountToken',
-            element: <Page404 />
+            element: <ConfirmUser />
           }
         ]
       },
       {
         path: 'forgot-password',
-        element: <Page404 />
+        element: <ForgotPassword />
       },
       {
         path: 'change-password',
         children: [
           {
             path: ':changePasswordToken',
-            element: <Page404 />
+            element: <ChangePassword />
           }
         ]
       }
@@ -47,7 +49,6 @@ export const routes = [
   { path: '/', element: <Welcome /> },
   { path: '/sign-up', element: <SignUpPage /> },
   { path: '/sign-in', element: <SignInPage /> },
-  { path: 'password-change', element: <ChangePassword />},
   {
     path: '/users', children: [
       { path: 'me', element: <Account /> },
@@ -55,7 +56,6 @@ export const routes = [
       { path: 'all', element: <UserDashboard />},
       { path: ':userId', element: <MedicalCard /> },
       { path: 'sheet-by-id', element: <NewSheetById />},
-      
     ]
   },
   { path: '*', element: <Page404 /> }
