@@ -5,11 +5,12 @@ import React from "react";
 type BlockQRType = {
     // id: string,
     // isActivated: boolean,
+    id:string|undefined,
     setContent: () => void,
 }
 
 const BlockQR: React.FC<BlockQRType> = ({
-    // id,
+    id,
     // isActivated,
 }) => {
 
@@ -38,7 +39,7 @@ const BlockQR: React.FC<BlockQRType> = ({
                 <div className="hidden desktop:block">
                     <h2>Votre QR Code :</h2>
                     <img className='w-1/2 mx-auto py-10' src="https://www.pluginforthat.com/wp-content/uploads/2019/10/doqrcode.jpg"></img>
-                    <h2>Votre ID : {}</h2>
+                    <h2>Votre ID : {id}</h2>
                     <br/>
                 </div>
                 <span>Activer / Désactiver le QR Code :</span>

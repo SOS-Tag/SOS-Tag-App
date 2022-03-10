@@ -45,39 +45,6 @@ const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
         }
     }, [data, selectedCardId]);
 
-
-
-    // const submitForm = () => {
-    //     const formData = this.state;
-    // } 
-
-    // const [fieldsValues, setFieldsValues] = useState({
-    //     enabled: "",
-    //     fname: "",
-    //     lname: "",
-    //     sex: "",
-    //     dateOfBirth: "",
-    //     nationality: "",
-    //     bloodType: "",
-    //     smoker: "",
-    //     organDonor: "",
-    //     advanceDirectives: "",
-    //     allergies: "",
-    //     medicalHistory: "",
-    //     currentTreatment: "",
-    //     treatingDoctor: {
-    //         fname: "",
-    //         lname: "",
-    //         phone: "",
-    //     },
-    //     emergencyContacts: {
-    //         fname: "",
-    //         lname: "",
-    //         role: "",
-    //         phone: "",
-    //     }
-    // });
-
     if (loading) {
         console.log("En attente des informations de l'utilisateur connecté ...")
     }
@@ -97,7 +64,7 @@ const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
     
     
 
-    if (!data || !data.sheetsCurrentUser || !data.sheetsCurrentUser.response || !userCard) {
+    if (!data || !data.sheetsCurrentUser || !data.sheetsCurrentUser.response || !userCard || !userCard._id) {
         return <>
             <p>samarchpa</p>
         </>
@@ -107,16 +74,13 @@ const MedicalCard: React.FC<MedicalCardType> = ({ }) => {
                 <div className='noFlex overflow-x-hidden'>
                     <div className='MedicAside'>
                         <UserSwitch id={selectedCardId} setId={setSelectedCardId} cardsNames={allCardsNames} />
-                        <BlockQR setContent={a} />
+                        <BlockQR id={userCard._id} setContent={a} />
                     </div>
                     <MedicalForm userCard={userCard} setUserCard={setUserCard} />
                 </div>
             </>
         );
     }
-
-    // CREER SETTER 
-
 }
 
 export default withAuth(MedicalCard);
