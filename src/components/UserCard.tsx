@@ -8,6 +8,7 @@ type UserCardProps = {
   type: String,
   lastname?: String,
   firstname?: String,
+  state?: boolean,
   handleSelect: Function
 }
 
@@ -16,7 +17,8 @@ const UserCard: React.FC<UserCardProps> = ({
   type,
   lastname,
   firstname,
-  handleSelect
+  handleSelect,
+  state,
 }) => {
 
     
@@ -25,7 +27,7 @@ const UserCard: React.FC<UserCardProps> = ({
         switch (type) {
             case "main":
             case "child":
-                return <UserCardBasic id={id} type={type} lastname={lastname} firstname={firstname} handleSelect={handleSelect}/>
+                return <UserCardBasic id={id} state={state} type={type} lastname={lastname} firstname={firstname} handleSelect={handleSelect}/>
             case "add":
                 return <UserCardAdd />
             default:
@@ -60,7 +62,8 @@ const UserCardBasic: React.FC<UserCardProps> = ({
   type,
   lastname,
   firstname,
-  handleSelect
+  handleSelect,
+  state,
 }): JSX.Element => {
 
     
@@ -85,7 +88,7 @@ const UserCardBasic: React.FC<UserCardProps> = ({
                 </div>
             </div>
 
-            <Toggle type={type} />
+            <Toggle type={type} state={state}/>
         </div>
     );
 }
