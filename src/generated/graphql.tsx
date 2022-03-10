@@ -497,14 +497,7 @@ export type RegisterMutation = { __typename?: 'Mutation', register?: { __typenam
 export type SheetsCurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SheetsCurrentUserQuery = { __typename?: 'Query', sheetsCurrentUser?: { __typename?: 'SheetsResponse', response?: Array<{ __typename?: 'Sheet', _id?: string | null, advanceDirectives?: boolean | null, allergies?: string | null, bloodType?: string | null, createdAt?: string | null, currentTreatment?: string | null, dateOfBirth?: string | null, enabled?: boolean | null, fname?: string | null, lname?: string | null, medicalHistory?: string | null, nationality?: string | null, organDonor?: boolean | null, sex?: string | null, smoker?: boolean | null, updatedAt?: string | null, user?: string | null, emergencyContacts?: Array<{ __typename?: 'SheetContact', fname?: string | null, lname?: string | null, phone?: string | null, role?: string | null } | null> | null, treatingDoctor?: { __typename?: 'SheetDoctorContact', fname?: string | null, lname?: string | null, phone?: string | null } | null }> | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
-
-export type UpdateCurrentUserMutationVariables = Exact<{
-  updateCurrentUserInput?: InputMaybe<UpdateCurrentUserInput>;
-}>;
-
-
-export type UpdateCurrentUserMutation = { __typename?: 'Mutation', updateCurrentUser?: { __typename?: 'UserResponse', error?: { __typename?: 'ExtendedError', title?: string | null, message?: string | null } | null } | null };
+export type SheetsCurrentUserQuery = { __typename?: 'Query', sheetsCurrentUser?: { __typename?: 'SheetsResponse', response?: Array<{ __typename?: 'Sheet', _id?: string | null, advanceDirectives?: boolean | null, allergies?: string | null, bloodType?: string | null, currentTreatment?: string | null, dateOfBirth?: string | null, enabled?: boolean | null, fname?: string | null, lname?: string | null, medicalHistory?: string | null, nationality?: string | null, organDonor?: boolean | null, sex?: string | null, smoker?: boolean | null, emergencyContacts?: Array<{ __typename?: 'SheetContact', fname?: string | null, lname?: string | null, phone?: string | null, role?: string | null } | null> | null, treatingDoctor?: { __typename?: 'SheetDoctorContact', fname?: string | null, lname?: string | null, phone?: string | null } | null }> | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
 export type UpdateCurrentUserSheetMutationVariables = Exact<{
   updateCurrentUserSheetInput?: InputMaybe<UpdateCurrentUserSheetInput>;
@@ -512,6 +505,13 @@ export type UpdateCurrentUserSheetMutationVariables = Exact<{
 
 
 export type UpdateCurrentUserSheetMutation = { __typename?: 'Mutation', updateCurrentUserSheet?: { __typename?: 'SheetResponse', response?: { __typename?: 'Sheet', enabled?: boolean | null, fname?: string | null, lname?: string | null, sex?: string | null, dateOfBirth?: string | null, nationality?: string | null, bloodType?: string | null, smoker?: boolean | null, organDonor?: boolean | null, advanceDirectives?: boolean | null, allergies?: string | null, medicalHistory?: string | null, currentTreatment?: string | null, treatingDoctor?: { __typename?: 'SheetDoctorContact', fname?: string | null, lname?: string | null, phone?: string | null } | null, emergencyContacts?: Array<{ __typename?: 'SheetContact', fname?: string | null, lname?: string | null, role?: string | null, phone?: string | null } | null> | null } | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
+
+export type UpdateCurrentUserMutationVariables = Exact<{
+  updateCurrentUserInput?: InputMaybe<UpdateCurrentUserInput>;
+}>;
+
+
+export type UpdateCurrentUserMutation = { __typename?: 'Mutation', updateCurrentUser?: { __typename?: 'UserResponse', error?: { __typename?: 'ExtendedError', title?: string | null, message?: string | null } | null } | null };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -904,7 +904,6 @@ export const SheetsCurrentUserDocument = gql`
       advanceDirectives
       allergies
       bloodType
-      createdAt
       currentTreatment
       dateOfBirth
       emergencyContacts {
@@ -926,8 +925,6 @@ export const SheetsCurrentUserDocument = gql`
         lname
         phone
       }
-      updatedAt
-      user
     }
     error {
       type
@@ -971,42 +968,6 @@ export function useSheetsCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type SheetsCurrentUserQueryHookResult = ReturnType<typeof useSheetsCurrentUserQuery>;
 export type SheetsCurrentUserLazyQueryHookResult = ReturnType<typeof useSheetsCurrentUserLazyQuery>;
 export type SheetsCurrentUserQueryResult = Apollo.QueryResult<SheetsCurrentUserQuery, SheetsCurrentUserQueryVariables>;
-export const UpdateCurrentUserDocument = gql`
-    mutation UpdateCurrentUser($updateCurrentUserInput: UpdateCurrentUserInput) {
-  updateCurrentUser(updateCurrentUserInput: $updateCurrentUserInput) {
-    error {
-      title
-      message
-    }
-  }
-}
-    `;
-export type UpdateCurrentUserMutationFn = Apollo.MutationFunction<UpdateCurrentUserMutation, UpdateCurrentUserMutationVariables>;
-
-/**
- * __useUpdateCurrentUserMutation__
- *
- * To run a mutation, you first call `useUpdateCurrentUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateCurrentUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateCurrentUserMutation, { data, loading, error }] = useUpdateCurrentUserMutation({
- *   variables: {
- *      updateCurrentUserInput: // value for 'updateCurrentUserInput'
- *   },
- * });
- */
-export function useUpdateCurrentUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCurrentUserMutation, UpdateCurrentUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateCurrentUserMutation, UpdateCurrentUserMutationVariables>(UpdateCurrentUserDocument, options);
-      }
-export type UpdateCurrentUserMutationHookResult = ReturnType<typeof useUpdateCurrentUserMutation>;
-export type UpdateCurrentUserMutationResult = Apollo.MutationResult<UpdateCurrentUserMutation>;
-export type UpdateCurrentUserMutationOptions = Apollo.BaseMutationOptions<UpdateCurrentUserMutation, UpdateCurrentUserMutationVariables>;
 export const UpdateCurrentUserSheetDocument = gql`
     mutation UpdateCurrentUserSheet($updateCurrentUserSheetInput: UpdateCurrentUserSheetInput) {
   updateCurrentUserSheet(
@@ -1079,6 +1040,42 @@ export function useUpdateCurrentUserSheetMutation(baseOptions?: Apollo.MutationH
 export type UpdateCurrentUserSheetMutationHookResult = ReturnType<typeof useUpdateCurrentUserSheetMutation>;
 export type UpdateCurrentUserSheetMutationResult = Apollo.MutationResult<UpdateCurrentUserSheetMutation>;
 export type UpdateCurrentUserSheetMutationOptions = Apollo.BaseMutationOptions<UpdateCurrentUserSheetMutation, UpdateCurrentUserSheetMutationVariables>;
+export const UpdateCurrentUserDocument = gql`
+    mutation UpdateCurrentUser($updateCurrentUserInput: UpdateCurrentUserInput) {
+  updateCurrentUser(updateCurrentUserInput: $updateCurrentUserInput) {
+    error {
+      title
+      message
+    }
+  }
+}
+    `;
+export type UpdateCurrentUserMutationFn = Apollo.MutationFunction<UpdateCurrentUserMutation, UpdateCurrentUserMutationVariables>;
+
+/**
+ * __useUpdateCurrentUserMutation__
+ *
+ * To run a mutation, you first call `useUpdateCurrentUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCurrentUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCurrentUserMutation, { data, loading, error }] = useUpdateCurrentUserMutation({
+ *   variables: {
+ *      updateCurrentUserInput: // value for 'updateCurrentUserInput'
+ *   },
+ * });
+ */
+export function useUpdateCurrentUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCurrentUserMutation, UpdateCurrentUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCurrentUserMutation, UpdateCurrentUserMutationVariables>(UpdateCurrentUserDocument, options);
+      }
+export type UpdateCurrentUserMutationHookResult = ReturnType<typeof useUpdateCurrentUserMutation>;
+export type UpdateCurrentUserMutationResult = Apollo.MutationResult<UpdateCurrentUserMutation>;
+export type UpdateCurrentUserMutationOptions = Apollo.BaseMutationOptions<UpdateCurrentUserMutation, UpdateCurrentUserMutationVariables>;
 export const UsersDocument = gql`
     query Users {
   users {

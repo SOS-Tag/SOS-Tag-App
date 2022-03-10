@@ -1,45 +1,24 @@
 import { BsPencilFill } from 'react-icons/bs';
 import Field from './field/Field';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import React from 'react';
 import Button from './Button';
-import { Sheet, useUpdateCurrentUserSheetMutation } from '../generated/graphql';
-
-
-// if (cardContent.emergencyContacts && cardContent.emergencyContacts.length < 2) {
-//   updateSheet({
-//     variables: {
-//       updateCurrentUserSheetInput: {
-//         id: cardContent._id,
-//         changes: {
-//           emergencyContacts: [
-//             ...cardContent.emergencyContacts,
-//             {
-//               fname: "",
-//               lname: "",
-//               phone: "",
-//               role: "",
-//             }
-//           ]
-//         }
-//       }
-//     }
-//   });
-// }
-
-// type ContactCardUserType = {
-//   setUserCard: (sheet: Sheet) => void,
-
-// }
+import { Sheet, SheetDoctorContact, useUpdateCurrentUserSheetMutation } from '../generated/graphql';
 
 type ContactCardType = {
   userCard: Sheet,
   editInfo: boolean,
+  handleChange: (key: string, { e, value }: {
+    e?: React.ChangeEvent<HTMLInputElement> | undefined;
+    value?: string | boolean | undefined;
+}) => void,
+  // treatingDoctor: SheetDoctorContact | undefined,
 };
 
 const ContactCard: React.FC<ContactCardType> = ({
   userCard,
   editInfo,
+  handleChange,
 }) => {
   const [updateSheet] = useUpdateCurrentUserSheetMutation();
 
@@ -75,10 +54,13 @@ const ContactCard: React.FC<ContactCardType> = ({
         </div>
         <div className="formRowMedicCard w-full grid">
           <div className="formRowMedic-item-a">
-            <Field editing={editInfo} type="text" name={"name"} label="Prénom NOM" mandatory={true} placeholder={String(userCard.treatingDoctor?.fname + " " + userCard.treatingDoctor?.lname) || ""} />
+            <Field editing={editInfo} type="text" name={"fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.fname', { e }) }} label="Prénom" mandatory={true} placeholder={String(userCard.treatingDoctor?.fname) || ""} />
           </div>
           <div className="formRowMedic-item-b">
-            <Field editing={editInfo} type="tel" name={"phone"} label="Numéro de téléphone" mandatory={true} placeholder={userCard.treatingDoctor?.phone || ""} />
+            <Field editing={editInfo} type="text" name={"lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.lname', { e }) }} label="Nom" mandatory={true} placeholder={String(userCard.treatingDoctor?.lname) || ""} />
+          </div>
+          <div className="formRowMedic-item-a">
+            <Field editing={editInfo} type="tel" name={"phone"} onChange={(value: string) => { handleChange('treatingDoctor.phone', { value }) }} label="Numéro de téléphone" mandatory={true} placeholder={userCard.treatingDoctor?.phone || ""} />
           </div>
         </div>
         {/* PARTIE 2 */}
@@ -98,13 +80,16 @@ const ContactCard: React.FC<ContactCardType> = ({
                 </div>
                 <div className="formRowMedicCard w-full grid">
                   <div className="formRowMedic-item-a">
-                    <Field editing={editInfo} type="text" name={"emergencyContact1-Name"} label="Prénom NOM" mandatory={true} placeholder={String(contact.fname + " " + contact.lname) || ""} />
+                    <Field editing={editInfo} type="text" name={"emergencyContact"+(i+1)+"-fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts['+i+'].fname', { e }) }} label="Prénom" mandatory={true} placeholder={String(contact.fname) || ""} />
                   </div>
                   <div className="formRowMedic-item-b">
-                    <Field editing={editInfo} type="tel" name={"emergencyContact1-Phone"} label="Numéro de téléphone" mandatory={true} placeholder={contact.phone || ""} />
+                    <Field editing={editInfo} type="text" name={"emergencyContact"+(i+1)+"-lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts['+i+'].lname', { e }) }} label="Nom" mandatory={true} placeholder={String(contact.lname) || ""} />
                   </div>
                   <div className="formRowMedic-item-a">
-                    <Field editing={editInfo} type="text" name={"emergencyContact1-Role"} label="Rôle" mandatory={true} placeholder={""} />
+                    <Field editing={editInfo} type="tel" name={"emergencyContact"+(i+1)+"-phone"} onChange={(value: string) => { handleChange('emergencyContacts['+i+'].phone', { value }) }} label="Numéro de téléphone" mandatory={true} placeholder={String(contact.phone) || ""} />
+                  </div>
+                  <div className="formRowMedic-item-b">
+                    <Field editing={editInfo} type="text" name={"emergencyContact"+(i+1)+"-role"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts['+i+'].role', { e }) }} label="Rôle" mandatory={true} placeholder={String(contact.role)} />
                   </div>
                 </div>
               </div>
@@ -123,4 +108,9 @@ const ContactCard: React.FC<ContactCardType> = ({
   );
 }
 
+
+
+{/* <div className="formRowMedic-item-b" onChange={(e) => {modifyDoctorValues("lname", e.currentTarget.querySelector('input')?.value)}}>
+            <Field editing={editInfo} type="text" name={"name"} label="Nom" mandatory={true} placeholder={String(userCard.treatingDoctor?.lname) || ""} />
+          </div> */}
 export default ContactCard;

@@ -15,11 +15,12 @@ const Field: React.FC<fieldType> = ({
   option = [],
   placeholder = "",
   editing,
+  onChange,
 }) => {
 
   function editingLabel(){
     return(
-      <EditableField name={name} label={label} type={type} mandatory={mandatory} text={text} placeholder={placeholder} option={option} />
+      <EditableField name={name} label={label} type={type} mandatory={mandatory} text={text} placeholder={placeholder} option={option} onChange={onChange} />
     )
   }
 

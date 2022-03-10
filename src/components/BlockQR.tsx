@@ -3,15 +3,11 @@ import QRCode, { QRCodeRenderersOptions } from 'qrcode'
 import React from "react";
 
 type BlockQRType = {
-    // id: string,
-    // isActivated: boolean,
-    id:string|undefined,
-    setContent: () => void,
+    id:string|null|undefined,
 }
 
 const BlockQR: React.FC<BlockQRType> = ({
     id,
-    // isActivated,
 }) => {
 
     const opts = {
@@ -38,6 +34,7 @@ const BlockQR: React.FC<BlockQRType> = ({
                 {/* <canvas className="mx-auto my-[20px] w-1/2" id="canvas"></canvas> */}
                 <div className="hidden desktop:block">
                     <h2>Votre QR Code :</h2>
+                    {/* <canvas className="w-1/2 mx-auto py-10"></canvas> */}
                     <img className='w-1/2 mx-auto py-10' src="https://www.pluginforthat.com/wp-content/uploads/2019/10/doqrcode.jpg"></img>
                     <h2>Votre ID : {id}</h2>
                     <br/>
