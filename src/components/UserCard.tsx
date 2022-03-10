@@ -1,14 +1,15 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useUpdateCurrentUserSheetMutation } from "../generated/graphql";
 import { Location } from '../routes';
 import Toggle from "./Toggle";
 
 type UserCardProps = {
-  id?: String | null,
+  id?: string | null,
   type: String,
   lastname?: String,
   firstname?: String,
-  state?: boolean,
+  enabled?: boolean,
   handleSelect: Function
 }
 
@@ -18,16 +19,14 @@ const UserCard: React.FC<UserCardProps> = ({
   lastname,
   firstname,
   handleSelect,
-  state,
+  enabled = false,
 }) => {
-
-    
 
     const displayUserCard = () => {
         switch (type) {
             case "main":
             case "child":
-                return <UserCardBasic id={id} state={state} type={type} lastname={lastname} firstname={firstname} handleSelect={handleSelect}/>
+                return <UserCardBasic id={id} enabled={enabled} type={type} lastname={lastname} firstname={firstname} handleSelect={handleSelect}/>
             case "add":
                 return <UserCardAdd />
             default:
@@ -63,10 +62,22 @@ const UserCardBasic: React.FC<UserCardProps> = ({
   lastname,
   firstname,
   handleSelect,
-  state,
+  enabled = false,
 }): JSX.Element => {
+    const [updateUser] = useUpdateCurrentUserSheetMutation();
 
-    
+    const handleToggleEnabled = (newState: boolean) => {
+        if (id) {
+            updateUser({
+                variables: {
+                    updateCurrentUserSheetInput: {
+                        id,
+                        changes: { enabled: newState }
+                    }
+                }
+            });
+        }
+    }
 
     return (
         <div className="flex flex-col items-center justify-center gap-[32px] h-[100%]" onClick={() => alert("[A FAIRE] Afficher la fiche médicale.")}>
@@ -88,7 +99,7 @@ const UserCardBasic: React.FC<UserCardProps> = ({
                 </div>
             </div>
 
-            <Toggle type={type} state={state}/>
+            <Toggle type={type} state={enabled} setState={handleToggleEnabled}/>
         </div>
     );
 }

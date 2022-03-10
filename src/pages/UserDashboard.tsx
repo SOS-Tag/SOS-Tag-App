@@ -1,21 +1,15 @@
-import users from '../data/users.json';
+import React from 'react';
 import GroupButtons from '../components/GroupButtons';
 import CardsList from '../components/CardsList';
 import { useEffect, useState } from 'react';
-import React from 'react';
-
-import './UserDashboard.css';
 import { withAuth } from '../guards/auth';
-
-// TEST
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Sheet, useLogoutMutation, useMeQuery, useSheetsCurrentUserQuery } from "../generated/graphql";
-import { setAccessToken } from '../utils/access-token';
+import { Sheet, useSheetsCurrentUserQuery } from "../generated/graphql";
+import './UserDashboard.css';
 
 type UserDashboardType = {
 }
 
-const UserDashboard: React.FC<UserDashboardType> = ({}) => {
+const UserDashboard: React.FC<UserDashboardType> = () => {
 
     const [selectedIDs, setSelectedIDs] = useState([]);
     const [sheets, setSheets] = useState<Sheet[]>([]);
@@ -117,7 +111,7 @@ const UserDashboard: React.FC<UserDashboardType> = ({}) => {
 
             </div>
 
-            <CardsList users={sheets} handleSelect={toggleSelect} />
+            <CardsList sheets={sheets} handleSelect={toggleSelect} />
 
         </div>
     );
