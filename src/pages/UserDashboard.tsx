@@ -9,7 +9,7 @@ import { withAuth } from '../guards/auth';
 
 // TEST
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useLogoutMutation, useMeQuery, useSheetsCurrentUserQuery } from "../generated/graphql";
+import { Sheet, useLogoutMutation, useMeQuery, useSheetsCurrentUserQuery } from "../generated/graphql";
 import { setAccessToken } from '../utils/access-token';
 
 type UserDashboardType = {
@@ -18,7 +18,7 @@ type UserDashboardType = {
 const UserDashboard: React.FC<UserDashboardType> = ({}) => {
 
     const [selectedIDs, setSelectedIDs] = useState([]);
-    const [sheets, setSheets] = useState();
+    const [sheets, setSheets] = useState<Sheet[]>([]);
 
     // BUTTON ACTIONS
 
@@ -78,6 +78,7 @@ const UserDashboard: React.FC<UserDashboardType> = ({}) => {
 
     const { data, loading, error } = useSheetsCurrentUserQuery({ fetchPolicy: 'network-only' });
 
+
     if (loading) {
         console.log("En attente des informations de l'utilisateur connecté ...")
     }
@@ -90,12 +91,12 @@ const UserDashboard: React.FC<UserDashboardType> = ({}) => {
         console.log(data.sheetsCurrentUser.error?.message as string)
     }
 
-    console.log(data?.sheetsCurrentUser?.response);
+    useEffect(() => {
+      const response = data?.sheetsCurrentUser?.response
+      response && setSheets(response.map(e => ({ ...e })));
+    },[data])
 
-    // if(data?.sheetsCurrentUser?.response !== []){
-    //     setSheets(data?.sheetsCurrentUser?.response);
-    // }
-    
+    console.log(sheets);
 
     return (
         <div className="userDashboard--container">
@@ -116,7 +117,7 @@ const UserDashboard: React.FC<UserDashboardType> = ({}) => {
 
             </div>
 
-            <CardsList users={users} handleSelect={toggleSelect} />
+            <CardsList users={sheets} handleSelect={toggleSelect} />
 
         </div>
     );

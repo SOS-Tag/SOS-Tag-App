@@ -4,7 +4,7 @@ import { Location } from '../routes';
 import Toggle from "./Toggle";
 
 type UserCardProps = {
-  id?: String,
+  id?: String | null,
   type: String,
   lastname?: String,
   firstname?: String,
