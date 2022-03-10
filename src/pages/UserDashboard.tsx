@@ -14,6 +14,16 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
     const [selectedIDs, setSelectedIDs] = useState([]);
     const [sheets, setSheets] = useState<Sheet[]>([]);
 
+    // TEST CHECKBOX
+
+    const [checkboxList, setCheckboxList] = useState<String[]>([]);
+    const [allCheckboxSelected, setAllCheckboxSelected] = useState(false);
+
+
+    useEffect(() => {
+        console.log('✔ - checkbox  : ' + checkboxList)    
+    },[checkboxList])
+
     // BUTTON ACTIONS
 
     const download = () => {
@@ -49,7 +59,24 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
     // CHECKBOX
 
     const selectAll = () => {
-        alert("[A FAIRE] Sélectionne tous les profils.");
+        allCheckboxSelected? setAllCheckboxSelected(false): setAllCheckboxSelected(true);
+        if(allCheckboxSelected){
+            setCheckboxList([]);
+        }
+        else{
+            const ids = sheets.map(e => e._id);
+            console.log("🦆 : "+ids);
+        }
+    }
+
+    const handleCheckboxList = (id: string) => {
+        const exist = checkboxList.filter(e => e === id);
+        if(exist.length === 1){
+            setCheckboxList(checkboxList.filter(e => e !== id))
+        }
+        else{
+            setCheckboxList([...checkboxList, id]);
+        }
     }
 
     const toggleSelect = (id: never) => {
@@ -111,7 +138,7 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
 
             </div>
 
-            <CardsList sheets={sheets} handleSelect={toggleSelect} />
+            <CardsList sheets={sheets} handleSelect={toggleSelect} selectAll={allCheckboxSelected} handleCheckboxList={handleCheckboxList}/>
 
         </div>
     );

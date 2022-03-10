@@ -4,12 +4,16 @@ import UserCard from "./UserCard";
 
 type CardListType = {
   sheets: Array<Sheet>,
-  handleSelect: (id: never) => void
+  selectAll?: boolean,
+  handleSelect: (id: never) => void,
+  handleCheckboxList: (id: string) => void,
 }
 
 const CardsList: React.FC<CardListType> = ({
   sheets,
+  selectAll,
   handleSelect,
+  handleCheckboxList,
 }) => {
 
   return (
@@ -23,9 +27,11 @@ const CardsList: React.FC<CardListType> = ({
           lastname={s.lname!}
           firstname={s.fname!}
           handleSelect={handleSelect}
+          handleCheckboxList={handleCheckboxList}
+          selectAll={selectAll}
         />
       ))}
-      <UserCard type="add" handleSelect={() => {}} />
+      <UserCard type="add" handleSelect={() => {}} handleCheckboxList={()=>{}} />
     </div>
   );
 }

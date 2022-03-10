@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUpdateCurrentUserSheetMutation } from "../generated/graphql";
 import { Location } from '../routes';
@@ -10,7 +10,9 @@ type UserCardProps = {
   lastname?: String,
   firstname?: String,
   enabled?: boolean,
-  handleSelect: Function
+  handleSelect: Function,
+  handleCheckboxList: Function,
+  selectAll?: boolean,
 }
 
 const UserCard: React.FC<UserCardProps> = ({
@@ -20,13 +22,15 @@ const UserCard: React.FC<UserCardProps> = ({
   firstname,
   handleSelect,
   enabled = false,
+  handleCheckboxList,
+  selectAll
 }) => {
 
     const displayUserCard = () => {
         switch (type) {
             case "main":
             case "child":
-                return <UserCardBasic id={id} enabled={enabled} type={type} lastname={lastname} firstname={firstname} handleSelect={handleSelect}/>
+                return <UserCardBasic id={id} enabled={enabled} type={type} lastname={lastname} firstname={firstname} handleSelect={handleSelect} handleCheckboxList={handleCheckboxList} selectAll={selectAll}/>
             case "add":
                 return <UserCardAdd />
             default:
@@ -62,7 +66,9 @@ const UserCardBasic: React.FC<UserCardProps> = ({
   lastname,
   firstname,
   handleSelect,
+  handleCheckboxList,
   enabled = false,
+  selectAll = false,
 }): JSX.Element => {
     const [updateUser] = useUpdateCurrentUserSheetMutation();
 
@@ -79,13 +85,18 @@ const UserCardBasic: React.FC<UserCardProps> = ({
         }
     }
 
+    useEffect(() => {
+
+    },[selectAll])
+
     return (
         <div className="flex flex-col items-center justify-center gap-[32px] h-[100%]" onClick={() => alert("[A FAIRE] Afficher la fiche médicale.")}>
 
-            <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select"
+            <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select" checked={selectAll}
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 handleSelect(id)
+                handleCheckboxList(id)
             }}/>
             
             <div className="flex flex-col gap-[18px] items-center w-[100%]">
