@@ -6,9 +6,9 @@ type LandingPageType = {}
 
 const LandingPage: React.FC<LandingPageType> = ({}) => {
   return ( 
-    <div className="w-auto w-full flex flex-col space-y-20 items-center landing-page">
+    <div className="w-auto w-full flex flex-col space-y-20 items-center landing-page bg-slate-100">
 
-      <div className="first-part flex flex-row space-x-8 items-center mb-20">
+      <div className="w-full first-part flex flex-col space-y-4 bg-white drop-shadow-md pb-4 md:flex-row md:space-x-8 items-center md:mb-20 md:pb-6">
         <div className="w-1/2 LandingPageIllustration ml-6 mt-6">
           <img className="w-5/5" alt="imgManSmiling" src="./assets/man_smiling.png"/>
         </div>
@@ -37,7 +37,7 @@ const LandingPage: React.FC<LandingPageType> = ({}) => {
         <div className="third-part-text flex flex-col space-y-8 items-center justify-items-center">
           <h2>Comment ça fonctionne ?</h2>
           
-          <div className="cards grid grid-cols-2 gap-6 justify-center m-20">
+          <div className="cards grid grid-rows-2 md:grid-cols-2 md:gap-6 justify-center md:m-20">
 
             <div className="f-elem flex flex-col items-center">
               <div className="first-card bg-amber-200 flex flex-col space-y-6 items-center p-6 rounded-lg text-sky-900 w-448 h-601 grow" style={{position: "relative", zIndex:1}}>
@@ -84,7 +84,7 @@ const LandingPage: React.FC<LandingPageType> = ({}) => {
         
       </div>
 
-      <div className="w-full forth-part flex flex-row space-x-8 items-center m-20 p-20">
+      <div className="w-full forth-part flex flex-col space-y-4 md:flex-row md:space-x-8 items-center md:m-20 md:p-20">
         <div className="forth-part-image w-1/2 flex items-center justify-center" >
           <img className="w-1/5 " alt="imgEllPink" src="./assets/ellipse_2.png" style={ {position: "absolute", zIndex: "1", opacity: ".99"}}/>
           <img className="w-1/2 top-8 right-8" alt="imgEllTennis" src="./assets/ellipse_1.png" style={ {position: "relative", zIndex: "10"}}/>
