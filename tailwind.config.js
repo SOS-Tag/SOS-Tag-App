@@ -13,7 +13,7 @@ module.exports = {
         'SosTagGrey' : '#DEDEDE',
       },
       backgroundSize: {
-        '50%' : '50%',
+        '30%' : '30%',
       }
       // keyframes: {
       //   switchOff: {
