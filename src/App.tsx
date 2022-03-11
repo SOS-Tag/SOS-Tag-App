@@ -4,6 +4,7 @@ import Account from './pages/Account';
 import MedicalCard from './pages/MedicalCard'; 
 import SignUpPage from './pages/SignUpPage'; 
 import SignInPage from './pages/SignInPage'; 
+import LandingPage from './pages/LandingPage'; 
 import './App.css';
 import UserDashboard from './pages/UserDashboard';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/signin">
             <SignInPage />
+          </Route>
+          <Route path="/landingpage">
+            <LandingPage />
           </Route>
         </Switch>
       </div>
