@@ -45,3 +45,10 @@
   background: white;
   text-align: center;
 }
+
+.fill--button--secondairelanding--sostag {
+  background: var(--SosTagBlue);
+  color: white;
+  position: relative;
+  top: -30px;
+}
