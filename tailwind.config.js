@@ -12,6 +12,9 @@ module.exports = {
         'SosTagRedLight' : '#F69FAB',
         'SosTagGrey' : '#DEDEDE',
       },
+      backgroundSize: {
+        '50%' : '50%',
+      }
       // keyframes: {
       //   switchOff: {
       //     '0%': { transform: 'translate(-100%, -50%)', left: 'calc(100% - 3px)'},
