@@ -75,12 +75,12 @@ const Account: React.FC<AccountType> = ({}) => {
 
 
     return ( 
-        <div className="tablet:w-full mobile:w-[80vw] mobile:mx-auto">
+        <div className="tablet:w-full w-[80vw] mx-auto">
 
             {(nbPage === 0) ?
             <>
             <Banner title="Gestion de votre compte" />
-            <div className="flex tablet:flex-row mobile:flex-col">
+            <div className="flex tablet:flex-row flex-col">
                 <GroupManage modifyClick={modifyInfo} passwordClick={modifyPage} textButton={textModifyButton} typeButton={typeModifyButton} />
                 <UserInfo modify={modify} name={name} surname={surname} tel={tel} mail={mail} postalAddress={postalAddress} postalCode={postalCode} postalCity={postalCity} facturationAddress={facturationAddress} facturationCode={facturationCode} facturationCity={facturationCity}/> 
             </div>
@@ -90,7 +90,7 @@ const Account: React.FC<AccountType> = ({}) => {
             <Banner title="Modification de votre mot de passe" returnClick={modifyPage}/> 
 
             <form className="grid tablet:grid-cols-5 tablet:gap-4">
-                <div className="tablet:col-start-3 ">
+                <div className="tablet:col-start-3 tablet:w-[230px] mb-[30px]">
                     <div>
                         <Field editing={true} name={"password1"} type="password" label="Mot de passe actuel" mandatory={true}/> 
                     </div>
@@ -129,7 +129,7 @@ const Banner: React.FC<BannerType> = ({
     title,
 }) => {
     return ( 
-        <div className="flex flex-row mt-10 mb-20 tablet:gap-0 mobile:gap-5">
+        <div className="flex flex-row mt-10 mb-20 tablet:gap-0 gap-5">
             <button className="tablet:w-2/5" onClick={returnClick}>
             <svg className="mx-auto justify-items-center" width="47" height="34" viewBox="0 0 47 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M47 14.875H8.18227L20.1245 2.99625L17.0909 0L0 17L17.0909 34L20.1032 31.0037L8.18227 19.125H47V14.875Z" 
@@ -160,7 +160,7 @@ const GroupManage: React.FC<GroupManageType> = ({
 }) => {
 
     return ( 
-        <div className="flex tablet:flex-col tablet:w-2/5 items-center mobile:flex-row mobile:gap-5 tablet:gap-0">
+        <div className="flex tablet:flex-col tablet:w-2/5 items-center flex-row gap-5 tablet:gap-0">
             <svg width="132" height="132" viewBox="0 0 132 132" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_0_1)">
                 <circle cx="66" cy="62" r="62" fill="#F69FAB"/>
@@ -227,7 +227,7 @@ const UserInfo: React.FC<UserInfoType> = ({
 
     }else{
         nameAndSurname =
-        <div className="mb-10 tablet:text-left mobile:text-center flex tablet:flex-col mobile:gap-2 tablet:gap-0">
+        <div className="mb-10 tablet:text-left text-center flex tablet:flex-col gap-2 tablet:gap-0">
             <p className="prenom">{name}</p>
             <p className="nom">{surname}</p>    
         </div>
@@ -235,7 +235,7 @@ const UserInfo: React.FC<UserInfoType> = ({
 
     return ( 
 
-        <form className="UserInfo tablet:w-3/5 mobile:mt-10 tablet:mt-0 tablet:pr-[12%]" action="">
+        <form className="UserInfo tablet:w-3/5 mt-10 tablet:mt-0 tablet:pr-[12%]" action="">
             {nameAndSurname}
             <div className="formRow2 w-full grid tablet:grid-cols-2">
                 <div className="formRow2-item-a">
