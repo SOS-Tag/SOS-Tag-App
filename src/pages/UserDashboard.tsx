@@ -57,14 +57,15 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
     }
 
     // CHECKBOX
-
+    
     const selectAll = () => {
         allCheckboxSelected? setAllCheckboxSelected(false): setAllCheckboxSelected(true);
         if(allCheckboxSelected){
             setCheckboxList([]);
         }
         else{
-            const ids = sheets.map(e => e._id);
+            const ids= sheets.map(e => (e._id !== undefined && typeof(e._id) === "string")? e._id:'');
+            setCheckboxList(ids)
             console.log("🦆 : "+ids);
         }
     }
@@ -138,7 +139,7 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
 
             </div>
 
-            <CardsList sheets={sheets} handleSelect={toggleSelect} selectAll={allCheckboxSelected} handleCheckboxList={handleCheckboxList}/>
+            <CardsList sheets={sheets} checkboxList={checkboxList} handleCheckboxList={handleCheckboxList}/>
 
         </div>
     );
