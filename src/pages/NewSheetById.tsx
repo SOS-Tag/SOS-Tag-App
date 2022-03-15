@@ -64,14 +64,14 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
         <Banner title="Création d'un nouveau profil" />
         
         <div className="w-full flex">
-          <div className="flex w-2/5 SignInPageIllustration">
-            <div className="w-32 p-8 h-32 rounded-full bg-[#ffe7a0]">
+          <div className="flex w-2/5 SignInPageIllustration justify-center mobile:hidden tablet:flex">
+            <div className="w-32 p-8 h-32 rounded-full bg-[#ffe7a0] ">
             <img alt="imgCreateProfil" src="/assets/profile.png"/>
             </div>
           </div>
           <div>
             <form onSubmit={handleValidation}>
-                <div className="formRow2 w-full grid">
+                <div className="m-auto formRow2 w-full grid">
                     <div className="formRow2-item-a">
                         <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Nom" mandatory={true}/> 
                     </div>
@@ -80,7 +80,9 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
                         <Field editing={true} name={"lastname"} type="text" placeholder={surname} label="Prénom" mandatory={true}/>
                     </div>
                 </div>
+                <div className="mobile:flex mobile:justify-center tablet:block">
                 <Button box="fill" type ="general" buttonText="Créer"/>
+                </div>
             </form>
           </div>
       </div>
@@ -94,7 +96,9 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
         </h1>
         <form className="m-auto flex flex-col" onSubmit={handleSheetAssociation}>
           <Field editing={true} name={"id"} type="text" label="Code d'activation" mandatory={true}/> 
-          <Button box="fill" type ="secondaire" buttonText="Valider"/>
+          <div className="flex justify-center">
+            <Button box="fill" type ="secondaire" buttonText="Valider"/>
+          </div>
         </form>
       </div>
 
