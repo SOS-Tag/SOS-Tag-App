@@ -43,8 +43,13 @@ export default function ForgotPassword() {
   return (
     <div className="w-full flex justify-center">
       {mailSent ? (
-        <div>
-          <p>Un email a été envoyé à {email}. Suivez les indications qu'il contient afin de changer votre mot de passe.</p>
+        <div className='flex justify-center m-8'>
+          <div className="flex w-2/5 m-8 justify-center mobile:hidden tablet:flex">
+          <svg width="450" height="245" viewBox="0 0 450 245" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M412.5 1.125H168.75C148.125 1.125 131.25 18 131.25 38.625V207.375C131.25 228.187 148.125 244.875 168.75 244.875H412.5C433.312 244.875 450 228.187 450 207.375V38.625C450 18 433.312 1.125 412.5 1.125ZM412.5 207.375H168.75V69.9375L290.625 132.375L412.5 69.9375V207.375ZM290.625 100.688L168.75 38.625H412.5L290.625 100.688ZM93.75 207.375C93.75 210.562 94.3125 213.562 94.6875 216.75H18.75C8.4 216.75 0 208.312 0 198C0 187.687 8.4 179.25 18.75 179.25H93.75V207.375ZM56.25 29.25H94.6875C94.3125 32.4375 93.75 35.4375 93.75 38.625V66.75H56.25C45.9375 66.75 37.5 58.3125 37.5 48C37.5 37.6875 45.9375 29.25 56.25 29.25ZM18.75 123C18.75 112.687 27.1875 104.25 37.5 104.25H93.75V141.75H37.5C27.1875 141.75 18.75 133.312 18.75 123Z" fill="#EC3E55" fill-opacity="0.5"/>
+          </svg>
+          </div>
+          <h2 className='tablet:w-2/5 tablet:mt-8 tablet:p-8'>Un email a été envoyé à <span className="text-[#ffce40]">{email}</span> pour modifier votre mot de passe. <br /> <br /> Suivez les indications qu'il contient afin de changer votre mot de passe.</h2>
         </div>
       ) : (
         <div className="w-full flex flex-col">
@@ -65,12 +70,15 @@ export default function ForgotPassword() {
                       <Field editing={true} type="text" name={"email"} placeholder={""} label="Email" mandatory={true}/>
                       </div>
                   </div>
-                  <div className="m-auto mobile:flex mobile:justify-center tablet:block flex-col">
+                  <div className="flex flex-col">
 
                     {message && <TextMessage type={TextMessageType.oups}/>}
-                    
+                    <div className="flex mobile:justify-center tablet:justify-start">
                     <Button box="fill" type ="general" buttonText="Réinitialiser"/>
+                    </div>
+                    <div className="mobile:m-8">
                     <AlternativText text="Vous n'avez pas encore de compte ? " linkText="S'inscrire" link="/sign-up"/>
+                    </div>
                   </div>
               </form>
             </div>
@@ -80,5 +88,8 @@ export default function ForgotPassword() {
     </div>
   );
 }
+
+
+
 
 
