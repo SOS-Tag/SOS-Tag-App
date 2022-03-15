@@ -7,6 +7,7 @@ import Field from "../components/field/Field";
 import Button from "../components/Button";
 import TextMessage from "../components/TextMessage";
 import { TextMessageType } from "../components/Types";
+import Banner from "../components/Banner";
 
 type NewSheetByIdType = {}
 
@@ -59,35 +60,37 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
 
   if (page){
       pageContent = 
-
-      <div className=",-auto w-full flex items-center sign-in-page">
-        <div className="w-1/5 SignInPageIllustration">
-          <img className="w-5/5" alt="imgCreateProfil" src="/assets/profile.png"/>
-        </div>
-        <div className="signinform">
-          <h1 className="mb-[50px]">
-              Création d'un nouveau profil
-          </h1>
-          <form onSubmit={handleValidation}>
-              <div className="formRow2 w-full grid">
-                  <div className="formRow2-item-a">
-                      <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Nom" mandatory={true}/> 
-                  </div>
-  
-                  <div className="formRow2-item-a">
-                      <Field editing={true} name={"lastname"} type="text" placeholder={surname} label="Prénom" mandatory={true}/>
-                  </div>
-              </div>
-              <Button box="fill" type ="general" buttonText="Créer"/>
-          </form>
-        </div>
-    </div>
+      <div className="w-full flex flex-col">
+        <Banner title="Création d'un nouveau profil" />
+        
+        <div className="w-full flex">
+          <div className="flex w-2/5 SignInPageIllustration">
+            <div className="w-32 p-8 h-32 rounded-full bg-[#ffe7a0]">
+            <img alt="imgCreateProfil" src="/assets/profile.png"/>
+            </div>
+          </div>
+          <div>
+            <form onSubmit={handleValidation}>
+                <div className="formRow2 w-full grid">
+                    <div className="formRow2-item-a">
+                        <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Nom" mandatory={true}/> 
+                    </div>
+    
+                    <div className="formRow2-item-a">
+                        <Field editing={true} name={"lastname"} type="text" placeholder={surname} label="Prénom" mandatory={true}/>
+                    </div>
+                </div>
+                <Button box="fill" type ="general" buttonText="Créer"/>
+            </form>
+          </div>
+      </div>
+      </div>
   }
   else{
     pageContent =
-      <div className="flex flex-col justify-center">
-        <h1 className="mb-[50px]">
-                Activation d'un Tag <br /> pour le profil <span className="text-[#ec3e55] font-light" >{surname}</span> <span className="text-[#ec3e55]">{name}</span>
+      <div className="flex flex-col ">
+        <h1 className="mb-[50px] mt-[100px] text-center">
+                Activation d'un Tag <br /> pour le profil <span className="text-[#ffce40] font-light" >{surname}</span> <span className="text-[#ffce40]">{name}</span>
         </h1>
         <form className="m-auto flex flex-col" onSubmit={handleSheetAssociation}>
           <Field editing={true} name={"id"} type="text" label="Code d'activation" mandatory={true}/> 
@@ -98,7 +101,7 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
   }
 
   return ( 
-    <div>
+    <div className="w-full flex justify-center">
      {pageContent}
     </div>
   );
