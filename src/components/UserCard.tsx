@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUpdateCurrentUserSheetMutation } from "../generated/graphql";
 import { Location } from '../routes';
@@ -10,7 +10,9 @@ type UserCardProps = {
   lastname?: String,
   firstname?: String,
   enabled?: boolean,
-  handleSelect: Function
+  checkboxList?: Array<String>,
+  handleCheckboxList: Function,
+  selectAll?: boolean,
 }
 
 const UserCard: React.FC<UserCardProps> = ({
@@ -18,15 +20,16 @@ const UserCard: React.FC<UserCardProps> = ({
   type,
   lastname,
   firstname,
-  handleSelect,
+  checkboxList,
   enabled = false,
+  handleCheckboxList,
 }) => {
 
     const displayUserCard = () => {
         switch (type) {
             case "main":
             case "child":
-                return <UserCardBasic id={id} enabled={enabled} type={type} lastname={lastname} firstname={firstname} handleSelect={handleSelect}/>
+                return <UserCardBasic id={id} enabled={enabled} type={type} lastname={lastname} firstname={firstname} checkboxList={checkboxList} handleCheckboxList={handleCheckboxList}/>
             case "add":
                 return <UserCardAdd />
             default:
@@ -61,10 +64,13 @@ const UserCardBasic: React.FC<UserCardProps> = ({
   type,
   lastname,
   firstname,
-  handleSelect,
-  enabled = false,
+  enabled,
+  checkboxList,
+  handleCheckboxList,
 }): JSX.Element => {
     const [updateUser] = useUpdateCurrentUserSheetMutation();
+    const [checked, setChecked] = useState(false);
+
 
     const handleToggleEnabled = (newState: boolean) => {
         if (id) {
@@ -79,13 +85,24 @@ const UserCardBasic: React.FC<UserCardProps> = ({
         }
     }
 
+    useEffect(() => {
+        console.log('is find')
+        const res = checkboxList?.filter(e => e === id);
+        if(res![0] !== id){
+            setChecked(false)    
+        }
+        else{
+            setChecked(true)
+        }
+    },[checkboxList])
+
     return (
         <div className="flex flex-col items-center justify-center gap-[32px] h-[100%]" onClick={() => alert("[A FAIRE] Afficher la fiche médicale.")}>
 
-            <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select"
+            <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select" checked={checked}
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
-                handleSelect(id)
+                handleCheckboxList(id)
             }}/>
             
             <div className="flex flex-col gap-[18px] items-center w-[100%]">

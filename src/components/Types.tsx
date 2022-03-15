@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react"
 import { SheetContact } from "../generated/graphql"
 
 export type MedicalCardTypeGeneral = {
@@ -69,7 +70,8 @@ export type fieldType = {
   text?: string,
   option?: Array<fieldOption>,
   placeholder?: string | undefined,
-  editing: boolean
+  editing: boolean,
+  onChange?: (e: any) => void,
 }
 
 export enum TextMessageType {

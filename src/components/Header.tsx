@@ -131,11 +131,10 @@ export const Header: React.FC<HeaderType> = ({
   }
 
   if(loading){
-    contenu = <>
-    </>
+    return null
   }
-
-  return (  
+  else{
+    return (  
     <nav className="header">
       <div className ="header--logo--holder">
         <a href="/"><img src={Logo} alt="logo" className="header--logo" /></a>
@@ -144,6 +143,7 @@ export const Header: React.FC<HeaderType> = ({
         {contenu}
       </div>
     </nav>
-  );
+    );
+  }
 }
  

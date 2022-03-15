@@ -5,7 +5,6 @@ query SheetsCurrentUser {
       advanceDirectives
       allergies
       bloodType
-      createdAt
       currentTreatment
       dateOfBirth
       emergencyContacts {
@@ -27,8 +26,6 @@ query SheetsCurrentUser {
         lname
         phone
       }
-      updatedAt
-      user
     }
     error {
       type

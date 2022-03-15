@@ -32,7 +32,7 @@ function App() {
       const { accessToken } = await res.json();
       setAccessToken(accessToken);
       setLoading(false);
-      console.log(accessToken);
+      console.log("🔐 : "+accessToken);
     }
     refreshToken()
   }, []);
@@ -41,17 +41,19 @@ function App() {
   if (loading) {
     return null;
   }
-
-  return (
-    <BrowserRouter>
-    <div className="App h-full min-h-screen flex flex-col items-stretch">
-      <Header type={HeaderTypeEnum.after} />
-      <div className='w-full h-full content flex flex-row'>
-        <Routes />
+  else{
+    return (
+      <BrowserRouter>
+      <div className="App h-full min-h-screen flex flex-col items-stretch">
+        <Header type={HeaderTypeEnum.after} />
+        <div className='w-full h-full content flex flex-row'>
+          <Routes />
+        </div>
       </div>
-    </div>
-    </BrowserRouter>
-  );
+      </BrowserRouter>
+    );
+  }
+
 }
 
 export default withApollo(App);

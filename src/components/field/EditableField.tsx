@@ -1,7 +1,7 @@
 import './Field.css';
 import PhoneInput from 'react-phone-number-input'
 import fr from 'react-phone-number-input/locale/fr.json'
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import {fieldOption, fieldType} from '../Types';
 import { E164Number } from 'libphonenumber-js/types';
 
@@ -13,6 +13,7 @@ type editableFieldType = {
   text?: string,
   option?: Array<fieldOption>,
   placeholder?: string,
+  onChange?: (e: any) => void,
 }
 
 
@@ -25,6 +26,7 @@ const EditableField: React.FC<editableFieldType> = ({
   text,
   option,
   placeholder='',
+  onChange,
 }) => {
 
 
@@ -37,6 +39,7 @@ const EditableField: React.FC<editableFieldType> = ({
 
   function handleValue(event: any){
     setValue(event.target.value);
+    onChange && onChange(event);
   }
 
   const telInput = () => {
@@ -47,7 +50,10 @@ const EditableField: React.FC<editableFieldType> = ({
         international={true}
         placeholder={text}
         value={tel}
-        onChange={setTel}
+        onChange={(e: any) => {
+          setTel(e);
+          onChange && onChange(e)
+        }}
         name={name}
       />
     )
