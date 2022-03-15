@@ -80,7 +80,7 @@ const SignInForm: React.FC<SignInFormProps> = () => {
                 </div>
 
                 {message && <TextMessage type={TextMessageType.oups}/>}
-                <h4>Mot de passe oublié ?</h4>
+                <a href='./auth/forgot-password'> <h4>Mot de passe oublié ?</h4></a>
                 <Button box="fill" type ="general" buttonText="Valider"/>
             </form>
             
