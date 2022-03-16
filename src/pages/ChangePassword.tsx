@@ -17,6 +17,8 @@ export default function ChangePassword() {
     event.preventDefault();
 
     let pwd = event.target.password.value;
+    //faire la vérification des password identiques
+    let pwdRepeat = event.target.passwordRepeat.value;
 
     setIsLoading(true);
 
@@ -42,30 +44,39 @@ export default function ChangePassword() {
   };
 
   return (
-    <div>
-        {passwordChanged ? (
-          <>
-          <div>
-            <h2>Votre mot de passe a été changé. Essayer de vous connecter à nouveau à l'application.</h2>
+    <div className="w-full flex justify-center">
+      {passwordChanged ? (
+        <div className='flex justify-center m-8'>
+          <div className='tablet:w-3/5 tablet:mt-8 tablet:p-8 flex flex-col'>
+            <h1 className='mb-8'>Votre mot de passe a été changé. </h1> 
+            <h2 className='mb-8 mt-8'> Essayer de vous connecter à nouveau à l'application</h2>
+            <Button box="fill" type="general" buttonText="Connectez-vous" to={'/sign-in'}/>
+          </div>
+        </div>
+      ) : (
+        <div className='flex justify-center m-8'>
+          <div className="flex w-2/5 m-8 justify-center mobile:hidden tablet:flex">
           </div>
           <div>
-            <Button box="fill" type="general" buttonText="Connectez vous" to={'/sign-in'}/>
+            <h1 className='mb-8'>Vous pouvez modifier votre mot de passe !</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="m-auto formRow2 w-full grid">
+                    <div className="formRow2-item-a">
+                      {error && <h3> {error}</h3>}
+                      <Field editing={true} type="password" name={"password"} placeholder={""} label="Nouveau mot de passe" mandatory={true}/>
+                    </div>
+                    <div className="formRow2-item-a">
+                      {error && <h3> {error}</h3>}
+                      <Field editing={true} type="password" name={"passwordRepeat"} placeholder={""} label="Répétez le mot de passe" mandatory={true}/>
+                    </div>
+                </div>
+                <div className="mobile:flex mobile:justify-center tablet:block">
+                  <Button box="fill" type="general" buttonText="Modifier mot de passe"/>
+                </div>
+            </form>
           </div>
-        </>
-        ) : (
-          <>
-            <div>
-              <h2>Réinitialisation de mot de passe</h2>
-            </div>
-            <div>
-              <form onSubmit={handleSubmit}>
-                {error && <h3> {error}</h3>}
-                <Field editing={true} type="text" name={"password"} placeholder={""} label="Mot de passe" mandatory={true}/>
-                <Button box="fill" type="general" buttonText="Créez un nouveau mot de passe" to={'/sign-in'}/>
-              </form>
-            </div>
-          </>
-        )}
       </div>
-  );
+   )}
+   </div>
+ );
 }
