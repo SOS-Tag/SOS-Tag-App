@@ -38,7 +38,7 @@ function App() {
   }, []);
 
   // Sans ca le route se génére avant d'avoir l'acces token impliquant de se reconnecter à chaque changement de pages
-  if (loading) {
+  if (loading || loading2) {
     return null;
   }
   else{

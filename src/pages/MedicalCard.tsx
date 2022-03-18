@@ -81,7 +81,6 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
 
   if (!data || !data.sheetsCurrentUser || !data.sheetsCurrentUser.response || !sheets || !sheets[sheetIdx] || !sheets[sheetIdx]._id) {
     return <>
-      <p>Chargement...</p>
     </>
   } else {
     return (
