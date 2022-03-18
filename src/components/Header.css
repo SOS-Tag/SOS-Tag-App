@@ -45,7 +45,15 @@
     flex-direction: row;
   }
 
+  /* .NavDesktop {
+    display: none;
+  } */
+
   .NavDesktop {
+    display: flex;
+    flex-direction: row;
+  }
+  .NavDesktop a span {
     display: none;
   }
 }
@@ -58,6 +66,10 @@
   .NavDesktop {
     display: flex;
     flex-direction: row;
+  }
+
+  .NavDesktop a svg {
+    display: none;
   }
 
   .header--logo {

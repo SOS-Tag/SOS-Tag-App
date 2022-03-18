@@ -54,6 +54,7 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setEditInfo(false);
     updateSheet({
       variables: {
         updateCurrentUserSheetInput: {
@@ -66,12 +67,15 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
     });
   }
 
-  const handleChange = (key: string, { e, value }: { e?: ChangeEvent<HTMLInputElement>, value?: string | boolean }) => {
+  const handleChange = (key: string, { e, value }: { e?: ChangeEvent<HTMLInputElement>, value?: any }) => {
     if (value === null || value === undefined) {
       if (!e) return;
       value = e.currentTarget.value;
     }
 
+    console.log("###### " +key);
+    console.log(value);
+    
     setSheets(prev => {
       let res: any = [...prev];
       amend(key, value, res[sheetIdx]);

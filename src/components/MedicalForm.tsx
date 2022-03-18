@@ -14,7 +14,7 @@ type MedicalFormProps = {
   setEditInfo: React.Dispatch<React.SetStateAction<boolean>>,
   handleChange: (key: string, { e, value }: {
     e?: React.ChangeEvent<HTMLInputElement> | undefined;
-    value?: string | boolean | undefined;
+    value?: any;
 }) => void
 }
 
@@ -98,14 +98,14 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
   return (
     <>
       <div className="hidden desktop:block fixed top-[10%] right-0 opacity-25">
-        <img className="" alt="imgSignUp" src="./assets/ImageSignIn.png" />
+        <img className="" alt="imgSignUp" src="../../public/assets/ImageSignUp.PNG" />
       </div>
       <div className="MedicalFormContainer">
-        <form onSubmit={handleSubmit} action="">
-          <div className='w-[75vw] tablet:w-auto align-middle text-center cursor-pointer drop-shadow-md inline-flex hover:drop-shadow-lg bg-SosTagYellow px-3 py-1 mb-5 rounded-md hover:animate-pulse' onClick={handleEditInfo}>
+        <form id="formId" onSubmit={handleSubmit} action="">
+          {!editInfo && <div className='w-[75vw] tablet:w-auto align-middle text-center cursor-pointer drop-shadow-md inline-flex hover:drop-shadow-lg bg-SosTagYellow px-3 py-1 mb-5 rounded-md hover:animate-pulse' onClick={handleEditInfo}>
             <BsPencilFill className="fill-white p-1 w-8 h-8" />
             <span className='ml-5 text-white font-bold'>Modifier les informations</span>
-          </div>
+          </div>}
           {/* PARTIE 1 */}
           <div className="w-full formSectionHeader">
             <h2 className="formRowMedic-subtitle">Information générale</h2>
@@ -171,7 +171,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
           <ContactCard userCard={userCard} editInfo={editInfo} handleChange={handleChange} />
 
-          <Button box="fill" type="general" buttonText="Valider les informations" />
+          {editInfo && <Button box="fill" type="general" buttonText="Valider les informations" />}
 
         </form>
       </div>

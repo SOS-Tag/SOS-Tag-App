@@ -58,7 +58,8 @@ export const Header: React.FC<HeaderType> = ({
           className={`header--link-item ${location.pathname === "/users/:userId" ? "selected" : ""}`} 
           href="/users/:userId"
         >
-          Fiche personnelle
+          <QrCodeSVG color={location.pathname === "/users/:userId"? "#ec3e55" : "#19224F"}/>
+          <span>Fiche personnelle</span>
         </a>
       
         <a
@@ -84,7 +85,7 @@ export const Header: React.FC<HeaderType> = ({
       </div>
 
       {/* Menu Mobile */}
-      <div className="NavMobile">
+      {/* <div className="NavMobile">
         <a
           className="header--link-item"
           href="/users/:userId"
@@ -112,7 +113,7 @@ export const Header: React.FC<HeaderType> = ({
         >
         <LogOutSVG color={"#19224F"}/>
         </a>
-      </div>
+      </div> */}
     </>
   }
 
