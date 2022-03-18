@@ -133,8 +133,8 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
                 </div>
 
                 <div className='flex gap-x-[41px] items-center flex-wrap'>
-                    <GroupButtons img={"/assets/profile.png"} buttons={[downloadButton, orderButton]} />
-                    <GroupButtons img={"/assets/qrcode.png"} buttons={[deleteButton]} />
+                    <GroupButtons img={"/assets/qrcode.png"} buttons={[downloadButton, orderButton]} />
+                    <GroupButtons img={"/assets/profile.png"} buttons={[deleteButton]} />
                 </div>
 
             </div>
