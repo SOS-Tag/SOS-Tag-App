@@ -155,6 +155,10 @@ h2 {
   margin: 5% auto;
 }
 
+.formRow2 {
+  overflow-wrap: break-word;
+}
+
 @media (max-width: 469px) {
   h1,
   h2 {
@@ -180,14 +184,14 @@ h2 {
     margin-left: 10vw;
   }
 
-  .formRow2 {
+  /* .formRow2 {
     width: 100vw;
-    /* background-color: #a8a4f2; */
-    /* display: flex; */
+    background-color: #a8a4f2;
+    display: flex;
     flex-direction: column;
-  }
+  } */
 
-  .formRow2-item-a {
+  /* .formRow2-item-a {
     width: 40vw;
     margin: auto;
   }
@@ -195,7 +199,7 @@ h2 {
   .formRow2-item-b {
     width: 40vw;
     margin: auto;
-  }
+  } */
 
   .AlternativText {
     margin: auto;

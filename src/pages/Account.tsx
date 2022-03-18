@@ -97,7 +97,7 @@ const Account: React.FC<AccountType> = ({}) => {
 
     if (modify){
         nameAndSurname = 
-        <div className="formRow2 w-full grid">
+        <div className="formRow2 w-full grid tablet:grid-cols-2 tablet:gap-10">
             <div className="formRow2-item-a">
                 <Field editing={true} name={"firstname"} type="text" placeholder={name} label="Prénom" mandatory={false}/>
             </div>
@@ -108,7 +108,7 @@ const Account: React.FC<AccountType> = ({}) => {
 
     }else{
         nameAndSurname =
-        <div className="mb-10">
+        <div className="mb-10 tablet:text-left text-center flex tablet:flex-col gap-2 tablet:gap-0">
             <p className="prenom">{name}</p>
             <p className="nom">{surname}</p>    
         </div>
@@ -173,14 +173,14 @@ const Account: React.FC<AccountType> = ({}) => {
     }
     
     return ( 
-        <div className="w-full">
+        <div className="w-full w-[80vw] mx-auto">
             {/* FORMULAIRE INFO */}
             {(nbPage === 0) ? 
             <>
                 <Banner title="Gestion de votre compte" />
-                <div className="flex flex-row">
+                <div className="flex tablet:flex-row flex-col">
                     {/* BOUTONS */}
-                    <div className="flex flex-col w-2/5 items-center">
+                    <div className="flex tablet:flex-col tablet:w-2/5 items-center flex-row gap-5 tablet:gap-0 mr-5">
                         <svg width="132" height="132" viewBox="0 0 132 132" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_d_0_1)">
                             <circle cx="66" cy="62" r="62" fill="#F69FAB"/>
@@ -188,16 +188,16 @@ const Account: React.FC<AccountType> = ({}) => {
                             <path d="M66 32C70.1109 32 74.0533 33.633 76.9602 36.5398C79.867 39.4467 81.5 43.3891 81.5 47.5C81.5 51.6109 79.867 55.5533 76.9602 58.4602C74.0533 61.367 70.1109 63 66 63C61.8891 63 57.9467 61.367 55.0398 58.4602C52.133 55.5533 50.5 51.6109 50.5 47.5C50.5 43.3891 52.133 39.4467 55.0398 36.5398C57.9467 33.633 61.8891 32 66 32ZM66 70.75C83.1275 70.75 97 77.6862 97 86.25V94H35V86.25C35 77.6862 48.8725 70.75 66 70.75Z" fill="#534F4F"/>
                         </svg>
 
-                        <div className="flex flex-col ml-10 mr-10 ">
+                        <div className="flex flex-col">
                             <Button box={typeModifyButton} type="general" form="userInfo" buttonText={textModifyButton}/>
                             <Button box="fill" type="secondaire" buttonText="Changer de mot de passe" onClick={modifyPage}/>
+                            <p className="text-center">Supprimer le compte</p>
                         </div>
-                        <p>Supprimer le compte</p>
                     </div>
                     {/* FORMULAIRE */}
-                    <form id="userInfo" className="UserInfo w-3/5" onSubmit={handleSubmit} >
+                    <form id="userInfo" className="UserInfo tablet:w-3/5 mt-10 tablet:mt-0" onSubmit={handleSubmit} >
                         {nameAndSurname}
-                        <div className="formRow2 w-full grid">
+                        <div className="formRow2 w-full grid tablet:grid-cols-2 tablet:gap-10">
                             <div className="formRow2-item-a">
                                 <Field editing={modify} type="text" name={"mail"} placeholder={mail} label="Adresse mail" mandatory={false}/>
                             </div>
@@ -205,7 +205,7 @@ const Account: React.FC<AccountType> = ({}) => {
                                 <Field editing={modify} type="tel" name={"phone"} placeholder={tel} label="Numéro de téléphone" mandatory={false}/>
                             </div>
                         </div>
-                        <div className="formRow2 w-full grid">
+                        <div className="formRow2 w-full grid tablet:grid-cols-3 tablet:gap-10">
                             <div className="formRow2-item-a">
                                 <Field editing={modify} type="text" name={"adress"} placeholder={address} label="Adresse postale" mandatory={false}/>
                             </div>
@@ -224,8 +224,8 @@ const Account: React.FC<AccountType> = ({}) => {
             <>
             <Banner title="Modification de votre mot de passe" returnClick={modifyPage}/> 
 
-            <form className="grid grid-cols-5 gap-4" onSubmit={handleValidation}>
-                <div className="col-start-3 ">
+            <form className="grid tablet:grid-cols-5 tablet:gap-4" onSubmit={handleValidation}>
+                <div className="tablet:col-start-3 tablet:w-[230px] mb-[30px]">
                     <div>
                         <Field editing={true} name={"password1"} type="password" label="Mot de passe actuel" mandatory={true}/> 
                     </div>
