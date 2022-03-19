@@ -126,7 +126,7 @@ h2 {
 .MedicAside {
   width: 100vw;
   background-color: white;
-  max-height: 400px;
+  /* max-height: 400px; */
   text-align: center;
   box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
   margin: 20px auto;
@@ -148,15 +148,18 @@ h2 {
 }
 
 .formRowMedic-subtitle {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .MedicalFormContainer > form > button {
   margin: 5% auto;
 }
 
-.formRow2 {
-  overflow-wrap: break-word;
+.emergencyContact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 469px) {
@@ -205,6 +208,9 @@ h2 {
     margin: auto;
   }
 
+  .formRowMedic-subtitle {
+    margin-bottom: 20px;
+  }
   
 }
 
@@ -272,7 +278,7 @@ h2 {
     text-align: center;
     border-radius: 20px;
     box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
-    margin: 2.5% 8%;
+    margin: 3% 8%;
     padding: 2%;
     position: absolute;
     z-index: 2;

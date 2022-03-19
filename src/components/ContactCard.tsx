@@ -9,7 +9,7 @@ type ContactCardType = {
   editInfo: boolean,
   handleChange: (key: string, { e, value }: {
     e?: React.ChangeEvent<HTMLInputElement>;
-    value?: string | boolean;
+    value?: any;
   }) => void,
 };
 
@@ -19,6 +19,8 @@ const ContactCard: React.FC<ContactCardType> = ({
   handleChange,
 }) => {
   const [contacts, setContacts] = useState(userCard.emergencyContacts || []);
+  console.log(contacts);
+  
 
   useEffect(() => {
     if (userCard.emergencyContacts)
@@ -34,11 +36,11 @@ const ContactCard: React.FC<ContactCardType> = ({
     }]);
   }
 
-  const delContact = (i:number) => {
-    if(contacts.length === 2)
-      i===1 ? setContacts([contacts[0]]) : setContacts([contacts[1]]) 
-    else 
-      setContacts([])
+  const delContact = (i: number) => {
+    if (contacts.length === 2)
+      i == 1 ? handleChange("emergencyContacts", { value: [contacts[0]]}) : handleChange("emergencyContacts", { value: [contacts[1]]});
+    else
+      handleChange("emergencyContacts", { value: []});
   }
 
   return (
@@ -63,26 +65,26 @@ const ContactCard: React.FC<ContactCardType> = ({
         {contacts.map((contact, i) => (
           contact &&
           <div key={i}>
-            <div className="w-full">
+            <div className="w-full emergencyContact-header">
               <h2 className="formRowMedic-subtitle">Contact d'urgence {i + 1}</h2>
-              <Button onClick={(e) => {
+              {editInfo && <Button onClick={(e) => {
                 e.preventDefault();
-                delContact(i)
+                delContact(i);
               }
-              } box="fill" type="general" buttonText="X" />
+              } box="fill" type="general" buttonText="X" />}
             </div>
             <div className="formRowMedicCard w-full grid">
               <div className="formRowMedic-item-a">
-                <Field editing={editInfo} type="text" name={"emergencyContact"+(i+1)+"-fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts['+i+'].fname', { e }) }} label="Prénom" mandatory={true} placeholder={String(contact.fname) || ""} />
+                <Field editing={editInfo} type="text" name={"emergencyContact" + (i + 1) + "-fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts[' + i + '].fname', { e }) }} label="Prénom" mandatory={true} placeholder={String(contact.fname) || ""} />
               </div>
               <div className="formRowMedic-item-b">
-                <Field editing={editInfo} type="text" name={"emergencyContact"+(i+1)+"-lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts['+i+'].lname', { e }) }} label="Nom" mandatory={true} placeholder={String(contact.lname) || ""} />
+                <Field editing={editInfo} type="text" name={"emergencyContact" + (i + 1) + "-lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts[' + i + '].lname', { e }) }} label="Nom" mandatory={true} placeholder={String(contact.lname) || ""} />
               </div>
               <div className="formRowMedic-item-a">
-                <Field editing={editInfo} type="tel" name={"emergencyContact"+(i+1)+"-phone"} onChange={(value: string) => { handleChange('emergencyContacts['+i+'].phone', { value }) }} label="Numéro de téléphone" mandatory={true} placeholder={String(contact.phone) || ""} />
+                <Field editing={editInfo} type="tel" name={"emergencyContact" + (i + 1) + "-phone"} onChange={(value: string) => { handleChange('emergencyContacts[' + i + '].phone', { value }) }} label="Numéro de téléphone" mandatory={true} placeholder={String(contact.phone) || ""} />
               </div>
               <div className="formRowMedic-item-b">
-                <Field editing={editInfo} type="text" name={"emergencyContact"+(i+1)+"-role"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts['+i+'].role', { e }) }} label="Rôle" mandatory={true} placeholder={String(contact.role)} />
+                <Field editing={editInfo} type="text" name={"emergencyContact" + (i + 1) + "-role"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts[' + i + '].role', { e }) }} label="Rôle" mandatory={true} placeholder={String(contact.role)} />
               </div>
             </div>
           </div>
