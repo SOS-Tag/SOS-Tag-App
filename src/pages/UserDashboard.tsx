@@ -3,7 +3,7 @@ import GroupButtons from '../components/GroupButtons';
 import CardsList from '../components/CardsList';
 import { useEffect, useState } from 'react';
 import { withAuth } from '../guards/auth';
-import { Sheet, useSheetsCurrentUserQuery } from "../generated/graphql";
+import { Sheet, useSheetsCurrentUserQuery, useDeleteCurrentUserSheetMutation } from "../generated/graphql";
 import './UserDashboard.css';
 
 type UserDashboardType = {
@@ -11,12 +11,13 @@ type UserDashboardType = {
 
 const UserDashboard: React.FC<UserDashboardType> = () => {
 
+    const [deleteSheet] = useDeleteCurrentUserSheetMutation();
     const [selectedIDs, setSelectedIDs] = useState([]);
     const [sheets, setSheets] = useState<Sheet[]>([]);
 
     // TEST CHECKBOX
 
-    const [checkboxList, setCheckboxList] = useState<String[]>([]);
+    const [checkboxList, setCheckboxList] = useState<string[]>([]);
     const [allCheckboxSelected, setAllCheckboxSelected] = useState(false);
 
 
@@ -27,33 +28,41 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
     // BUTTON ACTIONS
 
     const download = () => {
-        alert("[A FAIRE] Télécharger les QR codes sélectionnés.");
+        console.log("[A FAIRE] Télécharger les QR codes sélectionnés.");
     }
 
     const downloadButton = {
         buttonText: "Télécharger",
         type: "secondaire",
-        onclick: download
+        onClick: download
     }
 
-    const order = () => {
-        alert("[A FAIRE] Commander les QR codes sélectionnés.");
-    }
+    // const order = () => {
+    //     alert("[A FAIRE] Commander les QR codes sélectionnés.");
+    // }
 
-    const orderButton = {
-        buttonText: "Commander",
-        type: "secondaire",
-        onclick: order
-    }
+    // const orderButton = {
+    //     buttonText: "Commander",
+    //     type: "secondaire",
+    //     onclick: order
+    // }
 
     const deleteProfile = () => {
-        alert("[A FAIRE] Supprimer les profils sélectionnés.");
+        checkboxList.map(e => deleteSheet({
+            variables: {
+              sheetId: e
+              },
+            })
+        );
+        let newList: Sheet[];
+        newList = sheets.filter(e => !checkboxList.find(x => x === e._id));
+        setSheets(newList);
     }
 
     const deleteButton = {
         buttonText: "Supprimer",
         type: "delete",
-        onclick: deleteProfile
+        onClick: deleteProfile
     }
 
     // CHECKBOX
@@ -133,7 +142,7 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
                 </div>
 
                 <div className='flex gap-x-[41px] items-center flex-wrap'>
-                    <GroupButtons img={"/assets/qrcode.png"} buttons={[downloadButton, orderButton]} />
+                    <GroupButtons img={"/assets/qrcode.png"} buttons={[downloadButton]} />
                     <GroupButtons img={"/assets/profile.png"} buttons={[deleteButton]} />
                 </div>
 
@@ -146,3 +155,5 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
 }
 
 export default withAuth(UserDashboard);
+
+
