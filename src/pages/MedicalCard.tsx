@@ -29,9 +29,15 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
   }, [data, sheetIdx]);
 
   useEffect(() => {
-    console.log("😼 ID : "+ userId)
-    userId !== ":userId" && userId !== undefined && parseInt(userId)<sheets.length && setSheetIdx(parseInt(userId))
-  },[userId])
+    if(sheets.length > 0){
+      let temp = 0;
+      console.log("😼 ID : "+ userId)
+      if(userId !== ":userId" && userId !== undefined && parseInt(userId!)<sheets.length)
+        temp = parseInt(userId)
+      console.log(temp);
+      setSheetIdx(temp);
+    }
+  },[userId, sheets])
 
   useEffect(() => {
     const sheets = data?.sheetsCurrentUser?.response
