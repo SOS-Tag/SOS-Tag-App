@@ -1,6 +1,4 @@
 import './Field.css';
-import PhoneInput from 'react-phone-number-input'
-import fr from 'react-phone-number-input/locale/fr.json'
 import React from 'react';
 import {fieldType} from '../Types';
 import NonEditableField from './NonEditableField';

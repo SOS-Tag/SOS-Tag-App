@@ -1,8 +1,8 @@
 import './Field.css';
 import PhoneInput from 'react-phone-number-input'
 import fr from 'react-phone-number-input/locale/fr.json'
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import {fieldOption, fieldType} from '../Types';
+import React, { useState } from 'react';
+import {fieldOption} from '../Types';
 import { E164Number } from 'libphonenumber-js/types';
 
 type editableFieldType = {

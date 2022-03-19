@@ -5,8 +5,6 @@ import { Location } from '../routes';
 import { withAuth } from "../guards/auth";
 import Field from "../components/field/Field";
 import Button from "../components/Button";
-import TextMessage from "../components/TextMessage";
-import { TextMessageType } from "../components/Types";
 import Banner from "../components/Banner";
 
 type NewSheetByIdType = {}

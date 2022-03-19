@@ -23,7 +23,6 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
   const [sheetIdx, setSheetIdx] = useState<number>(0);
   const [editInfo, setEditInfo] = useState(false);
   const { userId } = useParams();
-  const [placeholder, setPlaceholder] = useState("")
 
   useEffect(() => {
     setEditInfo(false)

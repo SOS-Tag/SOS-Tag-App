@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { useState } from 'react';
 import AlternativText from '../components/AlternativText';
 import Button from '../components/Button';
 import Field from '../components/field/Field';
@@ -9,7 +9,6 @@ import Banner from '../components/Banner';
 
 export default function ForgotPassword() {
   const [forgotPassword] = useForgotPasswordMutation();
-  const [error, setError] = useState('');
   const [email, setEmail] = useState('johndoe@mail.com');
   const [isLoading, setIsLoading] = useState(false);
   const [mailSent, setMailSent] = useState(false);

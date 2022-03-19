@@ -17,7 +17,6 @@ const SignUpPage = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
 
   const [register] = useRegisterMutation()
 

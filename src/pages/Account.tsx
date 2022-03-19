@@ -1,13 +1,11 @@
 import Button from "../components/Button"
 import Field from "../components/field/Field";
-import React, { MouseEventHandler, ReactElement, useEffect, useState } from "react";
-import AlternativText from "../components/AlternativText";
+import React, { ReactElement, useEffect, useState } from "react";
 import { withAuth } from "../guards/auth";
 
 // TEST
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useLogoutMutation, useMeQuery, useUpdateCurrentUserMutation } from "../generated/graphql";
-import { setAccessToken } from '../utils/access-token';
+import { useMeQuery, useUpdateCurrentUserMutation } from "../generated/graphql";
 import Banner from "../components/Banner";
 
 type AccountType = {}
@@ -29,10 +27,6 @@ const Account: React.FC<AccountType> = ({}) => {
     const [city, setCity] = useState("---");
     const [nationality, setNationality] = useState("");
     const [updateUser] = useUpdateCurrentUserMutation();
-
-    const [passwordInit, setPasswordInit] = useState("");
-    const [password1, setPassword1] = useState("");
-    const [password2, setPassword2] = useState("");
 
     const modifyPage = () => {
         console.log(nbPage);

@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '../components/Button';
 import Field from '../components/field/Field';
