@@ -77,13 +77,13 @@ const EditableField: React.FC<editableFieldType> = ({
 
   const mandatoryInput = () => {
     return(
-      <input onChange={handleValue} value={value} required className={css} type={type} placeholder={placeholder} name={name} />
+      <input onChange={handleValue} value={value} required className={css} type={type} name={name} />
     )
   }
 
  const nonMandatoryInput = () => {
     return(
-      <input onChange={handleValue} value={value} className={css} type={type} placeholder={placeholder} name={name} />
+      <input onChange={handleValue} value={value} className={css} type={type} name={name} />
     )
   }
 
