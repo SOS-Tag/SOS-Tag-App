@@ -13,6 +13,7 @@ type UserCardProps = {
   checkboxList?: Array<String>,
   handleCheckboxList: Function,
   selectAll?: boolean,
+  urlId?: number,
 }
 
 const UserCard: React.FC<UserCardProps> = ({
@@ -23,13 +24,14 @@ const UserCard: React.FC<UserCardProps> = ({
   checkboxList,
   enabled = false,
   handleCheckboxList,
+  urlId,
 }) => {
 
     const displayUserCard = () => {
         switch (type) {
             case "main":
             case "child":
-                return <UserCardBasic id={id} enabled={enabled} type={type} lastname={lastname} firstname={firstname} checkboxList={checkboxList} handleCheckboxList={handleCheckboxList}/>
+                return <UserCardBasic id={id} urlId={urlId} enabled={enabled} type={type} lastname={lastname} firstname={firstname} checkboxList={checkboxList} handleCheckboxList={handleCheckboxList}/>
             case "add":
                 return <UserCardAdd />
             default:
@@ -67,9 +69,12 @@ const UserCardBasic: React.FC<UserCardProps> = ({
   enabled,
   checkboxList,
   handleCheckboxList,
+  urlId,
 }): JSX.Element => {
     const [updateUser] = useUpdateCurrentUserSheetMutation();
     const [checked, setChecked] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
 
     const handleToggleEnabled = (newState: boolean) => {
@@ -97,7 +102,7 @@ const UserCardBasic: React.FC<UserCardProps> = ({
     },[checkboxList])
 
     return (
-        <div className="flex flex-col items-center justify-center gap-[32px] h-[100%]" onClick={() => alert("[A FAIRE] Afficher la fiche médicale.")}>
+        <div className="flex flex-col items-center justify-center gap-[32px] h-[100%]" onClick={() => navigate((location as Location)?.state?.from || '/users/'+urlId)}>
 
             <input type="checkbox" className="absolute top-[22px] left-[22px]" name="us-select" checked={checked}
               onClick={(e: React.MouseEvent) => {

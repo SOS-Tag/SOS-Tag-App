@@ -30,7 +30,7 @@ const UserSwitch: React.FC<UserSwitchType> = ({ id, setId, cardsNames }) => {
                     Selectionner la fiche à modifier
                     {/* {editingInput()} */}
                 </label>
-                <select onChange={(e) => {setId(cardsNames.indexOf(e.currentTarget.value))}} className={css} placeholder={String(cardsNames[id])} name="changeSelectedCard" required>
+                <select onChange={(e) => {setId(cardsNames.indexOf(e.currentTarget.value))}} className={css} value={String(cardsNames[id])} name="changeSelectedCard" required>
                     {opts.map((option, key: number) => {
                         return <option key={key}>{option.name}</option>
                     })}

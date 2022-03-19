@@ -32,13 +32,12 @@ function App() {
       const { accessToken } = await res.json();
       setAccessToken(accessToken);
       setLoading(false);
-      console.log("🔐 : "+accessToken);
     }
     refreshToken()
   }, []);
 
   // Sans ca le route se génére avant d'avoir l'acces token impliquant de se reconnecter à chaque changement de pages
-  if (loading) {
+  if (loading || loading2) {
     return null;
   }
   else{

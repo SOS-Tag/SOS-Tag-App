@@ -67,8 +67,6 @@ const SignUpPage = () => {
       condition = false;
     }
     if(condition){
-      alert("formulaire valide");
-
       // We use the register mutation as we implement the registration of a Firebase user
       // on the backend.
       // When a user is created, we also create an account which shares the id and the
@@ -91,7 +89,6 @@ const SignUpPage = () => {
     }
     else{
       event.preventDefault();
-      alert("formulaire invalide")
     }
 
   }

@@ -9,6 +9,7 @@ import MedicalForm from '../components/MedicalForm';
 import BlockQR from '../components/BlockQR';
 import UserSwitch from '../components/UserSwitch';
 import { amend } from '../utils/object';
+import { useParams } from 'react-router-dom';
 
 type MedicalCardType = {
 }
@@ -21,10 +22,23 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
   const [sheets, setSheets] = useState<Sheet[]>([]);
   const [sheetIdx, setSheetIdx] = useState<number>(0);
   const [editInfo, setEditInfo] = useState(false);
+  const { userId } = useParams();
+  const [placeholder, setPlaceholder] = useState("")
 
   useEffect(() => {
     setEditInfo(false)
   }, [data, sheetIdx]);
+
+  useEffect(() => {
+    if(sheets.length > 0){
+      let temp = 0;
+      console.log("😼 ID : "+ userId)
+      if(userId !== ":userId" && userId !== undefined && parseInt(userId!)<sheets.length)
+        temp = parseInt(userId)
+      console.log(temp);
+      setSheetIdx(temp);
+    }
+  },[userId, sheets])
 
   useEffect(() => {
     const sheets = data?.sheetsCurrentUser?.response
