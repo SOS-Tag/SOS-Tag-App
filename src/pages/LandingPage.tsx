@@ -6,11 +6,11 @@ type LandingPageType = {}
 
 const LandingPage: React.FC<LandingPageType> = ({}) => {
   return ( 
-    <div className="w-auto w-full flex flex-col space-y-20 items-center landing-page bg-slate-100">
+    <div className="w-full flex flex-col space-y-20 items-center landing-page bg-slate-100">
 
       <div className="w-full first-part flex flex-col space-y-4 bg-white drop-shadow-md items-center p-8  md:flex-row md:space-x-8 items-center md:mb-20 md:pb-6">
-        <div className="w-1/2 LandingPageIllustration ml-6 mt-6">
-          <img className="w-5/5" alt="imgManSmiling" src="./assets/man_smiling.png"/>
+        <div className="w-1/2 LandingPageIllustration m-auto flex ">
+          <img className="w-5/5 m-auto" alt="imgManSmiling" src="./assets/man_smiling.png"/>
         </div>
         <div className="first-part-text flex flex-col items-center">
           <div className="first-message text-center md:text-left text-xs md:text-2xl">
