@@ -109,6 +109,8 @@ export type Mutation = {
   createQRCode?: Maybe<QrCodeResponse>;
   /** Create an empty sheet. */
   createSheet?: Maybe<SheetsResponse>;
+  /** Delete one of the current user sheets. */
+  deleteCurrentUserSheet?: Maybe<SheetResponse>;
   /** Send an email containing a link that redirect to change password dedicated route on the frontend. The link contains a token that, once decoded, will reveal the user id. */
   forgotPassword?: Maybe<BooleanResponse>;
   /** Log the user in using his email address and his password. */
@@ -147,6 +149,11 @@ export type MutationConfirmUserArgs = {
 
 export type MutationCreateSheetArgs = {
   count?: InputMaybe<Scalars['Float']>;
+};
+
+
+export type MutationDeleteCurrentUserSheetArgs = {
+  sheetId?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -463,6 +470,13 @@ export type ConfirmUserMutationVariables = Exact<{
 
 export type ConfirmUserMutation = { __typename?: 'Mutation', confirmUser?: { __typename?: 'BooleanResponse', response?: boolean | null, error?: { __typename?: 'ExtendedError', type?: string | null, code?: number | null, title?: string | null, message?: string | null, timestamp?: string | null, fields?: Array<{ __typename?: 'InputError', type?: string | null, name?: string | null, detail?: string | null } | null> | null } | null } | null };
 
+export type DeleteCurrentUserSheetMutationVariables = Exact<{
+  sheetId?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type DeleteCurrentUserSheetMutation = { __typename?: 'Mutation', deleteCurrentUserSheet?: { __typename?: 'SheetResponse', error?: { __typename?: 'ExtendedError', title?: string | null, message?: string | null } | null } | null };
+
 export type ForgotPasswordMutationVariables = Exact<{
   userEmail?: InputMaybe<Scalars['String']>;
 }>;
@@ -663,6 +677,42 @@ export function useConfirmUserMutation(baseOptions?: Apollo.MutationHookOptions<
 export type ConfirmUserMutationHookResult = ReturnType<typeof useConfirmUserMutation>;
 export type ConfirmUserMutationResult = Apollo.MutationResult<ConfirmUserMutation>;
 export type ConfirmUserMutationOptions = Apollo.BaseMutationOptions<ConfirmUserMutation, ConfirmUserMutationVariables>;
+export const DeleteCurrentUserSheetDocument = gql`
+    mutation DeleteCurrentUserSheet($sheetId: String) {
+  deleteCurrentUserSheet(sheetId: $sheetId) {
+    error {
+      title
+      message
+    }
+  }
+}
+    `;
+export type DeleteCurrentUserSheetMutationFn = Apollo.MutationFunction<DeleteCurrentUserSheetMutation, DeleteCurrentUserSheetMutationVariables>;
+
+/**
+ * __useDeleteCurrentUserSheetMutation__
+ *
+ * To run a mutation, you first call `useDeleteCurrentUserSheetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCurrentUserSheetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCurrentUserSheetMutation, { data, loading, error }] = useDeleteCurrentUserSheetMutation({
+ *   variables: {
+ *      sheetId: // value for 'sheetId'
+ *   },
+ * });
+ */
+export function useDeleteCurrentUserSheetMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCurrentUserSheetMutation, DeleteCurrentUserSheetMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteCurrentUserSheetMutation, DeleteCurrentUserSheetMutationVariables>(DeleteCurrentUserSheetDocument, options);
+      }
+export type DeleteCurrentUserSheetMutationHookResult = ReturnType<typeof useDeleteCurrentUserSheetMutation>;
+export type DeleteCurrentUserSheetMutationResult = Apollo.MutationResult<DeleteCurrentUserSheetMutation>;
+export type DeleteCurrentUserSheetMutationOptions = Apollo.BaseMutationOptions<DeleteCurrentUserSheetMutation, DeleteCurrentUserSheetMutationVariables>;
 export const ForgotPasswordDocument = gql`
     mutation ForgotPassword($userEmail: String) {
   forgotPassword(userEmail: $userEmail) {

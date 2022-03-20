@@ -12,6 +12,7 @@ import React from 'react';
 import ChangePassword from '../pages/ChangePassword';
 import ForgotPassword from '../pages/ForgotPassword';
 import ConfirmUser from '../pages/ConfirmUser';
+import LandingPage from '../pages/LandingPage';
 
 export type Location = {
   state?: {
@@ -46,7 +47,7 @@ export const routes = [
       }
     ]
   },
-  { path: '/', element: <Welcome /> },
+  { path: '/', element: <LandingPage /> },
   { path: '/sign-up', element: <SignUpPage /> },
   { path: '/sign-in', element: <SignInPage /> },
   {

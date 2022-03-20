@@ -1,0 +1,8 @@
+mutation DeleteCurrentUserSheet($sheetId: String) {
+  deleteCurrentUserSheet(sheetId: $sheetId) {
+    error {
+      title
+      message
+    }
+  }
+}

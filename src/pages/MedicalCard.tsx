@@ -22,6 +22,7 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
   const [sheets, setSheets] = useState<Sheet[]>([]);
   const [sheetIdx, setSheetIdx] = useState<number>(0);
   const [editInfo, setEditInfo] = useState(false);
+  const [init, setInit] = useState(true);
   const { userId } = useParams();
 
   useEffect(() => {
@@ -29,19 +30,21 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
   }, [data, sheetIdx]);
 
   useEffect(() => {
-    if(sheets.length > 0){
-      let temp = 0;
-      console.log("😼 ID : "+ userId)
-      if(userId !== ":userId" && userId !== undefined && parseInt(userId!)<sheets.length)
-        temp = parseInt(userId)
-      console.log(temp);
-      setSheetIdx(temp);
-    }
-  },[userId, sheets])
-
-  useEffect(() => {
     const sheets = data?.sheetsCurrentUser?.response
     sheets && setSheets(sheets.map(e => ({ ...e })));
+    if(init && sheets){
+      console.log("LA MEEEEEEEEEEEEEEEEEEEERDE")
+      console.log(sheets.length);
+      if(sheets.length > 0){
+        let temp = 0;
+        console.log("😼 ID : "+ userId)
+        if(userId !== ":userId" && userId !== undefined && parseInt(userId!)<sheets.length)
+          temp = parseInt(userId)
+        console.log(temp);
+        setSheetIdx(temp);
+      }
+      setInit(false);
+    }
   }, [data]);
 
   useEffect(() => {
@@ -96,6 +99,14 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
     });
   }
 
+  const handleSwitch = (e: number) => {
+    console.log("------------------------------");
+    console.log("changement d'id")
+    window.history.replaceState(null, '', '/users/' + e)
+    console.log("------------------------------");
+    setSheetIdx(e);
+  }
+
   if (!data || !data.sheetsCurrentUser || !data.sheetsCurrentUser.response || !sheets || !sheets[sheetIdx] || !sheets[sheetIdx]._id) {
     return <>
     </>
@@ -104,7 +115,7 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
       <>
         <div className='noFlex overflow-x-hidden'>
           <div className='MedicAside'>
-            <UserSwitch id={sheetIdx} setId={setSheetIdx} cardsNames={allCardsNames} />
+            <UserSwitch id={sheetIdx} setId={handleSwitch} cardsNames={allCardsNames} />
             <BlockQR id={sheets[sheetIdx]._id} />
           </div>
           <MedicalForm userCard={sheets[sheetIdx]} handleSubmit={handleSubmit} editInfo={editInfo} setEditInfo={setEditInfo} handleChange={handleChange} />
