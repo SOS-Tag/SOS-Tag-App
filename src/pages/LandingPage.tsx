@@ -18,8 +18,8 @@ const LandingPage: React.FC<LandingPageType> = ({}) => {
             <h1>Aidez-nous à vous aider !</h1>
           </div>
           <div className="buttons flex flex-row">
-            <Button box="fill" type ="secondaire" buttonText="Commencer !"/>
-            <Button box="fill" type ="general" buttonText="J'ai un QR Code !"/>
+            <Button box="fill" type ="secondaire" buttonText="Commencer !" to="/sign-up"/>
+            <Button box="fill" type ="general" buttonText="J'ai un QR Code !" to="/sign-in"/>
           </div>
           
         </div>
@@ -51,7 +51,7 @@ const LandingPage: React.FC<LandingPageType> = ({}) => {
                 </ol>
                 <p className="end-text text-center"><strong>Vous devenez une famille qui anticipe une éventuelle prise en charge !</strong></p>
               </div>
-              <Button box="fill" type ="secondairelanding" buttonText="Créer un compte"/>
+              <Button box="fill" type ="secondairelanding" buttonText="Créer un compte" to="/sign-up"/>
                 
             </div>
 
@@ -68,7 +68,7 @@ const LandingPage: React.FC<LandingPageType> = ({}) => {
                 </ol>
                 <p className="end-text text-center"><strong>Vous prenez en main votre santé au sein de votre club !</strong></p>
               </div>
-              <Button box="fill" type ="secondairelanding" buttonText="J'ai un QR Code"/>
+              <Button box="fill" type ="secondairelanding" buttonText="J'ai un QR Code" to="/sign-in"/>
             </div>
             
 
