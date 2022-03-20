@@ -88,6 +88,10 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
       if (!e) return;
       value = e.currentTarget.value;
     }
+    if (typeof value === 'string' && ['oui', 'true'].includes(value.toLowerCase().trim()))
+      value = true;
+    if (typeof value === 'string' && ['non', 'false'].includes(value.toLowerCase().trim()))
+      value = false;
 
     console.log("###### " +key);
     console.log(value);
