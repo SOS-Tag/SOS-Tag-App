@@ -10,7 +10,7 @@ const SignInPage: React.FC<SigninPageType> = ({}) => {
       <div className="w-1/2 SignInPageIllustration">
         <img className="w-5/5" alt="imgSignUp" src="./assets/ImageSignIn.png"/>
       </div>
-      <div className="signinform">
+      <div className="signinform mobile:mt-[5vh]">
         <SignInForm/>
       </div>
     </div>
