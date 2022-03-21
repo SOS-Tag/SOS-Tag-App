@@ -28,8 +28,13 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
 
     const download = () => {
         console.log("[A FAIRE] Télécharger les QR codes sélectionnés.");
-        //checkboxList.map(e => { alert(e)})
-        //fetch('https://sostag-qr-service.herokuapp.com/pdf/TYVJK45D')
+        let temp = ["55NWUUYE","UL33VS25"]
+        temp.map(e => { 
+            console.log(e)
+            window.open("https://sostag-qr-service.herokuapp.com/pdf/"+e, '_blank');
+            console.log("----")
+        })
+        
     }
 
     const downloadButton = {

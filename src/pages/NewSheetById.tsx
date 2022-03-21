@@ -16,7 +16,7 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
   const location = useLocation();
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [page, changePage] = useState(true);
+  const [page, changePage] = useState(false);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
 
@@ -96,12 +96,17 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
   else{
     pageContent =
       <div className="w-4/5 flex flex-row">
-        <button className="flex w-2/6 " onClick={returnClick}>
-          <svg className="w-full justify-items-center items-start mt-10" width="47" height="34" viewBox="0 0 47 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M47 14.875H8.18227L20.1245 2.99625L17.0909 0L0 17L17.0909 34L20.1032 31.0037L8.18227 19.125H47V14.875Z" 
-          fill="#19224F"/>
-          </svg>
-        </button>
+        
+          <button className="flex w-2/6 ">
+            <a href="/users/all">
+            <svg className="w-full justify-items-center items-start mt-10" width="47" height="34" viewBox="0 0 47 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M47 14.875H8.18227L20.1245 2.99625L17.0909 0L0 17L17.0909 34L20.1032 31.0037L8.18227 19.125H47V14.875Z" 
+            fill="#19224F"/>
+            </svg>
+            </a>
+          </button>
+        
+        
       
       <div className="flex flex-col ">
         <h1 className="mt-10 mb-20 text-center">
@@ -115,8 +120,6 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
         </form>
       </div>
       </div>
-
-
   }
 
   return ( 
