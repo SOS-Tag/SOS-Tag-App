@@ -179,30 +179,13 @@ h2 {
 
   .SignUpPageTitle {
     width: 70vw;
-    margin-left: 10vw;
+    /* margin-left: 10vw; */
   }
 
   .SignUpPageCheckbox {
     width: 80vw;
-    margin-left: 10vw;
+    /* margin-left: 10vw; */
   }
-
-  /* .formRow2 {
-    width: 100vw;
-    background-color: #a8a4f2;
-    display: flex;
-    flex-direction: column;
-  } */
-
-  /* .formRow2-item-a {
-    width: 40vw;
-    margin: auto;
-  }
-
-  .formRow2-item-b {
-    width: 40vw;
-    margin: auto;
-  } */
 
   .AlternativText {
     margin: auto;
@@ -210,8 +193,16 @@ h2 {
 
   .formRowMedic-subtitle {
     margin-bottom: 20px;
+  }  
+
+  .SignInPageIllustration {
+    display: none;
   }
-  
+
+  .SignUpPageContent, .signinform {
+    width: 80vw;
+    margin: auto;
+  }
 }
 
 @media (min-width: 470px) {
@@ -228,9 +219,26 @@ h2 {
     grid-column-start: line4;
     grid-column-end: line5;
   }
+
+  .SignInPageIllustration {
+    display: none;
+  }
+
+  .signinform {
+    margin: 5vh auto auto auto;
+  }
 }
 
 @media (min-width: 1280px) {
+
+  .SignInPageIllustration {
+    display: block;
+  }
+
+  .signinform {
+    margin: 0;
+  }
+
   .formRowMedic {
     grid-template-columns: [first] 0% [line2] 40% [line3] 10% [line4] 40% [line5] auto [end];
   }
@@ -261,7 +269,7 @@ h2 {
     width: 70%;
     /* margin: 0 22% 0 0; */
     background-color: var(--SosTagYellowLight);
-    z-index: 50;
+    /* z-index: 50; */
     padding: 20px 50px;
     border-radius: 20px;
     box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;

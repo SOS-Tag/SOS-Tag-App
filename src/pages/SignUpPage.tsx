@@ -148,13 +148,13 @@ const SignUpPage = () => {
                   <div className='mobile:hidden tablet:block'>
                     <Button box="fill" type="general" buttonText="Valider"/>    
                   </div>
-                  <div className='tablet:hidden w-[80vw] ml-[10vw] mb-[20px]'>
+                  <div className='tablet:hidden w-[80vw] mb-[20px]'>
                     <Button box="fill" type="general" fullSize={true} buttonText="Valider"/>    
                   </div>
                   
                 </form>
               </div>
-              <div className="w-[100vw] flex mobile:pb-[50px]">
+              <div className="w-[100vw] mobile:w-auto flex mobile:pb-[50px]">
                 <AlternativText className="mt-[30px] text-SosTagBlue" text="Déjà inscrit ? " linkText="Se connecter" link="./sign-in"/>
               </div> 
             </>

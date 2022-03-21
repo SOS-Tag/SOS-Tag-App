@@ -36,26 +36,26 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
   const trueOrFalse = [
     {
-      value: true,
+      value: "true",
       name: "oui",
     },
     {
-      value: false,
+      value: "false",
       name: "non",
     }
   ];
 
   const gender_options = [
     {
-      value: "Femme",
+      value: "F",
       name: "F"
     },
     {
-      value: "Homme",
-      name: "H",
+      value: "M",
+      name: "M",
     },
     {
-      value: "Autre",
+      value: "O",
       name: "Autre",
     }
   ];

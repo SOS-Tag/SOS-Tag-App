@@ -28,14 +28,22 @@ const BlockQR: React.FC<BlockQRType> = ({
     //     if (err) throw err
     // })
 
+    fetch(`https://sostag-qr-service.herokuapp.com/${id}`)
+        .then(res => {
+            // document.getElementById("qr-container")?.appendChild(res.);
+            console.log(res)
+        })
+
+
     return (
         <>
             <div className="">
                 {/* <canvas className="mx-auto my-[20px] w-1/2" id="canvas"></canvas> */}
                 <div className="hidden desktop:block">
                     <h2>Votre QR Code :</h2>
+                    <div id="qr-container" className='w-1/2 mx-auto py-10'></div>
                     {/* <canvas className="w-1/2 mx-auto py-10"></canvas> */}
-                    <img className='w-1/2 mx-auto py-10' src="https://www.pluginforthat.com/wp-content/uploads/2019/10/doqrcode.jpg"></img>
+                    <img className='w-1/2 mx-auto py-10' src={`https://sostag-qr-service.herokuapp.com/${id}`}></img>
                     <h2>Votre ID : {id}</h2>
                     <br/>
                 </div>

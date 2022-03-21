@@ -58,7 +58,7 @@ export type medicalCardType = {
 }
 
 export type fieldOption = {
-  value : boolean | string | number,
+  value: string | number,
   name : string,
 }
 

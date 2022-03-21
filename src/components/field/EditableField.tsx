@@ -67,9 +67,9 @@ const EditableField: React.FC<editableFieldType> = ({
 
   function selectInput(){
     return(
-      <select className={css} placeholder={placeholder} name={name} >
+      <select className={css} placeholder={placeholder} name={name} onChange={handleValue} value={value}>
         {option && option.map((option, key: number) => {
-          return <option key = {key}>{option.name}</option>
+          return <option key={key} value={option.value}>{option.name}</option>
         })}
       </select>
     )
