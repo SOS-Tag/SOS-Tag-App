@@ -28,7 +28,7 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
 
     const download = () => {
         checkboxList.map(e => { 
-            window.open("https://sostag-qr-service.herokuapp.com/pdf/"+e, '_blank');
+            window.open("http://qr.sostag.tech/pdf/"+e, '_blank');
         })  
     }
 

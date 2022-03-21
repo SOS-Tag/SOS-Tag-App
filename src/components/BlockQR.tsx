@@ -28,7 +28,7 @@ const BlockQR: React.FC<BlockQRType> = ({
     //     if (err) throw err
     // })
 
-    fetch(`https://sostag-qr-service.herokuapp.com/${id}`)
+    fetch(`http://qr.sostag.tech/${id}`)
         .then(res => {
             // document.getElementById("qr-container")?.appendChild(res.);
             console.log(res)
@@ -42,7 +42,7 @@ const BlockQR: React.FC<BlockQRType> = ({
                 <div className="hidden desktop:block">
                     <h2>Votre QR Code :</h2>
                     {/* <canvas className="w-1/2 mx-auto py-10"></canvas> */}
-                    <img className='w-1/2 mx-auto py-10' src={`https://sostag-qr-service.herokuapp.com/${id}`}></img>
+                    <img className='w-1/2 mx-auto py-10' src={`http://qr.sostag.tech/${id}`}></img>
                     <h2>Votre ID : {id}</h2>
                     <br/>
                 </div>
