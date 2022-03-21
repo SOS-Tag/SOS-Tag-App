@@ -20,7 +20,6 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
     const [checkboxList, setCheckboxList] = useState<string[]>([]);
     const [allCheckboxSelected, setAllCheckboxSelected] = useState(false);
 
-
     useEffect(() => {
         console.log('✔ - checkbox  : ' + checkboxList)    
     },[checkboxList])
@@ -29,6 +28,8 @@ const UserDashboard: React.FC<UserDashboardType> = () => {
 
     const download = () => {
         console.log("[A FAIRE] Télécharger les QR codes sélectionnés.");
+        //checkboxList.map(e => { alert(e)})
+        //fetch('https://sostag-qr-service.herokuapp.com/pdf/TYVJK45D')
     }
 
     const downloadButton = {
