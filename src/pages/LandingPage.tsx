@@ -80,9 +80,12 @@ const LandingPage: React.FC<LandingPageType> = ({}) => {
       </div>
 
       <div className="w-full forth-part flex flex-col space-y-16 md:flex-row md:space-x-8 items-center md:p-10">
-        <div className="forth-part-image w-1/2 flex items-center justify-center" >
-          <img className="w-3/5 md:w-1/5 " alt="imgEllPink" src="./assets/ellipse_2.png" style={ {position: "absolute", zIndex: "1", opacity: ".99"}}/>
-          <img className="w-full md:w-1/2 top-8 right-8" alt="imgEllTennis" src="./assets/ellipse_1.png" style={ {position: "relative", zIndex: "10"}}/>
+        <div className="forth-part-image w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] flex items-center justify-center" >
+          <div className="w-[100%] h-[100%] bg-SosTagRedLight rounded-full">
+          <img className="w-[90%] h-[90%] ml-[5%] mt-[5%]" alt="imgEllTennis" src="./assets/ellipse_1.png" style={ {position: "relative", zIndex: "10"}}/>
+          </div>
+          {/* <img className="w-3/5 md:w-1/5 " alt="imgEllPink" src="./assets/ellipse_2.png" style={ {position: "absolute", zIndex: "1", opacity: ".99"}}/> */}
+          
         </div>
 
         <div className="forth-part-text flex flex-col space-y-4 w-1/2">
