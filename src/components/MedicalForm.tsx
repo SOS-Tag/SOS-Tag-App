@@ -7,6 +7,11 @@ import ContactCard from '../components/ContactCard'
 import formatDate from '../utils/date';
 import { Sheet, SheetDoctorContact } from '../generated/graphql';
 
+import { trueOrFalse } from '../data/trueOrFalse';
+import { gender_options } from '../data/gender_options';
+import { bloodtype_options } from '../data/bloodtype_options';
+import { nationalities } from '../data/nationalities';
+
 type MedicalFormProps = {
   userCard: Sheet,
   editInfo: boolean
@@ -31,74 +36,10 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
     if (!editInfo)
       setEditInfo(true)
   }
-
-  // OPTIONS
-
-  const trueOrFalse = [
-    {
-      value: "true",
-      name: "oui",
-    },
-    {
-      value: "false",
-      name: "non",
-    }
-  ];
-
-  const gender_options = [
-    {
-      value: "F",
-      name: "F"
-    },
-    {
-      value: "M",
-      name: "M",
-    },
-    {
-      value: "O",
-      name: "Autre",
-    }
-  ];
-
-  const bloodtype_options = [
-    {
-      value: "A+",
-      name: "A+"
-    },
-    {
-      value: "A-",
-      name: "A-"
-    },
-    {
-      value: "B+",
-      name: "B+"
-    },
-    {
-      value: "B-",
-      name: "B-"
-    },
-    {
-      value: "O+",
-      name: "O+"
-    },
-    {
-      value: "O-",
-      name: "O-"
-    },
-    {
-      value: "AB+",
-      name: "AB+"
-    },
-    {
-      value: "AB-",
-      name: "AB-"
-    },
-  ];
-
   return (
     <>
       <div className="hidden desktop:block fixed top-[10%] right-0 opacity-25">
-        <img className="" alt="imgSignUp" src="../../public/assets/ImageSignUp.PNG" />
+        <img alt="imgSignIn" src="../assets/ImageSignIn.png" />
       </div>
       <div className="MedicalFormContainer">
         <form id="formId" onSubmit={handleSubmit} action="">
@@ -129,7 +70,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
           </div>
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"nationality"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('nationality', { e }) }} type="text" label="Nationalité" mandatory={true} placeholder={userCard.nationality || ""} />
+              <Field editing={editInfo} name={"nationality"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('nationality', { e }) }} type="select" option={nationalities} label="Nationalité" mandatory={true} placeholder={userCard.nationality || ""} />
             </div>
           </div>
           <div className="formRowMedic w-full grid">
@@ -157,21 +98,21 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"allergies"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('allergies', { e }) }} type="text" label="Allergies" mandatory={true} placeholder={userCard.allergies || ""} />
+              <Field editing={editInfo} name={"allergies"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('allergies', { e }) }} type="text" label="Allergies" mandatory={false} placeholder={userCard.allergies || ""} />
             </div>
             <div className="formRowMedic-item-b">
-              <Field editing={editInfo} name={"currentTreatment"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('currentTreatment', { e }) }} type="text" label="Traitement en cours" mandatory={true} placeholder={userCard.currentTreatment || ""} />
+              <Field editing={editInfo} name={"currentTreatment"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('currentTreatment', { e }) }} type="text" label="Traitement en cours" mandatory={false} placeholder={userCard.currentTreatment || ""} />
             </div>
           </div>
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"medicalHistory"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('medicalHistory', { e }) }} type="text" label="Antécédents médicaux" mandatory={true} placeholder={userCard.medicalHistory || ""} />
+              <Field editing={editInfo} name={"medicalHistory"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('medicalHistory', { e }) }} type="text" label="Antécédents médicaux" mandatory={false} placeholder={userCard.medicalHistory || ""} />
             </div>
           </div>
 
           <ContactCard userCard={userCard} editInfo={editInfo} handleChange={handleChange} />
 
-          {editInfo && <Button box="fill" type="general" buttonText="Valider les informations" />}
+          {editInfo && <Button box="fill" type="general" buttonText="Enregistrer" />}
 
         </form>
       </div>
