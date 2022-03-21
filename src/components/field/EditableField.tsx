@@ -59,6 +59,14 @@ const EditableField: React.FC<editableFieldType> = ({
     )
   }
 
+  function dateInput(){
+    const date = value.split('/');
+    const formattedValue = date.length === 3 ? `${date[2]}-${date[1]}-${date[0]}` : value;
+    return(
+      <input onChange={handleValue} value={formattedValue} name={name} className={css} type="date" required/> 
+    )
+  }
+
   function passwordInput(){
     return(
       <input onChange={handleValue} value={value} name={name} minLength={8} className={css} type="password" required/> 
@@ -88,7 +96,7 @@ const EditableField: React.FC<editableFieldType> = ({
   }
 
   function editingInput(){
-    if(type === "password" || type === "tel" || type === "select"){
+    if(type === "password" || type === "tel" || type === "select" || type === "date"){
       if(type === "password"){
         return passwordInput();
       }
@@ -97,6 +105,9 @@ const EditableField: React.FC<editableFieldType> = ({
       }
       if(type === "select"){
         return selectInput();
+      }
+      if(type === "date"){
+        return dateInput();
       }
     }
     else{
