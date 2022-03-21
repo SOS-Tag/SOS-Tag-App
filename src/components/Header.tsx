@@ -147,7 +147,7 @@ export const Header: React.FC<HeaderType> = ({
               <a className={`header--link-item`} href="/sign-up"><Button box="stroke" type="general" buttonText="S'inscrire" /></a>
             </li>
             <li>
-              <a href="/sign-in"><Button box="fill" type="general" buttonText="Se connecter" /></a>
+              <a className={`header--link-item`} href="/sign-in"><Button box="fill" type="general" buttonText="Se connecter" /></a>
 
             </li>
           </ul>

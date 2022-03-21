@@ -119,6 +119,10 @@
   transition: all .5s;
 }
 
+.header--link-item {
+  display: none;
+}
+
 #menu-toggle:checked + #trigger ~ #menu li a{
   opacity: 1;
   display: block;
