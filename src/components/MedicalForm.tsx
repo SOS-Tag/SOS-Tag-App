@@ -20,7 +20,7 @@ type MedicalFormProps = {
   handleChange: (key: string, { e, value }: {
     e?: React.ChangeEvent<HTMLInputElement> | undefined;
     value?: any;
-}) => void
+  }) => void
 }
 
 const MedicalForm: React.FC<MedicalFormProps> = ({
@@ -36,7 +36,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
     if (!editInfo)
       setEditInfo(true)
   }
-  
+
   return (
     <>
       <div className="hidden desktop:block fixed top-[10%] right-0 opacity-25">
@@ -55,39 +55,117 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('fname', { e }) }} type="text" label="Nom" mandatory={true} placeholder={userCard.fname || ""} />
+              <Field
+                editing={editInfo}
+                name={"fname"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('fname', { e }) }}
+                type="text"
+                label="Nom"
+                mandatory={true}
+                placeholder={userCard.fname || ""}
+              />
             </div>
             <div className="formRowMedic-item-b">
-              <Field editing={editInfo} name={"lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('lname', { e }) }} type="text" label="Prénom" mandatory={true} placeholder={userCard.lname || ""} />
+              <Field
+                editing={editInfo}
+                name={"lname"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('lname', { e }) }}
+                type="text"
+                label="Prénom"
+                mandatory={true}
+                placeholder={userCard.lname || ""}
+              />
             </div>
           </div>
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"sex"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('sex', { e }) }} type="select" option={gender_options} label="Sexe" mandatory={true} placeholder={userCard.sex || ""} />
+              <Field
+                editing={editInfo}
+                name={"sex"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('sex', { e }) }}
+                type="select" option={gender_options}
+                label="Sexe"
+                mandatory={true}
+                placeholder={userCard.sex || ""}
+              />
             </div>
             <div className="formRowMedic-item-b">
-              <Field editing={editInfo} name={"dateOfBirth"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('dateOfBirth', { e }) }} type="date" label="Date de naissance" mandatory={true} placeholder={formatDate(userCard.dateOfBirth) || ""} />
+              <Field
+                editing={editInfo}
+                name={"dateOfBirth"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('dateOfBirth', { e }) }}
+                type="date"
+                label="Date de naissance"
+                mandatory={true}
+                placeholder={formatDate(userCard.dateOfBirth) || ""}
+              />
             </div>
           </div>
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"nationality"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('nationality', { e }) }} type="select" option={nationalities} label="Nationalité" mandatory={true} placeholder={userCard.nationality || ""} />
+              <Field
+                editing={editInfo}
+                name={"nationality"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('nationality', { e }) }}
+                type="select" option={nationalities}
+                label="Nationalité"
+                mandatory={true}
+                placeholder={nationalities.find((e) => e.value.toLowerCase() === userCard.nationality?.toLowerCase())?.name || ""}
+              />
             </div>
           </div>
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"bloodType"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('bloodType', { e }) }} type="select" option={bloodtype_options} label="Groupe sanguin" mandatory={true} placeholder={userCard.bloodType || ""} />
+              <Field
+                editing={editInfo}
+                name={"bloodType"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('bloodType', { e }) }}
+                type="select" option={bloodtype_options}
+                label="Groupe sanguin"
+                mandatory={true}
+                placeholder={userCard.bloodType || ""}
+              />
             </div>
             <div className="formRowMedic-item-b">
-              <Field editing={editInfo} name={"smoker"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('smoker', { e }) }} type="select" option={trueOrFalse} label="Fumeur" mandatory={true} placeholder={String(userCard.smoker) || "false"} />
+              <Field
+                editing={editInfo}
+                name={"smoker"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('smoker', { e }) }}
+                type="select" option={trueOrFalse}
+                label="Fumeur"
+                mandatory={true}
+                placeholder={userCard.smoker ? 'Oui' : userCard.smoker === false ? 'Non' : ''} />
             </div>
           </div>
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"organDonor"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('organDonor', { e }) }} type="select" option={trueOrFalse} label="Don d'organe" mandatory={true} placeholder={String(userCard.organDonor) || "false"} />
+              <Field
+                editing={editInfo}
+                name={"organDonor"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('organDonor', { e }) }}
+                type="select" option={trueOrFalse}
+                label="Don d'organe"
+                mandatory={true}
+                placeholder={userCard.organDonor ? 'Oui' : userCard.organDonor === false ? 'Non' : ''} />
             </div>
             <div className="formRowMedic-item-b">
-              <Field editing={editInfo} name={"advanceDirectives"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('advanceDirectives', { e }) }} type="select" option={trueOrFalse} label="Directives anticipées" mandatory={true} placeholder={String(userCard.advanceDirectives) || "false"} />
+              <Field
+                editing={editInfo}
+                name={"advanceDirectives"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('advanceDirectives', { e }) }}
+                type="select" option={trueOrFalse}
+                label="Directives anticipées"
+                mandatory={true}
+                placeholder={userCard.advanceDirectives ? 'Oui' : userCard.advanceDirectives === false ? 'Non' : ''} />
             </div>
           </div>
 
@@ -99,19 +177,47 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
           <div className="formRowMedic">
             <div>
-              <Field editing={editInfo} name={"allergies"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('allergies', { e }) }} type="text" label="Allergies" mandatory={false} placeholder={userCard.allergies || ""} />
+              <Field
+                editing={editInfo}
+                name={"allergies"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('allergies', { e }) }}
+                type="text"
+                label="Allergies"
+                mandatory={false}
+                placeholder={userCard.allergies || ""}
+              />
             </div>
             <div>
-              <Field editing={editInfo} name={"currentTreatment"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('currentTreatment', { e }) }} type="text" label="Traitement en cours" mandatory={false} placeholder={userCard.currentTreatment || ""} />
+              <Field
+                editing={editInfo}
+                name={"currentTreatment"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('currentTreatment', { e }) }}
+                type="text"
+                label="Traitement en cours"
+                mandatory={false}
+                placeholder={userCard.currentTreatment || ""}
+              />
             </div>
             <div>
-              <Field editing={editInfo} name={"medicalHistory"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('medicalHistory', { e }) }} type="text" label="Antécédents médicaux" mandatory={false} placeholder={userCard.medicalHistory || ""} />
+              <Field
+                editing={editInfo}
+                name={"medicalHistory"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('medicalHistory', { e }) }}
+                type="text"
+                label="Antécédents médicaux"
+                mandatory={false}
+                placeholder={userCard.medicalHistory || ""}
+              />
             </div>
           </div>
 
           <ContactCard userCard={userCard} editInfo={editInfo} handleChange={handleChange} />
 
-          {editInfo && <Button box="fill" type="general" buttonText="Enregistrer" />}
+          {editInfo && <Button box="fill"
+        type="general" buttonText="Enregistrer" />}
 
         </form>
       </div>
