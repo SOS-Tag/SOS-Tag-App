@@ -6,6 +6,8 @@ import { withAuth } from "../guards/auth";
 import Field from "../components/field/Field";
 import Button from "../components/Button";
 import Banner from "../components/Banner";
+import TextMessage from "../components/TextMessage";
+import { TextMessageType } from "../components/Types";
 
 type NewSheetByIdType = {}
 
@@ -18,6 +20,7 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const {id} = useParams();
+  const [messageError, setMessageError] = useState("");
 
   async function handleSheetAssociation(event: any){
     event.preventDefault();
@@ -33,7 +36,16 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
     if (success) {
       navigate((location as Location)?.state?.from || '/users/'+id)
     }
+
+    if(error){
+      if(error.message === "This sheet does not exist."){
+        console.log(error);
+        setMessageError("Ce code n'existe pas")
+      }
+    }
   }
+
+  
 
     const handleValidation = (e: any) => {
       e.preventDefault();
@@ -65,6 +77,7 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
                     <div className="formRow2-item-a">
                         <Field editing={true} name={"lastname"} type="text" placeholder={surname} label="Prénom" mandatory={true}/>
                     </div>
+                    
                 </div>
                 <div className="mobile:flex mobile:justify-center tablet:block">
                 <Button box="fill" type ="general" buttonText="Créer"/>
@@ -93,6 +106,7 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
         </h1>
         <form className="m-auto flex flex-col" onSubmit={handleSheetAssociation}>
           <Field editing={true} name={"id"} type="text" label="Code d'activation" mandatory={true}/> 
+          {messageError !== "" && <TextMessage type={TextMessageType.error} message={messageError}/>}
           <div className="flex justify-center">
             <Button box="fill" type ="secondaire" buttonText="Valider"/>
           </div>
