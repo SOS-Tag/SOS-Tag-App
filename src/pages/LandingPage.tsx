@@ -20,7 +20,7 @@ const LandingPage: React.FC<LandingPageType> = ({ }) => {
           </div>
           <div className="flex flex-row">
             <Button box="fill" type="secondaire" buttonText="Commencer !" to="/sign-up" />
-            <Button box="fill" type="general" buttonText="J'ai un QR Code !" to="/sign-in" />
+            <Button box="fill" type="general" buttonText="J'ai un QR Code !" to="users/sheet-by-id/:id" />
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ const LandingPage: React.FC<LandingPageType> = ({ }) => {
                 </ol>
                 <p className="text-center"><strong>Vous prenez en main votre santé au sein de votre club !</strong></p>
               </div>
-              <Button box="fill" type="secondairelanding" buttonText="J'ai un QR Code" to="/sign-in" />
+              <Button box="fill" type="secondairelanding" buttonText="J'ai un QR Code" to="users/sheet-by-id/:id" />
             </div>
 
           </div>
