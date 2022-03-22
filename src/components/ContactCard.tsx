@@ -46,7 +46,7 @@ const ContactCard: React.FC<ContactCardType> = ({
     <>
       <div className="ContactCard">
         {/* PARTIE 1 */}
-        <div className="w-full">
+        <div className="w-full mb-4">
           <h2>Médecin traitant</h2>
         </div>
         <div>

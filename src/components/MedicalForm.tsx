@@ -114,7 +114,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
                   handleChange('nationality', { e }) }}
                 type="select" option={nationalities}
                 label="Nationalité"
-                mandatory={true}
+                mandatory={false}
                 placeholder={
                   editInfo
                   ? userCard.nationality || ""
