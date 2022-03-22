@@ -70,7 +70,7 @@ const ContactCard: React.FC<ContactCardType> = ({
                 e.preventDefault();
                 delContact(i);
               }
-              } box="fill" type="general" buttonText="X" />}
+              } box="fill" type="delete" buttonText="X" />}
             </div>
             <div>
               <div className="flex">
@@ -93,7 +93,7 @@ const ContactCard: React.FC<ContactCardType> = ({
               e.preventDefault();
               addContact()
             }
-            } box="fill" type="general" buttonText="Ajouter un contact d'urgence" />
+            } box="fill" type="secondaire" buttonText="Ajouter un contact" />
           }
         </div>
       </div>

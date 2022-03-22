@@ -265,6 +265,7 @@ h2 {
 
   .MedicAside {
     width: 20%;
+    max-width: 20rem;
     background-color: white;
     /* max-height: 400px; */
     text-align: center;

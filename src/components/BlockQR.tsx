@@ -14,7 +14,12 @@ const BlockQR: React.FC<BlockQRType> = ({
             <div className="">
                 <div className="hidden desktop:block">
                     <h2>Votre QR Code :</h2>
-                    <img className='mx-auto py-6 px-6' src={`https://qr.sostag.tech/${id}`}></img>
+                    <img
+                        className="mx-auto py-6 px-6"
+                        src={`https://qr.sostag.tech/${id}`}
+                        alt="QR Code"
+                        style={{ maxWidth: "12rem" }}
+                    />
                     <h2>Votre ID : {id}</h2>
                     <br/>
                 </div>
