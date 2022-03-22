@@ -2,8 +2,6 @@ import React from "react";
 import { Sheet } from "../generated/graphql";
 import UserCard from "./UserCard";
 
-
-
 type CardListType = {
   sheets: Array<Sheet>,
   checkboxList: Array<String>,

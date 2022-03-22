@@ -8,7 +8,6 @@ type UserSwitchType = {
     cardsNames: Array<string>,
 }
 
-// const UserSwitch: React.FC<UserSwitchType> = (user, setUser) => {
 const UserSwitch: React.FC<UserSwitchType> = ({ id, setId, cardsNames }) => {
 
     const [opts, setOpts] = useState([{value:"",name:""}]);
@@ -24,10 +23,8 @@ const UserSwitch: React.FC<UserSwitchType> = ({ id, setId, cardsNames }) => {
     return (
         <>
             <div className="font-bold">
-                {/* <Field editing={true} name={"changeSelectedCard"} type="select" label="Selectionner la fiche à modifier" option={opts} mandatory={true} /> */}
                 <label className="w-full flex flex-col text-left text-SosTagBlue">
                     Selectionner la fiche à modifier
-                    {/* {editingInput()} */}
                 </label>
                 <select onChange={(e) => {setId(cardsNames.indexOf(e.currentTarget.value))}} className={css} value={String(cardsNames[id])} name="changeSelectedCard" required>
                     {opts.map((option, key: number) => {

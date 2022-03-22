@@ -46,44 +46,6 @@ export const Header: React.FC<HeaderType> = ({
     contenu =
       <>
         {/* Menu Desktop */}
-        {/*<div className="NavDesktop">
-        <a
-          className={`header--link-item ${location.pathname === "/users/all" ? "selected" : ""}`} 
-          href="/users/all"
-        >
-          Vue d'ensemble
-        </a>
-      
-        <a
-          className={`header--link-item ${location.pathname === "/users/:userId" ? "selected" : ""}`} 
-          href="/users/:userId"
-        >
-          <QrCodeSVG color={location.pathname === "/users/:userId"? "#ec3e55" : "#19224F"}/>
-          <span>Fiche personnelle</span>
-        </a>
-      
-        <a
-          className="header--link-item"
-          href="/users/basket"
-        >
-          <BasketSVG color={location.pathname === "/users/basket"? "#ec3e55" : "#19224F"}/>
-        </a>
-      
-        <a
-          className= "header--link-item" 
-          href="/users/me"
-        >
-        <AccountSVG color={location.pathname === "/users/me"? "#ec3e55" : "#19224F"}/>
-        </a>
-
-        <a
-          className= "header--link-item" 
-          onClick={handleLogout}
-        >
-        <LogOutSVG color={"#19224F"}/>
-        </a>
-      </div>
-  */}
         <div className="NavDesktop">
           <input type="checkbox" id="menu-toggle" />
           <label id="trigger" htmlFor="menu-toggle"></label>

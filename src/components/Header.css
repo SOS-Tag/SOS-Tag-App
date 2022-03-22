@@ -115,7 +115,6 @@
 #menu li {
   width: 230px;
   margin: auto;
-  /* text-indent: 56px; */
 }
 .header--link-item:focus {
   display: block;
@@ -142,6 +141,10 @@
 .NavDesktop [type="checkbox"]:checked {
   display: none;
 }
+
+/*
+///////////// MOBILE
+*/
 
 @media (max-width: 599px) {
   @keyframes checked-anim {
@@ -201,6 +204,10 @@
   }
 }
 
+/*
+///////////// TABLET
+*/
+
 @media (min-width: 600px) {
   #menu {
     position: absolute;
@@ -210,7 +217,6 @@
     padding: 0;
     width: 110px;
     height: 80px;
-    /* border-bottom-left-radius: 0; */
     box-shadow: none;
     border-bottom-left-radius: 100%;
   }
@@ -257,8 +263,7 @@
   .header--link-item:last-child {
     padding-right: 0px;
   }
-}
-@media (min-width: 600px) {
+
   @keyframes checked-anim {
     100% {
       width: 50vw;
@@ -278,6 +283,10 @@
     animation: checked-anim 0.2s ease both;
   }
 }
+
+/*
+///////////// DESKTOP
+*/
 
 @media (min-width: 1200px) {
   @keyframes checked-anim {

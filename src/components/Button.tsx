@@ -43,13 +43,7 @@ const Button: React.FC<ButtonType> = ({
   return (
     <>
       {(to)?buttonLink():buttonStandard()}
-    </> 
-    // <button 
-    //   className={"button " + props.box + "--button--"+ props.type +"--sostag"}
-    //   onClick={props.onClick}
-    // >
-    //   {props.buttonText} 
-    // </button>
+    </>
   );
 }
  

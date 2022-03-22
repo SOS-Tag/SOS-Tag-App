@@ -13,9 +13,7 @@ const Footer: React.FC<FooterType> = ({}) => {
                 <p>Mention légales</p>
                 <p>Politique de confidentialité</p>
             </div>
-            
         </div>
-        
      );
 }
  

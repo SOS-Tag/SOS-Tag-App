@@ -1,11 +1,11 @@
 import { BsPencilFill } from 'react-icons/bs';
 import Field from './field/Field';
 import Button from './Button';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import React from 'react';
 import ContactCard from '../components/ContactCard'
 import formatDate from '../utils/date';
-import { Sheet, SheetDoctorContact } from '../generated/graphql';
+import { Sheet } from '../generated/graphql';
 
 import { trueOrFalse } from '../data/trueOrFalse';
 import { gender_options } from '../data/gender_options';
@@ -30,12 +30,13 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
   setEditInfo,
   handleChange,
 }) => {
-  // BOUTONS EDIT
 
+  // BOUTONS EDIT
   function handleEditInfo() {
     if (!editInfo)
       setEditInfo(true)
   }
+  
   return (
     <>
       <div className="hidden desktop:block fixed top-[10%] right-0 opacity-25">

@@ -19,8 +19,6 @@ const ContactCard: React.FC<ContactCardType> = ({
   handleChange,
 }) => {
   const [contacts, setContacts] = useState(userCard.emergencyContacts || []);
-  console.log(contacts);
-  
 
   useEffect(() => {
     if (userCard.emergencyContacts)
@@ -38,9 +36,9 @@ const ContactCard: React.FC<ContactCardType> = ({
 
   const delContact = (i: number) => {
     if (contacts.length === 2)
-      i == 1 ? handleChange("emergencyContacts", { value: [contacts[0]]}) : handleChange("emergencyContacts", { value: [contacts[1]]});
+      i == 1 ? handleChange("emergencyContacts", { value: [contacts[0]] }) : handleChange("emergencyContacts", { value: [contacts[1]] });
     else
-      handleChange("emergencyContacts", { value: []});
+      handleChange("emergencyContacts", { value: [] });
   }
 
   return (
@@ -90,7 +88,7 @@ const ContactCard: React.FC<ContactCardType> = ({
           </div>
         ))}
         {
-          (contacts && contacts.length < 2) &&
+          (editInfo && contacts && contacts.length < 2) &&
           <Button onClick={(e) => {
             e.preventDefault();
             addContact()
