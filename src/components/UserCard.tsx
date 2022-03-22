@@ -91,7 +91,6 @@ const UserCardBasic: React.FC<UserCardProps> = ({
     }
 
     useEffect(() => {
-        console.log('is find')
         const res = checkboxList?.filter(e => e === id);
         if(res![0] !== id){
             setChecked(false)    

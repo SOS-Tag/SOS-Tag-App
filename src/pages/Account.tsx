@@ -2,8 +2,6 @@ import Button from "../components/Button"
 import Field from "../components/field/Field";
 import React, { ReactElement, useEffect, useState } from "react";
 import { withAuth } from "../guards/auth";
-
-// TEST
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Location } from '../routes';
 import { useMeQuery, useUpdateCurrentUserMutation } from "../generated/graphql";
@@ -17,8 +15,6 @@ const Account: React.FC<AccountType> = ({}) => {
     const [nbPage, changePage] = useState(0); 
     const [textModifyButton, changeTextModifyButton] = useState("Modifier les informations"); 
     const [typeModifyButton, changeTypeModifyButton] = useState("fill"); 
-    const [isLoading, setIsLoading] = useState(false);
-    
     const [name, setName] = useState("Pascal");
     const [surname, setSurname] = useState("RICHARD");
     const [mail, setMail] = useState("pascal.richard@gmail.com");
@@ -30,17 +26,13 @@ const Account: React.FC<AccountType> = ({}) => {
     const [updateUser] = useUpdateCurrentUserMutation();
 
     const modifyPage = () => {
-        console.log(nbPage);
         if (nbPage === 0) {
-            console.log("yes");
             changePage(1)
         }
         else if (nbPage === 1) {
-            console.log("yesss");
             changePage(0); 
         }
         else {
-            console.log("yaas");
             changePage(0);
         } 
     }
@@ -55,13 +47,9 @@ const Account: React.FC<AccountType> = ({}) => {
         new_email: string,
         new_nationality: string,
     ) => {
-        setIsLoading(true);
 
-        console.log("nouvelle mail : " + new_email);
-        console.log("nouvelle telephone : " + new_phone);
-
-        const response = await updateUser({
-          variables: { updateCurrentUserInput: {
+    const response = await updateUser({
+        variables: { updateCurrentUserInput: {
             fname: new_fname,
             lname: new_lname,
             address: new_address,
@@ -72,11 +60,6 @@ const Account: React.FC<AccountType> = ({}) => {
             nationality: new_nationality,
           } },
         });
-    
-        setIsLoading(false);
-
-        console.log(response);
-
     }
 
     const handleValidation = (e: any) => {
@@ -109,16 +92,13 @@ const Account: React.FC<AccountType> = ({}) => {
         </div>
     }
 
-    // TEST 
-
     const location = useLocation()
     const navigate = useNavigate();
-    const { client, data, loading } = useMeQuery({
+    const { data, loading } = useMeQuery({
         fetchPolicy: 'network-only'
     });
 
     useEffect(() => {
-      //console.log("currentUser Account : "+ data?.currentUser?.response?.email);
       if(loading === false){
       data?.currentUser?.response?.fname && setName(data?.currentUser?.response?.fname)
       data?.currentUser?.response?.lname && setSurname(data?.currentUser?.response?.lname)
@@ -133,9 +113,7 @@ const Account: React.FC<AccountType> = ({}) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log(modify);
         if(modify){
-            console.log("modification terminée")
             setName(e.target.firstname.value)
             setSurname(e.target.lastname.value)
             setMail(e.target.mail.value)
@@ -145,8 +123,6 @@ const Account: React.FC<AccountType> = ({}) => {
             setZipCode(e.target.zipCode.value)
             changeTextModifyButton("Modifier les informations"); 
             changeTypeModifyButton("fill"); 
-            console.log("-------- telephone : "+e.target.phone.value);
-            console.log("-------- mail : "+e.target.mail.value);
             SaveChange(
               e.target.firstname.value, 
               e.target.lastname.value,
@@ -160,7 +136,6 @@ const Account: React.FC<AccountType> = ({}) => {
             changeModifyField(false); 
         }
         else{
-            console.log("en modification");
             changeTextModifyButton("Enregistrer"); 
             changeTypeModifyButton("stroke"); 
             changeModifyField(true);  

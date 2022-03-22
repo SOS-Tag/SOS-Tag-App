@@ -20,13 +20,7 @@ const SignInForm: React.FC<SignInFormProps> = () => {
     const [login] = useLoginMutation();
     const navigate = useNavigate();
     const location = useLocation();
-    const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const [mail, setMail] = useState("");
-    const [password, setPassword] = useState("");
-    const [message, setMessage] = useState(false);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
@@ -34,10 +28,6 @@ const SignInForm: React.FC<SignInFormProps> = () => {
         const values = {
           email: event.target.mail.value, password: event.target.password.value
         }
-
-        console.log(values);
-    
-        setIsLoading(true);
     
         const response = await login({
           variables: { loginInput: values },
@@ -46,20 +36,14 @@ const SignInForm: React.FC<SignInFormProps> = () => {
           }
         });
     
-        setIsLoading(false);
-    
         const success = response?.data?.login?.response;
         const error = response?.data?.login?.error;
     
         if (success) {
           success.accessToken && setAccessToken(success.accessToken);
-          setIsLoggedIn(true);
           navigate((location as Location)?.state?.from || '/users/all')
         }
     
-        if (error) {
-          setError(error?.message as string)
-        }
       };
 
     return ( 
@@ -71,15 +55,14 @@ const SignInForm: React.FC<SignInFormProps> = () => {
             <form onSubmit={handleSubmit}>
                 <div className="formRow2 w-full grid">
                     <div className="formRow2-item-a">
-                        <Field editing={true} name={"mail"} type="mail" placeholder={mail} label="Adresse mail" mandatory={true}/> 
+                        <Field editing={true} name={"mail"} type="mail" placeholder={""} label="Adresse mail" mandatory={true}/> 
                     </div>
 
                     <div className="formRow2-item-a">
-                        <Field editing={true} name={"password"} type="password" placeholder={password} label="Mot de passe" mandatory={true}/>
+                        <Field editing={true} name={"password"} type="password" placeholder={""} label="Mot de passe" mandatory={true}/>
                     </div>
                 </div>
 
-                {message && <TextMessage type={TextMessageType.oups}/>}
                 <a href='./auth/forgot-password'> <h4>Mot de passe oublié ?</h4></a>
                 <Button box="fill" type ="general" buttonText="Valider"/>
             </form>

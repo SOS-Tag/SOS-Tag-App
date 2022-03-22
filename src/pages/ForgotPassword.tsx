@@ -10,33 +10,22 @@ import Banner from '../components/Banner';
 export default function ForgotPassword() {
   const [forgotPassword] = useForgotPasswordMutation();
   const [email, setEmail] = useState('johndoe@mail.com');
-  const [isLoading, setIsLoading] = useState(false);
   const [mailSent, setMailSent] = useState(false);
   const [message, setMessage] = useState(false);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-
-    setIsLoading(true);
     setEmail(event.target.email.value);
 
     const response = await forgotPassword({
       variables: { userEmail: email },
     });
 
-    setIsLoading(false);
-
     const success = response?.data?.forgotPassword?.response;
-    //const error = response?.data?.forgotPassword?.error;
 
     if (success) {
       setMailSent(true);
     }
-    /*
-    if (error) {
-      setError(error?.message as string)
-    }
-    */
   };
 
   return (

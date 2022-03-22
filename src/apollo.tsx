@@ -8,7 +8,6 @@ import { ApolloLink, Observable } from 'apollo-link';
 import { onError } from 'apollo-link-error';
 import { createHttpLink } from 'apollo-link-http';
 import { TokenRefreshLink } from 'apollo-link-token-refresh';
-import React from 'react';
 import { FunctionComponent } from 'react';
 import { getAccessToken, isTokenValidOrUndefined, setAccessToken } from './utils/access-token';
 

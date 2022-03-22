@@ -7,8 +7,6 @@ import SignInPage from '../pages/SignInPage';
 import UserDashboard from '../pages/UserDashboard';
 import NewSheetById from '../pages/NewSheetById';
 import Page404 from '../pages/Page404';
-import Welcome from '../pages/Welcome';
-import React from 'react';
 import ChangePassword from '../pages/ChangePassword';
 import ForgotPassword from '../pages/ForgotPassword';
 import ConfirmUser from '../pages/ConfirmUser';

@@ -1,11 +1,10 @@
-import React, { FormEventHandler, useState } from 'react';
+import { useState } from 'react';
 import AlternativText from "../components/AlternativText";
 import TextMessage from '../components/TextMessage';
 import Field from "../components/field/Field";
 import Button from '../components/Button';
 import 'react-phone-number-input/style.css'
 import { TextMessageType } from '../components/Types';
-import { text } from 'stream/consumers';
 import { useRegisterMutation } from '../generated/graphql';
 
 const SignUpPage = () => {
@@ -13,9 +12,6 @@ const SignUpPage = () => {
   const [consent, setConsent] = useState(false);
   const [errorMail, setErrorMail] = useState(false);
   const [errorPwd, setErrorPwd] = useState(false);
-
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const [register] = useRegisterMutation()
@@ -32,8 +28,6 @@ const SignUpPage = () => {
     console.log(event.target.phone.value);
     console.log(event.target.password1.value);
     console.log(event.target.password2.value);
-
-    setIsLoading(true);
 
     const values = {
       fname: event.target.firstname.value, 
@@ -66,26 +60,21 @@ const SignUpPage = () => {
       condition = false;
     }
     if(condition){
-      console.log("formulaire valide");
       // We use the register mutation as we implement the registration of a Firebase user
       // on the backend.
       // When a user is created, we also create an account which shares the id and the
       // email (not sure for now about the email) of the new user.
       const response = await register({ variables: { registerInput: values } });
 
-      setIsLoading(false);
-
       const success = response?.data?.register?.response;
       const error = response?.data?.register?.error;
 
       if (success) {
-        console.log('inscription valide')
         setIsRegistered(true);
       }
 
       if (error) {
         console.log(error)
-        setError(error?.message as string)
       }
 
     }

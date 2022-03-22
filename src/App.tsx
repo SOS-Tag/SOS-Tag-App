@@ -3,7 +3,7 @@ import Routes from './routes';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { withApollo } from './apollo';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HeaderTypeEnum } from './components/Header';
 import { setAccessToken } from './utils/access-token';
 import { useWelcomeQuery } from './generated/graphql';

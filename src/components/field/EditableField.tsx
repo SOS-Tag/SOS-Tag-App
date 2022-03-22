@@ -18,8 +18,6 @@ type editableFieldType = {
   onChange?: (e: any) => void,
 }
 
-
-
 const EditableField: React.FC<editableFieldType> = ({
   label,
   type,
@@ -33,12 +31,9 @@ const EditableField: React.FC<editableFieldType> = ({
   onChange,
 }) => {
 
-  console.log('NOOOO', (!!css && css))
-
   let temp: E164Number | undefined;
   temp = placeholder as E164Number | undefined;
   const [tel, setTel] = useState(temp);
-  const [input, setInput] = useState(temp);
   const [value,setValue] = useState(placeholder);
 
   function handleValue(event: any){

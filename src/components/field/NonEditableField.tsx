@@ -8,7 +8,6 @@ type nonEditablefieldType = {
   defaultCss?: string,
 }
 
-
 const NonEditableField: React.FC<nonEditablefieldType> = ({
   label,
   value,
