@@ -89,7 +89,7 @@
   margin: 0;
   padding: 0;
   width: 110px;
-  height: 110px;
+  /* height: 110px; */
   animation: not-checked-anim 0.2s both;
   transition: 0.2s;
   text-align: center;
@@ -216,9 +216,10 @@
     margin: 0;
     padding: 0;
     width: 110px;
-    height: 80px;
+    /* height: 80px; */
     box-shadow: none;
     border-bottom-left-radius: 100%;
+    padding-bottom: 150px;
   }
 
   #menu li a {
@@ -267,14 +268,14 @@
   @keyframes checked-anim {
     100% {
       width: 50vw;
-      height: 50vh;
+      height: fit-content;
       border-radius: 0;
     }
   }
   @keyframes not-checked-anim {
     0% {
       width: 50vw;
-      height: 50vh;
+      height: fit-content;
       border-radius: 0;
     }
   }
@@ -292,14 +293,14 @@
   @keyframes checked-anim {
     100% {
       width: 20%;
-      height: 40vh;
+      height: fit-content;
       border-radius: 0;
     }
   }
   @keyframes not-checked-anim {
     0% {
       width: 20%;
-      height: 40vh;
+      height: fit-content;
       border-radius: 0;
     }
   }
