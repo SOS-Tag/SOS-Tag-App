@@ -10,7 +10,7 @@ const LandingPage: React.FC<LandingPageType> = ({ }) => {
 
       {/* HERO */}
 
-      <div className="w-full flex flex-col space-y-4 bg-white drop-shadow-md items-center p-8 items-center">
+      <div className="w-full flex flex-col space-y-4 bg-white drop-shadow-md p-8 items-center">
         <div className="w-1/2 desktop:w-1/4 m-auto desktop:mt-[50px]">
           <img className="w-5/5 m-auto" alt="imgManSmiling" src="./assets/man_smiling.png" />
         </div>
@@ -27,7 +27,7 @@ const LandingPage: React.FC<LandingPageType> = ({ }) => {
 
       {/* PRODUCT PRESENTATION */}
 
-      <div className="w-[80%] desktop:w-1/2 p-10">
+      <div className="w-[90%] desktop:w-1/2 p-10">
           <h2 className="mb-5">C'est quoi ?</h2>
           <p><strong>SOS Tag</strong> me permet de créer des fiches médicales d’urgence pour moi et mes enfants directement reliées à des QR codes. En cas d’accident, les urgentistes scannent mon QR code pour accéder aux <strong>informations personnelles de santé</strong> dont ils ont besoin pour accélerer la prise en charge.</p>
       </div>
