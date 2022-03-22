@@ -40,8 +40,8 @@ const Field: React.FC<fieldType> = ({
       <NonEditableField
         value={placeholder}
         label={label}
-        {...(!!css && css)}
-        {...(!!defaultCss && defaultCss)}
+        {...(!!css && { css })}
+        {...(!!defaultCss && { defaultCss })}
       />
     );
   }

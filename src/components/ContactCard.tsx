@@ -2,7 +2,7 @@ import Field from './field/Field';
 import { ChangeEvent, useEffect, useState } from 'react';
 import React from 'react';
 import Button from './Button';
-import { Sheet } from '../generated/graphql';
+import { Sheet, SheetContact } from '../generated/graphql';
 
 type ContactCardType = {
   userCard: Sheet,
@@ -52,13 +52,13 @@ const ContactCard: React.FC<ContactCardType> = ({
         <div>
           <div className="flex">
             <div className="w-full mr-8">
-              <Field css="w-full mb-4 pb-1" editing={editInfo} type="text" name={"fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.fname', { e }) }} label="Prénom" placeholder={String(userCard.treatingDoctor?.fname) || ""} />
+              <Field css="w-full mb-5 py-1" editing={editInfo} type="text" name={"fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.fname', { e }) }} label="Prénom" placeholder={String(userCard.treatingDoctor?.fname) || ""} />
             </div>
             <div className="w-full">
-              <Field css="w-full mb-4 pb-1" editing={editInfo} type="text" name={"lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.lname', { e }) }} label="Nom" placeholder={String(userCard.treatingDoctor?.lname) || ""} />
+              <Field css="w-full mb-5 py-1" editing={editInfo} type="text" name={"lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.lname', { e }) }} label="Nom" placeholder={String(userCard.treatingDoctor?.lname) || ""} />
             </div>
           </div>
-          <Field css="w-full mb-4 pb-1" editing={editInfo} type="tel" name={"phone"} onChange={(value: string) => { handleChange('treatingDoctor.phone', { value }) }} label="Téléphone" placeholder={userCard.treatingDoctor?.phone || ""} />
+          <Field css="w-full mb-5 py-1" editing={editInfo} type="tel" name={"phone"} onChange={(value: string) => { handleChange('treatingDoctor.phone', { value }) }} label="Téléphone" placeholder={userCard.treatingDoctor?.phone || ""} />
         </div>
         {/* PARTIE 2 */}
         {contacts.map((contact, i) => (
@@ -75,14 +75,76 @@ const ContactCard: React.FC<ContactCardType> = ({
             <div>
               <div className="flex">
                 <div className="mr-8">
-                  <Field css="w-full mb-4 pb-1" editing={editInfo} type="text" name={"emergencyContact" + (i + 1) + "-fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts[' + i + '].fname', { e }) }} label="Prénom" mandatory={true} placeholder={String(contact.fname) || ""} />
+                  <Field
+                    css="w-full mb-5 py-1"
+                    editing={editInfo}
+                    type="text"
+                    name={"emergencyContact" + (i + 1) + "-fname"}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      handleChange('emergencyContacts[' + i + '].fname', { e })
+                      setContacts((prev: any) => {
+                        let res: SheetContact[] = prev;
+                        res[i].fname = e.target.value;
+                        return res;
+                      })
+                    }}
+                    label="Prénom"
+                    mandatory={true}
+                    placeholder={String(contact.fname) || ""}
+                  />
                 </div>
                 <div>
-                  <Field css="w-full mb-4 pb-1" editing={editInfo} type="text" name={"emergencyContact" + (i + 1) + "-lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts[' + i + '].lname', { e }) }} label="Nom" mandatory={true} placeholder={String(contact.lname) || ""} />
+                  <Field
+                  css="w-full mb-5 py-1"
+                  editing={editInfo}
+                  type="text"
+                  name={"emergencyContact" + (i + 1) + "-lname"}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    handleChange('emergencyContacts[' + i + '].lname', { e })
+                    setContacts((prev: any) => {
+                      let res: SheetContact[] = prev;
+                      res[i].lname = e.target.value;
+                      return res;
+                    })
+                  }}
+                  label="Nom"
+                  mandatory={true}
+                  placeholder={String(contact.lname) || ""}
+                />
                 </div>
               </div>
-              <Field css="w-full mb-4 pb-1" editing={editInfo} type="tel" name={"emergencyContact" + (i + 1) + "-phone"} onChange={(value: string) => { handleChange('emergencyContacts[' + i + '].phone', { value }) }} label="Téléphone" mandatory={true} placeholder={String(contact.phone) || ""} />
-              <Field css="w-full mb-4 pb-1" editing={editInfo} type="text" name={"emergencyContact" + (i + 1) + "-role"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts[' + i + '].role', { e }) }} label="Rôle" placeholder={String(contact.role)} />
+              <Field
+                css="w-full mb-5 py-1"
+                editing={editInfo} type="tel"
+                name={"emergencyContact" + (i + 1) + "-phone"}
+                onChange={(value: string) => {
+                  handleChange('emergencyContacts[' + i + '].phone', { value })
+                  setContacts((prev: any) => {
+                    let res: SheetContact[] = prev;
+                    res[i].phone = value;
+                    return res;
+                  })
+                }}
+                label="Téléphone"
+                mandatory={true}
+                placeholder={String(contact.phone) || ""}
+              />
+              <Field
+                css="w-full mb-5 py-1"
+                editing={editInfo}
+                type="text"
+                name={"emergencyContact" + (i + 1) + "-role"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  handleChange('emergencyContacts[' + i + '].role', { e })
+                  setContacts((prev: any) => {
+                    let res: SheetContact[] = prev;
+                    res[i].role = e.target.value;
+                    return res;
+                  })
+                }}
+                label="Rôle"
+                placeholder={String(contact.role)}
+              />
             </div>
           </div>
         ))}

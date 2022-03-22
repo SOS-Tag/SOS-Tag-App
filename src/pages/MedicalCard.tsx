@@ -92,9 +92,6 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
       value = true;
     if (typeof value === 'string' && ['non', 'false'].includes(value.toLowerCase().trim()))
       value = false;
-
-    console.log("###### " +key);
-    console.log(value);
     
     setSheets(prev => {
       let res: any = [...prev];
