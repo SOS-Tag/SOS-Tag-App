@@ -97,7 +97,7 @@ const LandingPage: React.FC<LandingPageType> = ({ }) => {
           <div className="w-[80%] mt-[5%] flex flex-col">
             <h2 className="mb-5">Des stickers <span className="text-SosTagRedLight">designs</span> et <span className="text-SosTagRedLight">sécurisés</span> qui s’adaptent à votre équipement !</h2>
             <p>Pratique, discret mais visible, nos Tag s’adapent à tous types de surface.
-              <br /><strong>SOS Tag</strong> assure votre sereineté lorsque vous pratiquez vos activités sportives seul(e) ou en famille.
+              <br /><strong>SOS Tag</strong> assure votre sérénité lorsque vous pratiquez vos activités sportives seul(e) ou en famille.
               <br /><strong>Quoiqu’il arrive les secours accèderont à ce que vous auriez souhaité transmettre en un flash !</strong></p>
           </div>
         </div>
