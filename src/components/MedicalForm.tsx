@@ -88,7 +88,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
                   handleChange('sex', { e }) }}
                 type="select" option={gender_options}
                 label="Sexe"
-                mandatory={true}
+                mandatory={false}
                 placeholder={userCard.sex || ""}
               />
             </div>
@@ -117,7 +117,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
                 mandatory={true}
                 placeholder={
                   editInfo
-                  ? userCard.nationality || "FR"
+                  ? userCard.nationality || ""
                   : nationalities.find((e) => e.value.toLowerCase() === userCard.nationality?.toLowerCase())?.name || ""
                 }
               />
@@ -132,7 +132,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
                   handleChange('bloodType', { e }) }}
                 type="select" option={bloodtype_options}
                 label="Groupe sanguin"
-                mandatory={true}
+                mandatory={false}
                 placeholder={userCard.bloodType || ""}
               />
             </div>
@@ -144,8 +144,17 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
                   handleChange('smoker', { e }) }}
                 type="select" option={trueOrFalse}
                 label="Fumeur"
-                mandatory={true}
-                placeholder={userCard.smoker ? 'Oui' : userCard.smoker === false ? 'Non' : ''} />
+                mandatory={false}
+                placeholder={
+                  editInfo
+                  ? userCard.smoker !== null || userCard.smoker !== undefined
+                    ? String(userCard.smoker)
+                    : ''
+                  : userCard.smoker
+                    ? 'Oui'
+                    : userCard.smoker === false
+                      ? 'Non' : ''}
+              />
             </div>
           </div>
           <div className="formRowMedic w-full grid">
@@ -157,8 +166,17 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
                   handleChange('organDonor', { e }) }}
                 type="select" option={trueOrFalse}
                 label="Don d'organe"
-                mandatory={true}
-                placeholder={userCard.organDonor ? 'Oui' : userCard.organDonor === false ? 'Non' : ''} />
+                mandatory={false}
+                placeholder={
+                  editInfo
+                  ? userCard.organDonor !== null || userCard.organDonor !== undefined
+                    ? String(userCard.organDonor)
+                    : ''
+                  : userCard.organDonor
+                    ? 'Oui'
+                    : userCard.organDonor === false
+                      ? 'Non' : ''}
+              />
             </div>
             <div className="formRowMedic-item-b">
               <Field
@@ -168,8 +186,17 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
                   handleChange('advanceDirectives', { e }) }}
                 type="select" option={trueOrFalse}
                 label="Directives anticipées"
-                mandatory={true}
-                placeholder={userCard.advanceDirectives ? 'Oui' : userCard.advanceDirectives === false ? 'Non' : ''} />
+                mandatory={false}
+                placeholder={
+                  editInfo
+                  ? userCard.advanceDirectives !== null || userCard.advanceDirectives !== undefined
+                    ? String(userCard.advanceDirectives)
+                    : ''
+                  : userCard.advanceDirectives
+                    ? 'Oui'
+                    : userCard.advanceDirectives === false
+                      ? 'Non' : ''}
+              />
             </div>
           </div>
 
