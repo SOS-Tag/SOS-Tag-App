@@ -106,7 +106,7 @@ const SignUpPage = () => {
                       <Field editing={true} type="text" name={"firstname"} label="Nom" mandatory={true}/>
                     </div>
                     <div className="SignUpPageRow-item-b">
-                      <Field editing={true} type="text" name={"lastname"} label="Prenom" mandatory={false}/>
+                      <Field editing={true} type="text" name={"lastname"} label="Prénom" mandatory={false}/>
                     </div>
                   </div>
                   <div className="SignUpPageRow w-full grid">

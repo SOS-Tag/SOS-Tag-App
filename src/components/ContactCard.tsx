@@ -37,7 +37,7 @@ const ContactCard: React.FC<ContactCardType> = ({
 
   const delContact = (i: number) => {
     if (contacts.length === 2)
-      i == 1 ? handleChange("emergencyContacts", { value: [contacts[0]] }) : handleChange("emergencyContacts", { value: [contacts[1]] });
+      i === 1 ? handleChange("emergencyContacts", { value: [contacts[0]] }) : handleChange("emergencyContacts", { value: [contacts[1]] });
     else
       handleChange("emergencyContacts", { value: [] });
   }
@@ -52,13 +52,37 @@ const ContactCard: React.FC<ContactCardType> = ({
         <div>
           <div className="flex">
             <div className="w-full mr-8">
-              <Field css="w-full mb-5 py-1" editing={editInfo} type="text" name={"fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.fname', { e }) }} label="Prénom" placeholder={String(userCard.treatingDoctor?.fname) || ""} />
+              <Field
+                css="w-full mb-5 py-1"
+                editing={editInfo}
+                type="text"
+                name={"fname"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.fname', { e }) }}
+                label="Prénom"
+                placeholder={userCard.treatingDoctor?.fname || ""}
+              />
             </div>
             <div className="w-full">
-              <Field css="w-full mb-5 py-1" editing={editInfo} type="text" name={"lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.lname', { e }) }} label="Nom" placeholder={String(userCard.treatingDoctor?.lname) || ""} />
+              <Field
+                css="w-full mb-5 py-1"
+                editing={editInfo}
+                type="text"
+                name={"lname"}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('treatingDoctor.lname', { e }) }}
+                label="Nom"
+                placeholder={userCard.treatingDoctor?.lname || ""}
+              />
             </div>
           </div>
-          <Field css="w-full mb-5 py-1" editing={editInfo} type="tel" name={"phone"} onChange={(value: string) => { handleChange('treatingDoctor.phone', { value }) }} label="Téléphone" placeholder={userCard.treatingDoctor?.phone || ""} />
+          <Field
+            css="w-full mb-5 py-1"
+            editing={editInfo}
+            type="tel"
+            name={"phone"}
+            onChange={(value: string) => { handleChange('treatingDoctor.phone', { value }) }}
+            label="Téléphone"
+            placeholder={userCard.treatingDoctor?.phone || ""}
+          />
         </div>
         {/* PARTIE 2 */}
         {contacts.map((contact, i) => (

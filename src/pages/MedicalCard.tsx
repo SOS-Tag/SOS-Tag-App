@@ -33,14 +33,10 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
     const sheets = data?.sheetsCurrentUser?.response
     sheets && setSheets(sheets.map(e => ({ ...e })));
     if(init && sheets){
-      console.log("LA MEEEEEEEEEEEEEEEEEEEERDE")
-      console.log(sheets.length);
       if(sheets.length > 0){
         let temp = 0;
-        console.log("😼 ID : "+ userId)
         if(userId !== ":userId" && userId !== undefined && parseInt(userId!)<sheets.length)
           temp = parseInt(userId)
-        console.log(temp);
         setSheetIdx(temp);
       }
       setInit(false);
@@ -50,23 +46,13 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
   useEffect(() => {
     if (data && data.sheetsCurrentUser && data.sheetsCurrentUser.response) {
       const r = data.sheetsCurrentUser.response.map(e => {
+        if (!e.fname && !e.lname)
+          return '<fiche sans nom>';
         return e.fname + " " + e.lname;
       })
       setAllCardsNames(r)
     }
   }, [data]);
-
-  if (loading) {
-    console.log("En attente des informations de l'utilisateur connecté ...")
-  }
-
-  if (error) {
-    console.log(error.message)
-  }
-
-  if (data?.sheetsCurrentUser?.error) {
-    console.log(data.sheetsCurrentUser.error?.message as string)
-  }
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -101,10 +87,7 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
   }
 
   const handleSwitch = (e: number) => {
-    console.log("------------------------------");
-    console.log("changement d'id")
     window.history.replaceState(null, '', '/users/' + e)
-    console.log("------------------------------");
     setSheetIdx(e);
   }
 

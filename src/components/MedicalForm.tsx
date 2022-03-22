@@ -115,7 +115,11 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
                 type="select" option={nationalities}
                 label="Nationalité"
                 mandatory={true}
-                placeholder={nationalities.find((e) => e.value.toLowerCase() === userCard.nationality?.toLowerCase())?.name || ""}
+                placeholder={
+                  editInfo
+                  ? userCard.nationality || "FR"
+                  : nationalities.find((e) => e.value.toLowerCase() === userCard.nationality?.toLowerCase())?.name || ""
+                }
               />
             </div>
           </div>
