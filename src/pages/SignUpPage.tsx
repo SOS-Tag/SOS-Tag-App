@@ -118,20 +118,20 @@ const SignUpPage = () => {
                   </div>
                   <div className="SignUpPageRow w-full grid">
                     <div className="SignUpPageRow-item-a">
-                      <Field editing={true} type="mail" name={"mail"} label="Adresse mail" mandatory={false}/> 
+                      <Field editing={true} type="mail" name={"mail"} label="Adresse mail" mandatory={true}/> 
                       {errorMail && <TextMessage type={TextMessageType.error} message="Mail invalide"/>}
                     </div>
                     <div className="SignUpPageRow-item-b">
-                      <Field editing={true} type="tel" name={"phone"} label="Numéro de téléphone" mandatory={false}/>
+                      <Field editing={true} type="tel" name={"phone"} label="Numéro de téléphone" mandatory={true}/>
                     </div>
                   </div>
                   <div className="SignUpPageRow w-full grid">
                     <div className="SignUpPageRow-item-a">
-                      <Field editing={true} type="password" name={"password1"} label="Nouveau mot de passe" mandatory={false}/>
+                      <Field editing={true} type="password" name={"password1"} label="Nouveau mot de passe" mandatory={true}/>
                       {errorPwd && <TextMessage type={TextMessageType.error} message={messagePwd}/>}
                     </div>
                     <div className="SignUpPageRow-item-b">
-                      <Field editing={true} type="password" name={"password2"} label="Répéter mot de passe" mandatory={false}/>
+                      <Field editing={true} type="password" name={"password2"} label="Répéter mot de passe" mandatory={true}/>
                     </div>  
                   </div>
 
