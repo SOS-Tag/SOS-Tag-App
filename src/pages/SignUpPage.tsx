@@ -13,6 +13,7 @@ const SignUpPage = () => {
   const [errorMail, setErrorMail] = useState(false);
   const [errorPwd, setErrorPwd] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
+  const [messagePwd, setMessagePwd] = useState("");
 
   const [register] = useRegisterMutation()
 
@@ -42,6 +43,7 @@ const SignUpPage = () => {
       condition = false;
       if(!errorPwd)
         setErrorPwd(true);
+        setMessagePwd("Mots de passe différents");
     }
     else{
       if(errorPwd)
@@ -49,8 +51,10 @@ const SignUpPage = () => {
     }
     if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(event.target.mail.value))){
       condition = false;
-      if(!errorMail)
+      if(!errorMail){
         setErrorMail(true);
+        
+      }
     }
     else{
       if(errorMail)
@@ -74,7 +78,10 @@ const SignUpPage = () => {
       }
 
       if (error) {
-        console.log(error)
+        if(error.message = "Some of the inputs provided for registration are missing or malformed."){
+          setErrorPwd(true);
+          setMessagePwd("Votre mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial");
+        }
       }
 
     }
@@ -103,10 +110,10 @@ const SignUpPage = () => {
                 <form onSubmit={checkform} >
                   <div className="SignUpPageRow w-full grid">
                     <div className="SignUpPageRow-item-a">
-                      <Field editing={true} type="text" name={"firstname"} label="Nom" mandatory={true}/>
+                      <Field editing={true} type="text" name={"lastname"} label="Nom" mandatory={true}/>
                     </div>
                     <div className="SignUpPageRow-item-b">
-                      <Field editing={true} type="text" name={"lastname"} label="Prénom" mandatory={false}/>
+                      <Field editing={true} type="text" name={"firstname"} label="Prénom" mandatory={true}/>
                     </div>
                   </div>
                   <div className="SignUpPageRow w-full grid">
@@ -121,7 +128,7 @@ const SignUpPage = () => {
                   <div className="SignUpPageRow w-full grid">
                     <div className="SignUpPageRow-item-a">
                       <Field editing={true} type="password" name={"password1"} label="Nouveau mot de passe" mandatory={false}/>
-                      {errorPwd && <TextMessage type={TextMessageType.error} message="Mots de passe différents"/>}
+                      {errorPwd && <TextMessage type={TextMessageType.error} message={messagePwd}/>}
                     </div>
                     <div className="SignUpPageRow-item-b">
                       <Field editing={true} type="password" name={"password2"} label="Répéter mot de passe" mandatory={false}/>
