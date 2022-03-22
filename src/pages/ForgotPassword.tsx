@@ -6,6 +6,8 @@ import { useForgotPasswordMutation } from '../generated/graphql';
 import TextMessage from '../components/TextMessage';
 import { TextMessageType } from '../components/Types';
 import Banner from '../components/Banner';
+import { useLocation, useNavigate } from "react-router-dom";
+import { Location } from '../routes';
 
 export default function ForgotPassword() {
   const [forgotPassword] = useForgotPasswordMutation();
@@ -28,6 +30,9 @@ export default function ForgotPassword() {
     }
   };
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <div className="w-full flex justify-center">
       {mailSent ? (
@@ -41,7 +46,7 @@ export default function ForgotPassword() {
         </div>
       ) : (
         <div className="w-full flex flex-col">
-          <Banner title="Mot de passe oublié ?" />
+          <Banner title="Mot de passe oublié ?" returnClick={() => navigate((location as Location)?.state?.from || '/sign-in')} />
           
           <div className="w-full flex">
             <div className="flex w-2/5 justify-center mobile:hidden tablet:flex">
