@@ -33,7 +33,7 @@ const CardsList: React.FC<CardListType> = ({
         />
         
       ))}
-      <UserCard type="add" handleCheckboxList={()=>{}} />
+      <UserCard type="add" urlId={compteur++} handleCheckboxList={()=>{}} />
     </div>
   );
 }

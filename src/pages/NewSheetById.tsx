@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAssignSheetToUserMutation } from "../generated/graphql";
 import { Location } from '../routes';
 import { withAuth } from "../guards/auth";
@@ -19,6 +19,7 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
   const [page, changePage] = useState(false);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
+  const {id} = useParams();
 
   async function handleSheetAssociation(event: any){
     event.preventDefault();
@@ -39,7 +40,7 @@ const NewSheetById: React.FC<NewSheetByIdType> = ({}) => {
 
     if (success) {
       console.log("tout est bon !")
-      navigate((location as Location)?.state?.from || '/users/:userId')
+      navigate((location as Location)?.state?.from || '/users/'+id)
     }
 
     if (error) {

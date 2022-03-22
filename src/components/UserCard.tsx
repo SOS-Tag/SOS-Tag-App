@@ -33,7 +33,7 @@ const UserCard: React.FC<UserCardProps> = ({
             case "child":
                 return <UserCardBasic id={id} urlId={urlId} enabled={enabled} type={type} lastname={lastname} firstname={firstname} checkboxList={checkboxList} handleCheckboxList={handleCheckboxList}/>
             case "add":
-                return <UserCardAdd />
+                return <UserCardAdd urlId={urlId}/>
             default:
                 return <p>{type} doesn't exist</p>;
         }
@@ -126,13 +126,17 @@ const UserCardBasic: React.FC<UserCardProps> = ({
     );
 }
 
-const UserCardAdd = () => {
+type UserCardAddProps = {
+    urlId?: number,
+  }
+
+const UserCardAdd: React.FC<UserCardAddProps> = ({urlId}) => {
 
     const navigate = useNavigate();
     const location = useLocation();
 
     return (
-        <div className="flex flex-col items-center justify-center h-[100%]" onClick={() => navigate((location as Location)?.state?.from || '/users/sheet-by-id')}>
+        <div className="flex flex-col items-center justify-center h-[100%]" onClick={() => navigate((location as Location)?.state?.from || '/users/sheet-by-id/'+urlId) }>
             <div className="relative flex items-center justify-center w-[55px] h-[55px]">
                 <div className="absolute bg-white w-[100%] h-[10%]"></div>
                 <div className="absolute bg-white w-[10%] h-[100%]"></div>

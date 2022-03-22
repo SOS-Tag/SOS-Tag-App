@@ -56,7 +56,7 @@ export const routes = [
       { path: 'basket', element: <Basket /> },
       { path: 'all', element: <UserDashboard />},
       { path: ':userId', element: <MedicalCard /> },
-      { path: 'sheet-by-id', element: <NewSheetById />},
+      { path: 'sheet-by-id/:id', element: <NewSheetById />},
     ]
   },
   { path: '*', element: <Page404 /> }
