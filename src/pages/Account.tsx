@@ -5,6 +5,7 @@ import { withAuth } from "../guards/auth";
 
 // TEST
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Location } from '../routes';
 import { useMeQuery, useUpdateCurrentUserMutation } from "../generated/graphql";
 import Banner from "../components/Banner";
 
@@ -171,7 +172,7 @@ const Account: React.FC<AccountType> = ({}) => {
             {/* FORMULAIRE INFO */}
             {(nbPage === 0) ? 
             <>
-                <Banner title="Gestion de votre compte" />
+                <Banner title="Gestion de votre compte" returnClick={() => navigate((location as Location)?.state?.from || '/users/all')} />
                 <div className="flex tablet:flex-row flex-col">
                     {/* BOUTONS */}
                     <div className="flex tablet:flex-col tablet:w-2/5 items-center flex-row gap-5 tablet:gap-0 mr-5">

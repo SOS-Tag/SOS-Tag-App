@@ -68,14 +68,14 @@ export const Header: React.FC<HeaderType> = ({
                 <span>Fiche personnelle</span>
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 className="header--link-item"
                 href="/users/basket"
               >
                 <BasketSVG color={location.pathname === "/users/basket" ? "#ec3e55" : "#19224F"} />
               </a>
-            </li>
+            </li> */}
             <li>
               <a
                 className="header--link-item"
