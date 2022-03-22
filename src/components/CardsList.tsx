@@ -19,7 +19,7 @@ const CardsList: React.FC<CardListType> = ({
   return (
     <div className="grid mobile:grid-cols-1 tablet:grid-cols-[repeat(auto-fill,_minmax(min(220px,_100%),_1fr))] gap-[40px] mobile:mb-[30px]">
       {sheets.map(s => (
-
+        console.log(s),
         <UserCard
           key={`uc-${s._id}`}
           type="main"

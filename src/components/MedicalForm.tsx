@@ -57,25 +57,25 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
             <div className="formRowMedic-item-a">
               <Field
                 editing={editInfo}
-                name={"fname"}
+                name={"lname"}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  handleChange('fname', { e }) }}
+                  handleChange('lname', { e }) }}
                 type="text"
                 label="Nom"
                 mandatory={true}
-                placeholder={userCard.fname || ""}
+                placeholder={userCard.lname || ""}
               />
             </div>
             <div className="formRowMedic-item-b">
               <Field
                 editing={editInfo}
-                name={"lname"}
+                name={"fname"}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  handleChange('lname', { e }) }}
+                  handleChange('fname', { e }) }}
                 type="text"
                 label="Prénom"
                 mandatory={true}
-                placeholder={userCard.lname || ""}
+                placeholder={userCard.fname || ""}
               />
             </div>
           </div>
