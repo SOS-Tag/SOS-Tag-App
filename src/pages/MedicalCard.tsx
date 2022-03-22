@@ -120,7 +120,7 @@ const MedicalCard: React.FC<MedicalCardType> = () => {
         <div className='noFlex overflow-x-hidden'>
           <div className='MedicAside'>
             <UserSwitch id={sheetIdx} setId={handleSwitch} cardsNames={allCardsNames} />
-            <BlockQR id={sheets[sheetIdx]._id} />
+            <BlockQR id={sheets[sheetIdx]._id} sheetEnabled={sheets[sheetIdx].enabled} />
           </div>
           <MedicalForm userCard={sheets[sheetIdx]} handleSubmit={handleSubmit} editInfo={editInfo} setEditInfo={setEditInfo} handleChange={handleChange} />
         </div>
