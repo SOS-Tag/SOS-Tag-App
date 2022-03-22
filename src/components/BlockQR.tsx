@@ -13,13 +13,13 @@ const BlockQR: React.FC<BlockQRType> = ({
         <>
             <div className="">
                 <div className="hidden desktop:block">
-                    <h2>Votre QR Code :</h2>
-                    <img className='w-1/2 mx-auto py-10' src={`https://qr.sostag.tech/${id}`}></img>
-                    <h2>Votre ID : {id}</h2>
+                    <h2>Votre QR Code :</h2>
+                    <img className='mx-auto py-6 px-6' src={`https://qr.sostag.tech/${id}`}></img>
+                    <h2>Votre ID : {id}</h2>
                     <br/>
                 </div>
-                <span>Activer / Désactiver le QR Code :</span>
-                <div className="mx-auto my-2 drop-shadow-lg">
+                <span>(Dés)activer le QR Code :</span>
+                <div className="flex justify-center my-2 drop-shadow-lg">
                     <Toggle type="main"/>
                 </div>
             </div>

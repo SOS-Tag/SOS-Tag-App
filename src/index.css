@@ -119,7 +119,7 @@ h2 {
 }
 
 .formRowMedic {
-  grid-template-columns: [first] 0% [line2] 45% [line3] 10% [line4] 45% [line5] auto [end];
+  grid-template-columns: [first] 0% [line2] 47% [line3] 6% [line4] 47% [line5] auto [end];
 }
 
 .formRowMedic-item-a {
@@ -224,7 +224,7 @@ h2 {
   }
 
   .formRowMedic {
-    grid-template-columns: [first] 0% [line2] 40% [line3] 10% [line4] 40% [line5] auto [end];
+    grid-template-columns: [first] 0% [line2] 47% [line3] 6% [line4] 47% [line5] auto [end];
   }
 
   .formRowMedic-item-a {
@@ -240,8 +240,8 @@ h2 {
   .MedicalFormContainer {
     background-color: white;
     margin: 3% auto;
-    width: 33%;
-    padding: 2% 50px;
+    max-width: 40%;
+    padding: 2rem 6rem 2rem 2rem;
     border-radius: 20px;
     box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
     height: auto;
@@ -264,7 +264,7 @@ h2 {
   }
 
   .MedicAside {
-    width: 15%;
+    width: 20%;
     background-color: white;
     /* max-height: 400px; */
     text-align: center;

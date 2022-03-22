@@ -47,7 +47,7 @@ const ContactCard: React.FC<ContactCardType> = ({
       <div className="ContactCard">
         {/* PARTIE 1 */}
         <div className="w-full">
-          <h2 className="formRowMedic-subtitle">Médecin traitant</h2>
+          <h2>Médecin traitant</h2>
         </div>
         <div>
           <div className="flex">
@@ -65,7 +65,7 @@ const ContactCard: React.FC<ContactCardType> = ({
           contact &&
           <div key={i}>
             <div className="w-full flex items-center justify-between mt-3 mb-2">
-              <h2 className="formRowMedic-subtitle mr-2">Contact d'urgence {i + 1}</h2>
+              <h2 className="mr-2">Contact d'urgence {i + 1}</h2>
               {editInfo && <Button onClick={(e) => {
                 e.preventDefault();
                 delContact(i);
@@ -77,7 +77,7 @@ const ContactCard: React.FC<ContactCardType> = ({
                 <div className="mr-8">
                   <Field css="w-full mb-4 pb-1" editing={editInfo} type="text" name={"emergencyContact" + (i + 1) + "-fname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts[' + i + '].fname', { e }) }} label="Prénom" mandatory={true} placeholder={String(contact.fname) || ""} />
                 </div>
-                <div className="">
+                <div>
                   <Field css="w-full mb-4 pb-1" editing={editInfo} type="text" name={"emergencyContact" + (i + 1) + "-lname"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('emergencyContacts[' + i + '].lname', { e }) }} label="Nom" mandatory={true} placeholder={String(contact.lname) || ""} />
                 </div>
               </div>

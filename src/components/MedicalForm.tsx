@@ -44,9 +44,9 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
       </div>
       <div className="MedicalFormContainer">
         <form id="formId" onSubmit={handleSubmit} action="">
-          {!editInfo && <div className='w-[75vw] tablet:w-auto align-middle text-center cursor-pointer drop-shadow-md inline-flex hover:drop-shadow-lg bg-SosTagYellow px-3 py-1 mb-5 rounded-md hover:animate-pulse' onClick={handleEditInfo}>
+          {!editInfo && <div className='w-full flex items-center tablet:w-auto align-middle text-center cursor-pointer drop-shadow-md inline-flex hover:drop-shadow-lg bg-SosTagYellow px-3 py-1 mb-5 rounded-md hover:animate-pulse' onClick={handleEditInfo}>
             <BsPencilFill className="fill-white p-1 w-8 h-8" />
-            <span className='ml-5 text-white font-bold'>Modifier les informations</span>
+            <span className='ml-5 text-white font-bold'>Modifier</span>
           </div>}
           {/* PARTIE 1 */}
           <div className="w-full formSectionHeader">
@@ -79,15 +79,15 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
               <Field editing={editInfo} name={"bloodType"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('bloodType', { e }) }} type="select" option={bloodtype_options} label="Groupe sanguin" mandatory={true} placeholder={userCard.bloodType || ""} />
             </div>
             <div className="formRowMedic-item-b">
-              <Field editing={editInfo} name={"smoker"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('smoker', { e }) }} type="select" option={trueOrFalse} label="Fumeur ?" mandatory={true} placeholder={String(userCard.smoker) || "false"} />
+              <Field editing={editInfo} name={"smoker"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('smoker', { e }) }} type="select" option={trueOrFalse} label="Fumeur" mandatory={true} placeholder={String(userCard.smoker) || "false"} />
             </div>
           </div>
           <div className="formRowMedic w-full grid">
             <div className="formRowMedic-item-a">
-              <Field editing={editInfo} name={"organDonor"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('organDonor', { e }) }} type="select" option={trueOrFalse} label="Don d'organe ?" mandatory={true} placeholder={String(userCard.organDonor) || "false"} />
+              <Field editing={editInfo} name={"organDonor"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('organDonor', { e }) }} type="select" option={trueOrFalse} label="Don d'organe" mandatory={true} placeholder={String(userCard.organDonor) || "false"} />
             </div>
             <div className="formRowMedic-item-b">
-              <Field editing={editInfo} name={"advanceDirectives"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('advanceDirectives', { e }) }} type="select" option={trueOrFalse} label="Directives anticipées ?" mandatory={true} placeholder={String(userCard.advanceDirectives) || "false"} />
+              <Field editing={editInfo} name={"advanceDirectives"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('advanceDirectives', { e }) }} type="select" option={trueOrFalse} label="Directives anticipées" mandatory={true} placeholder={String(userCard.advanceDirectives) || "false"} />
             </div>
           </div>
 
@@ -97,16 +97,14 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
             <h2 className="formRowMedic-subtitle">Informations de santé</h2>
           </div>
 
-          <div className="formRowMedic w-full grid">
-            <div className="formRowMedic-item-a">
+          <div className="formRowMedic">
+            <div>
               <Field editing={editInfo} name={"allergies"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('allergies', { e }) }} type="text" label="Allergies" mandatory={false} placeholder={userCard.allergies || ""} />
             </div>
-            <div className="formRowMedic-item-b">
+            <div>
               <Field editing={editInfo} name={"currentTreatment"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('currentTreatment', { e }) }} type="text" label="Traitement en cours" mandatory={false} placeholder={userCard.currentTreatment || ""} />
             </div>
-          </div>
-          <div className="formRowMedic w-full grid">
-            <div className="formRowMedic-item-a">
+            <div>
               <Field editing={editInfo} name={"medicalHistory"} onChange={(e: ChangeEvent<HTMLInputElement>) => { handleChange('medicalHistory', { e }) }} type="text" label="Antécédents médicaux" mandatory={false} placeholder={userCard.medicalHistory || ""} />
             </div>
           </div>
