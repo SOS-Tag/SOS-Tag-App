@@ -45,7 +45,7 @@ function App() {
       <BrowserRouter>
       <div className="App h-full min-h-screen flex flex-col items-stretch">
         <Header type={HeaderTypeEnum.after} />
-        <div className='w-full h-full content flex flex-row my-[5vh]'>
+        <div className='w-full h-full content flex flex-row mt-16'>
           <Routes />
         </div>
       </div>
