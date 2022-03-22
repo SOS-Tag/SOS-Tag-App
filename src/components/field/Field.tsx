@@ -6,27 +6,43 @@ import EditableField from './EditableField';
 
 const Field: React.FC<fieldType> = ({
   label,
-  mandatory,
+  mandatory = false,
   name,
   type,
   text = "",
   option = [],
   placeholder = "",
+  css,
+  defaultCss,
   editing,
   onChange,
 }) => {
 
   function editingLabel(){
     return(
-      <EditableField name={name} label={label} type={type} mandatory={mandatory} text={text} placeholder={placeholder} option={option} onChange={onChange} />
+      <EditableField
+        name={name}
+        label={label}
+        type={type}
+        mandatory={mandatory}
+        text={text}
+        placeholder={placeholder}
+        option={option}
+        onChange={onChange}
+        {...(!!css && { css })}
+        {...(!!defaultCss && { defaultCss })}
+      />
     )
   }
 
   function nonEditingLabel(){
     return (
-      <>
-        <NonEditableField value={placeholder} label={label}/>
-      </>
+      <NonEditableField
+        value={placeholder}
+        label={label}
+        {...(!!css && css)}
+        {...(!!defaultCss && defaultCss)}
+      />
     );
   }
 

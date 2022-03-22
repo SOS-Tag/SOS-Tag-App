@@ -51,19 +51,6 @@ h2 {
   color: var(--SosTagBlue);
 }
 
-.formRowMedicCard {
-  grid-template-columns: [first] 0% [line2] 40% [line3] 10% [line4] 40% [line5];
-}
-
-.formRowMedicCard-item-a {
-  grid-column-start: line2;
-  grid-column-end: line3;
-}
-
-.formRowMedicCard-item-b {
-  grid-column-start: line4;
-  grid-column-end: line5;
-}
 .prenom {
   font-family: Source Sans Pro;
   font-style: normal;
@@ -106,10 +93,8 @@ h2 {
 
 .ContactCard {
   background-color: var(--SosTagYellowLight);
-  padding: 20px 0px 20px 10px;
   box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
-  width: 80vw;
-  margin-left: -2.5vw;
+  padding: 1rem;
 }
 
 .noFlex {
@@ -159,7 +144,6 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 @media (max-width: 469px) {
@@ -270,7 +254,7 @@ h2 {
     /* margin: 0 22% 0 0; */
     background-color: var(--SosTagYellowLight);
     /* z-index: 50; */
-    padding: 20px 50px;
+    padding: 2rem;
     border-radius: 20px;
     box-shadow: rgba(24, 33, 78, 0.1) 5px 5px 20px;
     position: absolute;

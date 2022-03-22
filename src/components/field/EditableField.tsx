@@ -7,12 +7,14 @@ import { E164Number } from 'libphonenumber-js/types';
 
 type editableFieldType = {
   label: string,
-  mandatory: boolean,
+  mandatory?: boolean,
   name: string,
   type: string,
   text?: string,
   option?: Array<fieldOption>,
   placeholder?: string,
+  css?: string,
+  defaultCss?: string,
   onChange?: (e: any) => void,
 }
 
@@ -22,20 +24,22 @@ const EditableField: React.FC<editableFieldType> = ({
   label,
   type,
   name,
-  mandatory,
+  mandatory = false,
   text,
   option,
   placeholder='',
+  css = "mt-[6px] mb-[40px] p-0 pb-[8px] w-full",
+  defaultCss = "semiBoldText border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow",
   onChange,
 }) => {
 
+  console.log('NOOOO', (!!css && css))
 
   let temp: E164Number | undefined;
   temp = placeholder as E164Number | undefined;
   const [tel, setTel] = useState(temp);
   const [input, setInput] = useState(temp);
   const [value,setValue] = useState(placeholder);
-  const css = "semiBoldText mt-[6px] mb-[40px] p-0 pb-[8px] w-full border-0 border-b-[2px] border-b-solid border-b-SosTagBlue bg-transparent text-SosTagBlue transition delay-200 focus:outline-none focus:border-SosTagYellow";
 
   function handleValue(event: any){
     setValue(event.target.value);
@@ -55,6 +59,7 @@ const EditableField: React.FC<editableFieldType> = ({
           onChange && onChange(e)
         }}
         name={name}
+        className={`${css} ${defaultCss}`}
       />
     )
   }
@@ -63,19 +68,19 @@ const EditableField: React.FC<editableFieldType> = ({
     const date = value.split('/');
     const formattedValue = date.length === 3 ? `${date[2]}-${date[1]}-${date[0]}` : value;
     return(
-      <input onChange={handleValue} value={formattedValue} name={name} className={css} type="date" required/> 
+      <input onChange={handleValue} value={formattedValue} name={name} className={`${css} ${defaultCss}`} type="date" required/> 
     )
   }
 
   function passwordInput(){
     return(
-      <input onChange={handleValue} value={value} name={name} minLength={8} className={css} type="password" required/> 
+      <input onChange={handleValue} value={value} name={name} minLength={8} className={`${css} ${defaultCss}`} type="password" required/> 
     )
   }
 
   function selectInput(){
     return(
-      <select className={css} placeholder={placeholder} name={name} onChange={handleValue} value={value}>
+      <select className={`${css} ${defaultCss}`} placeholder={placeholder} name={name} onChange={handleValue} value={value}>
         {option && option.map((option, key: number) => {
           return <option key={key} value={option.value}>{option.name}</option>
         })}
@@ -85,13 +90,13 @@ const EditableField: React.FC<editableFieldType> = ({
 
   const mandatoryInput = () => {
     return(
-      <input onChange={handleValue} value={value} required className={css} type={type} name={name} />
+      <input onChange={handleValue} value={value} required className={`${css} ${defaultCss}`} type={type} name={name} />
     )
   }
 
  const nonMandatoryInput = () => {
     return(
-      <input onChange={handleValue} value={value} className={css} type={type} name={name} />
+      <input onChange={handleValue} value={value} className={`${css} ${defaultCss}`} type={type} name={name} />
     )
   }
 

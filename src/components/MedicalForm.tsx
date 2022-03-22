@@ -50,7 +50,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
           </div>}
           {/* PARTIE 1 */}
           <div className="w-full formSectionHeader">
-            <h2 className="formRowMedic-subtitle">Information générale</h2>
+            <h2 className="formRowMedic-subtitle">Informations générales</h2>
           </div>
 
           <div className="formRowMedic w-full grid">
@@ -94,7 +94,7 @@ const MedicalForm: React.FC<MedicalFormProps> = ({
 
           {/* PARTIE 2 */}
           <div className="w-full formSectionHeader">
-            <h2 className="formRowMedic-subtitle">Information santé</h2>
+            <h2 className="formRowMedic-subtitle">Informations de santé</h2>
           </div>
 
           <div className="formRowMedic w-full grid">

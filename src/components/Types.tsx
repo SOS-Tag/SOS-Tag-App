@@ -64,12 +64,14 @@ export type fieldOption = {
 
 export type fieldType = {
   label: string,
-  mandatory: boolean,
+  mandatory?: boolean,
   type: string,
   name: string,
   text?: string,
   option?: Array<fieldOption>,
   placeholder?: string | undefined,
+  css?: string,
+  defaultCss?: string,
   editing: boolean,
   onChange?: (e: any) => void,
 }

@@ -1,11 +1,9 @@
 .PhoneInput {
   padding: 7px 0;
-  /* background-color: red; */
   background: transparent;
   transition: border-color 0.2s;
   color: var(--SosTagBlue);
   border-bottom: 2px solid var(--SosTagBlue);
-  margin-bottom: 40px;
 }
 
 .PhoneInputInput:focus {
